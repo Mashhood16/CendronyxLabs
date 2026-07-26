@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Music } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -89,3 +89,4 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
  </div>
  );
 }
+

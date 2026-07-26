@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+﻿import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Calculator, BookOpen, LineChart, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -92,7 +92,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
  if (isPredictCorrect && isCorrCorrect) {
  setFeedback("Correct! You accurately identified the correlation and predicted the value.");
  } else if (!isCorrCorrect) {
- setFeedback(`Incorrect correlation. Based on the data, the correlation is ${actualCorr} (r ≈ ${stats.r.toFixed(2)}).`);
+ setFeedback(`Incorrect correlation. Based on the data, the correlation is ${actualCorr} (r â‰ˆ ${stats.r.toFixed(2)}).`);
  } else {
  setFeedback(`Incorrect prediction. Using the line of best fit, we expect roughly ~${expectedY.toFixed(1)}`);
  }
@@ -326,3 +326,4 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
  </div>
  );
 }
+

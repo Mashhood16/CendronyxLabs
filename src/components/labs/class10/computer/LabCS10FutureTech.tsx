@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Home, Lightbulb, Cloud, Brain, Check, X, Activity, FileText, Server } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -271,3 +271,4 @@ export default function LabCS10FutureTech({ onExit }: Props) {
  </div>
  );
 }
+

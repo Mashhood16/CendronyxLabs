@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState } from 'react';
 import { Lightbulb, CheckCircle, XCircle, ArrowRight } from 'lucide-react';
 import { PredictionChallenge as PredictionChallengeType } from '../../utils/labScaffolding';
@@ -107,3 +107,4 @@ export default function PredictionChallenge({
     </div>
   );
 }
+

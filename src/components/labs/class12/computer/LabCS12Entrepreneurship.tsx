@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Target, Users, BarChart3, Lightbulb, Play, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -329,3 +329,4 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

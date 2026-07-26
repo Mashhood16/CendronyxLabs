@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle2, Maximize2, User, Repeat, Type, Wand2 } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -191,7 +191,7 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
  return (
  <tr key={i} className="border-b border-slate-100 dark:border-[#1c1b1b]">
  <td className="px-3 py-2 font-medium">{d.label}</td>
- <td className="px-3 py-2">{isFound ? '✅ Found' : '❌ Pending'}</td>
+ <td className="px-3 py-2">{isFound ? 'âœ… Found' : 'âŒ Pending'}</td>
  </tr>
  )
  })}
@@ -224,3 +224,4 @@ export default function LabE7FiguresOfSpeech({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

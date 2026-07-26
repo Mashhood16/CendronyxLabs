@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Droplet, CheckCircle2 } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -136,3 +136,4 @@ export default function LabS8DNAExtraction({ onExit }: LabS8DNAExtractionProps) 
  </div>
  );
 }
+

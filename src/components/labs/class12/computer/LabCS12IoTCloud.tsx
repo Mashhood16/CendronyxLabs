@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Database, ShieldAlert, Cpu, Link as LinkIcon, CheckCircle, BookOpen, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -252,3 +252,4 @@ ext-slate-800 dark:text-[#ffffff] mt-4">{t('lab.cs12iotcloud_blockchain_mechanic
  </div>
  );
 }
+

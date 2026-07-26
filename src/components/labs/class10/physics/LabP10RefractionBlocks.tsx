@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -131,7 +131,7 @@ const { recordLabData } = useLab();
  <div>
  <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2 flex justify-between">
  <span>{t('lab.p10refractionblocks_angle_of_incidence_i')}</span>
- <span className="text-red-600 font-bold">{angle}°</span>
+ <span className="text-red-600 font-bold">{angle}Â°</span>
  </label>
  <input 
  type="range" 
@@ -217,8 +217,8 @@ const { recordLabData } = useLab();
  </div>
 
  {/* Angle Labels */}
- <div className="absolute top-10 left-1/2 -translate-x-16 text-red-400 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_i')} {angle}°</div>
- <div className="absolute top-[100px] left-1/2 translate-x-4 text-red-300 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_r')} {measuredRefractedDeg.toFixed(1)}°</div>
+ <div className="absolute top-10 left-1/2 -translate-x-16 text-red-400 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_i')} {angle}Â°</div>
+ <div className="absolute top-[100px] left-1/2 translate-x-4 text-red-300 font-bold text-sm bg-black/50 px-2 rounded">{t('lab.p10refractionblocks_r')} {measuredRefractedDeg.toFixed(1)}Â°</div>
 
  </div>
  </div>
@@ -268,3 +268,4 @@ const { recordLabData } = useLab();
  </div>
  );
 }
+

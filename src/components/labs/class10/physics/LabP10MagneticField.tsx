@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Calculator, Activity, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -176,7 +176,7 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
  >
  <div className="w-1 h-1 bg-green-400 rounded-full" />
  <div className="absolute -top-8 text-xs font-bold text-green-400 bg-[#000000] dark:bg-[#121212] px-2 py-1 rounded border border-green-900 whitespace-nowrap">
- {measuredB.toFixed(1)} μT
+ {measuredB.toFixed(1)} Î¼T
  </div>
  </div>
 
@@ -294,3 +294,4 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
  </div>
  );
 }
+

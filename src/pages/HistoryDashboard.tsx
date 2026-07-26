@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+﻿import { useEffect, useState, useCallback } from 'react';
 import { useHistory } from '../store';
 import { useTranslate } from '../i18n';
 import { useProgressStats } from '../hooks/useProgressStats';
@@ -392,7 +392,7 @@ export default function HistoryDashboard() {
                       ))}
                     </div>
                     <p className={`text-xs ${theme.text.faint} mt-1`}>
-                      Last {stats.recentPerformance.length} labs (newest → oldest)
+                      Last {stats.recentPerformance.length} labs (newest â†’ oldest)
                     </p>
                   </div>
                 ) : (
@@ -561,3 +561,4 @@ export default function HistoryDashboard() {
     </Layout>
   );
 }
+

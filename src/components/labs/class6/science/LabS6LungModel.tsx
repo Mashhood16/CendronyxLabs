@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Wind, Info, Image as ImageIcon } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -101,3 +101,4 @@ export default function LabS6LungModel({ onExit }: LabProps) {
  </div>
  );
 }
+

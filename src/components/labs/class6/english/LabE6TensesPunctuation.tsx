@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Clock, Search, Check, AlertCircle, FastForward } from 'lucide-react';
 import type { ChangeEvent } from 'react';
@@ -338,3 +338,4 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

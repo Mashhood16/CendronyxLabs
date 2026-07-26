@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useLab } from '../../../../store';
 import { Plus, RotateCcw, Check, Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -23,11 +23,11 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
 
  useEffect(() => {
  if (volumeStock > 0 && volumeWater === 0) {
- setEquation(`CuSO₄(aq, ${stockConcentration.toFixed(1)}M)`);
+ setEquation(`CuSOâ‚„(aq, ${stockConcentration.toFixed(1)}M)`);
  } else if (volumeStock > 0 && volumeWater > 0) {
- setEquation(`CuSO₄(aq, ${stockConcentration.toFixed(1)}M) + H₂O(l) ➔ Diluted CuSO₄(aq, ${currentConcentration.toFixed(2)}M)`);
+ setEquation(`CuSOâ‚„(aq, ${stockConcentration.toFixed(1)}M) + Hâ‚‚O(l) âž” Diluted CuSOâ‚„(aq, ${currentConcentration.toFixed(2)}M)`);
  } else if (volumeStock === 0 && volumeWater > 0) {
- setEquation(`H₂O(l)`);
+ setEquation(`Hâ‚‚O(l)`);
  } else {
  setEquation("Empty Flask");
  }
@@ -71,10 +71,10 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
  <h3 className="font-semibold text-blue-800 mb-2 dark:text-[#ffffff]">{t('lab.c10dilutesolution_dilution_equation')}</h3>
  <p className="text-lg font-mono text-center text-blue-900 dark:text-[#ffffff]">{t('lab.c10dilutesolution_m_v_m_v')}</p>
  <ul className="mt-2 text-sm text-blue-800 space-y-1 dark:text-[#ffffff]">
- <li><strong>M₁</strong> {t('lab.c10dilutesolution_initial_molarity_stock')}</li>
- <li><strong>V₁</strong> {t('lab.c10dilutesolution_volume_of_stock_added')}</li>
- <li><strong>M₂</strong> {t('lab.c10dilutesolution_final_molarity')}</li>
- <li><strong>V₂</strong> {t('lab.c10dilutesolution_total_final_volume')}</li>
+ <li><strong>Mâ‚</strong> {t('lab.c10dilutesolution_initial_molarity_stock')}</li>
+ <li><strong>Vâ‚</strong> {t('lab.c10dilutesolution_volume_of_stock_added')}</li>
+ <li><strong>Mâ‚‚</strong> {t('lab.c10dilutesolution_final_molarity')}</li>
+ <li><strong>Vâ‚‚</strong> {t('lab.c10dilutesolution_total_final_volume')}</li>
  </ul>
  </div>
  <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mt-4">{t('lab.c10dilutesolution_procedure')}</h3>
@@ -158,3 +158,4 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

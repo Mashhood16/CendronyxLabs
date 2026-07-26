@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Utensils, Scissors as KnifeIcon } from 'lucide-react'; // Using Scissors for Knife
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -109,3 +109,4 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
  </div>
  );
 }
+

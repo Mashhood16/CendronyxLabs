@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { ArrowLeft, Send, CheckCircle2, XCircle, Mail, Newspaper, User, PenTool } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -9,7 +9,7 @@ const SCENARIOS = [
  {
  id: 1,
  reader: "Sleepless Sam",
- avatar: "😴",
+ avatar: "ðŸ˜´",
  letterParts: ["Dear Advisor,\nI feel exhausted ", " studying late. I keep falling asleep ", " my classes! What can I do?"],
  blanks: [
  { id: "s1_1", type: "prep", options: ["because of", "in spite of", "along with"], answer: "because of" },
@@ -24,7 +24,7 @@ const SCENARIOS = [
  {
  id: 2,
  reader: "Angry Anna",
- avatar: "😠",
+ avatar: "ðŸ˜ ",
  letterParts: ["Dear Advisor,\nMy friend is ignoring me ", " a misunderstanding. She walked right ", " me today!"],
  blanks: [
  { id: "s2_1", type: "prep", options: ["due to", "in addition to", "apart from"], answer: "due to" },
@@ -39,7 +39,7 @@ const SCENARIOS = [
  {
  id: 3,
  reader: "Confused Carl",
- avatar: "🤔",
+ avatar: "ðŸ¤”",
  letterParts: ["I want to join the soccer team ", " the basketball team. But I am not allowed ", " school rules."],
  blanks: [
  { id: "s3_1", type: "prep", options: ["in addition to", "in front of", "out of"], answer: "in addition to" },
@@ -286,3 +286,4 @@ export default function LabE7PrepositionsModals({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

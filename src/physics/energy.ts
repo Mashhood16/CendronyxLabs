@@ -1,4 +1,4 @@
-export interface EnergyState {
+﻿export interface EnergyState {
   x: number; // Horizontal position
   y: number; // Vertical position (height)
   velocity: number; // Speed along the curve path
@@ -135,3 +135,4 @@ export const calculateEnergyStep = (
     totalE: expectedTotal
   };
 };
+

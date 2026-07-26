@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Centralized Light Mode Theme for All Lab Components
  * 
  * This is the single source of truth for light mode colors in labs.
@@ -14,7 +14,7 @@
  *   <div className={l.card}>   // "bg-white border-slate-200"
  */
 
-// ── Page-level ──────────────────────────────────────────────────────────────
+// â”€â”€ Page-level â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export const light = {
   /** Main page background (behind everything) */
   page: {
@@ -47,7 +47,7 @@ export const light = {
     border: 'border-slate-200',
   },
 
-  // ── Borders ─────────────────────────────────────────────────────────────
+  // â”€â”€ Borders â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   border: {
     default: 'border-slate-200',
     strong: 'border-slate-300',
@@ -56,7 +56,7 @@ export const light = {
     focusRing: 'focus:ring-2 focus:ring-indigo-500',
   },
 
-  // ── Text colors ────────────────────────────────────────────────────────
+  // â”€â”€ Text colors â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   text: {
     primary: 'text-slate-800',
     secondary: 'text-slate-700',
@@ -67,7 +67,7 @@ export const light = {
     onAccent: 'text-slate-700',
   },
 
-  // ── Hover states (buttons, cards, rows, any interactive element) ──────
+  // â”€â”€ Hover states (buttons, cards, rows, any interactive element) â”€â”€â”€â”€â”€â”€
   hover: {
     // Background hovers (slate scale)
     bg: 'hover:bg-slate-100',
@@ -111,7 +111,7 @@ export const light = {
     text: 'text-slate-800',
   },
 
-  // ── Form elements ──────────────────────────────────────────────────────
+  // â”€â”€ Form elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   input: {
     bg: 'bg-white',
     border: 'border-slate-300',
@@ -131,7 +131,7 @@ export const light = {
     border: 'border-slate-300',
   },
 
-  // ── Buttons ────────────────────────────────────────────────────────────
+  // â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   button: {
     /** Default/secondary button */
     default: 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50',
@@ -147,13 +147,13 @@ export const light = {
     disabled: 'bg-slate-200 text-slate-400 cursor-not-allowed',
   },
 
-  // ── Tab navigation ─────────────────────────────────────────────────────
+  // â”€â”€ Tab navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   tab: {
     active: 'bg-[#4158D1] text-white shadow-md',
     inactive: 'bg-white text-slate-600 border border-slate-200',
   },
 
-  // ── Score / result feedback ────────────────────────────────────────────
+  // â”€â”€ Score / result feedback â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   success: {
     bg: 'bg-emerald-50',
     border: 'border-emerald-200',
@@ -180,19 +180,19 @@ export const light = {
     text: 'text-blue-700',
   },
 
-  // ── Dividers ───────────────────────────────────────────────────────────
+  // â”€â”€ Dividers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   divider: {
     default: 'border-slate-200',
     strong: 'border-slate-300',
   },
 
-  // ── Scrollbar ──────────────────────────────────────────────────────────
+  // â”€â”€ Scrollbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   scrollbar: {
     track: 'bg-slate-100',
     thumb: 'bg-slate-300',
   },
 
-  // ── SVG / diagram backgrounds ──────────────────────────────────────────
+  // â”€â”€ SVG / diagram backgrounds â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   diagram: {
     bg: 'bg-slate-50',
     border: 'border-slate-200',
@@ -201,7 +201,7 @@ export const light = {
     label: 'fill-slate-600',
   },
 
-  // ── Theory / prose section ─────────────────────────────────────────────
+  // â”€â”€ Theory / prose section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   theory: {
     heading: 'text-slate-800',
     subheading: 'text-slate-700',
@@ -212,7 +212,7 @@ export const light = {
     blockquote: 'border-slate-300 text-slate-600',
   },
 
-  // ── Slider / range input ──────────────────────────────────────────────
+  // â”€â”€ Slider / range input â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   slider: {
     track: 'bg-slate-200',
     thumb: 'accent-indigo-600',
@@ -220,20 +220,20 @@ export const light = {
     value: 'text-indigo-600',
   },
 
-  // ── Modal / overlay ────────────────────────────────────────────────────
+  // â”€â”€ Modal / overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   overlay: {
     bg: 'bg-black/50',
     card: 'bg-white',
     border: 'border-slate-200',
   },
 
-  // ── Tooltip / popover ─────────────────────────────────────────────────
+  // â”€â”€ Tooltip / popover â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   tooltip: {
     bg: 'bg-slate-800',
     text: 'text-white',
   },
 
-  // ── Progress / loading ─────────────────────────────────────────────────
+  // â”€â”€ Progress / loading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   progress: {
     track: 'bg-slate-200',
     bar: 'bg-indigo-600',
@@ -241,9 +241,9 @@ export const light = {
   },
 } as const;
 
-// ── Convenience helper ──────────────────────────────────────────────────────
+// â”€â”€ Convenience helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Flatten all light mode tokens into a single string for quick use.
-// Usage: l.page → "bg-slate-50", l.card → "bg-white border-slate-200 shadow-sm"
+// Usage: l.page â†’ "bg-slate-50", l.card â†’ "bg-white border-slate-200 shadow-sm"
 
 function flattenLightMode(obj: Record<string, any>, prefix = ''): Record<string, string> {
   const result: Record<string, string> = {};
@@ -266,8 +266,8 @@ export function getLightTokens(): Record<string, string> {
  * Get a combined class string from a theme section.
  * 
  * @example
- *   lightSection('card')  → "bg-white border-slate-200 shadow-sm"
- *   lightSection('page')  → "bg-slate-50 text-slate-800"
+ *   lightSection('card')  â†’ "bg-white border-slate-200 shadow-sm"
+ *   lightSection('page')  â†’ "bg-slate-50 text-slate-800"
  */
 export function lightSection(key: keyof typeof light): string {
   const section = light[key];
@@ -281,8 +281,9 @@ export function lightSection(key: keyof typeof light): string {
  * 
  * @example
  *   lightWith('card', 'rounded-2xl p-6')
- *   // → "bg-white border-slate-200 shadow-sm rounded-2xl p-6"
+ *   // â†’ "bg-white border-slate-200 shadow-sm rounded-2xl p-6"
  */
 export function lightWith(key: keyof typeof light, ...extra: string[]): string {
   return `${lightSection(key)} ${extra.join(' ')}`.trim();
 }
+

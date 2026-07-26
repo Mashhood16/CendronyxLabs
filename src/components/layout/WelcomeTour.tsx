@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState, useEffect } from 'react';
 import { useTheme } from '../../store';
 import { X, ArrowRight, Beaker, Sparkles, Calculator } from 'lucide-react';
@@ -139,3 +139,4 @@ export default function WelcomeTour() {
     </div>
   );
 }
+

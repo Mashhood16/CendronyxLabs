@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { BookOpen, Code, Activity, RefreshCw, CheckCircle2, XCircle, Terminal } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -268,3 +268,4 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
  </div>
  );
 }
+

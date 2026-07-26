@@ -1,4 +1,4 @@
-import { useState } from 'react';import { BookOpen, CheckCircle, RefreshCcw, Hammer, Layers, ChevronRight, BookA, Info, Star,
+﻿import { useState } from 'react';import { BookOpen, CheckCircle, RefreshCcw, Hammer, Layers, ChevronRight, BookA, Info, Star,
  History, HelpCircle
 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -410,3 +410,4 @@ export default function LabE9PartsOfSpeech({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

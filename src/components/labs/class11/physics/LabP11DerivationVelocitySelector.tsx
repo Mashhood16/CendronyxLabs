@@ -1,4 +1,4 @@
-import { GenericDerivationLab } from '../../../generic/GenericDerivationLab';
+﻿import { GenericDerivationLab } from '../../../generic/GenericDerivationLab';
 import { CLASS11_DERIVATIONS } from '../../../../data/derivations/class11Derivations';
 
 interface Props {
@@ -15,3 +15,4 @@ export default function LabP11DerivationVelocitySelector({ onExit }: Props) {
  />
  );
 }
+

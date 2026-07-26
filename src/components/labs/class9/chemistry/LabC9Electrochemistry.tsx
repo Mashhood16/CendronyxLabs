@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, ClipboardList, CheckCircle, Flame } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -197,7 +197,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  <div className="w-2 rounded-t-full bg-red-500 transition-all duration-500" style={{ height: `${(temp - 20) * 8}px` }}></div>
  <div className="w-4 h-4 bg-red-500 rounded-full absolute bottom-1"></div>
  </div>
- <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{temp.toFixed(1)}°C</div>
+ <div className="absolute right-12 top-20 text-sm font-bold text-red-600 bg-slate-50 dark:bg-[#121212]/80 px-1 rounded">{temp.toFixed(1)}Â°C</div>
  </div>
  <div className="text-sm font-bold text-gray-600">{t('lab.c9electrochemistry_total_volume_added')} {volAdded} mL</div>
  </div>
@@ -252,7 +252,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  </div>
 
  <div className="mb-4">
- <SvgGraph data={titrationData} xKey="vol" yKey="temp" xLabel="Volume (mL)" yLabel="Temperature (°C)" t={t} />
+ <SvgGraph data={titrationData} xKey="vol" yKey="temp" xLabel="Volume (mL)" yLabel="Temperature (Â°C)" t={t} />
  </div>
  </>
  )}
@@ -261,7 +261,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  <h3 className="font-bold text-orange-900 mb-2">{t('lab.c9electrochemistry_assessment')}</h3>
  <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
  {activeTab === 'redox' 
- ? "Based on the thermometric data graph, what volume of KMnO₄ corresponds to the equivalence point?" 
+ ? "Based on the thermometric data graph, what volume of KMnOâ‚„ corresponds to the equivalence point?" 
  : "Which of the toggled chemicals acts as an electrolyte to rapidly accelerate the rusting reaction?"}
  </p>
  <div className="flex gap-2">
@@ -275,3 +275,4 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
  </div>
  );
 }
+

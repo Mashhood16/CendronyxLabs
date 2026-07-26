@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Target, PenTool, ChevronRight, Hash } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -294,4 +294,5 @@ export default function LabE10VocabularyStylistics({ onExit = () => {} }: LabE10
  </div>
  );
 }
+
 

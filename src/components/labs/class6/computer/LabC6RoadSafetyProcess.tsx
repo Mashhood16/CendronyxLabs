@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, RefreshCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -95,3 +95,4 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
  </div>
  );
 }
+

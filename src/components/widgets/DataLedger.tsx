@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import type { PhysicsDataPoint } from '../../physics/gravitation';
 
@@ -50,7 +50,7 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
                 <th className="px-3 py-2 font-medium">{t("Time (m)")}</th>
                 <th className="px-3 py-2 font-medium">{t("Alt (km)")}</th>
                 <th className="px-3 py-2 font-medium">{t("Vel (m/s)")}</th>
-                <th className="px-3 py-2 font-medium text-blue-400">{t("g (m/s²)")}</th>
+                <th className="px-3 py-2 font-medium text-blue-400">{t("g (m/sÂ²)")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-700/50">
@@ -75,3 +75,4 @@ export default function DataLedger({ data, onRecordData }: DataLedgerProps) {
     </div>
   );
 }
+

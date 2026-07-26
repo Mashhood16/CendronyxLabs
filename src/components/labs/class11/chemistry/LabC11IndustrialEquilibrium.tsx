@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Settings, Info, Activity, Database, CheckCircle, Gauge, XCircle, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -102,7 +102,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
  <Settings size={18} /> {t('lab.c11industrialequilibrium_control_panel')}
  </h3>
  <div>
- <label className="block text-sm font-semibold mb-1">{t('lab.c11industrialequilibrium_temperature')} {temperature} °C</label>
+ <label className="block text-sm font-semibold mb-1">{t('lab.c11industrialequilibrium_temperature')} {temperature} Â°C</label>
  <input 
  type="range" min="100" max="800" step="10" 
  value={temperature} onChange={e => setTemperature(Number(e.target.value))}
@@ -222,3 +222,4 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
  </div>
  );
 }
+

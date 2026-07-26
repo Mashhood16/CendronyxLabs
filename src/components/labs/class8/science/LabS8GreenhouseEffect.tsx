@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Thermometer, Sun, Wind} from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -74,7 +74,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  {/* Wind icon to show air circulation */}
  <Wind className="absolute top-4 right-2 w-6 h-6 text-blue-300 opacity-50" />
  </div>
- <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}°C</div>
+ <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg">{outsideTemp.toFixed(1)}Â°C</div>
  <div className="text-slate-500 dark:text-[#71717a] text-sm">{t('lab.s8greenhouseeffect_open_air')}</div>
  </div>
 
@@ -96,11 +96,11 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  {/* Heat Waves */}
  {insideTemp > 30 && (
  <div className="absolute top-10 flex gap-2 animate-pulse opacity-50 text-red-500">
- ⌇⌇
+ âŒ‡âŒ‡
  </div>
  )}
  </div>
- <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}°C</div>
+ <div className="font-bold text-slate-700 dark:text-[#ffffff] text-lg relative z-30">{insideTemp.toFixed(1)}Â°C</div>
  <div className="text-slate-500 dark:text-[#71717a] text-sm relative z-30">{t('lab.s8greenhouseeffect_inside_closed_jar')}</div>
  </div>
 
@@ -137,3 +137,4 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
  </div>
  );
 }
+

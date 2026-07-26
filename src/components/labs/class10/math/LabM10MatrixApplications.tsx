@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Box, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -44,7 +44,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
  if (Math.abs(parseFloat(ansX) - actualX) < 0.01 && Math.abs(parseFloat(ansY) - actualY) < 0.01) {
  setFeedback("Correct! You've successfully applied Cramer's Rule.");
  } else {
- setFeedback(`Incorrect. Remember x = Δx/Δ, y = Δy/Δ.`);
+ setFeedback(`Incorrect. Remember x = Î”x/Î”, y = Î”y/Î”.`);
  }
  };
 
@@ -187,7 +187,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
  </p>
  
  <div className="bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] mb-4 flex justify-between text-sm">
- <div>Δ = {delta}</div>
+ <div>Î” = {delta}</div>
  <div>{t('lab.m10matrixapplications_x_1')} {deltaX}</div>
  <div>{t('lab.m10matrixapplications_y_1')} {deltaY}</div>
  </div>
@@ -235,3 +235,4 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-export interface MaterialProps {
+﻿export interface MaterialProps {
   name: string;
   youngsModulus: number; // E (GPa)
   yieldStrength: number; // MPa
@@ -105,3 +105,4 @@ export const calculateMatterState = (
     phase
   };
 };
+

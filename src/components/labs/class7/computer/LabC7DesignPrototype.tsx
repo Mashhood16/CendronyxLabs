@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, Droplets } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -116,7 +116,7 @@ export default function LabC7DesignPrototype({ onExit }: LabProps) {
 
  {result === 'fail' && (
  <div className="absolute inset-0 bg-rose-500/90 flex flex-col items-center justify-center text-white z-20 animate-in fade-in dark:bg-[#121212] dark:border-[#1c1b1b]">
- <div className="text-6xl mb-4">💥</div>
+ <div className="text-6xl mb-4">ðŸ’¥</div>
  <h2 className="text-4xl font-black mb-2">{t('lab.c7designprototype_prototype_failed')}</h2>
  <p className="text-xl font-medium text-rose-100 max-w-md text-center">
  
@@ -132,3 +132,4 @@ export default function LabC7DesignPrototype({ onExit }: LabProps) {
  </div>
  );
 }
+

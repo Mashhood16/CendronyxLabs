@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ZoomIn, Eye, Move, CheckCircle, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -256,8 +256,8 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
  <div className="p-4 rounded-lg bg-indigo-50 border border-indigo-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
  <p className="font-bold text-indigo-800 dark:text-[#ffffff]">{t('lab.b9microscopy_feedback')}</p>
  <ul className="text-sm space-y-2 mt-2">
- <li>{t('lab.b9microscopy_question_1')} {q1 === 'wall' ? '✅ Correct (Plant cells have rigid cell walls)' : '❌ Incorrect'}</li>
- <li>{t('lab.b9microscopy_question_2')} {q2 === 'metaphase' ? '✅ Correct (Metaphase = Middle)' : '❌ Incorrect'}</li>
+ <li>{t('lab.b9microscopy_question_1')} {q1 === 'wall' ? 'âœ… Correct (Plant cells have rigid cell walls)' : 'âŒ Incorrect'}</li>
+ <li>{t('lab.b9microscopy_question_2')} {q2 === 'metaphase' ? 'âœ… Correct (Metaphase = Middle)' : 'âŒ Incorrect'}</li>
  </ul>
  </div>
  )}
@@ -267,3 +267,4 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
  </div>
  );
 }
+

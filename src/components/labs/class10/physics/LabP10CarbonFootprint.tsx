@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Play, Plus, CheckCircle, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -25,10 +25,10 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
  const modes: Record<string, { factor: number, maxPax: number, emoji: string, name: string }> = {
- 'Bike': { factor: 0, maxPax: 1, emoji: '🚲', name: 'Bicycle / Walk' },
- 'Car': { factor: 0.2, maxPax: 5, emoji: '🚗', name: 'Standard Car' },
- 'SUV': { factor: 0.35, maxPax: 7, emoji: '🚙', name: 'Large SUV' },
- 'Bus': { factor: 0.8, maxPax: 50, emoji: '🚌', name: 'City Bus' },
+ 'Bike': { factor: 0, maxPax: 1, emoji: 'ðŸš²', name: 'Bicycle / Walk' },
+ 'Car': { factor: 0.2, maxPax: 5, emoji: 'ðŸš—', name: 'Standard Car' },
+ 'SUV': { factor: 0.35, maxPax: 7, emoji: 'ðŸš™', name: 'Large SUV' },
+ 'Bus': { factor: 0.8, maxPax: 50, emoji: 'ðŸšŒ', name: 'City Bus' },
  };
 
  // Clamp passengers when mode changes
@@ -232,7 +232,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
  {/* Exhaust clouds */}
  {mode !== 'Bike' && isDriving && driveProgress > 5 && driveProgress % 4 < 2 && (
  <div className="absolute -left-8 bottom-0 text-3xl animate-ping opacity-60">
- 💨
+ ðŸ’¨
  </div>
  )}
  {/* Visual CO2 accumulation representation */}
@@ -343,3 +343,4 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
  </div>
  );
 }
+

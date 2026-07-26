@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import type { PointerEvent } from 'react';
 import {BookOpen, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -99,7 +99,7 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
  return;
  }
  if (Math.abs(numericAns - triples[quizIdx].L) < 0.1) {
- setFeedback('Correct! The perpendicular bisects the chord, so the total length is 2 × √(R² - D²).');
+ setFeedback('Correct! The perpendicular bisects the chord, so the total length is 2 Ã— âˆš(RÂ² - DÂ²).');
  } else {
  setFeedback(`Incorrect. Hint: Half the chord forms a right triangle with the radius and the distance D.`);
  }
@@ -256,3 +256,4 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
  </div>
  );
 }
+

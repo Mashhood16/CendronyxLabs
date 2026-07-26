@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, CheckCircle, XCircle, ShieldAlert, Bug } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -146,7 +146,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
  };
 
  const getSliderConfig = () => {
- if (scenario === 'Pesticide') return { min: 1, max: 10, step: 0.5, label: 'Pesticide Concentration (μM)' };
+ if (scenario === 'Pesticide') return { min: 1, max: 10, step: 0.5, label: 'Pesticide Concentration (Î¼M)' };
  if (scenario === 'AcidRain') return { min: 3.0, max: 6.0, step: 0.1, label: 'Rain pH' };
  return { min: 1, max: 10, step: 1, label: 'Bt Toxin Expression (units)' };
  };
@@ -319,3 +319,4 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

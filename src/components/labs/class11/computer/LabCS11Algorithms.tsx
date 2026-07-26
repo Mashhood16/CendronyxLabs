@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { BarChart2, Play, RotateCcw, CheckCircle, XCircle, Pause } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -245,3 +245,4 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

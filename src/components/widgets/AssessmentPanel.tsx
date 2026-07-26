@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { CheckCircle, XCircle, Lightbulb, GraduationCap, Award, ArrowRight, RefreshCw } from 'lucide-react';
 import { useTheme } from '../../store';
 
@@ -181,7 +181,7 @@ export default function AssessmentPanel({
                   {status === 'correct' && (
                     <div className="mt-1.5 flex items-center gap-1 text-[10px] font-semibold text-emerald-500">
                       <CheckCircle size={10} />
-                      Correct! ✓
+                      Correct! âœ“
                     </div>
                   )}
                   {status === 'incorrect' && (
@@ -244,3 +244,4 @@ export default function AssessmentPanel({
     </div>
   );
 }
+

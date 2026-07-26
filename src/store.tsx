@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+﻿import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { StudentAccount } from './services/studentService';
 import { studentService } from './services/studentService';
 import { historyDB } from './services/dbService';
@@ -270,3 +270,4 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     </ThemeProvider>
   );
 }
+

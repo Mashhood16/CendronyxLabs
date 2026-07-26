@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+﻿import { useState, useRef, useCallback } from 'react';
 import { Delete, Hash, Sigma, FunctionSquare, Variable, Eraser, ChevronLeft, ChevronRight } from 'lucide-react';
 import MathFormula from './MathFormula';
 import { theme } from '../../utils/labTheme';
@@ -47,14 +47,14 @@ const CATEGORIES: ButtonCategory[] = [
     icon: <Sigma className="w-3 h-3" />,
     buttons: [
       { label: '+', value: ' + ', title: 'Add' },
-      { label: '−', value: ' − ', title: 'Subtract' },
-      { label: '×', value: ' × ', title: 'Multiply' },
-      { label: '÷', value: ' / ', title: 'Divide' },
+      { label: 'âˆ’', value: ' âˆ’ ', title: 'Subtract' },
+      { label: 'Ã—', value: ' Ã— ', title: 'Multiply' },
+      { label: 'Ã·', value: ' / ', title: 'Divide' },
       { label: '=', value: ' = ', title: 'Equals' },
-      { label: '²', value: '²', title: 'Squared' },
-      { label: '³', value: '³', title: 'Cubed' },
+      { label: 'Â²', value: 'Â²', title: 'Squared' },
+      { label: 'Â³', value: 'Â³', title: 'Cubed' },
       { label: '^', value: '^', title: 'Power' },
-      { label: '√', value: 'sqrt(', title: 'Square root' },
+      { label: 'âˆš', value: 'sqrt(', title: 'Square root' },
       { label: '_', value: '_', title: 'Subscript' },
       { label: '|x|', value: '|', title: 'Absolute value' },
       { label: '(', value: '(', title: 'Open parenthesis' },
@@ -65,21 +65,21 @@ const CATEGORIES: ButtonCategory[] = [
     name: 'Greek',
     icon: <FunctionSquare className="w-3 h-3" />,
     buttons: [
-      { label: 'π', value: 'π', title: 'Pi' },
-      { label: 'Δ', value: 'Δ', title: 'Delta' },
-      { label: 'θ', value: 'θ', title: 'Theta' },
-      { label: 'α', value: 'α', title: 'Alpha' },
-      { label: 'β', value: 'β', title: 'Beta' },
-      { label: 'γ', value: 'γ', title: 'Gamma' },
-      { label: 'λ', value: 'λ', title: 'Lambda' },
-      { label: 'μ', value: 'μ', title: 'Mu' },
-      { label: 'ρ', value: 'ρ', title: 'Rho' },
-      { label: 'σ', value: 'σ', title: 'Sigma' },
-      { label: 'ω', value: 'ω', title: 'Omega' },
-      { label: 'φ', value: 'φ', title: 'Phi' },
-      { label: 'η', value: 'η', title: 'Eta' },
-      { label: '∞', value: '∞', title: 'Infinity' },
-      { label: '∂', value: '∂', title: 'Partial derivative' },
+      { label: 'Ï€', value: 'Ï€', title: 'Pi' },
+      { label: 'Î”', value: 'Î”', title: 'Delta' },
+      { label: 'Î¸', value: 'Î¸', title: 'Theta' },
+      { label: 'Î±', value: 'Î±', title: 'Alpha' },
+      { label: 'Î²', value: 'Î²', title: 'Beta' },
+      { label: 'Î³', value: 'Î³', title: 'Gamma' },
+      { label: 'Î»', value: 'Î»', title: 'Lambda' },
+      { label: 'Î¼', value: 'Î¼', title: 'Mu' },
+      { label: 'Ï', value: 'Ï', title: 'Rho' },
+      { label: 'Ïƒ', value: 'Ïƒ', title: 'Sigma' },
+      { label: 'Ï‰', value: 'Ï‰', title: 'Omega' },
+      { label: 'Ï†', value: 'Ï†', title: 'Phi' },
+      { label: 'Î·', value: 'Î·', title: 'Eta' },
+      { label: 'âˆž', value: 'âˆž', title: 'Infinity' },
+      { label: 'âˆ‚', value: 'âˆ‚', title: 'Partial derivative' },
     ],
   },
   {
@@ -91,9 +91,9 @@ const CATEGORIES: ButtonCategory[] = [
       { label: 'tan', value: 'tan(', width: 'md', title: 'Tangent' },
       { label: 'log', value: 'log(', width: 'md', title: 'Logarithm' },
       { label: 'ln', value: 'ln(', width: 'md', title: 'Natural log' },
-      { label: 'sin⁻¹', value: 'asin(', width: 'md', title: 'Arc sine' },
-      { label: 'cos⁻¹', value: 'acos(', width: 'md', title: 'Arc cosine' },
-      { label: 'tan⁻¹', value: 'atan(', width: 'md', title: 'Arc tangent' },
+      { label: 'sinâ»Â¹', value: 'asin(', width: 'md', title: 'Arc sine' },
+      { label: 'cosâ»Â¹', value: 'acos(', width: 'md', title: 'Arc cosine' },
+      { label: 'tanâ»Â¹', value: 'atan(', width: 'md', title: 'Arc tangent' },
     ],
   },
 ];
@@ -105,7 +105,7 @@ const VARIABLE_GROUPS = [
   },
   {
     name: 'Physics',
-    vars: ['ρ', 'ω', 'ε₀', 'μ₀', 'ℏ', 'λ', 'ν', 'Φ', 'Ψ', 'Ω', 'Σ'],
+    vars: ['Ï', 'Ï‰', 'Îµâ‚€', 'Î¼â‚€', 'â„', 'Î»', 'Î½', 'Î¦', 'Î¨', 'Î©', 'Î£'],
   },
 ];
 
@@ -199,9 +199,9 @@ export default function EquationBuilder({
   const getBtnStyle = (_rowIdx: number, btnLabel: string, btnValue: string) => {
     if (btnValue === '__BACKSPACE__' || btnValue === '__CLEAR__') return DANGER_BTN;
     if (['__LEFT__', '__RIGHT__'].includes(btnValue)) return OP_BTN;
-    if ([' + ', ' − ', ' / ', ' × ', ' = ', '^', '²', '³', '_', 'sqrt(', '|'].includes(btnValue)) return OP_BTN;
-    if (['α', 'β', 'γ', 'θ', 'λ', 'μ', 'ρ', 'σ', 'ω', 'φ', 'η', 'π', 'Δ', 'Σ', '∞', '∂', '|x|'].includes(btnLabel)) return GREEK_BTN;
-    if (['sin', 'cos', 'tan', 'log', 'ln', 'sin⁻¹', 'cos⁻¹', 'tan⁻¹'].includes(btnLabel)) return FUNC_BTN;
+    if ([' + ', ' âˆ’ ', ' / ', ' Ã— ', ' = ', '^', 'Â²', 'Â³', '_', 'sqrt(', '|'].includes(btnValue)) return OP_BTN;
+    if (['Î±', 'Î²', 'Î³', 'Î¸', 'Î»', 'Î¼', 'Ï', 'Ïƒ', 'Ï‰', 'Ï†', 'Î·', 'Ï€', 'Î”', 'Î£', 'âˆž', 'âˆ‚', '|x|'].includes(btnLabel)) return GREEK_BTN;
+    if (['sin', 'cos', 'tan', 'log', 'ln', 'sinâ»Â¹', 'cosâ»Â¹', 'tanâ»Â¹'].includes(btnLabel)) return FUNC_BTN;
     return NUM_BTN;
   };
 
@@ -263,7 +263,7 @@ export default function EquationBuilder({
               : 'text-slate-500 dark:text-slate-400 hover:text-slate-700'
           }`}
         >
-          +−×
+          +âˆ’Ã—
         </button>
         <button
           onClick={() => { setActiveCategory(2); setShowVars(false); }}
@@ -273,7 +273,7 @@ export default function EquationBuilder({
               : 'text-slate-500 dark:text-slate-400 hover:text-slate-700'
           }`}
         >
-          αβγ
+          Î±Î²Î³
         </button>
         <button
           onClick={() => { setActiveCategory(3); setShowVars(false); }}

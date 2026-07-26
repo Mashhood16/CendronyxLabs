@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import {Info, Activity, Database, CheckCircle, RefreshCw, FlaskConical, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -311,3 +311,4 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

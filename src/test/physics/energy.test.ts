@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import {
   calculateEnergyStep,
   getCurveY,
@@ -59,3 +59,4 @@ describe('calculateEnergyStep', () => {
     expect(result.x).toBeGreaterThanOrEqual(-5);
   });
 });
+

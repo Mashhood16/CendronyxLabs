@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -124,7 +124,7 @@ const { recordLabData } = useLab();
  <div className="space-y-2">
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
  <span>{t('lab.p10refractionillusion_angle_of_incidence')}</span>
- <span>{angleI}°</span>
+ <span>{angleI}Â°</span>
  </label>
  <input
  type="range"
@@ -149,7 +149,7 @@ const { recordLabData } = useLab();
  >
  {Object.entries(materials).map(([key, mat]) => (
  <option key={key} value={key}>
- {mat.name} {key !== 'unknown' && `(n ≈ ${mat.n})`}
+ {mat.name} {key !== 'unknown' && `(n â‰ˆ ${mat.n})`}
  </option>
  ))}
  </select>
@@ -217,7 +217,7 @@ const { recordLabData } = useLab();
  textAnchor="middle"
  dominantBaseline="middle"
  >
- {Math.abs(i * 10 - 90)}°
+ {Math.abs(i * 10 - 90)}Â°
  </text>
  )}
  {isMajor && i !== 9 && (
@@ -229,7 +229,7 @@ const { recordLabData } = useLab();
  textAnchor="middle"
  dominantBaseline="middle"
  >
- {Math.abs(i * 10 - 90)}°
+ {Math.abs(i * 10 - 90)}Â°
  </text>
  )}
  </g>
@@ -288,12 +288,12 @@ const { recordLabData } = useLab();
  <div className="mt-6 flex justify-around w-full max-w-sm bg-[#121212] dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-inner flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
  <div className="text-center">
  <p className="text-xs text-slate-400 uppercase tracking-wider">{t('lab.p10refractionillusion_incidence')}</p>
- <p className="text-2xl font-mono text-amber-400">{angleI.toFixed(1)}°</p>
+ <p className="text-2xl font-mono text-amber-400">{angleI.toFixed(1)}Â°</p>
  </div>
  <div className="w-px bg-slate-700 dark:bg-[#121212]"></div>
  <div className="text-center">
  <p className="text-xs text-slate-400 uppercase tracking-wider">{t('lab.p10refractionillusion_refraction')}</p>
- <p className="text-2xl font-mono text-sky-400">{measuredR.toFixed(1)}°</p>
+ <p className="text-2xl font-mono text-sky-400">{measuredR.toFixed(1)}Â°</p>
  </div>
  </div>
 
@@ -327,8 +327,8 @@ const { recordLabData } = useLab();
  <table className="w-full text-sm text-left">
  <thead className="bg-slate-50 dark:bg-[#121212] text-slate-600 dark:text-[#a1a1aa] font-medium border-b border-slate-200 dark:border-[#1c1b1b]">
  <tr>
- <th className="px-3 py-2 text-center">θ₁ (°)</th>
- <th className="px-3 py-2 text-center">θ₂ (°)</th>
+ <th className="px-3 py-2 text-center">Î¸â‚ (Â°)</th>
+ <th className="px-3 py-2 text-center">Î¸â‚‚ (Â°)</th>
  <th className="px-3 py-2 text-center">{t('lab.p10refractionillusion_sin')}</th>
  <th className="px-3 py-2 text-center">{t('lab.p10refractionillusion_sin_1')}</th>
  </tr>
@@ -449,3 +449,4 @@ const { recordLabData } = useLab();
  </div>
  );
 }
+

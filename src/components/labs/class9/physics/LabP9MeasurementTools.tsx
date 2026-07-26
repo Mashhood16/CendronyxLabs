@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, RotateCcw, Target } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -139,7 +139,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
  : 'bg-white dark:bg-[#121212] text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800'
  }`}
  >
- 📏 {t('lab.p9measurementtools_vernier_caliper_tab')}
+ ðŸ“ {t('lab.p9measurementtools_vernier_caliper_tab')}
  </button>
  <button
  onClick={() => setInstrument('screw_gauge')}
@@ -149,7 +149,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
  : 'bg-white dark:bg-[#121212] text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800'
  }`}
  >
- ⚙️ {t('lab.p9measurementtools_screw_gauge_tab')}
+ âš™ï¸ {t('lab.p9measurementtools_screw_gauge_tab')}
  </button>
  </div>
 
@@ -705,3 +705,4 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

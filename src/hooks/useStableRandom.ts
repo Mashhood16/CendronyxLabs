@@ -1,7 +1,7 @@
-import { useMemo } from 'react';
+﻿import { useMemo } from 'react';
 
 /**
- * Seeded PRNG (mulberry32) — deterministic, fast, good distribution.
+ * Seeded PRNG (mulberry32) â€” deterministic, fast, good distribution.
  * Returns a function that produces random numbers in [0, 1) from a seed.
  */
 function mulberry32(seed: number): () => number {
@@ -33,3 +33,4 @@ export function useStableRandom(count: number, seed: number = 42): number[] {
     return Array.from({ length: count }, () => rng());
   }, [count, seed]);
 }
+

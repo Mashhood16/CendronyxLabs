@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle2, XCircle, TrendingDown, Biohazard } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -253,7 +253,7 @@ export default function LabM10FunctionApplications({ onExit }: { onExit: () => v
  <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
  <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-3">
  {mode === 'virus' 
- ? `If R₀ is ${r0.toFixed(1)}, on what exact day will the number of infected individuals first reach or exceed 200?` 
+ ? `If Râ‚€ is ${r0.toFixed(1)}, on what exact day will the number of infected individuals first reach or exceed 200?` 
  : `At year ${year}, what is the absolute difference between the linear and exponential depreciated values?`}
  </p>
  <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">{t('lab.m10functionapplications_round_to_nearest_whole_number')}</p>
@@ -294,3 +294,4 @@ export default function LabM10FunctionApplications({ onExit }: { onExit: () => v
  </div>
  );
 }
+

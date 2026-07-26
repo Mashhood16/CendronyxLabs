@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -163,7 +163,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className="mb-4">
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10parallelcircuit_internal_resistance_r_int')}</label>
- <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{rInt} Ω</span>
+ <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{rInt} Î©</span>
  </div>
  <input 
  type="range" min="0" max="10" step="0.5" value={rInt}
@@ -177,7 +177,7 @@ const { recordLabData, setLabScore } = useLab();
  <div key={item.id} className={idx < numBranches ? 'opacity-100' : 'opacity-40 pointer-events-none'}>
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10parallelcircuit_branch')} {item.id} {t('lab.p10parallelcircuit_resistance')}</label>
- <span className="text-sm font-mono text-amber-600">{item.r} Ω</span>
+ <span className="text-sm font-mono text-amber-600">{item.r} Î©</span>
  </div>
  <input 
  type="range" min="10" max="100" step="5" value={item.r}
@@ -228,7 +228,7 @@ const { recordLabData, setLabScore } = useLab();
  boxShadow: `0 0 ${40 * brightness}px ${20 * brightness}px #facc15`
  }} />
 
- <div className="absolute top-1/2 -translate-y-1/2 ml-14 text-[10px] text-slate-400 font-mono bg-black/50 px-1.5 py-0.5 rounded">{rVal}Ω</div>
+ <div className="absolute top-1/2 -translate-y-1/2 ml-14 text-[10px] text-slate-400 font-mono bg-black/50 px-1.5 py-0.5 rounded">{rVal}Î©</div>
  </div>
  );
  })}
@@ -355,3 +355,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Target, Mic, CheckCircle2, ChevronRight } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -373,4 +373,5 @@ export default function LabE10SentenceNarration({ onExit = () => {} }: LabE10Sen
  </div>
  );
 }
+
 

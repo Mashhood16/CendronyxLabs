@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Server, Monitor, Printer, Network, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -125,3 +125,4 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
  </div>
  );
 }
+

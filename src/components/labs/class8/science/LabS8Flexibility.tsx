@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import {Hand } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -148,3 +148,4 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
  </div>
  );
 }
+

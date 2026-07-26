@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+﻿import { lazy } from 'react';
 
 /**
  * Auto-discover all lab components via Vite's import.meta.glob.
@@ -7,7 +7,7 @@ import { lazy } from 'react';
 const labFiles = import.meta.glob('../components/Lab*.tsx');
 
 /**
- * Module ID → component name mapping.
+ * Module ID â†’ component name mapping.
  * Component names follow the pattern: Lab<Subject><Class><Name>
  */
 const moduleIdToComponent: Record<string, string> = {
@@ -757,13 +757,13 @@ const moduleIdToComponent: Record<string, string> = {
 
 /**
  * Cache lazy components so React always sees the same reference.
- * Prevents remounting — lazy() must be called once per component, not on every render.
+ * Prevents remounting â€” lazy() must be called once per component, not on every render.
  */
 const lazyCache: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {};
 
 /**
  * Look up a lazy-loaded lab component by module ID.
- * Uses import.meta.glob for automatic discovery — no manual import() calls needed.
+ * Uses import.meta.glob for automatic discovery â€” no manual import() calls needed.
  */
 export function getLabComponent(moduleId: string): React.LazyExoticComponent<React.ComponentType<any>> | null {
   const componentName = moduleIdToComponent[moduleId];
@@ -780,3 +780,4 @@ export function getLabComponent(moduleId: string): React.LazyExoticComponent<Rea
   lazyCache[componentName] = lazyComp;
   return lazyComp;
 }
+

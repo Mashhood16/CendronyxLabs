@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -292,3 +292,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

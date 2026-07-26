@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useLab } from '../../../../store';
 import { Droplets, FlaskConical, Activity, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -102,7 +102,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
  const q1Num = parseFloat(q1Answer);
  const isQ1Correct = !isNaN(q1Num) && q1Num >= 0.28 && q1Num <= 0.32;
  
- // Ψs = -iCRT. i=1, C=0.3, R=0.0831, T=293K (20C) => -7.3
+ // Î¨s = -iCRT. i=1, C=0.3, R=0.0831, T=293K (20C) => -7.3
  const q2Num = parseFloat(q2Answer);
  const isQ2Correct = !isNaN(q2Num) && q2Num >= -7.5 && q2Num <= -7.1;
 
@@ -309,7 +309,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
  <div>
  <div className="flex justify-between text-sm mb-1">
  <label className="font-medium text-gray-700 dark:text-[#ffffff] flex items-center gap-1"><Activity size={14}/> {t('lab.b11plantphysiology_temperature_c')}</label>
- <span className="text-emerald-700 font-bold">{temperature}°C</span>
+ <span className="text-emerald-700 font-bold">{temperature}Â°C</span>
  </div>
  <input 
  type="range" min="10" max="40" step="1" 
@@ -479,3 +479,4 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

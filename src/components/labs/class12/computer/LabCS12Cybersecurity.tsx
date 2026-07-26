@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useLab } from '../../../../store';
 import { Shield, Lock, Server, Activity, FileWarning, Key, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -319,3 +319,4 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, BookOpen, Puzzle, AlertCircle, List } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -248,3 +248,4 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { 
  Clock, CheckCircle, AlertTriangle, Activity, 
  ShieldCheck, Zap, 
@@ -471,3 +471,4 @@ export default function LabE9TensesAgreement({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

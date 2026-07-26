@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Rocket } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -108,3 +108,4 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
  </div>
  );
 }
+

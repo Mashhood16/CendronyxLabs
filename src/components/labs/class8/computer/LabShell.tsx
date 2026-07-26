@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+﻿import { useState, type ReactNode } from 'react';
 import LabHeader from './LabHeader';
 import { theme } from '../../../../utils/labTheme';
 
@@ -17,7 +17,7 @@ interface LabShellProps {
 }
 
 /**
- * Reusable 3-column layout shell for classes 9–12 labs.
+ * Reusable 3-column layout shell for classes 9â€“12 labs.
  * Handles mobile tab switching, dark mode, and responsive grid layout.
  */
 export default function LabShell({
@@ -72,3 +72,4 @@ export default function LabShell({
     </div>
   );
 }
+

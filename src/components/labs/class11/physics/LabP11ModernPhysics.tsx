@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Activity, Zap, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -276,20 +276,20 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  {petProgress < 0.5 ? (
  <>
  <circle cx={50 + petProgress * 2 * 100} cy="150" r="8" fill="#3b82f6" />
- <text x={50 + petProgress * 2 * 100} y="130" fill="#3b82f6" fontSize="14" textAnchor="middle" fontWeight="bold">e⁻</text>
+ <text x={50 + petProgress * 2 * 100} y="130" fill="#3b82f6" fontSize="14" textAnchor="middle" fontWeight="bold">eâ»</text>
  
  <circle cx={250 - petProgress * 2 * 100} cy="150" r="8" fill="#ef4444" />
- <text x={250 - petProgress * 2 * 100} y="130" fill="#ef4444" fontSize="14" textAnchor="middle" fontWeight="bold">e⁺</text>
+ <text x={250 - petProgress * 2 * 100} y="130" fill="#ef4444" fontSize="14" textAnchor="middle" fontWeight="bold">eâº</text>
  </>
  ) : (
  <>
  <line x1="150" y1="150" x2={150 - (petProgress - 0.5) * 2 * 150} y2="150" stroke="#f59e0b" strokeWidth="4" strokeDasharray="10 5" />
  <circle cx={150 - (petProgress - 0.5) * 2 * 150} cy="150" r="4" fill="#f59e0b" />
- <text x={150 - (petProgress - 0.5) * 2 * 100} y="135" fill="#f59e0b" fontSize="16" textAnchor="middle" fontWeight="bold">γ</text>
+ <text x={150 - (petProgress - 0.5) * 2 * 100} y="135" fill="#f59e0b" fontSize="16" textAnchor="middle" fontWeight="bold">Î³</text>
 
  <line x1="150" y1="150" x2={150 + (petProgress - 0.5) * 2 * 150} y2="150" stroke="#f59e0b" strokeWidth="4" strokeDasharray="10 5" />
  <circle cx={150 + (petProgress - 0.5) * 2 * 150} cy="150" r="4" fill="#f59e0b" />
- <text x={150 + (petProgress - 0.5) * 2 * 100} y="175" fill="#f59e0b" fontSize="16" textAnchor="middle" fontWeight="bold">γ</text>
+ <text x={150 + (petProgress - 0.5) * 2 * 100} y="175" fill="#f59e0b" fontSize="16" textAnchor="middle" fontWeight="bold">Î³</text>
  
  <circle cx="150" cy="150" r={(petProgress - 0.5) * 2 * 60} fill="#f59e0b" opacity={1 - (petProgress - 0.5) * 2} />
  </>
@@ -463,7 +463,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">{t('lab.p11modernphysics_a_positron_and_electron_annihi')}</p>
  
  <div className="space-y-2">
- <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11modernphysics_gamma_photon_energy_e')}<sub>γ</sub>)</label>
+ <label className="text-sm font-semibold text-slate-700 dark:text-[#ffffff]">{t('lab.p11modernphysics_gamma_photon_energy_e')}<sub>Î³</sub>)</label>
  <div className="flex gap-2 items-center">
  <input 
  type="number"
@@ -487,7 +487,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  {petCorrect !== null && (
  <div className={`p-4 rounded-md flex items-start gap-3 border ${petCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
  {petCorrect ? <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />}
- <span className="text-sm leading-relaxed">{petCorrect ? 'Correct! Since 2 photons are emitted, each carries half the total energy (0.511 MeV = 511 keV).' : 'Incorrect. The total mass is 2 * 0.511 MeV/c², which converts to energy that is shared equally by two photons.'}</span>
+ <span className="text-sm leading-relaxed">{petCorrect ? 'Correct! Since 2 photons are emitted, each carries half the total energy (0.511 MeV = 511 keV).' : 'Incorrect. The total mass is 2 * 0.511 MeV/cÂ², which converts to energy that is shared equally by two photons.'}</span>
  </div>
  )}
  </div>
@@ -526,7 +526,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  {syncCorrect !== null && (
  <div className={`p-4 rounded-md flex items-start gap-3 border ${syncCorrect ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
  {syncCorrect ? <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />}
- <span className="text-sm leading-relaxed">{syncCorrect ? 'Correct! You successfully computed the proton momentum for the current track configuration.' : 'Incorrect. Use p = q * B * r, where q = 1.6 × 10^-19 C. Watch your powers of 10!'}</span>
+ <span className="text-sm leading-relaxed">{syncCorrect ? 'Correct! You successfully computed the proton momentum for the current track configuration.' : 'Incorrect. Use p = q * B * r, where q = 1.6 Ã— 10^-19 C. Watch your powers of 10!'}</span>
  </div>
  )}
  </div>
@@ -536,3 +536,4 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
  </div>
  );
 }
+

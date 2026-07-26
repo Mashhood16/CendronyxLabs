@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, HelpCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -13,10 +13,10 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
  const [showResults, setShowResults] = useState(false);
 
  const questions = [
- { id: 1, name: 'Water (H₂O)', correct: 'Compound', desc: 'Made of two Hydrogen atoms and one Oxygen atom chemically bonded.' },
+ { id: 1, name: 'Water (Hâ‚‚O)', correct: 'Compound', desc: 'Made of two Hydrogen atoms and one Oxygen atom chemically bonded.' },
  { id: 2, name: 'Gold (Au)', correct: 'Element', desc: 'Made entirely of Gold atoms.' },
- { id: 3, name: 'Carbon Dioxide (CO₂)', correct: 'Compound', desc: 'Made of Carbon and Oxygen chemically bonded.' },
- { id: 4, name: 'Oxygen Gas (O₂)', correct: 'Element', desc: 'Made of only Oxygen atoms (even though they are bonded in pairs).' },
+ { id: 3, name: 'Carbon Dioxide (COâ‚‚)', correct: 'Compound', desc: 'Made of Carbon and Oxygen chemically bonded.' },
+ { id: 4, name: 'Oxygen Gas (Oâ‚‚)', correct: 'Element', desc: 'Made of only Oxygen atoms (even though they are bonded in pairs).' },
  { id: 5, name: 'Table Salt (NaCl)', correct: 'Compound', desc: 'Made of Sodium and Chlorine chemically bonded.' },
  { id: 6, name: 'Iron (Fe)', correct: 'Element', desc: 'Made entirely of Iron atoms.' }
  ];
@@ -70,7 +70,7 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
  <div className="w-1/3 text-right">
  {showResults && (
  <span className={`text-sm font-bold ${answers[q.id] === q.correct ? 'text-emerald-600' : 'text-red-500'}`}>
- {answers[q.id] === q.correct ? '✓ Correct' : `✗ Incorrect (It's a ${q.correct})`}
+ {answers[q.id] === q.correct ? 'âœ“ Correct' : `âœ— Incorrect (It's a ${q.correct})`}
  <p className="text-xs text-slate-500 dark:text-[#71717a] font-normal mt-1 text-left">{q.desc}</p>
  </span>
  )}
@@ -104,3 +104,4 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
  </div>
  );
 }
+

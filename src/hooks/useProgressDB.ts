@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { progressDB } from '../services/dbService';
 import type { ProgressRecord } from '../services/dbService';
 import { useAuth } from '../store';
@@ -84,3 +84,4 @@ export function useProgressDB(experimentId?: string) {
     completeExperiment
   };
 }
+

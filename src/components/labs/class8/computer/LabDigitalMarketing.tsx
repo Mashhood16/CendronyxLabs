@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -92,21 +92,21 @@ export default function LabDigitalMarketing({ onExit }: LabProps) {
      onClick={() => setIncentive('discount')}
      className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${incentive === 'discount' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300'}`}
     >
-     <span className="text-2xl">🎟️</span>
+     <span className="text-2xl">ðŸŽŸï¸</span>
      <span className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.digitalmarketing_20_off_tickets')}</span>
     </button>
     <button 
      onClick={() => setIncentive('lounge')}
      className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${incentive === 'lounge' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300'}`}
     >
-     <span className="text-2xl">☕</span>
+     <span className="text-2xl">â˜•</span>
      <span className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.digitalmarketing_free_vip_lounge')}</span>
     </button>
     <button 
      onClick={() => setIncentive('miles')}
      className={`p-4 rounded-xl border-2 transition-all flex flex-col items-center gap-2 ${incentive === 'miles' ? 'border-emerald-500 bg-emerald-50' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-emerald-300'}`}
     >
-     <span className="text-2xl">✈️</span>
+     <span className="text-2xl">âœˆï¸</span>
      <span className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.digitalmarketing_double_air_miles')}</span>
     </button>
     </div>
@@ -200,3 +200,4 @@ export default function LabDigitalMarketing({ onExit }: LabProps) {
  </div>
  );
 }
+

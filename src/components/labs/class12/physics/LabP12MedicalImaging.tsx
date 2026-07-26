@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import {Bone, Waves } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -71,7 +71,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
  const checkXR = () => {
  const v = parseFloat(xrAns);
  if (v >= 21 && v <= 23) setXrFeedback('Correct! ~22.3%');
- else setXrFeedback('Incorrect. Use I = I₀ e^(-μx)');
+ else setXrFeedback('Incorrect. Use I = Iâ‚€ e^(-Î¼x)');
  };
 
  return (
@@ -163,7 +163,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
  
  <div className="mt-3 bg-[#121212] dark:bg-[#121212] text-cyan-400 font-mono text-sm p-2 rounded text-center">
  
- {t('lab.p12medicalimaging_echo_return_time')} {echoTime > 0 ? `${echoTime} µs` : '---'}
+ {t('lab.p12medicalimaging_echo_return_time')} {echoTime > 0 ? `${echoTime} Âµs` : '---'}
  </div>
  </div>
 
@@ -183,7 +183,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
  
  <div className="flex items-center gap-4">
  <div className="w-16 h-16 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] flex items-center justify-center font-bold">
- I₀
+ Iâ‚€
  <br/>100%
  </div>
  <div className="flex-1 h-12 relative flex">
@@ -252,3 +252,4 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

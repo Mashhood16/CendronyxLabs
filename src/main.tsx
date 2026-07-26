@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+﻿import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
@@ -6,7 +6,7 @@ import App from './App.tsx'
 import { StoreProvider } from './store'
 import { setupConnectivityMonitor } from './utils/cacheExpiry'
 
-// Initialize cache expiry monitor — clears all caches after 3 days offline
+// Initialize cache expiry monitor â€” clears all caches after 3 days offline
 setupConnectivityMonitor()
 
 createRoot(document.getElementById('root')!).render(
@@ -18,3 +18,4 @@ createRoot(document.getElementById('root')!).render(
     </StoreProvider>
   </StrictMode>,
 )
+

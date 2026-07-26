@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Scissors, MousePointer2, CheckCircle2 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -391,3 +391,4 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

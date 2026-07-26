@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -27,7 +27,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
  >
  <RefreshCw className="w-5 h-5 mr-2" />
  
- {t('lab.s7lithiumbonding_toggle')} {isIon ? 'Show Neutral Atom (Li)' : 'Show Ion (Li⁺)'}
+ {t('lab.s7lithiumbonding_toggle')} {isIon ? 'Show Neutral Atom (Li)' : 'Show Ion (Liâº)'}
  </button>
  </div>
  </div>
@@ -62,7 +62,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
  {/* Properties Panel */}
  <div className="flex-1 rounded-3xl p-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
  <h3 className="text-3xl font-bold text-white mb-6">
- {isIon ? 'Lithium Ion (Li⁺)' : 'Lithium Atom (Li)'}
+ {isIon ? 'Lithium Ion (Liâº)' : 'Lithium Atom (Li)'}
  </h3>
  
  <div className="space-y-4">
@@ -80,7 +80,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
  </div>
  <div className="flex justify-between border-b border-[#1c1b1b] dark:border-[#1c1b1b] pb-2">
  <span className="text-slate-400">{t('lab.s7lithiumbonding_valence_shell')}</span>
- <span className="text-white font-bold text-lg">{isIon ? 'Empty (Lost e⁻)' : '1 Electron'}</span>
+ <span className="text-white font-bold text-lg">{isIon ? 'Empty (Lost eâ»)' : '1 Electron'}</span>
  </div>
  </div>
 
@@ -97,3 +97,4 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
  </div>
  );
 }
+

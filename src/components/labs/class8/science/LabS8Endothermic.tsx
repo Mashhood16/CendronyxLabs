@@ -1,4 +1,4 @@
-import { RefreshCw } from 'lucide-react';
+﻿import { RefreshCw } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Snowflake} from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
@@ -41,7 +41,7 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
  
  {/* Adding spoon */}
  <div className={`absolute -top-16 left-8 z-20 transition-all duration-1000 ${stage === 'initial' ? 'opacity-0 translate-y-[-20px]' : stage === 'adding' ? 'opacity-100 rotate-[-45deg] translate-y-10' : 'opacity-0'}`}>
- <div className="text-4xl -rotate-45">🥄</div>
+ <div className="text-4xl -rotate-45">ðŸ¥„</div>
  <div className="absolute top-8 left-0 w-4 h-4 bg-slate-50 dark:bg-[#121212] rounded-full shadow blur-[1px] animate-bounce" />
  </div>
 
@@ -65,7 +65,7 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
 
  {/* Thermometer */}
  <div className="w-12 h-64 bg-slate-200 dark:bg-[#121212] rounded-full border-4 border-slate-300 dark:border-[#1c1b1b] p-1 flex flex-col justify-end items-center relative shadow-inner">
- <div className="absolute top-2 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">°C</div>
+ <div className="absolute top-2 w-full text-center text-xs font-bold text-slate-500 dark:text-[#71717a]">Â°C</div>
  {/* Markings */}
  {[10, 20, 30].map(m => (
  <div key={m} className="absolute w-full border-b border-slate-400 dark:border-[#1c1b1b]" style={{ bottom: `${(m/40)*100}%` }}>
@@ -83,7 +83,7 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
 
  <div className="text-center w-full max-w-sm">
  <div className="text-3xl font-mono font-bold mb-6 text-slate-800 dark:text-[#ffffff] flex items-center justify-center gap-2">
- {temp}°C
+ {temp}Â°C
  {temp < 20 && <Snowflake className="w-8 h-8 text-cyan-500 animate-pulse" />}
  </div>
 
@@ -111,3 +111,4 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
  </div>
  );
 }
+

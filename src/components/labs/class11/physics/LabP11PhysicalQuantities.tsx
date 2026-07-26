@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Activity, Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -172,3 +172,4 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
  </div>
  );
 }
+

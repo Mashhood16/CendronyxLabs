@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Beaker, Droplet, Filter, Activity, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -54,7 +54,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
  
  if (loss >= totalLoss * 0.99 && time > 5) {
  setRunning(false);
- setEquation("Reaction Complete: 2HCl(aq) + CaCO₃(s) → CaCl₂(aq) + H₂O(l) + CO₂(g)↑");
+ setEquation("Reaction Complete: 2HCl(aq) + CaCOâ‚ƒ(s) â†’ CaClâ‚‚(aq) + Hâ‚‚O(l) + COâ‚‚(g)â†‘");
  }
  }
  }, [time, step, running, hclVol, hclConc, caco3Mass]);
@@ -70,13 +70,13 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
  setRunning(true);
  setTime(0);
  setMassData([{ time: 0, mass: 100 + hclVol + caco3Mass }]);
- setEquation("2HCl(aq) + CaCO₃(s) → CaCl₂(aq) + H₂O(l) + CO₂(g)↑");
+ setEquation("2HCl(aq) + CaCOâ‚ƒ(s) â†’ CaClâ‚‚(aq) + Hâ‚‚O(l) + COâ‚‚(g)â†‘");
  } else if (action === 'filter' && step === 2 && !running) {
  setStep(3);
- setEquation("Filtrate: CaCl₂(aq) | Residue: Unreacted CaCO₃(s)");
+ setEquation("Filtrate: CaClâ‚‚(aq) | Residue: Unreacted CaCOâ‚ƒ(s)");
  } else if (action === 'crystallize' && step === 3) {
  setStep(4);
- setEquation("CaCl₂(aq) → CaCl₂·2H₂O(s) + Heat");
+ setEquation("CaClâ‚‚(aq) â†’ CaClâ‚‚Â·2Hâ‚‚O(s) + Heat");
  } else if (action === 'reset') {
  setStep(0);
  setCurrentMass(100.00);
@@ -96,7 +96,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
  }
  const diff = Math.abs(ans - totalLoss);
  if (diff < 0.1) {
- setAssessmentResult("Correct! You accurately calculated the total mass of CO₂ lost.");
+ setAssessmentResult("Correct! You accurately calculated the total mass of COâ‚‚ lost.");
  } else {
  setAssessmentResult(`Incorrect. Consider the limiting reactant. Theoretical mass loss is ~${totalLoss.toFixed(2)}g.`);
  }
@@ -345,3 +345,4 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
  </div>
  );
 }
+

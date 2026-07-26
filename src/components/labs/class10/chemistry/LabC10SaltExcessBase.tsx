@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Beaker, Flame, Filter, Droplet, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -32,19 +32,19 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
  const handleAction = (action: string) => {
  if (action === 'acid' && step === 0) {
  setStep(1);
- setEquation("H₂SO₄(aq)");
+ setEquation("Hâ‚‚SOâ‚„(aq)");
  } else if (action === 'cuo' && step === 1) {
  setStep(2);
- setEquation("H₂SO₄(aq) + CuO(s)");
+ setEquation("Hâ‚‚SOâ‚„(aq) + CuO(s)");
  } else if (action === 'heat' && step === 2) {
  setStep(3);
- setEquation("H₂SO₄(aq) + CuO(s) → CuSO₄(aq) + H₂O(l) [Excess CuO remains]");
+ setEquation("Hâ‚‚SOâ‚„(aq) + CuO(s) â†’ CuSOâ‚„(aq) + Hâ‚‚O(l) [Excess CuO remains]");
  } else if (action === 'filter' && step === 3) {
  setStep(4);
- setEquation("Filtrate: CuSO₄(aq) | Residue: CuO(s)");
+ setEquation("Filtrate: CuSOâ‚„(aq) | Residue: CuO(s)");
  } else if (action === 'crystallize' && step === 4) {
  setStep(5);
- setEquation("CuSO₄(aq) → CuSO₄·5H₂O(s) + Heat");
+ setEquation("CuSOâ‚„(aq) â†’ CuSOâ‚„Â·5Hâ‚‚O(s) + Heat");
  setCurrentYield(theorYield * (0.80 + Math.random() * 0.10));
  }
  };
@@ -323,3 +323,4 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
  </div>
  );
 }
+

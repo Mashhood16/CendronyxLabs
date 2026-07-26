@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Calculator, DollarSign, TrendingUp, Users, Target, CheckCircle2, BarChart2} from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -260,3 +260,4 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
  </div>
  );
 }
+

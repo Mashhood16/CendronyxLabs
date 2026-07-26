@@ -1,4 +1,4 @@
-import { openDB } from 'idb';
+﻿import { openDB } from 'idb';
 import type { DBSchema, IDBPDatabase } from 'idb';
 
 export interface StudentAccount {
@@ -162,7 +162,7 @@ export const studentService = {
         lockedUntil: lockMinutes > 0 ? Date.now() + lockMinutes * 60000 : 0,
       }));
       if (lockMinutes > 0) {
-        throw new Error(`Incorrect password. Too many failed attempts — locked for ${lockMinutes} minutes.`);
+        throw new Error(`Incorrect password. Too many failed attempts â€” locked for ${lockMinutes} minutes.`);
       }
       throw new Error('Incorrect password');
     }
@@ -226,3 +226,4 @@ export const studentService = {
     await db.delete('students', id);
   },
 };
+

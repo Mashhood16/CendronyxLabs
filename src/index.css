@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -373,7 +373,7 @@
   }
 }
 
-/* Sidebar is always dark — reset slate variables to normal values */
+/* Sidebar is always dark â€” reset slate variables to normal values */
 [data-sidebar] {
   --slate-50: 248 250 252;
   --slate-100: 241 245 249;
@@ -578,7 +578,7 @@
 }
 
 /* ==============================================================
-   DARK: VARIANT FIX — Tailwind dark: classes produce literal DOM
+   DARK: VARIANT FIX â€” Tailwind dark: classes produce literal DOM
    classes like "dark:bg-slate-900". Existing overrides target
    ".bg-slate-900" which doesn't match. Add parallel overrides
    using [class~="dark:..."] whole-word attribute selectors.

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { Search, Bell, LogIn, LogOut, Sun, Moon, Menu, ChevronDown, Clock, X, Languages, RefreshCw } from 'lucide-react';
 import { useAuth, useTheme } from '../../store';
 import { useTranslate } from '../../i18n';
@@ -182,7 +182,7 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
                         <div className="flex items-center justify-between">
                           <span className={`font-semibold text-sm ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>{lab.title}</span>
                           <span className={`text-[11px] font-medium px-2 py-0.5 rounded whitespace-nowrap ml-2 ${isDark ? 'bg-[#000000] text-[#a1a1aa] border border-[#1c1b1b]' : 'bg-slate-100 text-slate-600'}`}>
-                            {t("Class")} {lab.classLevel} · {t(formatSubject(lab.subject))}
+                            {t("Class")} {lab.classLevel} Â· {t(formatSubject(lab.subject))}
                           </span>
                         </div>
                         <span className={`text-xs line-clamp-1 ${isDark ? 'text-[#71717a]' : 'text-slate-500'}`}>{lab.desc}</span>
@@ -403,3 +403,4 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
     </header>
   );
 }
+

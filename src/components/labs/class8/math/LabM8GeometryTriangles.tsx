@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { Triangle, Compass, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
 import type { ChangeEvent } from 'react';
@@ -317,3 +317,4 @@ export default function LabM8GeometryTriangles({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

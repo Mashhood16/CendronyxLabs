@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Check} from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -134,3 +134,4 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
 function CheckCircle2(props: any) {
  return <Check {...props} />;
 }
+

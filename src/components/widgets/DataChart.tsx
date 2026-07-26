@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState, useRef } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Plus, RotateCcw, Download, Database, Activity } from 'lucide-react';
@@ -179,7 +179,7 @@ export default function DataChart({
         >
           <Plus className="w-3.5 h-3.5" />
           {recordLabel}
-          <span className="text-[10px] opacity-70 ml-1">(±{noisePercent}{t("% noise)")}</span>
+          <span className="text-[10px] opacity-70 ml-1">(Â±{noisePercent}{t("% noise)")}</span>
         </button>
       </div>
 
@@ -212,10 +212,11 @@ export default function DataChart({
           </div>
           <div className="flex items-center gap-1.5 mt-2 text-[10px] text-slate-400 dark:text-slate-500">
             <Activity className="w-3 h-3" />
-            <span>{t("Realistic measurements with ±")}{noisePercent}{t("% experimental noise")}</span>
+            <span>{t("Realistic measurements with Â±")}{noisePercent}{t("% experimental noise")}</span>
           </div>
         </div>
       )}
     </div>
   );
 }
+

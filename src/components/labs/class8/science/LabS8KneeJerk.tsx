@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -105,3 +105,4 @@ export default function LabS8KneeJerk({ onExit }: LabS8KneeJerkProps) {
  </div>
  );
 }
+

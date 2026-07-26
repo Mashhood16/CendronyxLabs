@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Lightbulb, Battery, Zap } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -159,3 +159,4 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, RotateCcw, CheckCircle, BookOpen, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS } from '../../../../utils/labScaffolding';
@@ -237,7 +237,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
 
  {/* Labels */}
  <text x="20" y="40" className="text-sm font-semibold fill-slate-700">{t('lab.c9separationtech_thermometer')}</text>
- <text x="20" y="60" className="text-xl font-bold fill-red-600">{temperature.toFixed(0)}°C</text>
+ <text x="20" y="60" className="text-xl font-bold fill-red-600">{temperature.toFixed(0)}Â°C</text>
  
  <text x="250" y="40" className="text-sm font-semibold fill-slate-700">{t('lab.c9separationtech_volume_collected')}</text>
  <text x="250" y="60" className="text-xl font-bold fill-blue-600">{volumeCollected.toFixed(1)} mL</text>
@@ -331,7 +331,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  </div>
  <div className="flex justify-between border-b pb-1">
  <span>{t('lab.c9separationtech_current_temperature')}</span>
- <span className="font-mono font-bold text-red-600">{temperature.toFixed(1)}°C</span>
+ <span className="font-mono font-bold text-red-600">{temperature.toFixed(1)}Â°C</span>
  </div>
  <div className="flex justify-between">
  <span>{t('lab.c9separationtech_volume_collected')}</span>
@@ -398,3 +398,4 @@ export default function LabC9SeparationTech({ onExit }: Props) {
  </div>
  );
 }
+

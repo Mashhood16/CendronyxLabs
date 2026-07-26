@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+﻿import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { progressDB, historyDB, resetDB } from '../../services/dbService';
 
 describe('progressDB', () => {
@@ -142,3 +142,4 @@ describe('historyDB', () => {
     expect(records).toEqual([]);
   });
 });
+

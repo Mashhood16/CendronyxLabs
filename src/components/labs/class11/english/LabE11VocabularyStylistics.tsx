@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle, XCircle, BookOpen, Feather, Info, Target, RefreshCcw } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -306,7 +306,7 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
      "{LITERARY_QUOTES[quoteIndex].quote}"
      </div>
      <div className="text-center text-sm font-medium text-slate-500 dark:text-[#71717a] uppercase tracking-widest">
-     — {LITERARY_QUOTES[quoteIndex].author}
+     â€” {LITERARY_QUOTES[quoteIndex].author}
      </div>
     </div>
 
@@ -354,4 +354,5 @@ export default function LabE11VocabularyStylistics({ onExit }: { onExit?: () => 
  </div>
  );
 }
+
 

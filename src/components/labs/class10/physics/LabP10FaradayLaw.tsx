@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Calculator, Activity, BookOpen, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -110,14 +110,14 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  </div>
  <div className="p-6 flex-1 flex flex-col gap-6 lg:overflow-y-auto">
  <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa]">
- <p>{t('lab.10faradaylaw_accordingtofaradayslawtheinducedemf')}<strong>ε</strong>{t('lab.10faradaylaw_isproportionaltotherateofchangeofma')}</p>
+ <p>{t('lab.10faradaylaw_accordingtofaradayslawtheinducedemf')}<strong>Îµ</strong>{t('lab.10faradaylaw_isproportionaltotherateofchangeofma')}</p>
  <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
  
  {t('lab.p10faradaylaw_n_t')}
  </div>
  <p>{t('lab.p10faradaylaw_for_our_mechanical_setup_peak_')}<strong>N</strong>{t('lab.p10faradaylaw_field')}<strong>B</strong>{t('lab.p10faradaylaw_area')}<strong>A</strong>{t('lab.p10faradaylaw_and_velocity')}<strong>v</strong>):</p>
  <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono text-sm border border-slate-200 dark:border-[#1c1b1b]">
- ε<sub>{t('lab.10faradaylaw_peak')}</sub> {t('lab.p10faradaylaw_c_n_b_a_v')}
+ Îµ<sub>{t('lab.10faradaylaw_peak')}</sub> {t('lab.p10faradaylaw_c_n_b_a_v')}
  </div>
  <p className="text-xs text-slate-400">{t('lab.10faradaylaw_where')}<em>{t('lab.10faradaylaw_c01')}</em>{t('lab.10faradaylaw_isourapparatuscouplingconstant')}</p>
  </div>
@@ -167,7 +167,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  <div className="space-y-2">
  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
  <label>{t('lab.p10faradaylaw_coil_area_a')}</label>
- <span>{A.toFixed(3)} m²</span>
+ <span>{A.toFixed(3)} mÂ²</span>
  </div>
  <input 
  type="range" min="0.01" max="0.10" step="0.01" 
@@ -370,7 +370,7 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  {t('lab.p10faradaylaw_check')}
  </button>
  </div>
- {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_correct_you_found_a')} {mysteryA} m²</div>}
+ {feedback === 'correct' && <div className="mt-2 text-sm text-green-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_correct_you_found_a')} {mysteryA} mÂ²</div>}
  {feedback === 'incorrect' && <div className="mt-2 text-sm text-red-600 font-bold flex items-center gap-1">{t('lab.p10faradaylaw_incorrect_a_0_1_n_b_v')}</div>}
  </div>
  )}
@@ -381,3 +381,4 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
  </div>
  );
 }
+

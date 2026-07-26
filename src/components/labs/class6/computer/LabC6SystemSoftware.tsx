@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Usb, Disc, Cpu, Printer, Mouse, Terminal, Shield, FolderSearch } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -101,3 +101,4 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
  </div>
  );
 }
+

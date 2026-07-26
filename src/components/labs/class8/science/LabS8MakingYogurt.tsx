@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {ThermometerSun, Info } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -34,7 +34,7 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
  >
  {step === 1 && (
  <div className="w-full h-full flex items-center justify-center animate-pulse opacity-50">
- <span className="text-2xl">🫧🫧</span>
+ <span className="text-2xl">ðŸ«§ðŸ«§</span>
  </div>
  )}
  {step >= 3 && (
@@ -46,7 +46,7 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
  {/* Spoon adding yogurt starter */}
  {step === 2 && (
  <div className="absolute top-10 right-10 animate-bounce text-slate-600 dark:text-[#a1a1aa] text-4xl">
- 🥄
+ ðŸ¥„
  </div>
  )}
 
@@ -93,3 +93,4 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Circle, Type, Palette, Trash2, Undo } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -211,3 +211,4 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
  </div>
  );
 }
+

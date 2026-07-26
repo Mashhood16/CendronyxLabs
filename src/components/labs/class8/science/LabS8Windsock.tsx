@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Flag } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -81,8 +81,8 @@ export default function LabS8Windsock({ onExit }: LabProps) {
  <div className="absolute bottom-0 w-[200%] h-32 bg-emerald-600/50 rounded-[100%] shadow-[inset_0_20px_50px_rgba(0,0,0,0.2)]" />
 
  {/* Clouds */}
- <div className="absolute top-10 left-10 text-6xl text-white/50 animate-[wind_dash_20s_linear_infinite]" style={{ animationDuration: `${100 / Math.max(1, windSpeed)}s` }}>☁️</div>
- <div className="absolute top-20 left-60 text-8xl text-white/40 animate-[wind_dash_15s_linear_infinite]" style={{ animationDuration: `${80 / Math.max(1, windSpeed)}s` }}>☁️</div>
+ <div className="absolute top-10 left-10 text-6xl text-white/50 animate-[wind_dash_20s_linear_infinite]" style={{ animationDuration: `${100 / Math.max(1, windSpeed)}s` }}>â˜ï¸</div>
+ <div className="absolute top-20 left-60 text-8xl text-white/40 animate-[wind_dash_15s_linear_infinite]" style={{ animationDuration: `${80 / Math.max(1, windSpeed)}s` }}>â˜ï¸</div>
 
  {/* Windsock Pole */}
  <div className="relative w-4 h-[350px] bg-slate-400 dark:bg-[#121212] z-10 border-l-2 border-slate-300 dark:border-[#1c1b1b] rounded-t-lg mb-8">
@@ -126,7 +126,7 @@ export default function LabS8Windsock({ onExit }: LabProps) {
  {t('lab.s8windsock_the_windsock_fills_with_air_an')} <strong>{t('lab.s8windsock_opposite')}</strong> {t('lab.s8windsock_to_where_the_wind_is_blowing_f')}<br/>
  
  {t('lab.s8windsock_wind_from')} {getCompassDir(windDir)} {t('lab.s8windsock_rarr_sock_points')} {getSockDir(windDir)}.<br/>
- {windSpeed === 0 ? 'No wind — sock hangs limp.' : windSpeed < 30 ? 'Light breeze — sock droops slightly.' : windSpeed < 70 ? 'Strong wind — sock extends outward.' : 'Gale force — sock is nearly horizontal!'}
+ {windSpeed === 0 ? 'No wind â€” sock hangs limp.' : windSpeed < 30 ? 'Light breeze â€” sock droops slightly.' : windSpeed < 70 ? 'Strong wind â€” sock extends outward.' : 'Gale force â€” sock is nearly horizontal!'}
  </p>
  </div>
 
@@ -142,3 +142,4 @@ export default function LabS8Windsock({ onExit }: LabProps) {
  </div>
  );
 }
+

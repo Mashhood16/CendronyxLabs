@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+﻿import { describe, it, expect, beforeEach } from 'vitest';
 import { getAnonymousId } from '../../utils/sessionId';
 
 describe('getAnonymousId', () => {
@@ -31,3 +31,4 @@ describe('getAnonymousId', () => {
     expect(id1).not.toBe(id2);
   });
 });
+

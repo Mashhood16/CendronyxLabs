@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -123,7 +123,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
  onClick={() => handleRemove(i)}
  className={`p-2 border-2 rounded-md font-bold cursor-pointer hover:opacity-80 flex items-center ${bgColor}`}
  >
- {block} <span className="ml-2 text-xs opacity-50">×</span>
+ {block} <span className="ml-2 text-xs opacity-50">Ã—</span>
  </div>
  )
  })}
@@ -152,3 +152,4 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
  </div>
  );
 }
+

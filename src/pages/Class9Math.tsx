@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react';
+﻿import { useMemo, useEffect } from 'react';
 import { theme } from '../utils/labTheme';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { LAB_MODULES, formatSubject, hasCalculator } from '../data/labModules';
@@ -66,7 +66,7 @@ export default function Class9Math() {
               </div>
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-white">{t("Class 9 Mathematics")}</h1>
-                <p className="text-white/80 text-sm">{t("Algebra, Geometry, Statistics & Problem Solving — with interactive labs and step-by-step theorem walkthroughs")}</p>
+                <p className="text-white/80 text-sm">{t("Algebra, Geometry, Statistics & Problem Solving â€” with interactive labs and step-by-step theorem walkthroughs")}</p>
               </div>
             </div>
           </div>
@@ -132,11 +132,11 @@ export default function Class9Math() {
                           <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
                           {isBuilt && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></div>}
                           <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
-                            {t(formatSubject(lab.subject))} {t("&middot; Class")} {lab.classLevel}
+                            {t(formatSubject(lab.subject))} {t("· Class")} {lab.classLevel}
                           </div>
                           {hasCalculator(lab) && (
                             <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-lg bg-amber-400/90 text-amber-900 text-[10px] font-bold backdrop-blur-sm shadow-sm">
-                              {t("🧮 Calc")}
+                              {t("ðŸ§® Calc")}
                             </div>
                           )}
                           {isBuilt ? (
@@ -208,7 +208,7 @@ export default function Class9Math() {
                         <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
                         {isBuilt && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></div>}
                         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
-                          {t("Theorem &middot; Class 9 Math")}
+                          {t("Theorem · Class 9 Math")}
                         </div>
                         <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-500/90 text-white text-xs font-bold backdrop-blur-sm">
                           <BookOpen className="w-3.5 h-3.5" /> {t("Step-by-Step")}
@@ -246,3 +246,4 @@ export default function Class9Math() {
     </Layout>
   );
 }
+

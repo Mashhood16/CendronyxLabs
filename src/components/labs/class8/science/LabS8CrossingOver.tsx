@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Scissors, ArrowRightLeft, Check } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -116,3 +116,4 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
 function CheckCircle2(props: any) {
  return <Check {...props} />;
 }
+

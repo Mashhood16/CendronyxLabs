@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, BookOpen, List, Activity, HelpCircle, AlertCircle } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -253,3 +253,4 @@ export default function LabE11VerbsModals({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

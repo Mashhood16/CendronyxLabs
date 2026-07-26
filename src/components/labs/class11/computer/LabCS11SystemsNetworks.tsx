@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Zap, CheckCircle, XCircle, Power, ShieldAlert } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -208,3 +208,4 @@ export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { BookOpen, Feather, CheckCircle2, XCircle, Award, Sparkles, Type } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -251,3 +251,4 @@ export default function LabE8AdjectivesPoetry({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

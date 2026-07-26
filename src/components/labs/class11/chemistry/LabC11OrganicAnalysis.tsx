@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Info, FlaskConical, Beaker, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -256,3 +256,4 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
  </div>
  );
 }
+

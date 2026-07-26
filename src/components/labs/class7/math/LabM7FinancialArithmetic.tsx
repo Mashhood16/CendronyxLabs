@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Calculator, Coins, Landmark, FileText } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -225,12 +225,12 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
  
  <div className="grid grid-cols-2 gap-4 mb-6">
  <div className={`p-4 rounded-xl border-2 text-center transition-all duration-300 ${irrigationType === 'natural' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20 shadow-sm scale-105' : 'border-slate-200 dark:border-[#1c1b1b] opacity-60'}`}>
- <div className="text-4xl mb-2">🌧️</div>
+ <div className="text-4xl mb-2">ðŸŒ§ï¸</div>
  <div className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m7financialarithmetic_natural')}</div>
  <div className="text-amber-600 dark:text-amber-400 font-bold mt-1">10%</div>
  </div>
  <div className={`p-4 rounded-xl border-2 text-center transition-all duration-300 ${irrigationType === 'artificial' ? 'border-amber-500 bg-amber-50 dark:bg-amber-900/20 shadow-sm scale-105' : 'border-slate-200 dark:border-[#1c1b1b] opacity-60'}`}>
- <div className="text-4xl mb-2">🚰</div>
+ <div className="text-4xl mb-2">ðŸš°</div>
  <div className="font-semibold text-slate-800 dark:text-[#ffffff]">{t('lab.m7financialarithmetic_artificial')}</div>
  <div className="text-amber-600 dark:text-amber-400 font-bold mt-1">5%</div>
  </div>
@@ -248,3 +248,4 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { progressDB } from '../services/dbService';
 import { syncService } from '../services/syncService';
 
@@ -91,3 +91,4 @@ export function useSyncStatus() {
 
   return { isOnline, pendingCount, isSyncing, triggerSync, checkPending };
 }
+

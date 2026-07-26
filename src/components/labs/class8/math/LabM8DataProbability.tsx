@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react';
+﻿import { useState, useRef, useMemo } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { BarChart2, Settings, Play, Target, Activity } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -6,7 +6,7 @@ import { useTranslate } from '../../../../i18n';
 export default function LabM8DataProbability({ onExit }: { onExit?: () => void }) {
  const { t } = useTranslate();
  // --- STATE ---
- const [trueValue, setTrueValue] = useState<number>(25.0); // True Temperature in °C
+ const [trueValue, setTrueValue] = useState<number>(25.0); // True Temperature in Â°C
  const [noiseStd, setNoiseStd] = useState<number>(2.0); // Standard Deviation of sensor noise
  const [sampleSize, setSampleSize] = useState<number>(50);
  
@@ -63,7 +63,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
  if (isNaN(userAns)) {
  setAssessmentFeedback("Please enter a valid number.");
  } else if (Math.abs(userAns - correctVariance) < 0.01) {
- setAssessmentFeedback("Correct! You accurately calculated the sample variance using s² = Σ(x - x̄)² / (n-1).");
+ setAssessmentFeedback("Correct! You accurately calculated the sample variance using sÂ² = Î£(x - xÌ„)Â² / (n-1).");
  } else {
  setAssessmentFeedback("Incorrect. Find the mean first (25.0), subtract mean from each value, square them, sum them, and divide by n-1 (4).");
  }
@@ -137,7 +137,7 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
  <div className="flex flex-col gap-1">
  <label className="text-sm font-medium flex justify-between">
  <span>{t('lab.m8dataprobability_sensor_noise_std_dev')}</span>
- <span>{noiseStd.toFixed(1)} °C</span>
+ <span>{noiseStd.toFixed(1)} Â°C</span>
  </label>
  <input
  type="range"
@@ -243,9 +243,9 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
  </div>
 
  <div className="w-full flex justify-between mt-2 text-xs text-slate-500 dark:text-[#71717a] font-mono px-2">
- <span>{currentBatch.length > 0 ? minVal.toFixed(1) : '15.0'} °C</span>
- <span>{currentBatch.length > 0 ? trueValue.toFixed(1) : '25.0'} °C</span>
- <span>{currentBatch.length > 0 ? maxVal.toFixed(1) : '35.0'} °C</span>
+ <span>{currentBatch.length > 0 ? minVal.toFixed(1) : '15.0'} Â°C</span>
+ <span>{currentBatch.length > 0 ? trueValue.toFixed(1) : '25.0'} Â°C</span>
+ <span>{currentBatch.length > 0 ? maxVal.toFixed(1) : '35.0'} Â°C</span>
  </div>
  
  <div className="mt-4 flex items-center justify-center gap-4 text-sm w-full">
@@ -338,3 +338,4 @@ export default function LabM8DataProbability({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

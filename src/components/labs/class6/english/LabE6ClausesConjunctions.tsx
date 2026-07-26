@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, RefreshCw, Settings, Sparkles, BookOpen } from 'lucide-react';
 import type { MouseEvent } from 'react';
@@ -200,3 +200,4 @@ export default function LabE6ClausesConjunctions({ onExit }: { onExit?: () => vo
  </div>
  );
 }
+

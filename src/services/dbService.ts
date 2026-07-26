@@ -1,4 +1,4 @@
-import { openDB } from 'idb';
+﻿import { openDB } from 'idb';
 import type { DBSchema, IDBPDatabase } from 'idb';
 
 export interface DataPoint {
@@ -176,3 +176,4 @@ export const historyDB = {
     await await await await await await tx.done;
   }
 };
+

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -217,3 +217,4 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { BarChart3, Calculator, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -331,3 +331,4 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
  </div>
  );
 }
+

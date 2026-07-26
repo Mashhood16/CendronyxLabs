@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Flame, Wrench, Info, ArrowLeft, ArrowDown, Settings, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -135,7 +135,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
  <div className="mt-auto shrink-0">
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">
  <span>{t('lab.c11organicsynthesis_furnace_temperature')}</span>
- <span className="font-mono text-rose-600">{temperature}°C</span>
+ <span className="font-mono text-rose-600">{temperature}Â°C</span>
  </label>
  <input 
  type="range" 
@@ -228,3 +228,4 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
  </div>
  );
 }
+

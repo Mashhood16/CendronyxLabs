@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth, useTheme } from '../store';
 import { useTranslate } from '../i18n';
@@ -309,3 +309,4 @@ export default function SettingsPanel() {
     </Layout>
   );
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Measurement Noise Utilities
  * Adds realistic measurement uncertainty to experimental labs
  * Teaches students that real experiments have noise/error
@@ -55,7 +55,7 @@ export function addRandomizedNoise(
  */
 export interface MeasurementWithUncertainty {
   value: number;
-  uncertainty: number; // ±value
+  uncertainty: number; // Â±value
   lowBound: number;
   highBound: number;
 }
@@ -63,7 +63,7 @@ export interface MeasurementWithUncertainty {
 /**
  * Create a measurement with explicit uncertainty bounds
  * @param value - Measured value
- * @param uncertaintyPercent - Uncertainty as percentage (e.g., 5 for ±5%)
+ * @param uncertaintyPercent - Uncertainty as percentage (e.g., 5 for Â±5%)
  */
 export function measurementWithUncertainty(
   value: number,
@@ -121,3 +121,4 @@ export function getMeasurementFeedback(
   
   return { isCorrect, errorPercent: error, message };
 }
+

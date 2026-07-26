@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Hand, Info } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -165,3 +165,4 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
  </div>
  );
 }
+

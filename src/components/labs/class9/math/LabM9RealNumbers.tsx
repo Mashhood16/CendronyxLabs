@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Truck, Package } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -232,3 +232,4 @@ export default function LabM9RealNumbers({ onExit }: Props) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Network, Brain, CheckCircle2, Activity, ShieldAlert, ArrowRight } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -234,3 +234,4 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
  </div>
  );
 }
+

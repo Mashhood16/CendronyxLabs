@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -127,3 +127,4 @@ export default function LabS7AtomModel({ onExit }: LabProps) {
  </div>
  );
 }
+

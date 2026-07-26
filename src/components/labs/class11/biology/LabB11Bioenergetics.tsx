@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Activity, Plus, LineChart, Target, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -71,7 +71,7 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
  }
  const err = Math.abs(val - unknownConcentration) / unknownConcentration;
  if (err < 0.1) {
- setFeedback(`Correct! The unknown concentration is approximately ${unknownConcentration} μM.`);
+ setFeedback(`Correct! The unknown concentration is approximately ${unknownConcentration} Î¼M.`);
  } else {
  setFeedback("Incorrect. Hint: Measure the unknown at 430nm, then measure a known concentration at 430nm and use ratios.");
  }
@@ -148,7 +148,7 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
  <div className="space-y-2">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
  <span>{t('lab.b11bioenergetics_known_concentration')}</span>
- <span className="text-emerald-600 font-mono">{concentration} μM</span>
+ <span className="text-emerald-600 font-mono">{concentration} Î¼M</span>
  </label>
  <input 
  type="range" min="1" max="10" step="0.5" 
@@ -293,3 +293,4 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Shield, AlertTriangle, CheckCircle, Type, Trash2, Star, Send, Image as ImageIcon } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -210,3 +210,4 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

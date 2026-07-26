@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+﻿import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { Delete, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { useTheme } from '../../store';
 
@@ -19,7 +19,7 @@ interface ButtonGroup {
 
 /**
  * Comprehensive formula builder with all building blocks organized by category.
- * No calculator UI — just clean, organized clickable buttons for every formula element.
+ * No calculator UI â€” just clean, organized clickable buttons for every formula element.
  */
 export default function FormulaBuilder({
   value,
@@ -75,7 +75,7 @@ export default function FormulaBuilder({
     setOpenGroups(prev => ({ ...prev, [label]: !prev[label] }));
   };
 
-  // ── Button styles ──
+  // â”€â”€ Button styles â”€â”€
   const chipBase = `inline-flex items-center justify-center px-2.5 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95 select-none cursor-pointer whitespace-nowrap`;
 
   const varChip = `${chipBase} ${isDark ? 'bg-amber-900/40 text-amber-300 hover:bg-amber-800/50 border border-amber-800/50' : 'bg-amber-50 text-amber-700 hover:bg-amber-100 border border-amber-200'}`;
@@ -90,7 +90,7 @@ export default function FormulaBuilder({
   const sectionBg = isDark ? 'bg-[#0c0c0e] border-slate-800/60' : 'bg-slate-50/80 border-slate-200';
   const sectionHeader = isDark ? 'text-slate-300 hover:bg-slate-800/40' : 'text-slate-600 hover:bg-slate-100';
 
-  // ── Button Groups Definition ──
+  // â”€â”€ Button Groups Definition â”€â”€
   const groups: ButtonGroup[] = [
     {
       label: 'Variables',
@@ -101,9 +101,9 @@ export default function FormulaBuilder({
     {
       label: 'Time & Constants',
       items: [
-        { text: 't', display: 't', tooltip: 'Time — increases when simulation runs', insert: 't' },
-        { text: 'pi', display: 'π', tooltip: 'Pi constant ≈ 3.14159', insert: 'pi' },
-        { text: 'e', display: 'e', tooltip: 'Euler\'s number ≈ 2.71828', insert: 'e' },
+        { text: 't', display: 't', tooltip: 'Time â€” increases when simulation runs', insert: 't' },
+        { text: 'pi', display: 'Ï€', tooltip: 'Pi constant â‰ˆ 3.14159', insert: 'pi' },
+        { text: 'e', display: 'e', tooltip: 'Euler\'s number â‰ˆ 2.71828', insert: 'e' },
       ],
     },
     {
@@ -115,12 +115,12 @@ export default function FormulaBuilder({
         { text: 'asin(', display: 'asin()', tooltip: 'Arc sine (inverse sine)', insert: 'asin()' },
         { text: 'acos(', display: 'acos()', tooltip: 'Arc cosine (inverse cosine)', insert: 'acos()' },
         { text: 'atan(', display: 'atan()', tooltip: 'Arc tangent (inverse tangent)', insert: 'atan()' },
-        { text: 'sqrt(', display: '√()', tooltip: 'Square root', insert: 'sqrt()' },
+        { text: 'sqrt(', display: 'âˆš()', tooltip: 'Square root', insert: 'sqrt()' },
         { text: 'abs(', display: '|x|', tooltip: 'Absolute value', insert: 'abs()' },
         { text: 'pow(', display: 'pow()', tooltip: 'Power: pow(base, exponent)', insert: 'pow()' },
         { text: 'exp(', display: 'e^x', tooltip: 'Exponential: e raised to power', insert: 'exp()' },
         { text: 'log(', display: 'log()', tooltip: 'Natural logarithm (base e)', insert: 'log()' },
-        { text: 'log10(', display: 'log₁₀()', tooltip: 'Logarithm base 10', insert: 'log10()' },
+        { text: 'log10(', display: 'logâ‚â‚€()', tooltip: 'Logarithm base 10', insert: 'log10()' },
         { text: 'ceil(', display: 'ceil()', tooltip: 'Round up to nearest integer', insert: 'ceil()' },
         { text: 'floor(', display: 'floor()', tooltip: 'Round down to nearest integer', insert: 'floor()' },
         { text: 'round(', display: 'round()', tooltip: 'Round to nearest integer', insert: 'round()' },
@@ -133,9 +133,9 @@ export default function FormulaBuilder({
       label: 'Operators',
       items: [
         { text: '+', display: '+', tooltip: 'Addition', insert: ' + ' },
-        { text: '-', display: '−', tooltip: 'Subtraction', insert: ' - ' },
-        { text: '*', display: '×', tooltip: 'Multiplication', insert: ' * ' },
-        { text: '/', display: '÷', tooltip: 'Division', insert: ' / ' },
+        { text: '-', display: 'âˆ’', tooltip: 'Subtraction', insert: ' - ' },
+        { text: '*', display: 'Ã—', tooltip: 'Multiplication', insert: ' * ' },
+        { text: '/', display: 'Ã·', tooltip: 'Division', insert: ' / ' },
         { text: '^', display: '^', tooltip: 'Power (e.g. 2^3 = 8)', insert: '^' },
         { text: '%', display: '%', tooltip: 'Percent (divides by 100)', insert: '/100' },
         { text: '(', display: '(', tooltip: 'Open bracket', insert: '(' },
@@ -179,8 +179,8 @@ export default function FormulaBuilder({
         { text: 'quote', display: '"text"', tooltip: 'Insert quoted string', insert: '""' },
         { text: 'toFixed()', display: '.toFixed()', tooltip: 'Format number to decimal places', insert: '.toFixed(1)' },
         { text: 'concat', display: '+ "text"', tooltip: 'Concatenate string', insert: ' + ""' },
-        { text: 'degrees', display: '→ °', tooltip: 'Convert radians to degrees: (val * 180 / pi)', insert: ' * 180 / pi' },
-        { text: 'radians', display: '→ rad', tooltip: 'Convert degrees to radians: (val * pi / 180)', insert: ' * pi / 180' },
+        { text: 'degrees', display: 'â†’ Â°', tooltip: 'Convert radians to degrees: (val * 180 / pi)', insert: ' * 180 / pi' },
+        { text: 'radians', display: 'â†’ rad', tooltip: 'Convert degrees to radians: (val * pi / 180)', insert: ' * pi / 180' },
       ],
     },
   ];
@@ -188,10 +188,10 @@ export default function FormulaBuilder({
   return (
     <div className={`rounded-2xl border p-4 space-y-3 max-h-[85vh] overflow-y-auto ${isDark ? 'bg-[#121215] border-slate-800' : 'bg-white border-slate-200'} shadow-lg`}>
 
-      {/* ── Header ── */}
+      {/* â”€â”€ Header â”€â”€ */}
       <div className="flex items-center justify-between sticky top-0 z-10 bg-inherit pb-2 border-b border-slate-800/20">
         <h3 className={`text-xs font-extrabold uppercase tracking-wider ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-          ✏️ Formula Builder
+          âœï¸ Formula Builder
         </h3>
         {onClose && (
           <button onClick={onClose} className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${isDark ? 'bg-indigo-600 text-white hover:bg-indigo-500' : 'bg-indigo-600 text-white hover:bg-indigo-500'}`}>
@@ -200,7 +200,7 @@ export default function FormulaBuilder({
         )}
       </div>
 
-      {/* ── Formula Display / Input ── */}
+      {/* â”€â”€ Formula Display / Input â”€â”€ */}
       <div className={`relative rounded-xl border px-3 py-2.5 ${isDark ? 'bg-[#0a0a0c] border-slate-700' : 'bg-slate-50 border-slate-200'}`}>
         <input
           ref={inputRef}
@@ -216,22 +216,22 @@ export default function FormulaBuilder({
         />
         {preview !== undefined && (
           <div className={`mt-1.5 text-xs font-mono font-bold ${error ? 'text-rose-400' : 'text-emerald-400'}`}>
-            {error ? `⚠ ${error}` : `= ${typeof preview === 'number' ? preview.toFixed(4) : preview}`}
+            {error ? `âš  ${error}` : `= ${typeof preview === 'number' ? preview.toFixed(4) : preview}`}
           </div>
         )}
       </div>
 
-      {/* ── Quick Actions ── */}
+      {/* â”€â”€ Quick Actions â”€â”€ */}
       <div className="flex items-center gap-2">
         <button onClick={handleClear} className={`${delChip} text-[10px]`}>Clear All</button>
-        <button onClick={handleBackspace} className={`${delChip} text-[10px]`}>⌫ Delete</button>
+        <button onClick={handleBackspace} className={`${delChip} text-[10px]`}>âŒ« Delete</button>
         <div className="flex-1" />
         <span className={`text-[9px] font-bold ${isDark ? 'text-slate-600' : 'text-slate-300'}`}>
           {value.length} chars
         </span>
       </div>
 
-      {/* ── Button Groups ── */}
+      {/* â”€â”€ Button Groups â”€â”€ */}
       {groups.map((group) => {
         const isOpen = openGroups[group.label] !== false;
         const hasItems = group.items.length > 0;
@@ -281,10 +281,11 @@ export default function FormulaBuilder({
         );
       })}
 
-      {/* ── Tip ── */}
+      {/* â”€â”€ Tip â”€â”€ */}
       <div className={`text-[9px] font-medium text-center py-2 ${isDark ? 'text-slate-600' : 'text-slate-300'}`}>
-        Use <strong>t</strong> for time-based animation · Click any button to insert at cursor position
+        Use <strong>t</strong> for time-based animation Â· Click any button to insert at cursor position
       </div>
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Play, LayoutGrid, Puzzle, CheckCircle2, XCircle, Circle, DoorClosed, Bell, Book, RotateCcw } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -161,7 +161,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
  onClick={() => setSelectedObject(null)}
  className={`py-2 px-3 rounded-lg font-bold border-2 transition-all flex flex-col items-center justify-center whitespace-nowrap flex-shrink-0 ${ selectedObject === null ? 'bg-blue-600 border-blue-600 text-white shadow-md transform scale-105' : ' border-slate-200 dark:border-[#1c1b1b] text-slate-700 dark:text-[#ffffff] hover:border-blue-300' }`}
  >
- <span className="text-xl mb-1">🎭</span>
+ <span className="text-xl mb-1">ðŸŽ­</span>
  {t('lab.e7verbscollocations_no_object')}
  </button>
  {OBJECTS.map(obj => (
@@ -278,7 +278,7 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
  </div>
  )}
  <div className={`text-8xl transition-transform duration-300 ${stageLog && !stageLog.isError && selectedVerb && INTRANSITIVE_VERBS.includes(selectedVerb) ? 'animate-pulse scale-110' : ''}`}>
- 🎭
+ ðŸŽ­
  </div>
  </div>
  {/* Objects on Stage */}
@@ -343,3 +343,4 @@ export default function LabE7VerbsCollocations({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

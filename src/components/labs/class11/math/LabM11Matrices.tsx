@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, XCircle, Grid, Shield } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -234,3 +234,4 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

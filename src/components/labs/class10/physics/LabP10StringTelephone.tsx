@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Play, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -40,7 +40,7 @@ const { recordLabData, setLabScore } = useLab();
  const trueVelocity = Math.sqrt(tension / selectedMaterial.mu);
  const trueTime = length / trueVelocity;
  
- // Add ±2% real-world noise
+ // Add Â±2% real-world noise
  const noise = 1 + (Math.random() - 0.5) * 0.04;
  const measuredTime = trueTime * noise;
  
@@ -72,7 +72,7 @@ const { recordLabData, setLabScore } = useLab();
  const checkAssessment = () => {
  const userMu = parseFloat(assessmentInput);
  if (isNaN(userMu)) return;
- // Accept ±10% error
+ // Accept Â±10% error
  const error = Math.abs(userMu - 0.0012) / 0.0012;
  if (error <= 0.1) {
  setAssessmentStatus('correct');
@@ -107,7 +107,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className={`prose prose-sm text-slate-600 dark:text-[#a1a1aa] mb-6 ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
  <p>
  
- {t('lab.p10stringtelephone_in_a_string_telephone_a_mechan')} <span className="font-mono">v</span>{t('lab.10stringtelephone_ofatransversewaveinastringdependson')}<span className="font-mono">T</span>{t('lab.10stringtelephone_andthelinearmassdensity')}<span className="font-mono">μ</span> {t('lab.p10stringtelephone_mass_per_unit_length')}
+ {t('lab.p10stringtelephone_in_a_string_telephone_a_mechan')} <span className="font-mono">v</span>{t('lab.10stringtelephone_ofatransversewaveinastringdependson')}<span className="font-mono">T</span>{t('lab.10stringtelephone_andthelinearmassdensity')}<span className="font-mono">Î¼</span> {t('lab.p10stringtelephone_mass_per_unit_length')}
  </p>
  <div className={`bg-slate-100 dark:bg-[#121212] p-3 rounded-lg text-center font-mono font-bold text-lg flex-col `}>
  
@@ -293,7 +293,7 @@ const { recordLabData, setLabScore } = useLab();
  <h3 className="font-bold text-amber-800 text-sm mb-2 dark:text-[#ffffff]">{t('lab.10stringtelephone_assessmentmysterystring')}</h3>
  <p className="text-xs text-amber-700 mb-3">
  
- {t('lab.p10stringtelephone_select_the_mystery_string_mate')} <span className="italic">v</span>{t('lab.10stringtelephone_anddeterminetheunknownlinearmassden')}<span className="font-mono">μ</span>{t('lab.10stringtelephone_using')}<span className="font-mono">{t('lab.10stringtelephone_tv')}</span>.
+ {t('lab.p10stringtelephone_select_the_mystery_string_mate')} <span className="italic">v</span>{t('lab.10stringtelephone_anddeterminetheunknownlinearmassden')}<span className="font-mono">Î¼</span>{t('lab.10stringtelephone_using')}<span className="font-mono">{t('lab.10stringtelephone_tv')}</span>.
  </p>
  <div className="flex gap-2">
  <input 
@@ -329,3 +329,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

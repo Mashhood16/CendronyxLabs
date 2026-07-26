@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -55,7 +55,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
  const cx = (p1.x + p2.x) / 2;
  const cy = (p1.y + p2.y) / 2;
  const correct = userMid.x === cx && userMid.y === cy;
- setLogs([{ mode: 'midpoint', input: `A(${p1.x},${p1.y}), B(${p2.x},${p2.y})`, res: `Mid(${userMid.x},${userMid.y}) - ${correct?'✓':'✗'}` }, ...logs]);
+ setLogs([{ mode: 'midpoint', input: `A(${p1.x},${p1.y}), B(${p2.x},${p2.y})`, res: `Mid(${userMid.x},${userMid.y}) - ${correct?'âœ“':'âœ—'}` }, ...logs]);
  } else if (mode === 'distance' && route.length > 1) {
  let total = 0;
  for (let i=0; i<route.length-1; i++) {
@@ -360,3 +360,4 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
  </div>
  );
 }
+

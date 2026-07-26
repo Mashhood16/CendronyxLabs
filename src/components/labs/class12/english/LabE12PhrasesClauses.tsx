@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Columns, ArrowLeft, Braces, Code, CheckCircle, Network, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -251,3 +251,4 @@ export default function LabE12PhrasesClauses({ onExit }: { onExit?: () => void }
   </div>
  );
 }
+

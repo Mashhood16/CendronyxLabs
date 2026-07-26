@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+﻿import { useNavigate, useParams } from 'react-router-dom';
 import { Microscope, Atom, Calculator, Laptop, Activity, BookOpen, Dna } from 'lucide-react';
 import { formatSubject } from '../data/labModules';
 import Layout from '../components/layout/Layout';
@@ -84,3 +84,4 @@ export default function SubjectSelection() {
     </Layout>
   );
 }
+

@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react';
+﻿import { BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -55,3 +55,4 @@ export default function LabS7Unit3Projects({ onExit }: LabProps) {
  </div>
  );
 }
+

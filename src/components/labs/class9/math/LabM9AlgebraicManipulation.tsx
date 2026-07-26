@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -168,7 +168,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
  <div className="flex-1 min-w-0 flex flex-col items-center justify-center">
  <svg width="250" height="250" viewBox="0 0 250 250" className="drop-shadow-md">
  <rect x="10" y="10" width={xVal*10} height={xVal*10} fill="#3b82f6" opacity="0.8" stroke="#1e40af" strokeWidth="2" />
- <text x={10 + xVal*5} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">x²</text>
+ <text x={10 + xVal*5} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">xÂ²</text>
  
  <rect x={10 + xVal*10} y="10" width={aVal*20} height={xVal*10} fill="#10b981" opacity="0.8" stroke="#047857" strokeWidth="2" />
  <text x={10 + xVal*10 + aVal*10} y={10 + xVal*5} fill="white" textAnchor="middle" dominantBaseline="middle" className="font-bold">{aVal}x</text>
@@ -353,3 +353,4 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
  </div>
  );
 }
+

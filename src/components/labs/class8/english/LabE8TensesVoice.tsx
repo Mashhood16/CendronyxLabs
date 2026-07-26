@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { ArrowRight, CheckCircle2, XCircle, ArrowLeftRight, Clock, RefreshCw, Undo } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -333,3 +333,4 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

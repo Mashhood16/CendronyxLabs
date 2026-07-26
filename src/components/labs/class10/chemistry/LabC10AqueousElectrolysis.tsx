@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -244,8 +244,8 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
 
  <text x="170" y="140" fill="#64748b" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10aqueouselectrolysis_anode_1')}</text>
  <text x="230" y="140" fill="#64748b" textAnchor="middle" fontSize="12" fontWeight="bold">{t('lab.c10aqueouselectrolysis_cathode_1')}</text>
- <text x="170" y="125" fill="#ef4444" textAnchor="middle" fontSize="10">{solutionType === 'conc' ? 'Cl₂' : 'O₂'}</text>
- <text x="230" y="125" fill="#3b82f6" textAnchor="middle" fontSize="10">H₂</text>
+ <text x="170" y="125" fill="#ef4444" textAnchor="middle" fontSize="10">{solutionType === 'conc' ? 'Clâ‚‚' : 'Oâ‚‚'}</text>
+ <text x="230" y="125" fill="#3b82f6" textAnchor="middle" fontSize="10">Hâ‚‚</text>
 
  </svg>
  
@@ -348,3 +348,4 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
  </div>
  );
 }
+

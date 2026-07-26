@@ -1,4 +1,4 @@
-// Constants
+﻿// Constants
 export const G = 6.674e-11; // Gravitational constant
 export const M_EARTH = 5.972e24; // Mass of Earth (kg)
 export const R_EARTH = 6.371e6; // Radius of Earth (m)
@@ -118,3 +118,4 @@ export const getCircularOrbitVelocity = (altitudeKm: number): number => {
   const r = R_EARTH + altitudeKm * 1000;
   return Math.sqrt((G * M_EARTH) / r);
 };
+

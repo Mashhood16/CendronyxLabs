@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useRef, useCallback } from 'react';
 import { Calculator, BookOpen, Orbit, CheckCircle2, XCircle, Play, Square, Scissors, RotateCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -121,11 +121,11 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
  if (arcCorrect && areaCorrect) {
  setFeedback("Correct! Great job calculating arc length and sector area.");
  } else if (!arcCorrect && areaCorrect) {
- setFeedback("Arc length is incorrect. Hint: Arc Length = (θ/360) * 2πr");
+ setFeedback("Arc length is incorrect. Hint: Arc Length = (Î¸/360) * 2Ï€r");
  } else if (arcCorrect && !areaCorrect) {
- setFeedback("Sector area is incorrect. Hint: Area = (θ/360) * πr²");
+ setFeedback("Sector area is incorrect. Hint: Area = (Î¸/360) * Ï€rÂ²");
  } else {
- setFeedback(`Incorrect. Arc length is θ/360 * 2πr. Area is θ/360 * πr². Use π ≈ 3.14159.`);
+ setFeedback(`Incorrect. Arc length is Î¸/360 * 2Ï€r. Area is Î¸/360 * Ï€rÂ². Use Ï€ â‰ˆ 3.14159.`);
  }
  };
 
@@ -238,7 +238,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
  
  {/* Labels */}
  <text x="210" y="140" fill="#5560F1" fontSize="12" fontWeight="bold">{t('lab.m10circleapplications_r')} {radius}m</text>
- <text x={200 + 15 * Math.cos((angle/2 * Math.PI) / 180)} y={150 - 15 * Math.sin((angle/2 * Math.PI) / 180)} fill="#d946ef" fontSize="12" fontWeight="bold">{angle}°</text>
+ <text x={200 + 15 * Math.cos((angle/2 * Math.PI) / 180)} y={150 - 15 * Math.sin((angle/2 * Math.PI) / 180)} fill="#d946ef" fontSize="12" fontWeight="bold">{angle}Â°</text>
  </>
  )}
 
@@ -283,7 +283,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
  <div>
  <div className="flex justify-between text-sm font-medium mb-1 text-slate-300">
  <span>{t('lab.m10circleapplications_sector_angle')}</span>
- <span className="text-fuchsia-400">{angle}°</span>
+ <span className="text-fuchsia-400">{angle}Â°</span>
  </div>
  <input
  type="range"
@@ -326,7 +326,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
  <div className="bg-rose-50 p-4 rounded-lg border border-rose-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
  <p className="text-slate-800 dark:text-[#ffffff] mb-2 leading-relaxed">
  
- {t('lab.m10circleapplications_an_engineer_is_designing_a_cir')} <strong>{problem.radius} {t('lab.m10circleapplications_meters')}</strong>{t('lab.m10circleapplications_they_need_to_pave_a_section_se')} <strong>{problem.angle}°</strong>.
+ {t('lab.m10circleapplications_an_engineer_is_designing_a_cir')} <strong>{problem.radius} {t('lab.m10circleapplications_meters')}</strong>{t('lab.m10circleapplications_they_need_to_pave_a_section_se')} <strong>{problem.angle}Â°</strong>.
  </p>
  </div>
 
@@ -386,3 +386,4 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { progressDB } from './dbService';
+﻿import { progressDB } from './dbService';
 
 export const syncService = {
   async syncAllUnsynced() {
@@ -31,3 +31,4 @@ export const syncService = {
     }
   }
 };
+

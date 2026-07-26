@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Settings, Calculator, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -314,3 +314,4 @@ export default function LabM10CommonTangents({ onExit }: LabProps) {
  </div>
  );
 }
+

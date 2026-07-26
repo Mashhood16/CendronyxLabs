@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+﻿import { useState, useEffect, useMemo } from 'react';
 import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -305,3 +305,4 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
  </div>
  );
 }
+

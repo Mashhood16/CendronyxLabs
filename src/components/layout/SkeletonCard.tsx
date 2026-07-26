@@ -1,4 +1,4 @@
-interface SkeletonCardProps {
+﻿interface SkeletonCardProps {
   variant?: 'card' | 'list';
 }
 
@@ -31,3 +31,4 @@ export default function SkeletonCard({ variant = 'card' }: SkeletonCardProps) {
     </div>
   );
 }
+

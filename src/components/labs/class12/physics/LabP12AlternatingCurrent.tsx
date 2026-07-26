@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Power, CheckCircle, XCircle, Settings2, Database, Calculator } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -189,14 +189,14 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.12alternatingcurrent_filtercapacitance')}</span>
- <span className="text-orange-600 font-bold">{capacitance} μF</span>
+ <span className="text-orange-600 font-bold">{capacitance} Î¼F</span>
  </label>
  <input type="range" min="10" max="2000" step="50" value={capacitance} onChange={(e) => setCapacitance(Number(e.target.value))} className="w-full accent-orange-600" disabled={!filterEnabled} />
  </div>
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.12alternatingcurrent_loadresistance')}</span>
- <span className="text-orange-600 font-bold">{loadResistance} Ω</span>
+ <span className="text-orange-600 font-bold">{loadResistance} Î©</span>
  </label>
  <input type="range" min="50" max="5000" step="50" value={loadResistance} onChange={(e) => setLoadResistance(Number(e.target.value))} className="w-full accent-orange-600" />
  </div>
@@ -300,3 +300,4 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
  </div>
  );
 }
+

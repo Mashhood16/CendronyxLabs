@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BarChart3, CheckCircle, RotateCcw, ListOrdered, BookOpen, Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -240,7 +240,7 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
  <div
  className={`p-3 rounded text-sm font-semibold flex items-center justify-between ${ sortData.join(',') === '10,15,20,25,30' ? 'bg-green-100 text-green-800' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]' }`}
  >
- {sortData.join(',') === '10,15,20,25,30' ? 'Data is sorted! ✓' : 'Not sorted yet...'}
+ {sortData.join(',') === '10,15,20,25,30' ? 'Data is sorted! âœ“' : 'Not sorted yet...'}
  </div>
  </div>
 
@@ -253,7 +253,7 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
  className={`p-3 rounded text-sm font-semibold flex items-center justify-between ${ bars.A === 15 && bars.B === 30 && bars.C === 10 && bars.D === 25 && bars.E === 20 ? 'bg-green-100 text-green-800' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff]' }`}
  >
  {bars.A === 15 && bars.B === 30 && bars.C === 10 && bars.D === 25 && bars.E === 20
- ? 'Chart is correct! ✓'
+ ? 'Chart is correct! âœ“'
  : 'Chart is incomplete/incorrect...'}
  </div>
  </div>
@@ -308,3 +308,4 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
  </div>
  );
 }
+

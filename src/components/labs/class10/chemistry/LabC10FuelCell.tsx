@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -114,7 +114,7 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  
  <div className="space-y-6">
  <div>
- <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10fuelcell_load_resistance')} {resistance} Ω</label>
+ <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.c10fuelcell_load_resistance')} {resistance} Î©</label>
  <input 
  type="range" min="1" max="10" step="1" 
  value={resistance} onChange={(e) => setResistance(parseFloat(e.target.value))}
@@ -123,7 +123,7 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  </div>
  <div className={`bg-slate-50 dark:bg-[#121212] p-3 rounded border border-slate-200 dark:border-[#1c1b1b] text-sm flex-col `}>
  <div className="flex justify-between mb-1"><span>{t('lab.c10fuelcell_cell_voltage_e_ocv')}</span> <span>{t('lab.c10fuelcell_1_23_v')}</span></div>
- <div className="flex justify-between"><span>{t('lab.c10fuelcell_internal_resistance')}</span> <span>0.50 Ω</span></div>
+ <div className="flex justify-between"><span>{t('lab.c10fuelcell_internal_resistance')}</span> <span>0.50 Î©</span></div>
  </div>
  </div>
  </div>
@@ -150,9 +150,9 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  
  {/* Inlets / Outlets */}
  <path d="M 30 70 L 50 70" fill="none" stroke="#3b82f6" strokeWidth="6" />
- <text x="15" y="74" fontSize="10" fill="#3b82f6">H₂</text>
+ <text x="15" y="74" fontSize="10" fill="#3b82f6">Hâ‚‚</text>
  <path d="M 170 70 L 150 70" fill="none" stroke="#ef4444" strokeWidth="6" />
- <text x="175" y="74" fontSize="10" fill="#ef4444">O₂</text>
+ <text x="175" y="74" fontSize="10" fill="#ef4444">Oâ‚‚</text>
  <path d="M 150 130 L 170 130" fill="none" stroke="#0ea5e9" strokeWidth="6" />
  <text x="175" y="134" fontSize="10" fill="#0ea5e9">{t('lab.c10fuelcell_h_o')}</text>
 
@@ -249,3 +249,4 @@ export default function LabC10FuelCell({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

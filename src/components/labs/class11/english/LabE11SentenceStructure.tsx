@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle, XCircle, Info, BookOpen, RefreshCcw } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -300,3 +300,4 @@ export default function LabE11SentenceStructure({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Activity, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -119,7 +119,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
  
  <div className={`w-full max-w-md space-y-4 mb-6 bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
  <div>
- <label className="block text-sm font-semibold mb-1">{t('lab.m10complexapplications_resistance_r')} {resistance} Ω</label>
+ <label className="block text-sm font-semibold mb-1">{t('lab.m10complexapplications_resistance_r')} {resistance} Î©</label>
  <input type="range" min="0" max="20" value={resistance} onChange={e => setResistance(Number(e.target.value))} className="w-full accent-indigo-600" />
  </div>
  <div>
@@ -212,3 +212,4 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
  </div>
  );
 }
+

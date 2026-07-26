@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Users } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -250,7 +250,7 @@ export default function LabM9SetsRelations({ onExit }: Props) {
  {qStatus !== null && (
  <div className={`mt-2 flex items-center gap-1 text-sm font-bold ${qStatus ? 'text-green-600' : 'text-red-500'}`}>
  {qStatus ? <CheckCircle size={16} /> : <XCircle size={16} />}
- {qStatus ? 'Correct! n(A∪B) = n(A) + n(B) - n(A∩B)' : 'Incorrect. Use the Union formula!'}
+ {qStatus ? 'Correct! n(AâˆªB) = n(A) + n(B) - n(Aâˆ©B)' : 'Incorrect. Use the Union formula!'}
  </div>
  )}
  </div>
@@ -259,3 +259,4 @@ export default function LabM9SetsRelations({ onExit }: Props) {
  </div>
  );
 }
+

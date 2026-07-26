@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+﻿import { useState, useMemo, useEffect } from 'react';
 import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -40,7 +40,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
  } else if (conicType === 'ellipse') {
  return `Kepler's laws model a planetary orbit as an ellipse. If the semi-major axis is ${problemData.a} AU and semi-minor axis is ${problemData.b} AU, find the focal distance c. Round to 2 decimal places.`;
  } else {
- return `A hyperbolic cooling tower has a shape governed by x²/a² - y²/b² = 1. Given a = ${problemData.a}m and b = ${problemData.b}m, calculate the eccentricity e of the hyperbola. Round to 2 decimal places.`;
+ return `A hyperbolic cooling tower has a shape governed by xÂ²/aÂ² - yÂ²/bÂ² = 1. Given a = ${problemData.a}m and b = ${problemData.b}m, calculate the eccentricity e of the hyperbola. Round to 2 decimal places.`;
  }
  }, [problemData, conicType]);
 
@@ -317,3 +317,4 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

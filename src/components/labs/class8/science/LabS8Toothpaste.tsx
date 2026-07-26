@@ -1,4 +1,4 @@
-import { RefreshCw } from 'lucide-react';
+﻿import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';
 import { Droplets, Beaker} from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
@@ -146,3 +146,4 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
  </div>
  );
 }
+

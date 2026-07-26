@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Beaker, BookOpen, CheckCircle, Thermometer, RefreshCw, Layers } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -49,7 +49,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
  newStatus = 'Azo Dye (Orange II) Formed!';
  } else {
  newColor = '#fef08a'; // pale yellow
- newStatus = 'Diazonium Salt Formed (Stable < 10°C)';
+ newStatus = 'Diazonium Salt Formed (Stable < 10Â°C)';
  }
  }
  } else if (flaskContents.includes('Phthalic Anhydride') && flaskContents.includes('L-Glutamine')) {
@@ -134,7 +134,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
  <div className={`flex-1 bg-slate-100 dark:bg-[#121212] rounded-lg p-4 flex flex-col items-center justify-center relative border border-slate-300 dark:border-[#1c1b1b] `}>
  <div className={`absolute top-4 right-4 bg-slate-50 dark:!bg-[#121212] px-3 py-1 rounded-md text-sm font-mono shadow-sm border border-slate-200 dark:border-[#1c1b1b] flex-col `}>
  
- {t('lab.c12organicsynthesis_temp')} {temperature}°C
+ {t('lab.c12organicsynthesis_temp')} {temperature}Â°C
  </div>
  
  <svg viewBox="0 0 100 120" className="w-48 h-48 drop-shadow-md">
@@ -248,7 +248,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
  {score !== null && (
  <div className={`mt-4 p-3 rounded-md text-center font-bold ${score === 2 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
  
- {t('lab.c12organicsynthesis_score')} {score} / 2 {score === 2 ? '🎉 Excellent!' : '❌ Review theory and retry.'}
+ {t('lab.c12organicsynthesis_score')} {score} / 2 {score === 2 ? 'ðŸŽ‰ Excellent!' : 'âŒ Review theory and retry.'}
  </div>
  )}
  </div>
@@ -257,3 +257,4 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Centralized Lab Theme System
  * Provides consistent dark mode and light mode colors for all lab components.
  * 
@@ -70,7 +70,7 @@ export const SOLID_THEMES: SolidTheme[] = [
 // Re-export light mode tokens for backward compatibility
 export { light, lightSection, lightWith, lightTokens } from './labThemeLight';
 
-// ── Combined Theme (light + dark in one string) ────────────────────────────
+// â”€â”€ Combined Theme (light + dark in one string) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Mirrors the structure of `light` from labThemeLight.ts.
 // Each value includes both light and dark: "lightClass dark:darkClass"
 
@@ -110,7 +110,7 @@ export const theme = {
     border: 'border-slate-200 dark:border-[#1c1b1b]',
   },
 
-  // ── Borders ─────────────────────────────────────────────────────────────
+  // â”€â”€ Borders â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   border: {
     default: 'border-slate-200 dark:border-[#1c1b1b]',
     strong: 'border-slate-300 dark:border-[#333333]',
@@ -120,7 +120,7 @@ export const theme = {
     header: 'border-slate-200 dark:border-[#1c1b1b]',
   },
 
-  // ── Text colors ────────────────────────────────────────────────────────
+  // â”€â”€ Text colors â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   text: {
     primary: 'text-slate-800 dark:text-[#ffffff]',
     secondary: 'text-slate-700 dark:text-[#ffffff]',
@@ -131,7 +131,7 @@ export const theme = {
     onAccent: 'text-slate-700 dark:text-slate-300',
   },
 
-  // ── Hover states (buttons, cards, rows, any interactive element) ──────
+  // â”€â”€ Hover states (buttons, cards, rows, any interactive element) â”€â”€â”€â”€â”€â”€
   hover: {
     bg: 'hover:bg-slate-100 dark:hover:bg-[#1c1b1b]',
     bgSubtle: 'hover:bg-slate-50 dark:hover:bg-[#161616]',
@@ -171,7 +171,7 @@ export const theme = {
     text: 'text-slate-800 dark:text-[#ffffff]',
   },
 
-  // ── Form elements ──────────────────────────────────────────────────────
+  // â”€â”€ Form elements â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   input: {
     bg: 'bg-white dark:bg-[#121212]',
     border: 'border-slate-300 dark:border-[#2a2a2a]',
@@ -191,7 +191,7 @@ export const theme = {
     border: 'border-slate-300 dark:border-[#333333]',
   },
 
-  // ── Buttons ────────────────────────────────────────────────────────────
+  // â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   button: {
     default: 'bg-white dark:bg-[#1c1b1b] border-slate-300 dark:border-[#2a2a2a] text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-[#2a2a2a]',
     primary: 'bg-indigo-600 dark:bg-indigo-500 text-white hover:bg-indigo-700 dark:hover:bg-indigo-400',
@@ -201,13 +201,13 @@ export const theme = {
     disabled: 'bg-slate-200 dark:bg-[#2a2a2a] text-slate-400 dark:text-slate-500 cursor-not-allowed',
   },
 
-  // ── Tab navigation ─────────────────────────────────────────────────────
+  // â”€â”€ Tab navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   tab: {
     active: 'bg-[#4158D1] text-white shadow-md',
     inactive: 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700',
   },
 
-  // ── Score / result feedback ────────────────────────────────────────────
+  // â”€â”€ Score / result feedback â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   success: {
     bg: 'bg-emerald-50 dark:bg-emerald-900/20',
     border: 'border-emerald-200 dark:border-emerald-800',
@@ -234,19 +234,19 @@ export const theme = {
     text: 'text-blue-700 dark:text-blue-300',
   },
 
-  // ── Dividers ───────────────────────────────────────────────────────────
+  // â”€â”€ Dividers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   divider: {
     default: 'border-slate-200 dark:border-[#1c1b1b]',
     strong: 'border-slate-300 dark:border-[#2a2a2a]',
   },
 
-  // ── Scrollbar ──────────────────────────────────────────────────────────
+  // â”€â”€ Scrollbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   scrollbar: {
     track: 'bg-slate-100 dark:bg-[#1a1a1a]',
     thumb: 'bg-slate-300 dark:bg-[#333333]',
   },
 
-  // ── SVG / diagram backgrounds ──────────────────────────────────────────
+  // â”€â”€ SVG / diagram backgrounds â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   diagram: {
     bg: 'bg-slate-50 dark:bg-[#0a0a0a]',
     border: 'border-slate-200 dark:border-[#1c1b1b]',
@@ -255,7 +255,7 @@ export const theme = {
     label: 'fill-slate-600 dark:fill-slate-400',
   },
 
-  // ── Theory / prose section ─────────────────────────────────────────────
+  // â”€â”€ Theory / prose section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   theory: {
     heading: 'text-slate-800 dark:text-[#ffffff]',
     subheading: 'text-slate-700 dark:text-[#ffffff]',
@@ -266,7 +266,7 @@ export const theme = {
     blockquote: 'border-slate-300 dark:border-[#333333] text-slate-600 dark:text-[#a1a1aa]',
   },
 
-  // ── Slider / range input ──────────────────────────────────────────────
+  // â”€â”€ Slider / range input â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   slider: {
     track: 'bg-slate-200 dark:bg-[#2a2a2a]',
     thumb: 'accent-indigo-600 dark:accent-indigo-400',
@@ -274,27 +274,27 @@ export const theme = {
     value: 'text-indigo-600 dark:text-indigo-400',
   },
 
-  // ── Modal / overlay ────────────────────────────────────────────────────
+  // â”€â”€ Modal / overlay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   overlay: {
     bg: 'bg-black/50 dark:bg-black/70',
     card: 'bg-white dark:bg-[#121212]',
     border: 'border-slate-200 dark:border-[#1c1b1b]',
   },
 
-  // ── Tooltip / popover ─────────────────────────────────────────────────
+  // â”€â”€ Tooltip / popover â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   tooltip: {
     bg: 'bg-slate-800 dark:bg-[#000000]',
     text: 'text-white',
   },
 
-  // ── Progress / loading ─────────────────────────────────────────────────
+  // â”€â”€ Progress / loading â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   progress: {
     track: 'bg-slate-200 dark:bg-[#2a2a2a]',
     bar: 'bg-indigo-600 dark:bg-indigo-500',
     text: 'text-slate-600 dark:text-[#a1a1aa]',
   },
 
-  // ── Additional lab-specific tokens ─────────────────────────────────────
+  // â”€â”€ Additional lab-specific tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   /** Dark code block / formula display background */
   codeBlock: {
     bg: 'bg-[#000000] dark:bg-[#000000]',
@@ -343,7 +343,7 @@ export const theme = {
     text: 'text-slate-700 dark:text-[#ffffff]',
   },
 
-  // ── Per-accent-color tokens ──────────────────────────────────────────────
+  // â”€â”€ Per-accent-color tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Each color provides pre-computed Tailwind class strings for buttons, info
   // boxes, derivation/theorem steps, and badges. Using literal strings ensures
   // Tailwind JIT detects them during build.
@@ -471,7 +471,7 @@ export const theme = {
   } as const,
 } as const;
 
-// ── Combined Theme (light + dark as pairs) ──────────────────────────────────
+// â”€â”€ Combined Theme (light + dark as pairs) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Kept for the labClasses() helper and advanced usage.
 
 export const labTheme = {
@@ -579,7 +579,7 @@ export const labTheme = {
 
 /**
  * Helper to combine light + dark classes for a theme property.
- * Usage: labClasses('page') → "bg-slate-50 dark:bg-[#0a0a0a]"
+ * Usage: labClasses('page') â†’ "bg-slate-50 dark:bg-[#0a0a0a]"
  */
 export function labClasses(key: keyof typeof labTheme): string {
   const t = labTheme[key];
@@ -619,3 +619,4 @@ export function useThemeColors() {
 
   return { theme: currentTheme, raw };
 }
+

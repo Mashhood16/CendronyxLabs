@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Rocket } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -139,3 +139,4 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
  </div>
  );
 }
+

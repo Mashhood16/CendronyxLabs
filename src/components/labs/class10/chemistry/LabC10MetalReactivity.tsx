@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, RotateCcw, Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -94,9 +94,9 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
 
  const getEquation = () => {
  if (hoveredMetal) {
- if (hoveredMetal === 'cu') return "Cu(s) + HCl(aq) → No Reaction";
+ if (hoveredMetal === 'cu') return "Cu(s) + HCl(aq) â†’ No Reaction";
  const symbol = hoveredMetal.charAt(0).toUpperCase() + hoveredMetal.slice(1);
- return `${symbol}(s) + 2HCl(aq) → ${symbol}Cl₂(aq) + H₂(g)↑`;
+ return `${symbol}(s) + 2HCl(aq) â†’ ${symbol}Clâ‚‚(aq) + Hâ‚‚(g)â†‘`;
  }
  return "Hover over a test tube to see its equation.";
  };
@@ -366,3 +366,4 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, AlertTriangle, Info, Type, Move } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -109,3 +109,4 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
  </div>
  );
 }
+

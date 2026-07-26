@@ -1,4 +1,4 @@
-import { useTranslate } from '../i18n';
+﻿import { useTranslate } from '../i18n';
 import { useRef, useCallback, useMemo, useEffect, useState } from 'react';
 import { getLabComponent } from '../routes/labRoutes';
 import { LAB_MODULES } from '../data/labModules';
@@ -149,3 +149,4 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
     </LabProvider>
   );
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Returns a stable anonymous user ID stored in localStorage.
  * Used as a fallback when the user is not logged in, so lab history persists
  * across browser sessions and tab closes.
@@ -12,3 +12,4 @@ export function getAnonymousId(): string {
   }
   return id;
 }
+

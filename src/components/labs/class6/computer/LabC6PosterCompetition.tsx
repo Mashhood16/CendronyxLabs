@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, Palette, Image as ImageIcon, Download, Copy, Shield, AlertTriangle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -146,3 +146,4 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
  </div>
  );
 }
+

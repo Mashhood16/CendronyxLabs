@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, RotateCcw, CheckCircle, Activity, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -301,3 +301,4 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

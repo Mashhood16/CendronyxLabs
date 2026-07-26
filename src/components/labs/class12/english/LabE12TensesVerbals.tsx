@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Clock, Rocket, History, FastForward, CheckCircle, HelpCircle, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -227,3 +227,4 @@ export default function LabE12TensesVerbals({ onExit }: { onExit?: () => void })
   </div>
  );
 }
+

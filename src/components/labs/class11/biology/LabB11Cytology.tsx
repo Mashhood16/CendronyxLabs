@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -285,3 +285,4 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

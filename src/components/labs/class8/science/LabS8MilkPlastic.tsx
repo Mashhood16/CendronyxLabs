@@ -1,4 +1,4 @@
-import { RefreshCw } from 'lucide-react';
+﻿import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -75,3 +75,4 @@ export default function LabS8MilkPlastic({ onExit }: LabProps) {
  </div>
  );
 }
+

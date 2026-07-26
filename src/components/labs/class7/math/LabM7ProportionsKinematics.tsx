@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Utensils, Droplets, Car, Calculator, Check, RefreshCw, Play } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -352,7 +352,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
  </div>
  {kinFeedback !== 'idle' && (
  <div className={`mt-3 p-3 rounded-lg font-bold flex items-center justify-between ${kinFeedback === 'correct' ? 'bg-green-100 text-green-800 border border-green-300 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 border border-red-300 dark:bg-red-900/30 dark:text-red-400'}`}>
- <span>{kinFeedback === 'correct' ? 'Correct! Excellent.' : 'Incorrect. Try D ÷ T!'}</span>
+ <span>{kinFeedback === 'correct' ? 'Correct! Excellent.' : 'Incorrect. Try D Ã· T!'}</span>
  {kinFeedback === 'correct' && (
  <button onClick={generateKinQ} className="p-1 hover:bg-green-200 dark:hover:bg-green-800 rounded-md transition-colors" title={t('lab.m7proportionskinematics_next_question')}>
  <RefreshCw className="w-5 h-5" />
@@ -491,3 +491,4 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
  </div>
  );
 }
+

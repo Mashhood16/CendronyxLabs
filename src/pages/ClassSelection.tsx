@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LAB_MODULES } from '../data/labModules';
 import Layout from '../components/layout/Layout';
@@ -162,3 +162,4 @@ export default function ClassSelection() {
     </Layout>
   );
 }
+

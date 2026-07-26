@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -110,3 +110,4 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
  </div>
  );
 }
+

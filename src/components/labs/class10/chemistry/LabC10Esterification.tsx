@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, Square, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -132,7 +132,7 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
  <div>
  <label className="text-sm font-semibold flex justify-between">
  <span>{t('lab.c10esterification_water_bath_temp_c')}</span>
- <span>{temp} °C</span>
+ <span>{temp} Â°C</span>
  </label>
  <input type="range" min="20" max="80" value={temp} onChange={(e) => { setTemp(Number(e.target.value)); setTime(0); }} className="w-full" disabled={running} />
  </div>
@@ -154,7 +154,7 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
  <svg viewBox="0 0 200 300" className="w-64 h-auto max-h-full drop-shadow-xl">
  <rect x="30" y="150" width="140" height="100" rx="10" fill="rgba(100,200,255,0.3)" stroke="#333" strokeWidth="2" />
  <text x="100" y="240" textAnchor="middle" fill="#0066cc" fontSize="12">{t('lab.c10esterification_water_bath')}</text>
- <text x="100" y="225" textAnchor="middle" fill="#0066cc" fontSize="14" fontWeight="bold">{temp}°C</text>
+ <text x="100" y="225" textAnchor="middle" fill="#0066cc" fontSize="14" fontWeight="bold">{temp}Â°C</text>
  
  {temp > 30 && <path d="M 80 260 Q 100 250 120 260" stroke="red" strokeWidth="3" fill="none" opacity={(temp-30)/50} />}
  {temp > 50 && <path d="M 90 270 Q 100 260 110 270" stroke="orange" strokeWidth="3" fill="none" opacity={(temp-50)/30} />}
@@ -271,3 +271,4 @@ export default function LabC10Esterification({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

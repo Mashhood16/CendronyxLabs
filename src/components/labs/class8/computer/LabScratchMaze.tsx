@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -167,14 +167,14 @@ export default function LabScratchMaze({ onExit }: LabProps) {
     >
      {block === 'MOVE_FORWARD' && 'move 1 step'}
      {block === 'JUMP' && 'jump 2 steps'}
-     {block === 'TURN_RIGHT' && 'turn ↻ 90 degrees'}
-     {block === 'TURN_LEFT' && 'turn ↺ 90 degrees'}
+     {block === 'TURN_RIGHT' && 'turn â†» 90 degrees'}
+     {block === 'TURN_LEFT' && 'turn â†º 90 degrees'}
      
      <button 
      onClick={() => setBlocks(blocks.filter((_, index) => index !== i))}
      disabled={isExecuting}
      className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white"
-     >✕</button>
+     >âœ•</button>
     </div>
     ))}
 
@@ -267,3 +267,4 @@ export default function LabScratchMaze({ onExit }: LabProps) {
  </div>
  );
 }
+

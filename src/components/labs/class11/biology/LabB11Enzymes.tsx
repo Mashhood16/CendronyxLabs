@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Beaker, Play, Pause, Activity, ClipboardList, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -258,3 +258,4 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

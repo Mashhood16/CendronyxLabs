@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Search, Image as ImageIcon, Send, Paperclip, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -174,3 +174,4 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
  </div>
  );
 }
+

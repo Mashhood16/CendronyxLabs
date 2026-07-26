@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle, RefreshCw, BookOpen, Activity, Target } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -430,3 +430,4 @@ line-block w-24 h-1 border-b-2 border-dashed border-slate-300 dark:border-[#1c1b
  </div>
  );
 }
+

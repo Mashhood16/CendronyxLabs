@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import type { DragEvent } from 'react';
 import { CheckCircle2, XCircle, Info, RotateCcw } from 'lucide-react';
@@ -241,3 +241,4 @@ export default function LabM6Sets({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

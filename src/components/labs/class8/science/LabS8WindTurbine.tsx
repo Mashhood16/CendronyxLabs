@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Wind } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -121,3 +121,4 @@ export default function LabS8WindTurbine({ onExit }: LabProps) {
  </div>
  );
 }
+

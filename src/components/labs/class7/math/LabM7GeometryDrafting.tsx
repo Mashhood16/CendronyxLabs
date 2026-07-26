@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import type { MouseEvent as ReactMouseEvent } from 'react';
 import { Circle, Ruler, MapPin, Trash2, CheckCircle } from 'lucide-react';
@@ -417,3 +417,4 @@ export default function LabM7GeometryDrafting({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Wind, Droplets } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -140,3 +140,4 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
  </div>
  );
 }
+

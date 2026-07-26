@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Target, CheckCircle2, Activity, ArrowRightLeft, Type, ListChecks } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -410,3 +410,4 @@ export default function LabE10VerbsAdjectives({ onExit = () => {} }: LabE10Verbs
  </div>
  );
 }
+

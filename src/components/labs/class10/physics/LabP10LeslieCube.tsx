@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Box, BookOpen, LineChart, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -26,7 +26,7 @@ const { recordLabData, setLabScore } = useLab();
  useEffect(() => {
  const e = { 'Matt Black': 1.0, 'Shiny Black': 0.8, 'Matt White': 0.5, 'Shiny Silver': 0.1 }[surface] || 1.0;
  const baseI = (10000 * e) / (distance * distance);
- const noise = baseI * (Math.random() * 0.04 - 0.02); // ±2% noise
+ const noise = baseI * (Math.random() * 0.04 - 0.02); // Â±2% noise
  setIntensity(baseI + noise);
  }, [surface, distance]);
 
@@ -147,7 +147,7 @@ const { recordLabData, setLabScore } = useLab();
  {/* Heat Waves visualization */}
  {intensity > 10 && (
  <div className="absolute right-40 flex items-center justify-center text-red-500 opacity-30 animate-pulse text-2xl tracking-widest z-0" style={{ transform: 'translateX(20px)' }}>
- ❮❮❮
+ â®â®â®
  </div>
  )}
  </div>
@@ -270,3 +270,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

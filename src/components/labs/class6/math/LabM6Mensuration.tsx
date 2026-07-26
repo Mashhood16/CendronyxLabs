@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Ruler, Box, CheckCircle, XCircle } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -111,7 +111,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
  <p className="text-sm dark:text-[#a1a1aa]">
  {mode === '2D' && questionType === 'area' && `Calculate the total cost to carpet a room of ${length}m by ${width}m at $${costPerUnit} per sq. meter.`}
  {mode === '2D' && questionType === 'perimeter' && `Calculate the total cost to fence a field of ${length}m by ${width}m at $${costPerUnit} per meter.`}
- {mode === '3D' && `Calculate the capacity of a water tank of ${length}m × ${width}m × ${height}m in liters. (Hint: 1 m³ = 1000 liters)`}
+ {mode === '3D' && `Calculate the capacity of a water tank of ${length}m Ã— ${width}m Ã— ${height}m in liters. (Hint: 1 mÂ³ = 1000 liters)`}
  </p>
 
  <div className="flex flex-wrap gap-2">
@@ -196,3 +196,4 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

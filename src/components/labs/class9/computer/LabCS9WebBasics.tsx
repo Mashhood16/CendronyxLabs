@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Code, Layout, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -154,3 +154,4 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

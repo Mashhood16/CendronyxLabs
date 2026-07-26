@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, RefreshCw, Activity, Clock, MapPin, Zap, Play } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -268,3 +268,4 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

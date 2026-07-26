@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';import { BookOpen, CheckCircle, AlertCircle, Play, Pause,
+﻿import { useState, useEffect } from 'react';import { BookOpen, CheckCircle, AlertCircle, Play, Pause,
  History, HelpCircle, Activity, Info, 
  ArrowRight, Filter, Settings, FileText
 } from 'lucide-react';
@@ -445,3 +445,4 @@ export default function LabE9Verbals({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

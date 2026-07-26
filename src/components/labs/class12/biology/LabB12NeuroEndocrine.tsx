@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Activity, Brain, CheckCircle, XCircle, Beaker } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -188,7 +188,7 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
  <div className="w-full h-8 bg-slate-200 dark:bg-[#121212] rounded-full overflow-hidden relative">
  <div className={`absolute left-0 top-0 h-full w-full bg-rose-500 opacity-50 ${coxBlocked ? 'w-0 transition-all duration-1000' : 'animate-pulse'}`}></div>
  <span className="absolute inset-0 flex items-center justify-center text-xs font-bold z-10 text-slate-800 dark:text-[#ffffff]">
- {coxBlocked ? 'Inflammation Reduced (Prostaglandins ↓)' : 'Active Pain Signal'}
+ {coxBlocked ? 'Inflammation Reduced (Prostaglandins â†“)' : 'Active Pain Signal'}
  </span>
  </div>
  </div>
@@ -245,7 +245,7 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
  <h4 className="font-bold">{isCorrect ? 'Correct!' : 'Incorrect'}</h4>
  <p className="text-sm mt-1">
  {isCorrect 
- ? 'You successfully calculated the distance using d = ½gt².' 
+ ? 'You successfully calculated the distance using d = Â½gtÂ².' 
  : 'Check your calculation. Remember to square the time and multiply by 0.5 * 9.8.'}
  </p>
  </div>
@@ -259,3 +259,4 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

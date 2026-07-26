@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -113,3 +113,4 @@ export default function LabS7CalculatingSubatomicParticles({ onExit }: LabProps)
  </div>
  );
 }
+

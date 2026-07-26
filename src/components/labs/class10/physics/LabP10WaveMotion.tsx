@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {Play, Pause, Plus, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -57,7 +57,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
  if (val >= 0.075 && val <= 0.085) {
  setFeedback('Correct! The linear density is approx 0.08 kg/m.');
  } else {
- setFeedback('Incorrect. Remember μ = T / (f·λ)². Try measuring λ more carefully.');
+ setFeedback('Incorrect. Remember Î¼ = T / (fÂ·Î»)Â². Try measuring Î» more carefully.');
  }
  };
 
@@ -130,12 +130,12 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
  <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10wavemotion_theory_andsetup')}</h2>
  <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
  
- {t('lab.p10wavemotion_the_speed')} <span className="italic">v</span>{t('lab.10wavemotion_ofatransversewaveonastringdependson')}<span className="italic">T</span>{t('lab.10wavemotion_andthelinearmassdensity')}<span className="italic">μ</span> {t('lab.p10wavemotion_kg_m')}
+ {t('lab.p10wavemotion_the_speed')} <span className="italic">v</span>{t('lab.10wavemotion_ofatransversewaveonastringdependson')}<span className="italic">T</span>{t('lab.10wavemotion_andthelinearmassdensity')}<span className="italic">Î¼</span> {t('lab.p10wavemotion_kg_m')}
  <br/><span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded mt-1 inline-block `}>{t('lab.p10wavemotion_v_t')}</span>
  </p>
  <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-4">
  
- {t('lab.p10wavemotion_using_the_wave_equation')} <span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.10wavemotion_vf')}</span>{t('lab.10wavemotion_youcandetermine')}<span className="italic">μ</span> {t('lab.p10wavemotion_experimentally_by_measuring_th')}
+ {t('lab.p10wavemotion_using_the_wave_equation')} <span className={`font-mono bg-slate-100 dark:bg-[#121212] p-1 rounded flex-col `}>{t('lab.10wavemotion_vf')}</span>{t('lab.10wavemotion_youcandetermine')}<span className="italic">Î¼</span> {t('lab.p10wavemotion_experimentally_by_measuring_th')}
  </p>
  </div>
 
@@ -288,7 +288,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
  <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10wavemotion_analysismysterystring')}</h3>
  <p className="text-sm text-slate-600 dark:text-[#a1a1aa] mb-3">
  
- {t('lab.p10wavemotion_calculate_the_linear_mass_dens')} <span className="italic">μ</span> {t('lab.p10wavemotion_of_the_mystery_string_in_kg_m')}
+ {t('lab.p10wavemotion_calculate_the_linear_mass_dens')} <span className="italic">Î¼</span> {t('lab.p10wavemotion_of_the_mystery_string_in_kg_m')}
  </p>
  <div className="flex gap-2">
  <input
@@ -318,3 +318,4 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
  </div>
  );
 }
+

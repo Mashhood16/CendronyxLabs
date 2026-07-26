@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle2, XCircle, Camera, Building2 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -191,7 +191,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
 
  {/* Angle Arc */}
  <path d={surveyArcPath} fill="none" stroke="#4f46e5" strokeWidth="2" />
- <text x={surveyorX + rArcS + 10} y={surveyorY - 15} fill="#4f46e5" fontSize="12" fontWeight="bold">{angleDeg}°</text>
+ <text x={surveyorX + rArcS + 10} y={surveyorY - 15} fill="#4f46e5" fontSize="12" fontWeight="bold">{angleDeg}Â°</text>
 
  {/* Distance label */}
  <text x={surveyorX + pxDistS / 2} y={surveyorY + 20} fill="#64748b" fontSize="12" textAnchor="middle">{t('lab.m12inversetrig_d')} {distance}m</text>
@@ -203,7 +203,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
  <input type="range" min="10" max="100" step="5" value={distance} onChange={(e) => setDistance(parseFloat(e.target.value))} className="w-full accent-indigo-600" />
  </div>
  <div>
- <label className="block text-xs font-semibold text-indigo-800 mb-1 dark:text-[#ffffff]">{t('lab.m12inversetrig_angle_of_elevation')} {angleDeg}°</label>
+ <label className="block text-xs font-semibold text-indigo-800 mb-1 dark:text-[#ffffff]">{t('lab.m12inversetrig_angle_of_elevation')} {angleDeg}Â°</label>
  <input type="range" min="10" max="80" step="1" value={angleDeg} onChange={(e) => setAngleDeg(parseFloat(e.target.value))} className="w-full accent-indigo-600" />
  </div>
  </div>
@@ -261,7 +261,7 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
  {t('lab.m12inversetrig_distance_d')} {distance} m
  <br />
  
- {t('lab.m12inversetrig_angle')} {angleDeg}°
+ {t('lab.m12inversetrig_angle')} {angleDeg}Â°
  </div>
  <p className="text-sm font-semibold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m12inversetrig_calculate_the_true_height_of_t')}</p>
  
@@ -351,3 +351,4 @@ export default function LabM12InverseTrig({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

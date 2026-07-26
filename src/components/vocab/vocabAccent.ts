@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Shared accent color constants for WordCard and VocabularyPanel.
  * Centralizes the valid accent colors to prevent typos like "blue".
  * Use `AccentColor` as the type and reference `ACCENT_COLORS` for iteration/validation.
@@ -132,5 +132,6 @@ export function getRandomAccent(seed: string): AccentColor {
   const index = hashString(seed) % ACCENT_COLORS.length;
   return ACCENT_COLORS[index];
 }
+
 
 

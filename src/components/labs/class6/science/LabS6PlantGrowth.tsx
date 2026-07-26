@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { FastForward } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -144,3 +144,4 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
  </div>
  );
 }
+

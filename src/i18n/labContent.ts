@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Lab Content Translation System
  *
  * Translates lab module descriptions and titles using the main translation JSON files.
@@ -66,3 +66,4 @@ export function translateLabDesc(
 
   return originalDesc;
 }
+

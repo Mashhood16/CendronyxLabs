@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, BookOpen, RotateCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -22,9 +22,9 @@ const GAS_BOTTLES: Bottle[] = [
 ];
 
 const FLAME_BOTTLES: Bottle[] = [
- { id: 'cu', label: 'Copper(II) Ion', formula: 'Cu²⁺', type: 'solid', color: '#059669' },
- { id: 'na', label: 'Sodium Ion', formula: 'Na⁺', type: 'solid', color: '#ffffff' },
- { id: 'k', label: 'Potassium Ion', formula: 'K⁺', type: 'solid', color: '#f1f5f9' },
+ { id: 'cu', label: 'Copper(II) Ion', formula: 'CuÂ²âº', type: 'solid', color: '#059669' },
+ { id: 'na', label: 'Sodium Ion', formula: 'Naâº', type: 'solid', color: '#ffffff' },
+ { id: 'k', label: 'Potassium Ion', formula: 'Kâº', type: 'solid', color: '#f1f5f9' },
 ];
 
 interface Props {
@@ -51,19 +51,19 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
  useEffect(() => {
  if (flaskContents.includes('zn') && flaskContents.includes('hcl')) {
  setReactionGas('H2');
- setReactionEquation('Zn(s) + 2HCl(aq) ➔ ZnCl2(aq) + H2(g) ↑');
+ setReactionEquation('Zn(s) + 2HCl(aq) âž” ZnCl2(aq) + H2(g) â†‘');
  } else if (flaskContents.includes('caco3') && flaskContents.includes('hcl')) {
  setReactionGas('CO2');
- setReactionEquation('CaCO3(s) + 2HCl(aq) ➔ CaCl2(aq) + H2O(l) + CO2(g) ↑');
+ setReactionEquation('CaCO3(s) + 2HCl(aq) âž” CaCl2(aq) + H2O(l) + CO2(g) â†‘');
  } else if (flaskContents.includes('h2o2') && flaskContents.includes('mno2')) {
  setReactionGas('O2');
- setReactionEquation('2H2O2(aq) ➔ 2H2O(l) + O2(g) ↑ [MnO2 catalyst]');
+ setReactionEquation('2H2O2(aq) âž” 2H2O(l) + O2(g) â†‘ [MnO2 catalyst]');
  } else {
  setReactionGas(null);
  // Dynamically build partial equation as user adds bottles
  const parts = flaskContents.map(id => GAS_BOTTLES.find(b => b.id === id)?.formula).filter(Boolean);
  if (parts.length > 0) {
- setReactionEquation(parts.join(' + ') + ' ➔ ...');
+ setReactionEquation(parts.join(' + ') + ' âž” ...');
  } else {
  setReactionEquation('');
  }
@@ -84,11 +84,11 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
  return;
  }
  if (testType === 'lit_splint' && reactionGas === 'H2') {
- setTestResult('💥 POP! (Squeaky pop sound - Hydrogen gas confirmed)');
+ setTestResult('ðŸ’¥ POP! (Squeaky pop sound - Hydrogen gas confirmed)');
  } else if (testType === 'glowing_splint' && reactionGas === 'O2') {
- setTestResult('🔥 Splint relights! (Oxygen gas confirmed)');
+ setTestResult('ðŸ”¥ Splint relights! (Oxygen gas confirmed)');
  } else if (testType === 'limewater' && reactionGas === 'CO2') {
- setTestResult('☁️ Limewater turns milky/cloudy. (Carbon Dioxide confirmed)');
+ setTestResult('â˜ï¸ Limewater turns milky/cloudy. (Carbon Dioxide confirmed)');
  } else {
  setTestResult('Negative result. Nothing happens.');
  }
@@ -125,14 +125,14 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
  const checkAnswers = () => {
  let msg = '';
  if (gasAnswer.trim().toLowerCase() === 'co2' || gasAnswer.trim().toLowerCase() === 'carbon dioxide') {
- msg += '✅ Gas identification is correct.\n';
+ msg += 'âœ… Gas identification is correct.\n';
  } else {
- msg += '❌ Gas identification is incorrect (Hint: Limewater test).\n';
+ msg += 'âŒ Gas identification is incorrect (Hint: Limewater test).\n';
  }
  if (flameAnswer.trim().toLowerCase() === 'cu' || flameAnswer.trim().toLowerCase() === 'copper') {
- msg += '✅ Metal identification is correct.';
+ msg += 'âœ… Metal identification is correct.';
  } else {
- msg += '❌ Metal identification is incorrect (Hint: Blue-green flame).';
+ msg += 'âŒ Metal identification is incorrect (Hint: Blue-green flame).';
  }
  setFeedback(msg);
  };
@@ -417,3 +417,4 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
  </div>
  );
 }
+

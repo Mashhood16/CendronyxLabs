@@ -1,4 +1,4 @@
-import { latexToNodes } from '../../utils/mathRender';
+﻿import { latexToNodes } from '../../utils/mathRender';
 
 function preprocessFormula(f: string): string {
   // Greek letter names (whole words) -> LaTeX commands
@@ -38,8 +38,8 @@ function preprocessFormula(f: string): string {
   f = f.replace(/\blog\b/g, '\\log');
   f = f.replace(/\bln\b/g, '\\ln');
 
-  // log₁₀ -> \\log_{10}
-  f = f.replace(/log₁₀/g, '\\log_{10}');
+  // logâ‚â‚€ -> \\log_{10}
+  f = f.replace(/logâ‚â‚€/g, '\\log_{10}');
 
   // constant -> \\text{constant}
   f = f.replace(/\bconstant\b/g, '\\text{constant}');
@@ -73,3 +73,4 @@ export default function MathFormula({ formula, display = false, className = '' }
     </span>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BookOpen, Map, Settings, Activity, CheckCircle2, XCircle, Grid } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -223,21 +223,21 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
  )}
  {mapDetails.trees && (
  <>
- <div className="absolute top-10 right-10 text-3xl">🌲</div>
- <div className="absolute top-20 right-24 text-3xl">🌳</div>
- <div className="absolute bottom-10 left-10 text-3xl">🌲</div>
+ <div className="absolute top-10 right-10 text-3xl">ðŸŒ²</div>
+ <div className="absolute top-20 right-24 text-3xl">ðŸŒ³</div>
+ <div className="absolute bottom-10 left-10 text-3xl">ðŸŒ²</div>
  </>
  )}
  {mapDetails.houses && (
  <>
- <div className="absolute top-10 left-10 text-4xl">🏠</div>
- <div className="absolute top-24 left-20 text-4xl">🏡</div>
+ <div className="absolute top-10 left-10 text-4xl">ðŸ </div>
+ <div className="absolute top-24 left-20 text-4xl">ðŸ¡</div>
  </>
  )}
  {mapDetails.cars && (
  <>
- <div className="absolute top-1/2 left-20 text-2xl transform -translate-y-1/2 -mt-1">🚗</div>
- <div className="absolute top-1/2 right-20 text-2xl transform -translate-y-1/2 mt-1 rotate-180">🚙</div>
+ <div className="absolute top-1/2 left-20 text-2xl transform -translate-y-1/2 -mt-1">ðŸš—</div>
+ <div className="absolute top-1/2 right-20 text-2xl transform -translate-y-1/2 mt-1 rotate-180">ðŸš™</div>
  </>
  )}
  {abstractionLevel === 100 && (
@@ -354,3 +354,4 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
  </div>
  );
 }
+

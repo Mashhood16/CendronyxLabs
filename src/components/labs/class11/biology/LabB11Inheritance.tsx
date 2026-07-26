@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useLab } from '../../../../store';
 import { Activity, HeartPulse, ShieldAlert, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -405,3 +405,4 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

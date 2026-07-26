@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Thermometer, BookOpen, LineChart, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -118,7 +118,7 @@ const { recordLabData, setLabScore } = useLab();
  {/* Matt Black Can */}
  <div className="flex flex-col items-center gap-3 z-10 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b">
  <div className="w-24 h-32 bg-zinc-900 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.8)] border border-zinc-800 relative flex items-center justify-center">
- <div className="absolute -top-10 text-2xl font-mono text-red-400 font-bold bg-black/50 px-2 rounded">{tBlack.toFixed(1)}°C</div>
+ <div className="absolute -top-10 text-2xl font-mono text-red-400 font-bold bg-black/50 px-2 rounded">{tBlack.toFixed(1)}Â°C</div>
  <div className="w-2 h-20 bg-slate-50 dark:bg-[#121212]/10 rounded-full flex items-end">
  <div className="w-full bg-red-500 rounded-full transition-all duration-300 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" style={{ height: `${Math.min(100, (tBlack / 120) * 100)}%` }} />
  </div>
@@ -142,7 +142,7 @@ const { recordLabData, setLabScore } = useLab();
  {/* Shiny Silver Can */}
  <div className="flex flex-col items-center gap-3 z-10">
  <div className="w-24 h-32 bg-slate-200 dark:!bg-[#121212] rounded-lg shadow-xl border-l-4 border-white/70 relative flex items-center justify-center bg-gradient-to-r from-slate-300 via-white to-slate-400">
- <div className="absolute -top-10 text-2xl font-mono text-orange-400 font-bold bg-black/50 px-2 rounded">{tSilver.toFixed(1)}°C</div>
+ <div className="absolute -top-10 text-2xl font-mono text-orange-400 font-bold bg-black/50 px-2 rounded">{tSilver.toFixed(1)}Â°C</div>
  <div className="w-2 h-20 bg-black/20 rounded-full flex items-end">
  <div className="w-full bg-red-500 rounded-full transition-all duration-300 dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" style={{ height: `${Math.min(100, (tSilver / 120) * 100)}%` }} />
  </div>
@@ -282,3 +282,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

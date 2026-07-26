@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Database, CheckCircle, XCircle, Bug, StepForward, RotateCcw, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -232,3 +232,4 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

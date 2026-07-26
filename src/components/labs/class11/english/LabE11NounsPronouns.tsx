@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle, RefreshCw, BookOpen, Activity, Target, Layers, Info } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -381,3 +381,4 @@ export default function LabE11NounsPronouns({ onExit }: { onExit?: () => void })
  </div>
  );
 }
+

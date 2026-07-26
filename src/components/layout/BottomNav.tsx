@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+﻿import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../store';
 import { useTranslate } from '../../i18n';
 import { Home, Clock, Settings, Search } from 'lucide-react';
@@ -58,3 +58,4 @@ export default function BottomNav({ onSearchOpen }: BottomNavProps) {
     </nav>
   );
 }
+

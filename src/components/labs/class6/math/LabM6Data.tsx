@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Dices, Coins, BarChart3, PieChart, CheckCircle, XCircle } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -288,3 +288,4 @@ export default function LabM6Data({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

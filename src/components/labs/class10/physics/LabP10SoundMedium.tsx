@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle, Power } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -371,3 +371,4 @@ const { recordLabData } = useLab();
  </div>
  );
 }
+

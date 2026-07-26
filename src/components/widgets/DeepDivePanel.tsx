@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState } from 'react';
 import { GraduationCap, ChevronDown, ChevronRight, Lightbulb, Sigma, BookOpen, ArrowRight } from 'lucide-react';
 
@@ -133,3 +133,4 @@ export default function DeepDivePanel({ derivation, defaultExpanded = false }: D
     </div>
   );
 }
+

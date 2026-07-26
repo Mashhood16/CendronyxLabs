@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ArrowLeft, Folder, File, Trash2, Monitor, RotateCcw, Save, Plus, FilePlus } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -269,3 +269,4 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
  </div>
  );
 }
+

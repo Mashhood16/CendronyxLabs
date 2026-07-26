@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import {
   addMeasurementNoise,
   addRandomizedNoise,
@@ -131,3 +131,4 @@ describe('getMeasurementFeedback', () => {
     expect(high.message).toContain('High error');
   });
 });
+

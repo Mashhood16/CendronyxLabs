@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import type { DragEvent } from 'react';
 import { Shapes, CircleDot } from 'lucide-react';
@@ -221,7 +221,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
  {t('lab.m7setsalgebra_total_matchsticks')} <span className="font-bold text-2xl text-amber-600 dark:text-amber-400">{term * 3 + 1}</span>
  </div>
  <div className="text-sm text-slate-500 dark:text-[#71717a] max-w-sm text-center bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
- 💡 <strong>{t('lab.m7setsalgebra_hint')}</strong> {t('lab.m7setsalgebra_the_first_square_requires_4_st')}
+ ðŸ’¡ <strong>{t('lab.m7setsalgebra_hint')}</strong> {t('lab.m7setsalgebra_the_first_square_requires_4_st')}
  </div>
  </div>
  )}
@@ -231,3 +231,4 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ClipboardList, CheckCircle, Activity, Zap, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS } from '../../../../utils/labScaffolding';
@@ -63,12 +63,12 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  setTimeout(() => {
  let resultStr = "No Reaction";
  if (rank[h1] > rank[h2]) {
- setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, '→', `2Na${h1}(aq)`, '+', `${h2}2(aq)`]);
+ setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, 'â†’', `2Na${h1}(aq)`, '+', `${h2}2(aq)`]);
  const colors: Record<string, string> = { 'Cl': 'rgba(200,255,200,0.4)', 'Br': 'rgba(255,165,0,0.6)', 'I': 'rgba(139,69,19,0.8)' };
  setBeakerColor(colors[h2] || 'rgba(200,200,200,0.1)');
  resultStr = "Reaction Occurred";
  } else {
- setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, '→', 'No Reaction']);
+ setEquation([`${selHalogen}(aq)`, '+', `2${selHalide}(aq)`, 'â†’', 'No Reaction']);
  setBeakerColor('rgba(200,200,200,0.1)');
  }
  setDisplacementData(prev => [...prev, { id: Date.now(), halogen: selHalogen, halide: selHalide, result: resultStr }]);
@@ -89,7 +89,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  });
  if (decayedThisTick > 0) {
  setTh234Count(t => t + decayedThisTick);
- setEquation(['²³⁸U', '→', '²³⁴Th', '+', '⁴α']);
+ setEquation(['Â²Â³â¸U', 'â†’', 'Â²Â³â´Th', '+', 'â´Î±']);
  }
  }, 500);
  return () => clearInterval(interval);
@@ -179,10 +179,10 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  <div>
  <div className="text-sm font-bold text-gray-500 mb-2 text-center">{t('lab.c9atomicstructure_halogen_waters')}</div>
  <div className="flex gap-2">
- <ChemicalBottle label={t("F₂")} color="#ffffcc" selected={selHalogen === 'F2'} onClick={() => setSelHalogen('F2')} />
+ <ChemicalBottle label={t("Fâ‚‚")} color="#ffffcc" selected={selHalogen === 'F2'} onClick={() => setSelHalogen('F2')} />
  <ChemicalBottle label={t('lab.c9atomicstructure_cl')} color="#ccffcc" selected={selHalogen === 'Cl2'} onClick={() => setSelHalogen('Cl2')} />
  <ChemicalBottle label={t('lab.c9atomicstructure_br')} color="#ffcc99" selected={selHalogen === 'Br2'} onClick={() => setSelHalogen('Br2')} />
- <ChemicalBottle label={t("I₂")} color="#e6ccff" selected={selHalogen === 'I2'} onClick={() => setSelHalogen('I2')} />
+ <ChemicalBottle label={t("Iâ‚‚")} color="#e6ccff" selected={selHalogen === 'I2'} onClick={() => setSelHalogen('I2')} />
  </div>
  </div>
  <div>
@@ -272,3 +272,4 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
  </div>
  );
 }
+

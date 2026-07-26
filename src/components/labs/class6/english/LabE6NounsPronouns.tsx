@@ -1,4 +1,4 @@
-import type { DragEvent } from 'react';
+﻿import type { DragEvent } from 'react';
 import { useState } from 'react';
 import { RefreshCw, BookOpen, Type, Target, ShieldCheck, AlertCircle } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -381,3 +381,4 @@ export default function LabE6NounsPronouns({ onExit }: { onExit?: () => void }) 
  />
  );
 }
+

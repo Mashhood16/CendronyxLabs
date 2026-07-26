@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Shield, FlaskConical, Stethoscope, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -262,3 +262,4 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

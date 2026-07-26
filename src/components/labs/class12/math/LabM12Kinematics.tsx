@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw, Play, Pause } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -82,7 +82,7 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
 
  const problemText = mode === '1d' 
  ? `Set the acceleration slider to your chosen value and run the simulation. Based on the kinematics equations, what should the displacement be exactly at t = ${problemData?.t || 5}s?`
- : `For a particle tracking a helical trajectory r(t) = ⟨${R}cos(t), ${R}sin(t), ${v}t⟩, find the magnitude of its velocity vector (speed) at t = ${problemData?.t || 5}s. (Round to 2 decimal places)`;
+ : `For a particle tracking a helical trajectory r(t) = âŸ¨${R}cos(t), ${R}sin(t), ${v}tâŸ©, find the magnitude of its velocity vector (speed) at t = ${problemData?.t || 5}s. (Round to 2 decimal places)`;
 
  const checkAnswer = () => {
  if (!problemData) return;
@@ -305,3 +305,4 @@ export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

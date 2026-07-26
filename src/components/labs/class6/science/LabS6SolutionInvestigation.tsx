@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Flame, Snowflake } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -101,7 +101,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
  
  {/* Thermometer */}
  <div className="absolute right-12 top-12 h-64 w-12 bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] rounded-full flex flex-col items-center py-2 shadow-sm z-20">
- <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2">°C</span>
+ <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] mb-2">Â°C</span>
  <div className="flex-1 w-2 bg-slate-200 dark:bg-[#121212] rounded-full relative flex flex-col-reverse justify-start">
  {/* Thermometer Liquid */}
  <div 
@@ -114,7 +114,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
  
  {/* Temperature Display */}
  <div className="absolute right-12 bottom-12 bg-slate-50 dark:bg-[#121212] px-4 py-2 rounded-lg font-black text-2xl text-slate-800 dark:text-[#ffffff] shadow border border-slate-200 dark:border-[#1c1b1b] min-w-[80px] text-center">
- {temperature.toFixed(1)}°
+ {temperature.toFixed(1)}Â°
  </div>
 
  {/* Beaker */}
@@ -148,3 +148,4 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
  </div>
  );
 }
+

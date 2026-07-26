@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BookOpen, Activity, Play, CheckCircle, RefreshCw} from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -284,7 +284,7 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
  {score !== null && (
  <div className={`mt-4 p-3 rounded-md text-center font-bold ${score === 2 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
  
- {t('lab.c12biochemistry_score')} {score} / 2 {score === 2 ? '🎉 Excellent!' : '❌ Review theory and retry.'}
+ {t('lab.c12biochemistry_score')} {score} / 2 {score === 2 ? 'ðŸŽ‰ Excellent!' : 'âŒ Review theory and retry.'}
  </div>
  )}
  </div>
@@ -293,3 +293,4 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

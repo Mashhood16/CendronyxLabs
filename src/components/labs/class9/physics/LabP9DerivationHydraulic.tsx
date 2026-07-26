@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ArrowUpDown, CheckCircle, XCircle, Lightbulb, ArrowRight, BookOpen, BrainCircuit, HelpCircle, Trophy, EyeOff, Sparkles, RefreshCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
 import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
-function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/×/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/−/g,'-').replace(/–/g,'-').replace(/Δ/g,'d').replace(/δ/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/π/g,'pi');}
+function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/Ã—/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => void }) {
@@ -22,7 +22,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  const [showTestHint, setShowTestHint] = useState(false);
  const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
  const [testFullyCompleted, setTestFullyCompleted] = useState(false);
- const testSteps=[{testEquation:'P₁ = F₁/A₁',testHint:'Pressure on the small piston equals input force divided by its area.'},{testEquation:'P₂ = F₂/A₂',testHint:'Pressure on the large piston equals output force divided by its area.'},{testEquation:'P₁ = P₂',testHint:"Pascal's principle says pressure is transmitted equally throughout the fluid."},{testEquation:'F₂ = (A₂/A₁)F₁',testHint:'Since P₁ = P₂, set F₁/A₁ = F₂/A₂ and solve for F₂.'}];
+ const testSteps=[{testEquation:'Pâ‚ = Fâ‚/Aâ‚',testHint:'Pressure on the small piston equals input force divided by its area.'},{testEquation:'Pâ‚‚ = Fâ‚‚/Aâ‚‚',testHint:'Pressure on the large piston equals output force divided by its area.'},{testEquation:'Pâ‚ = Pâ‚‚',testHint:"Pascal's principle says pressure is transmitted equally throughout the fluid."},{testEquation:'Fâ‚‚ = (Aâ‚‚/Aâ‚)Fâ‚',testHint:'Since Pâ‚ = Pâ‚‚, set Fâ‚/Aâ‚ = Fâ‚‚/Aâ‚‚ and solve for Fâ‚‚.'}];
  useEffect(() => { const el = document.querySelector(`[data-step-idx="${currentStep}"]`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, [currentStep]);
  const handleTestCheck = () => { const expected = testSteps[currentStep].testEquation; const isCorrect = ck(testInput, expected); setTestStatus(isCorrect ? 'correct' : 'incorrect'); if (isCorrect) { setCompletedSteps(prev => ({ ...prev, [currentStep]: true })); if (currentStep + 1 >= steps.length) { setTestFullyCompleted(true); } else { setCurrentStep(currentStep + 1); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); } } };
  const resetTest = () => { setCurrentStep(0); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); setCompletedSteps({}); setTestFullyCompleted(false); };
@@ -36,10 +36,10 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  };
 
  const steps = [
- { label: t('lab.hydraulic_step1_label'), formula: 'P₁ = P₂', detail: t('lab.hydraulic_step1_detail') },
- { label: t('lab.hydraulic_step2_label'), formula: 'P₁ = F₁ / A₁', detail: t('lab.hydraulic_step2_detail') },
- { label: t('lab.hydraulic_step3_label'), formula: 'F₂ / A₂ = F₁ / A₁', detail: t('lab.hydraulic_step3_detail') },
- { label: t('lab.hydraulic_step4_label'), formula: 'F₂ = (A₂ / A₁) × F₁', detail: t('lab.hydraulic_step4_detail') },
+ { label: t('lab.hydraulic_step1_label'), formula: 'Pâ‚ = Pâ‚‚', detail: t('lab.hydraulic_step1_detail') },
+ { label: t('lab.hydraulic_step2_label'), formula: 'Pâ‚ = Fâ‚ / Aâ‚', detail: t('lab.hydraulic_step2_detail') },
+ { label: t('lab.hydraulic_step3_label'), formula: 'Fâ‚‚ / Aâ‚‚ = Fâ‚ / Aâ‚', detail: t('lab.hydraulic_step3_detail') },
+ { label: t('lab.hydraulic_step4_label'), formula: 'Fâ‚‚ = (Aâ‚‚ / Aâ‚) Ã— Fâ‚', detail: t('lab.hydraulic_step4_detail') },
  ];
 
  return (
@@ -57,16 +57,16 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-5 gap-0 lg:gap-6 p-4 lg:p-6 lg:overflow-visible">
  <div className={`lg:col-span-3 w-full bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab==='theory'?'flex':'hidden'} lg:flex`}>
  <div className="flex items-center gap-2 mb-3"><div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 flex items-center justify-center shadow-lg"><ArrowUpDown className="w-5 h-5 text-white" /></div><div><h2 className="text-lg font-bold">{t('lab.step_by_step')}</h2><p className="text-xs text-slate-500">{t('lab.hydraulic_subtitle')}</p></div></div>
- <div className="bg-gradient-to-br from-rose-500 to-red-600 rounded-xl p-5 text-center shadow-lg mb-3"><p className="text-xs text-rose-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p><p className="text-2xl font-bold text-white mt-1"><MathFormula formula="F₂ = (A₂/A₁) × F₁" /></p><p className="text-xs text-rose-200 mt-1">{t('lab.hydraulic_final_desc')}</p></div>
+ <div className="bg-gradient-to-br from-rose-500 to-red-600 rounded-xl p-5 text-center shadow-lg mb-3"><p className="text-xs text-rose-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p><p className="text-2xl font-bold text-white mt-1"><MathFormula formula="Fâ‚‚ = (Aâ‚‚/Aâ‚) Ã— Fâ‚" /></p><p className="text-xs text-rose-200 mt-1">{t('lab.hydraulic_final_desc')}</p></div>
  <div className="space-y-0">{steps.map((step,idx)=><div key={idx} className="relative"><div className="flex gap-3"><div className="flex flex-col items-center"><div className="w-8 h-8 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold shadow-md shrink-0">{idx+1}</div>{idx<steps.length-1&&<div className="w-0.5 h-full min-h-[24px] bg-gradient-to-b from-rose-400 to-rose-200 dark:from-rose-600 dark:to-rose-800" />}</div><div className="flex-1 pb-4"><div className="bg-rose-50 dark:bg-rose-900/20 rounded-lg p-3 border border-rose-200 dark:border-rose-800 mb-1"><p className="font-bold text-base text-rose-800 dark:text-rose-300">{step.label}</p></div><div className="bg-[#000000] rounded-lg mx-1 my-1.5 px-3 py-2 text-center border border-[#1c1b1b]"><MathFormula formula={step.formula} className="text-base font-bold text-yellow-400" /></div><p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed px-1">{step.detail}</p>{idx<steps.length-1&&<div className="flex justify-center mt-1"><ArrowRight className="w-4 h-4 text-rose-400" /></div>}</div></div></div>)}</div>
  </div>
  <div className={`lg:col-span-2 w-full flex flex-col gap-5 ${activeMobileTab==='lab'?'flex':'hidden'} lg:flex`}>
  <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5"><div className="flex items-center gap-2 mb-3"><Lightbulb className="w-5 h-5 text-rose-500" /><h2 className="text-lg font-bold">{t('lab.see_in_action')}</h2></div><p className="text-sm text-slate-500 mb-4">{t('lab.hydraulic_adjust_desc')}</p><div className="space-y-3">
- <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.hydraulic_small_area_label')}</span><span className="text-rose-600 font-mono">{areaSmall} m²</span></div><input type="range" min="0.002" max="0.05" step="0.001" value={areaSmall} onChange={e=>{setAreaSmall(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-rose-500" /></div>
- <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.hydraulic_large_area_label')}</span><span className="text-rose-600 font-mono">{areaLarge} m²</span></div><input type="range" min="0.05" max="2" step="0.01" value={areaLarge} onChange={e=>{setAreaLarge(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-rose-500" /></div>
+ <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.hydraulic_small_area_label')}</span><span className="text-rose-600 font-mono">{areaSmall} mÂ²</span></div><input type="range" min="0.002" max="0.05" step="0.001" value={areaSmall} onChange={e=>{setAreaSmall(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-rose-500" /></div>
+ <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.hydraulic_large_area_label')}</span><span className="text-rose-600 font-mono">{areaLarge} mÂ²</span></div><input type="range" min="0.05" max="2" step="0.01" value={areaLarge} onChange={e=>{setAreaLarge(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-rose-500" /></div>
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.hydraulic_input_force_label')}</span><span className="text-rose-600 font-mono">{inputForce} N</span></div><input type="range" min="10" max="500" step="10" value={inputForce} onChange={e=>{setInputForce(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-rose-500" /></div>
- <div className="relative h-32 bg-white dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-300 dark:border-[#2a2a2a]"><div className="absolute bottom-2 left-[15%] right-[15%] h-[55%] bg-rose-400/20 rounded-b-lg border border-rose-400/30" /><div className="absolute bottom-[calc(2px+55%)] left-[15%] translate-x-[-50%]" style={{width:`${12+areaSmall*400}px`,height:'18px'}}><div className="w-full h-full bg-rose-500 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold">F₁={inputForce}N</div></div><div className="absolute bottom-[calc(2px+55%)] right-[15%] translate-x-[50%]" style={{width:`${12+areaLarge*18}px`,height:`${18+inputForce/25}px`,minHeight:'28px'}}><div className="w-full h-full bg-rose-600 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold text-center leading-tight">F₂={outputForce.toFixed(0)}N</div></div><div className="absolute bottom-1 left-1 text-[7px] text-slate-500">A₁={areaSmall}m²</div><div className="absolute bottom-1 right-1 text-[7px] text-slate-500">A₂={areaLarge}m²</div></div>
- <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1"><p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p><p className="text-sm text-slate-400">{t('lab.hydraulic_trace1',{p1:(inputForce/areaSmall).toFixed(0)})}</p><p className="text-sm text-slate-400">{t('lab.hydraulic_trace2')}</p><p className="text-sm text-slate-400">{t('lab.hydraulic_trace3',{f2:outputForce.toFixed(0)})}</p><p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">{t('lab.hydraulic_trace4',{ma:mechanicalAdvantage.toFixed(1)})} F₂ = </span><span className="text-yellow-400 font-mono font-bold">{outputForce.toFixed(0)} N</span></p>{outputForce>1000&&<p className="text-xs text-amber-400">Lifts {(outputForce/9.81).toFixed(0)} kg!</p>}</div>
+ <div className="relative h-32 bg-white dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-300 dark:border-[#2a2a2a]"><div className="absolute bottom-2 left-[15%] right-[15%] h-[55%] bg-rose-400/20 rounded-b-lg border border-rose-400/30" /><div className="absolute bottom-[calc(2px+55%)] left-[15%] translate-x-[-50%]" style={{width:`${12+areaSmall*400}px`,height:'18px'}}><div className="w-full h-full bg-rose-500 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold">Fâ‚={inputForce}N</div></div><div className="absolute bottom-[calc(2px+55%)] right-[15%] translate-x-[50%]" style={{width:`${12+areaLarge*18}px`,height:`${18+inputForce/25}px`,minHeight:'28px'}}><div className="w-full h-full bg-rose-600 rounded-t-lg flex items-center justify-center text-[7px] text-white font-bold text-center leading-tight">Fâ‚‚={outputForce.toFixed(0)}N</div></div><div className="absolute bottom-1 left-1 text-[7px] text-slate-500">Aâ‚={areaSmall}mÂ²</div><div className="absolute bottom-1 right-1 text-[7px] text-slate-500">Aâ‚‚={areaLarge}mÂ²</div></div>
+ <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1"><p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p><p className="text-sm text-slate-400">{t('lab.hydraulic_trace1',{p1:(inputForce/areaSmall).toFixed(0)})}</p><p className="text-sm text-slate-400">{t('lab.hydraulic_trace2')}</p><p className="text-sm text-slate-400">{t('lab.hydraulic_trace3',{f2:outputForce.toFixed(0)})}</p><p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">{t('lab.hydraulic_trace4',{ma:mechanicalAdvantage.toFixed(1)})} Fâ‚‚ = </span><span className="text-yellow-400 font-mono font-bold">{outputForce.toFixed(0)} N</span></p>{outputForce>1000&&<p className="text-xs text-amber-400">Lifts {(outputForce/9.81).toFixed(0)} kg!</p>}</div>
  </div></div>
  <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-4 border border-amber-200 dark:border-amber-800 mt-2"><div className="flex items-start gap-2"><Lightbulb className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" /><div><p className="font-bold text-base text-amber-700 dark:text-amber-300">{t('lab.real_life_application')}</p><p className="text-sm text-amber-700 dark:text-amber-300 mt-1">{t('lab.hydraulic_real_life')}</p></div></div></div>
  <div className="bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5">
@@ -81,7 +81,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  </>:
 <div className="flex-1 overflow-y-auto p-4 lg:p-6">
  <div className="h-full flex flex-col lg:flex-row gap-4 lg:gap-6">
- {/* ── LEFT PANEL: Derivation Steps ── */}
+ {/* â”€â”€ LEFT PANEL: Derivation Steps â”€â”€ */}
  <div className="flex-1 min-w-0">
  <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 mb-4">
  <div className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  {testFullyCompleted ? (
  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800 p-8 text-center">
  <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
- <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! 🎉</h3>
+ <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! ðŸŽ‰</h3>
  <p className="text-sm text-emerald-600 dark:text-emerald-400 mb-4">You completed all steps correctly.</p>
  <button onClick={resetTest} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 mx-auto"><RefreshCcw className="w-3.5 h-3.5" /> Retry</button>
  </div>
@@ -182,7 +182,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
                                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'
                                     }`}
                                   >
-                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
+                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
                                   </button>
                                   <button
                                     onClick={() => setShowTestHint(!showTestHint)}
@@ -219,7 +219,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
                                   <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                                     <div className="flex items-center gap-2">
                                       <CheckCircle className="w-4 h-4 text-emerald-500" />
-                                      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                                      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                                     </div>
                                     <MathFormula formula={testSteps[idx].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                                   </div>
@@ -227,7 +227,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
                               </div>
                             </div>) : isLocked ? (
     <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3">
-     <p className="text-xs text-slate-400 text-center">🔒 Complete previous step</p>
+     <p className="text-xs text-slate-400 text-center">ðŸ”’ Complete previous step</p>
     </div>
    ) : (
     <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#2a2a2a] p-3 text-center cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1c1b1b] transition-colors">
@@ -245,7 +245,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  </div>
  )}
  </div>
- {/* ── RIGHT PANEL: Equation Builder ── */}
+ {/* â”€â”€ RIGHT PANEL: Equation Builder â”€â”€ */}
  {!testFullyCompleted && (
  <div className="hidden lg:block w-full lg:w-[380px] xl:w-[420px] shrink-0">
   <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-5 sticky top-4">
@@ -283,7 +283,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
        : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-md active:scale-95'}`}
     >
      {testStatus === 'correct' ? (
-      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</>
+      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</>
      ) : (
       <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>
      )}
@@ -324,7 +324,7 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
     <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
      <div className="flex items-center gap-2">
       <CheckCircle className="w-4 h-4 text-emerald-500" />
-      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
      </div>
      <MathFormula formula={testSteps[currentStep].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
     </div>
@@ -336,3 +336,4 @@ export default function LabP9DerivationHydraulic({ onExit }: { onExit?: () => vo
  </div>
 }</div>);
 }
+

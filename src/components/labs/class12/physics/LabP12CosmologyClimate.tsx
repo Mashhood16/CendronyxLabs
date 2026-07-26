@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Star, Waves, Orbit } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -38,7 +38,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
  const checkWien = () => {
  const v = parseFloat(wienAns);
  if (v >= 960 && v <= 970) setWienFeedback('Correct! ~966 nm');
- else setWienFeedback('Incorrect. Use λ = b / T where b = 2.898×10⁻³ m·K');
+ else setWienFeedback('Incorrect. Use Î» = b / T where b = 2.898Ã—10â»Â³ mÂ·K');
  };
 
  const checkDoppler = () => {
@@ -257,3 +257,4 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Flame, ThermometerSun, Gauge } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import DataChart from '../../../widgets/DataChart';
@@ -163,9 +163,9 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
  xAxisKey="time"
  xAxisLabel="Time (s)"
  series={[
- { key: 'metal', name: 'Metal (°C)', color: '#ef4444' },
- { key: 'plastic', name: 'Plastic (°C)', color: '#f59e0b' },
- { key: 'wood', name: 'Wood (°C)', color: '#8b5cf6' },
+ { key: 'metal', name: 'Metal (Â°C)', color: '#ef4444' },
+ { key: 'plastic', name: 'Plastic (Â°C)', color: '#f59e0b' },
+ { key: 'wood', name: 'Wood (Â°C)', color: '#8b5cf6' },
  ]}
  data={tempLog}
  onRecord={() => {}} // Auto-logged
@@ -202,3 +202,4 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
  </div>
  );
 }
+

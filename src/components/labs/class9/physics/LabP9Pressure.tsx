@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Info, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../../../../utils/labScaffolding';
@@ -252,3 +252,4 @@ export default function LabP9Pressure({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

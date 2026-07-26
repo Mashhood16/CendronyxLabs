@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+﻿import { useParams } from 'react-router-dom';
 import LabHeader from '../../class8/computer/LabHeader';
 import { GenericTheoremLab } from '../../../generic/GenericTheoremLab';
 import { CLASS9_THEOREMS } from '../../../../data/theorems/class9Theorems';
@@ -46,3 +46,4 @@ export default function LabM9TheoremViewer({ onExit }: { onExit?: () => void }) 
  />
  );
 }
+

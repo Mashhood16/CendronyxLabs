@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, CheckCircle2, XCircle, Save, Target, Activity } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -295,3 +295,4 @@ export default function LabP11Electromagnetism({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

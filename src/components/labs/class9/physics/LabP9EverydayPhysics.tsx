@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+﻿import { useState, useRef, useEffect } from 'react';
 import { Info, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -92,7 +92,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  if (boxState.isSliding) return;
  const v0 = 3 + Math.random() * 2; // 3 to 5 m/s
  setBoxState({ x: 50, v: v0, isSliding: true });
- setLogs(prev => [...prev, { id: Date.now(), item: 'Sliding Box', event: `Pushed with v₀ = ${v0.toFixed(2)} m/s` }]);
+ setLogs(prev => [...prev, { id: Date.now(), item: 'Sliding Box', event: `Pushed with vâ‚€ = ${v0.toFixed(2)} m/s` }]);
  };
 
  useEffect(() => {
@@ -175,9 +175,9 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  const checkGravity = () => {
  const v = parseFloat(ansGravity);
  if (!isNaN(v) && Math.abs(v - 9.8) < 0.5) {
- setResGravity("Correct! The acceleration due to gravity is approximately 9.8 m/s².");
+ setResGravity("Correct! The acceleration due to gravity is approximately 9.8 m/sÂ².");
  } else {
- setResGravity("Incorrect. Remember to use g = 2h / t² with the measured values.");
+ setResGravity("Incorrect. Remember to use g = 2h / tÂ² with the measured values.");
  }
  };
 
@@ -186,7 +186,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  if (!isNaN(v) && Math.abs(v - 0.5) < 0.05) {
  setResFriction("Correct! The coefficient of kinetic friction is 0.5.");
  } else {
- setResFriction("Incorrect. Use μ = v₀² / (2 * 9.8 * d) using logs.");
+ setResFriction("Incorrect. Use Î¼ = vâ‚€Â² / (2 * 9.8 * d) using logs.");
  }
  };
 
@@ -388,7 +388,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  <h3 className="font-bold text-emerald-800 mb-2 flex items-center text-sm">
  <CheckCircle className="w-4 h-4 mr-2" /> {t('lab.p9everydayphysics_calc_friction')}
  </h3>
- <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p9everydayphysics_push_the_box_calculate')} <strong>μ</strong> {t('lab.p9everydayphysics_using')} <code className="bg-slate-50 dark:bg-[#121212] px-1">{t('lab.p9everydayphysics_v_2gd')}</code> {t('lab.p9everydayphysics_use_g_9_8')}</p>
+ <p className="text-xs text-slate-700 dark:text-[#ffffff] mb-2">{t('lab.p9everydayphysics_push_the_box_calculate')} <strong>Î¼</strong> {t('lab.p9everydayphysics_using')} <code className="bg-slate-50 dark:bg-[#121212] px-1">{t('lab.p9everydayphysics_v_2gd')}</code> {t('lab.p9everydayphysics_use_g_9_8')}</p>
  <div className="flex gap-2">
  <input type="number" value={ansFriction} onChange={e => setAnsFriction(e.target.value)} step="0.1" className="w-20 px-2 py-1 text-sm border rounded" />
  <button onClick={checkFriction} className="px-3 py-1 bg-emerald-600 text-white rounded text-sm hover:bg-emerald-700 dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40">{t('lab.p9everydayphysics_check')}</button>
@@ -401,3 +401,4 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

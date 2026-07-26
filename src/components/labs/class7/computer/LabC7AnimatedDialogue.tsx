@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Play, Image as ImageIcon } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -126,3 +126,4 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
  </div>
  );
 }
+

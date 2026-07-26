@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Play, CheckCircle, Search, Scissors, Link } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -140,7 +140,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
  <div className={`w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-lg p-4 border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] transition-opacity ${plasmidState === 'ligated' ? 'opacity-100' : 'opacity-40 pointer-events-none'} 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
  <div className="flex justify-between items-center mb-2">
  <h3 className="font-bold text-slate-700 dark:text-[#ffffff]">{t('lab.b12biotechnology_pcr_thermocycler')}</h3>
- <span className="text-xs font-mono bg-blue-100 text-blue-800 px-2 py-1 rounded dark:text-[#ffffff]">{t('lab.b12biotechnology_temp')} {pcrTemp}°C</span>
+ <span className="text-xs font-mono bg-blue-100 text-blue-800 px-2 py-1 rounded dark:text-[#ffffff]">{t('lab.b12biotechnology_temp')} {pcrTemp}Â°C</span>
  </div>
  <div className="flex items-center gap-4">
  <button 
@@ -215,3 +215,4 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
  </div>
  );
 }
+

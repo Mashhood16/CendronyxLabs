@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Shield, Waves, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -267,3 +267,4 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
  </div>
  );
 }
+

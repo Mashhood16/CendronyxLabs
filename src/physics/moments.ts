@@ -1,4 +1,4 @@
-export interface MassObject {
+﻿export interface MassObject {
   id: string;
   mass: number; // kg
   position: number; // meters from fulcrum (negative is left, positive is right)
@@ -135,3 +135,4 @@ export const extractMomentsData = (masses: MassObject[], state: MomentsState): M
     angleDeg: parseFloat((state.angle * (180 / Math.PI)).toFixed(1))
   };
 };
+

@@ -1,4 +1,4 @@
-export interface DynamicsState {
+﻿export interface DynamicsState {
   x: number; // Position of m1 on the table (m)
   v: number; // Velocity of the system (m/s)
   time: number; // Elapsed time (s)
@@ -101,3 +101,4 @@ export const extractDynamicsDataPoint = (state: DynamicsState): DynamicsDataPoin
     isMoving: state.isMoving
   };
 };
+

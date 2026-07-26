@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Cpu, Monitor, Mouse, Keyboard, HardDrive, Speaker } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -87,3 +87,4 @@ export default function LabC7Hardware({ onExit }: LabProps) {
  </div>
  );
 }
+

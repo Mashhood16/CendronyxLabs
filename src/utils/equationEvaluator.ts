@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Safely evaluates mathematical equations containing variables and math functions.
  * Designed to handle syntax errors gracefully by returning a fallback number.
  *
@@ -48,10 +48,10 @@ export function evaluateEquation(expr: string, variables: Record<string, number>
     sanitized = sanitized.replace(/\bmin\b/g, 'Math.min');
     sanitized = sanitized.replace(/\bmax\b/g, 'Math.max');
 
-    // Replace modulo — mod(a, b) → ((a) % (b))
+    // Replace modulo â€” mod(a, b) â†’ ((a) % (b))
     sanitized = sanitized.replace(/\bmod\b/g, 'function(a,b){return((a)%(b))}');
 
-    // Replace absolute value — abs(x) → Math.abs(x)
+    // Replace absolute value â€” abs(x) â†’ Math.abs(x)
     sanitized = sanitized.replace(/\babs\b/g, 'Math.abs');
 
     // Replace bound simulation state variables (e.g. L, V, t)
@@ -81,3 +81,4 @@ export function evaluateEquation(expr: string, variables: Record<string, number>
     return fallback;
   }
 }
+

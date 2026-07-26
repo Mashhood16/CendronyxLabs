@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { RefreshCw, Layers, Check, Search, Quote, MoveRight, HelpCircle, Lightbulb, ArrowLeft, Target } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
 import { theme } from '../../../../utils/labTheme';
@@ -412,3 +412,4 @@ export default function LabE6SentencesAffixes({ onExit }: { onExit?: () => void 
  />
  );
 }
+

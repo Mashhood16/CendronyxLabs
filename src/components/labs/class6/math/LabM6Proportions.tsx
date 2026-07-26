@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Car, Briefcase, PieChart, CheckCircle2, XCircle, RefreshCw, Info } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -143,7 +143,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
  {rateFeedback !== null && (
  <div className={`mt-2 flex items-center gap-3 p-4 rounded-xl font-medium animate-in slide-in-from-bottom-2 ${rateFeedback ? 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800' : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300 border border-red-200 dark:border-red-800'}`}>
  {rateFeedback ? <CheckCircle2 className="w-6 h-6 shrink-0" /> : <XCircle className="w-6 h-6 shrink-0" />}
- <span>{rateFeedback ? 'Correct! Excellent calculation.' : 'Incorrect. Hint: Distance ÷ Fuel'}</span>
+ <span>{rateFeedback ? 'Correct! Excellent calculation.' : 'Incorrect. Hint: Distance Ã· Fuel'}</span>
  </div>
  )}
  </div>
@@ -277,7 +277,7 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
  {percFeedback !== null && (
  <div className={`mt-2 flex items-center gap-3 p-4 rounded-xl font-medium animate-in slide-in-from-bottom-2 ${percFeedback ? 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300 border border-green-200 dark:border-green-800' : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300 border border-red-200 dark:border-red-800'}`}>
  {percFeedback ? <CheckCircle2 className="w-6 h-6 shrink-0" /> : <XCircle className="w-6 h-6 shrink-0" />}
- <span>{percFeedback ? 'Correct! Accurate budgeting.' : 'Incorrect. Calculate: (Percent ÷ 100) × Budget'}</span>
+ <span>{percFeedback ? 'Correct! Accurate budgeting.' : 'Incorrect. Calculate: (Percent Ã· 100) Ã— Budget'}</span>
  </div>
  )}
  </div>
@@ -450,3 +450,4 @@ export default function LabM6Proportions({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

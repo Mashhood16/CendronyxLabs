@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Droplets, Info, FlaskConical, Activity, Plus, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -25,7 +25,7 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
  setFlaskSample(type);
  setBr2Volume(0);
  setIsBrown(false);
- setEquation(type === 'Oil' ? 'R-CH=CH-R' : 'R-CH₂-CH₂-R');
+ setEquation(type === 'Oil' ? 'R-CH=CH-R' : 'R-CHâ‚‚-CHâ‚‚-R');
  };
 
  const addBr2 = () => {
@@ -35,14 +35,14 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
  
  if (flaskSample === 'Butter') {
  setIsBrown(true);
- setEquation('R-CH₂-CH₂-R + Br₂ → No Reaction');
+ setEquation('R-CHâ‚‚-CHâ‚‚-R + Brâ‚‚ â†’ No Reaction');
  } else {
  if (newVol >= maxBr2ForOil) {
  setIsBrown(true);
- setEquation('R-CH=CH-R + excess Br₂ → R-CH(Br)-CH(Br)-R + Br₂(aq)');
+ setEquation('R-CH=CH-R + excess Brâ‚‚ â†’ R-CH(Br)-CH(Br)-R + Brâ‚‚(aq)');
  } else {
  setIsBrown(false);
- setEquation('R-CH=CH-R + Br₂ → R-CH(Br)-CH(Br)-R');
+ setEquation('R-CH=CH-R + Brâ‚‚ â†’ R-CH(Br)-CH(Br)-R');
  }
  }
  };
@@ -273,3 +273,4 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
  </div>
  );
 }
+

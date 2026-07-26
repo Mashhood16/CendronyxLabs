@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { ArrowLeft, ArrowRight, RotateCw, Globe, Star, Image as ImageIcon, DownloadCloud, CheckCircle, XCircle } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -199,3 +199,4 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

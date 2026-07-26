@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -37,7 +37,7 @@ const { recordLabData, setLabScore } = useLab();
  
  const checkAnswer = () => {
  const val = parseFloat(assessmentAnswer);
- // F = k*|q1*q2|/r^2 => 90 = 8.987e9 * 4e-6 * q2e-6 / (0.02)^2 => q2 ≈ 1.0
+ // F = k*|q1*q2|/r^2 => 90 = 8.987e9 * 4e-6 * q2e-6 / (0.02)^2 => q2 â‰ˆ 1.0
  if (!isNaN(val) && Math.abs(val - 1.0) < 0.2) {
  setAssessmentStatus('correct');
  } else {
@@ -96,7 +96,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className="mb-5">
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_coulomb_q1_label')}</label>
- <span className="text-sm font-mono text-blue-600">{q1 > 0 ? '+' : ''}{q1} μC</span>
+ <span className="text-sm font-mono text-blue-600">{q1 > 0 ? '+' : ''}{q1} Î¼C</span>
  </div>
  <input 
  type="range" min="-10" max="10" step="1" value={q1}
@@ -108,7 +108,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className="mb-5">
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_coulomb_q2_label')}</label>
- <span className="text-sm font-mono text-red-600">{q2 > 0 ? '+' : ''}{q2} μC</span>
+ <span className="text-sm font-mono text-red-600">{q2 > 0 ? '+' : ''}{q2} Î¼C</span>
  </div>
  <input 
  type="range" min="-10" max="10" step="1" value={q2}
@@ -266,7 +266,7 @@ const { recordLabData, setLabScore } = useLab();
  onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
  className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
  />
- <span className="text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mr-2">μC</span>
+ <span className="text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mr-2">Î¼C</span>
  <button 
  onClick={checkAnswer}
  className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
@@ -292,3 +292,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

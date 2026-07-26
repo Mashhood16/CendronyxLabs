@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Save, Layout, ShieldAlert, ShieldCheck } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -96,7 +96,7 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
  onClick={() => setElements(elements.filter(e => e.id !== el.id))}
  className="absolute -top-3 -right-3 w-6 h-6 bg-rose-500 text-white rounded-full flex items-center justify-center font-bold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity text-xs dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
  >
- ×
+ Ã—
  </button>
  </div>
  ))}
@@ -106,3 +106,4 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { ArrowLeft, Play, Presentation, Image as ImageIcon, Type, PlusCircle, Monitor, HardDrive, Cpu, Radio, Mouse } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -209,3 +209,4 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
  </div>
  );
 }
+

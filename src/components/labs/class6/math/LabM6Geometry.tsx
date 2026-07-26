@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Navigation, Disc, PencilRuler } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -52,12 +52,12 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
  <input type="range" min="3" max="12" value={symmetryLines} onChange={(e) => setSymmetryLines(Number(e.target.value))} className="w-full accent-indigo-600" />
  </div>
  <div>
- <label className="block text-sm mb-1 font-medium">{t('lab.m6geometry_rotation_angle')} {rotation}°</label>
+ <label className="block text-sm mb-1 font-medium">{t('lab.m6geometry_rotation_angle')} {rotation}Â°</label>
  <input type="range" min="0" max="360" value={rotation} onChange={(e) => setRotation(Number(e.target.value))} className="w-full accent-indigo-600" />
  </div>
  <p className="text-sm p-2 rounded border border-indigo-100 dark:border-indigo-800/50">
  
- {t('lab.m6geometry_angle_between_cabins')} {(360 / symmetryLines).toFixed(1)}°
+ {t('lab.m6geometry_angle_between_cabins')} {(360 / symmetryLines).toFixed(1)}Â°
  </p>
  </div>
  </section>
@@ -76,7 +76,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
  </button>
  <div className="text-sm font-mono px-3 py-1 rounded border border-rose-200 dark:border-rose-800">
  
- {t('lab.m6geometry_angle')} {bobAngle.toFixed(1)}°
+ {t('lab.m6geometry_angle')} {bobAngle.toFixed(1)}Â°
  </div>
  </div>
  </section>
@@ -103,7 +103,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
  
  {targetAngle !== 60 && (
  <button onClick={() => setCompassStep(2.5)} disabled={compassStep < 2} className={`p-2 text-left text-sm rounded transition-colors ${compassStep >= 2.5 ? 'bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100 font-medium' : ' hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-50'}`}>
- {targetAngle === 120 ? "3b. Draw arc from C to intersect at D (120°)" : "3b. Find 120°, then bisect 60° and 120° for 90°"}
+ {targetAngle === 120 ? "3b. Draw arc from C to intersect at D (120Â°)" : "3b. Find 120Â°, then bisect 60Â° and 120Â° for 90Â°"}
  </button>
  )}
  
@@ -161,7 +161,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
 
  {/* Compass Construction Canvas */}
  <div className="flex-1 min-w-0 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 relative flex flex-col min-h-[300px]">
- <h3 className="text-sm font-bold absolute top-4 left-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m6geometry_construction_board')}{targetAngle}°)</h3>
+ <h3 className="text-sm font-bold absolute top-4 left-4 text-slate-800 dark:text-[#ffffff]">{t('lab.m6geometry_construction_board')}{targetAngle}Â°)</h3>
  <div className="flex-1 min-w-0 flex items-center justify-center mt-6">
  <svg width="100%" height="250" viewBox="-50 -200 400 250" className="overflow-visible">
  {/* Step 0: Base line */}
@@ -215,7 +215,7 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
  
  {/* Angle arc for final line */}
  <path d={`M 40 0 A 40 40 0 0 ${targetAngle > 0 ? 0 : 1} ${Math.cos(targetAngle * Math.PI / 180) * 40} ${-Math.sin(targetAngle * Math.PI / 180) * 40}`} fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-500" />
- <text x={Math.cos(targetAngle/2 * Math.PI / 180) * 55} y={-Math.sin(targetAngle/2 * Math.PI / 180) * 55} className="text-sm fill-amber-600 dark:fill-amber-400 font-bold text-center" textAnchor="middle" alignmentBaseline="middle">{targetAngle}°</text>
+ <text x={Math.cos(targetAngle/2 * Math.PI / 180) * 55} y={-Math.sin(targetAngle/2 * Math.PI / 180) * 55} className="text-sm fill-amber-600 dark:fill-amber-400 font-bold text-center" textAnchor="middle" alignmentBaseline="middle">{targetAngle}Â°</text>
  </>
  )}
 
@@ -236,3 +236,4 @@ export default function LabM6Geometry({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+﻿import { useState, type ReactNode } from 'react';
 import { ArrowLeft, Sun, Moon, Calculator, Languages } from 'lucide-react';
 import { useTheme, useLab } from '../../../../store';
 import { useTranslate } from '../../../../i18n';
@@ -105,3 +105,4 @@ export default function LabHeader({ onExit, title, titleKey, subtitle, subtitleK
     </>
   );
 }
+

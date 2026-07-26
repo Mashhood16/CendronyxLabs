@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useEffect, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../store';
@@ -29,3 +29,4 @@ export default function ProtectedRoute({ children }: { children: ReactNode }) {
   if (!user) return null;
   return <>{children}</>;
 }
+

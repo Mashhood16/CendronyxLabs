@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useParams, Link } from 'react-router-dom';
 import { formatSubject } from '../../data/labModules';
 
@@ -24,3 +24,4 @@ export default function Breadcrumbs() {
     </div>
   );
 }
+

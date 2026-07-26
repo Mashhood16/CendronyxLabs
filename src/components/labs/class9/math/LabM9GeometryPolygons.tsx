@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, Calculator, RefreshCcw, Ruler, HelpCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -198,7 +198,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
  </div>
  <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b]">
  <span className="text-slate-400 block text-xs">{t('lab.m9geometrypolygons_area_1')}</span>
- {points.length === 3 ? `${area.toFixed(2)} m²` : '-'}
+ {points.length === 3 ? `${area.toFixed(2)} mÂ²` : '-'}
  </div>
  <div className="bg-slate-50 dark:bg-[#121212] p-2 rounded border border-slate-200 dark:border-[#1c1b1b] col-span-2">
  <span className="text-slate-400 block text-xs">{t('lab.m9geometrypolygons_centroid_sprinkler')}</span>
@@ -258,3 +258,4 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
  </div>
  );
 }
+

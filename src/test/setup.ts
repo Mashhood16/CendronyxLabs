@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+﻿import '@testing-library/jest-dom';
 import { vi, afterAll } from 'vitest';
 
 // ====== Mock `idb` library for in-memory IndexedDB ======
@@ -165,3 +165,4 @@ Object.defineProperty(globalThis, 'matchMedia', {
 let consoleErrorSpy: ReturnType<typeof vi.spyOn> | null = null;
 consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 afterAll(() => consoleErrorSpy?.mockRestore());
+

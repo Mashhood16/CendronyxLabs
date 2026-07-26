@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Eye } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -36,7 +36,7 @@ export default function LabS8Periscope({ onExit }: LabProps) {
 
  {/* The Object (Apple) */}
  <div className="absolute left-10 z-20 flex flex-col items-center transition-all" style={{ top: `${10 + (objectPos * 0.4)}%` }}>
- <div className="text-4xl">🍎</div>
+ <div className="text-4xl">ðŸŽ</div>
  {showRays && <div className="absolute w-full h-full animate-ping bg-red-400/20 rounded-full dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" />}
  </div>
 
@@ -109,3 +109,4 @@ export default function LabS8Periscope({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -197,3 +197,4 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
  </div>
  );
 }
+

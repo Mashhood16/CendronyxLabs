@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Save, Palette, Type, Image as ImageIcon } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -15,7 +15,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
 
  const backgrounds = ['bg-pink-100', 'bg-indigo-100', 'bg-rose-100', 'bg-amber-100', 'bg-sky-100'];
  const images = [
- '🌸', '💐', '❤️', '💝', '🦋', '👩‍👧‍👦'
+ 'ðŸŒ¸', 'ðŸ’', 'â¤ï¸', 'ðŸ’', 'ðŸ¦‹', 'ðŸ‘©â€ðŸ‘§â€ðŸ‘¦'
  ];
 
  return (
@@ -99,3 +99,4 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle, Search, ShieldAlert, Award, Zap } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -234,3 +234,4 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

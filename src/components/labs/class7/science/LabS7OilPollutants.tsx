@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Droplets, Grid, Utensils, BarChart3 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import DataChart from '../../../widgets/DataChart';
@@ -193,3 +193,4 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { TestTube, Flame, CheckCircle, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -293,3 +293,4 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

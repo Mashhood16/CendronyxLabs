@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { Plus, Trash2, PieChart, LayoutList, CheckCircle2, BarChart3, Edit3 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -235,7 +235,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
  {validationResult && (
  <div className={`p-4 rounded-lg border text-sm ${validationResult.pass ? 'bg-green-50 border-green-200 text-green-800' : 'bg-red-50 border-red-200 text-red-800'}`}>
  <div className="flex items-start">
- <span className="mt-0.5 mr-2">{validationResult.pass ? '✅' : '❌'}</span>
+ <span className="mt-0.5 mr-2">{validationResult.pass ? 'âœ…' : 'âŒ'}</span>
  <span>{validationResult.message}</span>
  </div>
  </div>
@@ -246,3 +246,4 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

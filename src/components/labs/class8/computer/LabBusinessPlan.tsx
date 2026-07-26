@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../../../../i18n';
 import { useLab } from '../../../../store';
@@ -149,3 +149,4 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Sun, Moon } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -170,3 +170,4 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
  </div>
  );
 }
+

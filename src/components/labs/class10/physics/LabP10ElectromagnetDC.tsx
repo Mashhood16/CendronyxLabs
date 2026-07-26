@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Calculator, Activity, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -186,7 +186,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
  <div className="absolute inset-0 opacity-20 pointer-events-none flex items-center justify-center">
  <div className="grid grid-cols-5 gap-8">
  {[...Array(15)].map((_, i) => (
- <div key={i} className="text-white font-bold text-xl">✕</div> // Into the page (B field)
+ <div key={i} className="text-white font-bold text-xl">âœ•</div> // Into the page (B field)
  ))}
  </div>
  </div>
@@ -222,7 +222,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
 
  {/* Measurement HUD */}
  <div className="absolute top-16 right-4 bg-[#121212] dark:bg-[#121212]/80 backdrop-blur p-3 rounded-lg border border-[#1c1b1b] dark:border-[#1c1b1b] text-slate-300 font-mono text-sm z-20 shadow-lg">
- <div>θ: {measuredTheta.toFixed(1)}°</div>
+ <div>Î¸: {measuredTheta.toFixed(1)}Â°</div>
  </div>
 
  </div>
@@ -325,3 +325,4 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
  </div>
  );
 }
+

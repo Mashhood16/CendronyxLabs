@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type ReactElement } from 'react';
+﻿import { useState, useEffect, useRef, type ReactElement } from 'react';
 import {
  CheckCircle, XCircle, ChevronDown, ChevronRight,
  ArrowRight, Lightbulb, Sigma, Rocket, Target, Satellite,
@@ -67,7 +67,7 @@ function ForceMomentumInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
  </div>
  </div>
  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
- <p className="text-xs font-semibold text-blue-700 dark:text-blue-300">{t('lab.p9derivations_momentum_change_p_m_vf_vi')} {mass} × ({vf} − {vi}) = <strong>{deltaP} {t('lab.p9derivations_kg_m_s')}</strong></p>
+ <p className="text-xs font-semibold text-blue-700 dark:text-blue-300">{t('lab.p9derivations_momentum_change_p_m_vf_vi')} {mass} Ã— ({vf} âˆ’ {vi}) = <strong>{deltaP} {t('lab.p9derivations_kg_m_s')}</strong></p>
  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mt-1">{t('lab.p9derivations_net_force_f_p_t')} {deltaP}/{time} = <strong>{force.toFixed(1)} N</strong></p>
  </div>
  <div className="flex gap-2">
@@ -150,7 +150,7 @@ function RecoilInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void 
  <div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-800">
  <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
  
- {t('lab.p9derivations_v_g_m_b_v_b_m_g')}{bMassKg} × {bulletVel}) / {gunMass} = <strong>{recoilV.toFixed(2)} {t('lab.p9derivations_m_s')}</strong> {t('lab.p9derivations_opposite_direction')}
+ {t('lab.p9derivations_v_g_m_b_v_b_m_g')}{bMassKg} Ã— {bulletVel}) / {gunMass} = <strong>{recoilV.toFixed(2)} {t('lab.p9derivations_m_s')}</strong> {t('lab.p9derivations_opposite_direction')}
  </p>
  </div>
 
@@ -310,7 +310,7 @@ function LiquidPressureInteractive({ onAnswer }: { onAnswer: (correct: boolean) 
  <div className="bg-cyan-50 dark:bg-cyan-900/20 rounded-lg p-3 border border-cyan-200 dark:border-cyan-800">
  <p className="text-xs text-cyan-700 dark:text-cyan-300">
  
- {t('lab.p9derivations_p_gh')} {density} × 9.8 × {depth} = <strong>{pressure.toLocaleString()} Pa</strong> = <strong>{(pressure/1000).toFixed(1)} {t('lab.p9derivations_kpa')}</strong>
+ {t('lab.p9derivations_p_gh')} {density} Ã— 9.8 Ã— {depth} = <strong>{pressure.toLocaleString()} Pa</strong> = <strong>{(pressure/1000).toFixed(1)} {t('lab.p9derivations_kpa')}</strong>
  </p>
  </div>
 
@@ -354,12 +354,12 @@ function HydraulicLiftInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
  <div>
  <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_small_piston_area_m')}</label>
  <input type="range" min="0.001" max="0.1" step="0.001" value={area1} onChange={e => { setArea1(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
- <span className="text-sm font-mono text-emerald-600">{area1.toFixed(3)} m²</span>
+ <span className="text-sm font-mono text-emerald-600">{area1.toFixed(3)} mÂ²</span>
  </div>
  <div>
  <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_large_piston_area_m')}</label>
  <input type="range" min="0.05" max="2" step="0.05" value={area2} onChange={e => { setArea2(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-emerald-500" />
- <span className="text-sm font-mono text-emerald-600">{area2.toFixed(2)} m²</span>
+ <span className="text-sm font-mono text-emerald-600">{area2.toFixed(2)} mÂ²</span>
  </div>
  <div className="col-span-2">
  <label className="text-xs font-semibold text-slate-600 dark:text-slate-300">{t('lab.p9derivations_input_force_f_n')}</label>
@@ -372,14 +372,14 @@ function HydraulicLiftInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
  <div className="relative h-32 bg-slate-100 dark:bg-[#1c1b1b] rounded-lg overflow-hidden border border-slate-200 dark:border-[#2a2a2a]">
  {/* Small piston */}
  <div className="absolute bottom-4 left-[15%]">
- <div className="w-8 h-16 bg-blue-400 rounded-t-lg flex items-center justify-center text-[8px] font-bold text-white">A₁</div>
+ <div className="w-8 h-16 bg-blue-400 rounded-t-lg flex items-center justify-center text-[8px] font-bold text-white">Aâ‚</div>
  <div className="w-8 h-4 bg-blue-600 rounded-b-lg" />
  </div>
  {/* Fluid */}
  <div className="absolute bottom-2 left-[20%] right-[20%] h-4 bg-cyan-300/50 dark:bg-cyan-700/30 rounded" />
  {/* Large piston */}
  <div className="absolute bottom-4 right-[15%]">
- <div className="w-14 h-16 bg-emerald-400 rounded-t-lg flex items-center justify-center text-[8px] font-bold text-white">A₂</div>
+ <div className="w-14 h-16 bg-emerald-400 rounded-t-lg flex items-center justify-center text-[8px] font-bold text-white">Aâ‚‚</div>
  <div className="w-14 h-4 bg-emerald-600 rounded-b-lg" />
  </div>
  {/* Arrow on small piston */}
@@ -392,8 +392,8 @@ function HydraulicLiftInteractive({ onAnswer }: { onAnswer: (correct: boolean) =
  <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
  <p className="text-xs text-emerald-700 dark:text-emerald-300">
  
- {t('lab.p9derivations_f_a_a_f')}{area2.toFixed(2)}/{area1.toFixed(3)}) × {force1} = <strong>{force2.toFixed(0)} N</strong><br />
- <strong>{t('lab.p9derivations_mechanical_advantage_1')}</strong> {mechAdv.toFixed(0)}×
+ {t('lab.p9derivations_f_a_a_f')}{area2.toFixed(2)}/{area1.toFixed(3)}) Ã— {force1} = <strong>{force2.toFixed(0)} N</strong><br />
+ <strong>{t('lab.p9derivations_mechanical_advantage_1')}</strong> {mechAdv.toFixed(0)}Ã—
  </p>
  </div>
 
@@ -467,7 +467,7 @@ function KEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) {
  <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-3 border border-yellow-200 dark:border-yellow-800">
  <p className="text-xs text-yellow-700 dark:text-yellow-300">
  
- {t('lab.p9derivations_e_k_mv')} {mass} × {vel}² = ½ × {mass} × {vel * vel} = <strong>{ke.toFixed(0)} J</strong>
+ {t('lab.p9derivations_e_k_mv')} {mass} Ã— {vel}Â² = Â½ Ã— {mass} Ã— {vel * vel} = <strong>{ke.toFixed(0)} J</strong>
  </p>
  </div>
 
@@ -531,8 +531,8 @@ function GPEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) 
  {/* Height arrow */}
  <div className="absolute left-[15%] bottom-4 top-8 w-0.5 bg-slate-400">
  <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-[8px] text-slate-500 font-mono">{height}m</div>
- <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[8px]">▲</div>
- <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[8px]">▼</div>
+ <div className="absolute top-0 left-1/2 -translate-x-1/2 text-[8px]">â–²</div>
+ <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[8px]">â–¼</div>
  </div>
  {/* Energy bar */}
  <div className="absolute top-2 right-2 w-16 h-4 bg-slate-200 dark:bg-[#121212] rounded-full overflow-hidden">
@@ -543,7 +543,7 @@ function GPEInteractive({ onAnswer }: { onAnswer: (correct: boolean) => void }) 
  <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-3 border border-purple-200 dark:border-purple-800">
  <p className="text-xs text-purple-700 dark:text-purple-300">
  
- {t('lab.p9derivations_e_p_mgh')} {mass} × 9.8 × {height} = <strong>{gpe.toFixed(0)} J</strong>
+ {t('lab.p9derivations_e_p_mgh')} {mass} Ã— 9.8 Ã— {height} = <strong>{gpe.toFixed(0)} J</strong>
  </p>
  </div>
 
@@ -570,14 +570,14 @@ const DERIVATIONS: DerivationModule[] = [
  id: 'force-momentum',
  icon: Target,
  title: 'Force & Change in Momentum',
- formula: 'F = Δp / Δt',
+ formula: 'F = Î”p / Î”t',
  formulaDesc: 'The net force on an object equals the rate of change of its linear momentum.',
  color: 'blue',
  steps: [
- { label: "Newton's Second Law", content: "🚴 You're cycling at 10 m/s down a neighborhood street when a child suddenly runs out chasing a ball. You slam the brakes. Newton's 2nd law says F = ma — the brake pads squeeze the rim, applying a force that decelerates you. This is the force that will save the day." },
- { label: 'Express Acceleration', content: 'Your speed drops from 10 m/s to 0 in just 2 seconds. That rate of change is acceleration: a = (vf − vi)/Δt = (0 − 10)/2 = −5 m/s². Your body lurches forward — that\'s inertia fighting the change. The negative sign? You\'re slowing down, which means the force is backward.' },
- { label: 'Substitute into F = ma', content: 'You + your bike = 80 kg. F = m × (vf − vi)/Δt = 80 × (0 − 10)/2 = −400 N. Distribute the mass: F = (80×0 − 80×10)/2 = (0 − 800)/2. Your brakes are applying 400 N of force — about the weight of a small adult pushing against your motion!' },
- { label: 'Introduce Momentum', content: 'Momentum p = mv captures your "quantity of motion." You started with p = 80 × 10 = 800 kg·m/s. Over 2 seconds, that momentum drops to zero. So F = Δp/Δt = (0 − 800)/2 = −400 N. Force is simply how fast momentum changes. This is why airbags save lives — they increase impact time Δt, which reduces the force F!' },
+ { label: "Newton's Second Law", content: "ðŸš´ You're cycling at 10 m/s down a neighborhood street when a child suddenly runs out chasing a ball. You slam the brakes. Newton's 2nd law says F = ma â€” the brake pads squeeze the rim, applying a force that decelerates you. This is the force that will save the day." },
+ { label: 'Express Acceleration', content: 'Your speed drops from 10 m/s to 0 in just 2 seconds. That rate of change is acceleration: a = (vf âˆ’ vi)/Î”t = (0 âˆ’ 10)/2 = âˆ’5 m/sÂ². Your body lurches forward â€” that\'s inertia fighting the change. The negative sign? You\'re slowing down, which means the force is backward.' },
+ { label: 'Substitute into F = ma', content: 'You + your bike = 80 kg. F = m Ã— (vf âˆ’ vi)/Î”t = 80 Ã— (0 âˆ’ 10)/2 = âˆ’400 N. Distribute the mass: F = (80Ã—0 âˆ’ 80Ã—10)/2 = (0 âˆ’ 800)/2. Your brakes are applying 400 N of force â€” about the weight of a small adult pushing against your motion!' },
+ { label: 'Introduce Momentum', content: 'Momentum p = mv captures your "quantity of motion." You started with p = 80 Ã— 10 = 800 kgÂ·m/s. Over 2 seconds, that momentum drops to zero. So F = Î”p/Î”t = (0 âˆ’ 800)/2 = âˆ’400 N. Force is simply how fast momentum changes. This is why airbags save lives â€” they increase impact time Î”t, which reduces the force F!' },
  ],
  interactive: ForceMomentumInteractive,
  },
@@ -585,14 +585,14 @@ const DERIVATIONS: DerivationModule[] = [
  id: 'recoil',
  icon: Rocket,
  title: 'Recoil Velocity of a Gun',
- formula: 'v_g = −(m_b · v_b) / m_g',
+ formula: 'v_g = âˆ’(m_b Â· v_b) / m_g',
  formulaDesc: 'Conservation of momentum gives the recoil velocity of a gun when a bullet is fired.',
  color: 'amber',
  steps: [
- { label: 'Conservation of Momentum', content: "🎯 You're at a shooting range, a 4 kg rifle resting on your shoulder. You breathe, aim at the target, and squeeze the trigger. The gun + bullet form an \"isolated system\" — all the momentum before firing must equal all the momentum after." },
- { label: 'Initial Momentum', content: 'Before firing, the rifle and the 10 g bullet are both completely still in your hands. Total initial momentum = 0. Everything is quiet, steady — zero motion, zero momentum. Then the firing pin strikes.' },
- { label: 'Final Momentum', content: 'BANG! The bullet rockets forward at 400 m/s. Its momentum: 0.01 × 400 = 4 kg·m/s forward. By conservation, the gun must have −4 kg·m/s momentum backward into your shoulder: m_b·v_b + m_g·v_g = 0.' },
- { label: 'Solve for v_g', content: 'Solving: v_g = −(m_b·v_b)/m_g = −(0.01 × 400)/4 = −1 m/s. The negative sign? The gun kicks backward into your shoulder at 1 m/s. A heavier gun recoils less — that\'s why competition shooters use massive rifles. Rockets work the same way: exhaust shoots down, the rocket goes up!' },
+ { label: 'Conservation of Momentum', content: "ðŸŽ¯ You're at a shooting range, a 4 kg rifle resting on your shoulder. You breathe, aim at the target, and squeeze the trigger. The gun + bullet form an \"isolated system\" â€” all the momentum before firing must equal all the momentum after." },
+ { label: 'Initial Momentum', content: 'Before firing, the rifle and the 10 g bullet are both completely still in your hands. Total initial momentum = 0. Everything is quiet, steady â€” zero motion, zero momentum. Then the firing pin strikes.' },
+ { label: 'Final Momentum', content: 'BANG! The bullet rockets forward at 400 m/s. Its momentum: 0.01 Ã— 400 = 4 kgÂ·m/s forward. By conservation, the gun must have âˆ’4 kgÂ·m/s momentum backward into your shoulder: m_bÂ·v_b + m_gÂ·v_g = 0.' },
+ { label: 'Solve for v_g', content: 'Solving: v_g = âˆ’(m_bÂ·v_b)/m_g = âˆ’(0.01 Ã— 400)/4 = âˆ’1 m/s. The negative sign? The gun kicks backward into your shoulder at 1 m/s. A heavier gun recoils less â€” that\'s why competition shooters use massive rifles. Rockets work the same way: exhaust shoots down, the rocket goes up!' },
  ],
  interactive: RecoilInteractive,
  },
@@ -600,59 +600,59 @@ const DERIVATIONS: DerivationModule[] = [
  id: 'orbital-speed',
  icon: Satellite,
  title: 'Orbital Speed of a Satellite',
- formula: 'v = 2πr / T',
+ formula: 'v = 2Ï€r / T',
  formulaDesc: 'The average speed of a satellite in a circular orbit equals circumference divided by orbital period.',
  color: 'indigo',
  steps: [
- { label: 'Average Speed Formula', content: "🛰️ Imagine throwing a baseball horizontally from the top of a 100 km tall mountain. It arcs downward and lands far away. The further you want it to go, the faster you must throw. Average speed = distance / time — this simple idea is the seed of orbital mechanics." },
- { label: 'Distance in One Orbit', content: 'Now imagine throwing at 7.8 km/s — so fast that the Earth curves away beneath the ball at the same rate it falls! The ball never hits the ground — it orbits. In one full orbit, it travels the circumference of a circle: d = 2πr, where r is the distance from Earth\'s center.' },
- { label: 'Time for One Orbit', content: 'At 408 km above Earth (the ISS altitude), one complete orbit takes T = 92.7 minutes — that\'s the orbital period. The ISS crew sees 16 sunrises and sunsets every single day because they orbit so fast.' },
- { label: 'Final Formula', content: 'v = 2πr/T = 2π × 6,779,000 m / 5,562 s ≈ 7,660 m/s — over 27,000 km/h! Higher orbits are slower: the Moon at 384,000 km orbits at just 1 km/s. The higher you go, the more leisurely your journey around Earth.' },
+ { label: 'Average Speed Formula', content: "ðŸ›°ï¸ Imagine throwing a baseball horizontally from the top of a 100 km tall mountain. It arcs downward and lands far away. The further you want it to go, the faster you must throw. Average speed = distance / time â€” this simple idea is the seed of orbital mechanics." },
+ { label: 'Distance in One Orbit', content: 'Now imagine throwing at 7.8 km/s â€” so fast that the Earth curves away beneath the ball at the same rate it falls! The ball never hits the ground â€” it orbits. In one full orbit, it travels the circumference of a circle: d = 2Ï€r, where r is the distance from Earth\'s center.' },
+ { label: 'Time for One Orbit', content: 'At 408 km above Earth (the ISS altitude), one complete orbit takes T = 92.7 minutes â€” that\'s the orbital period. The ISS crew sees 16 sunrises and sunsets every single day because they orbit so fast.' },
+ { label: 'Final Formula', content: 'v = 2Ï€r/T = 2Ï€ Ã— 6,779,000 m / 5,562 s â‰ˆ 7,660 m/s â€” over 27,000 km/h! Higher orbits are slower: the Moon at 384,000 km orbits at just 1 km/s. The higher you go, the more leisurely your journey around Earth.' },
  ],
  interactive: OrbitalSpeedInteractive,
  },
  {
  id: 'liquid-pressure',
  icon: Waves,
- title: 'Liquid Pressure (P = ρgh)',
- formula: 'P = ρgh',
+ title: 'Liquid Pressure (P = Ïgh)',
+ formula: 'P = Ïgh',
  formulaDesc: 'Pressure in a liquid depends on its density, gravitational acceleration, and depth.',
  color: 'cyan',
  steps: [
- { label: 'Force on Base Area', content: "🏊 You jump off a boat into the ocean and dive down. Your ears feel an uncomfortable pressure building. Pressure = force / area — the column of water above you has weight, and that weight pushes on every square millimeter of your body." },
- { label: 'Mass in Terms of Density', content: 'The force is the weight of the water: F = mg. But m = ρV (density × volume). Seawater density is 1,025 kg/m³ — it\'s heavier than fresh water, which is why floating in the ocean is easier! F = ρ × V × g.' },
- { label: 'Volume of Column', content: 'The volume of water above you = area of your body × depth: V = A × h. So F = ρ × A × h × g. Notice the area A appears — a wider person has more water weight above them. But something magical happens next...' },
- { label: 'Substitute and Simplify', content: 'P = F/A = (ρ × A × h × g)/A = ρgh. The area CANCELS! Pressure at a given depth is the same for everyone regardless of body shape. At just 10 m deep, pressure doubles to 2 atmospheres. Free divers train for years to handle this — the pressure crushes air spaces like your lungs and sinuses.' },
+ { label: 'Force on Base Area', content: "ðŸŠ You jump off a boat into the ocean and dive down. Your ears feel an uncomfortable pressure building. Pressure = force / area â€” the column of water above you has weight, and that weight pushes on every square millimeter of your body." },
+ { label: 'Mass in Terms of Density', content: 'The force is the weight of the water: F = mg. But m = ÏV (density Ã— volume). Seawater density is 1,025 kg/mÂ³ â€” it\'s heavier than fresh water, which is why floating in the ocean is easier! F = Ï Ã— V Ã— g.' },
+ { label: 'Volume of Column', content: 'The volume of water above you = area of your body Ã— depth: V = A Ã— h. So F = Ï Ã— A Ã— h Ã— g. Notice the area A appears â€” a wider person has more water weight above them. But something magical happens next...' },
+ { label: 'Substitute and Simplify', content: 'P = F/A = (Ï Ã— A Ã— h Ã— g)/A = Ïgh. The area CANCELS! Pressure at a given depth is the same for everyone regardless of body shape. At just 10 m deep, pressure doubles to 2 atmospheres. Free divers train for years to handle this â€” the pressure crushes air spaces like your lungs and sinuses.' },
  ],
  interactive: LiquidPressureInteractive,
  },
  {
  id: 'hydraulic-lift',
  icon: Flower2,
- title: 'Hydraulic Lift (Pascal’s Principle)',
- formula: 'F₂ = (A₂/A₁) × F₁',
- formulaDesc: 'Pascal’s principle: pressure applied to an enclosed fluid is transmitted equally throughout.',
+ title: 'Hydraulic Lift (Pascalâ€™s Principle)',
+ formula: 'Fâ‚‚ = (Aâ‚‚/Aâ‚) Ã— Fâ‚',
+ formulaDesc: 'Pascalâ€™s principle: pressure applied to an enclosed fluid is transmitted equally throughout.',
  color: 'emerald',
  steps: [
- { label: 'Pressure on Small Piston', content: "🔧 You're a mechanic with a 1500 kg car that needs lifting. You place a hydraulic jack under the frame and pump the handle. Pushing the small piston (area = 0.005 m²) with just 240 N of force creates P₁ = 240/0.005 = 48,000 Pa — like pressing a pen tip into your palm." },
- { label: 'Pressure on Large Piston', content: 'Under the car, there\'s a large piston (area = 0.25 m²) that will do the heavy lifting. The pressure acting on it is P₂ = F₂/A₂. We don\'t know F₂ yet, but that\'s what we\'re solving for.' },
- { label: 'Pascal’s Principle', content: 'Blaise Pascal discovered something amazing: the 48,000 Pa you created at the pump handle is transmitted through the hydraulic fluid WITHOUT LOSING ANY STRENGTH. P₂ = P₁ = 48,000 Pa. The fluid carries your force invisibly to where it\'s needed.' },
- { label: 'Solve for Output Force', content: 'F₂/A₂ = F₁/A₁, so F₂ = (A₂/A₁) × F₁ = (0.25/0.005) × 240 = 12,000 N! Your puny 240 N push lifts a full car. Mechanical advantage = 50×. This same principle stops your car when you press the brake pedal, controls massive excavators, and even powers dentist chairs!' },
+ { label: 'Pressure on Small Piston', content: "ðŸ”§ You're a mechanic with a 1500 kg car that needs lifting. You place a hydraulic jack under the frame and pump the handle. Pushing the small piston (area = 0.005 mÂ²) with just 240 N of force creates Pâ‚ = 240/0.005 = 48,000 Pa â€” like pressing a pen tip into your palm." },
+ { label: 'Pressure on Large Piston', content: 'Under the car, there\'s a large piston (area = 0.25 mÂ²) that will do the heavy lifting. The pressure acting on it is Pâ‚‚ = Fâ‚‚/Aâ‚‚. We don\'t know Fâ‚‚ yet, but that\'s what we\'re solving for.' },
+ { label: 'Pascalâ€™s Principle', content: 'Blaise Pascal discovered something amazing: the 48,000 Pa you created at the pump handle is transmitted through the hydraulic fluid WITHOUT LOSING ANY STRENGTH. Pâ‚‚ = Pâ‚ = 48,000 Pa. The fluid carries your force invisibly to where it\'s needed.' },
+ { label: 'Solve for Output Force', content: 'Fâ‚‚/Aâ‚‚ = Fâ‚/Aâ‚, so Fâ‚‚ = (Aâ‚‚/Aâ‚) Ã— Fâ‚ = (0.25/0.005) Ã— 240 = 12,000 N! Your puny 240 N push lifts a full car. Mechanical advantage = 50Ã—. This same principle stops your car when you press the brake pedal, controls massive excavators, and even powers dentist chairs!' },
  ],
  interactive: HydraulicLiftInteractive,
  },
  {
  id: 'kinetic-energy',
  icon: Zap,
- title: 'Kinetic Energy (E_k = ½mv²)',
- formula: 'E_k = ½mv²',
+ title: 'Kinetic Energy (E_k = Â½mvÂ²)',
+ formula: 'E_k = Â½mvÂ²',
  formulaDesc: 'The energy of a moving object depends on its mass and the square of its velocity.',
  color: 'yellow',
  steps: [
- { label: 'Work-Energy Theorem', content: "🛹 You're at the top of a massive half-pipe, heart pounding. You drop in, and gravity takes over. The work gravity does on you transforms into your kinetic energy: E_k = Work = F × d. The steeper the drop, the more work gravity does." },
- { label: 'Substitute F = ma', content: 'Gravity pulls you with force F = mg. The distance d you travel relates to your speed. Starting from rest, your average speed down the ramp is v_avg = v/2. So d = v_avg × t = (v/2) × t. E_k = (ma)(d) = m × a × (v/2 × t).' },
- { label: 'Substitute Acceleration', content: 'Your acceleration down the ramp is a = v/t (how quickly you reach speed v in time t). Plug it in: E_k = m × (v/t) × (v/2 × t). The t appears in the numerator AND denominator. Something beautiful is about to happen...' },
- { label: 'Final Formula', content: 'The time cancels! E_k = m × v × v/2 = ½mv². Doubling your speed means QUADRUPLING your energy. This is why car crashes at 100 km/h are 4× as destructive as at 50 km/h, and why dropping from twice the height on a skateboard doesn\'t just hurt twice as much — it hurts four times as much!' },
+ { label: 'Work-Energy Theorem', content: "ðŸ›¹ You're at the top of a massive half-pipe, heart pounding. You drop in, and gravity takes over. The work gravity does on you transforms into your kinetic energy: E_k = Work = F Ã— d. The steeper the drop, the more work gravity does." },
+ { label: 'Substitute F = ma', content: 'Gravity pulls you with force F = mg. The distance d you travel relates to your speed. Starting from rest, your average speed down the ramp is v_avg = v/2. So d = v_avg Ã— t = (v/2) Ã— t. E_k = (ma)(d) = m Ã— a Ã— (v/2 Ã— t).' },
+ { label: 'Substitute Acceleration', content: 'Your acceleration down the ramp is a = v/t (how quickly you reach speed v in time t). Plug it in: E_k = m Ã— (v/t) Ã— (v/2 Ã— t). The t appears in the numerator AND denominator. Something beautiful is about to happen...' },
+ { label: 'Final Formula', content: 'The time cancels! E_k = m Ã— v Ã— v/2 = Â½mvÂ². Doubling your speed means QUADRUPLING your energy. This is why car crashes at 100 km/h are 4Ã— as destructive as at 50 km/h, and why dropping from twice the height on a skateboard doesn\'t just hurt twice as much â€” it hurts four times as much!' },
  ],
  interactive: KEInteractive,
  },
@@ -664,10 +664,10 @@ const DERIVATIONS: DerivationModule[] = [
  formulaDesc: 'The gravitational potential energy of an object depends on its mass, height, and gravity.',
  color: 'purple',
  steps: [
- { label: 'Work Done Lifting', content: "🎢 You're strapped into a roller coaster car, clicking up the first massive hill. The chain lift mechanism groans as it pulls you higher. Every meter you rise stores energy. E_p = Work = F × S — the motor does work against gravity to lift you." },
- { label: 'Force Required', content: 'The force needed to lift the 500 kg car (plus you!) at constant speed equals its weight: F = mg. With two passengers, total mass ≈ 700 kg, so F = 700 × 9.81 = 6,867 N — about the weight of a small car.' },
- { label: 'Distance Moved', content: 'The first hill towers 45 meters above the ground — that\'s the vertical height S = h. The motor\'s work: W = 6,867 × 45 = 309,015 J. Every joule is stored as gravitational potential energy, waiting to be released.' },
- { label: 'Final Formula', content: 'E_p = mgh = 700 × 9.81 × 45 = 309,015 J — enough energy to light a 60W bulb for 85 minutes! At the crest, you pause for a split second... then you plunge. That stored PE converts into kinetic energy as you race down, powering you through loops and corkscrews. The higher the first hill, the more energy for the entire ride!' },
+ { label: 'Work Done Lifting', content: "ðŸŽ¢ You're strapped into a roller coaster car, clicking up the first massive hill. The chain lift mechanism groans as it pulls you higher. Every meter you rise stores energy. E_p = Work = F Ã— S â€” the motor does work against gravity to lift you." },
+ { label: 'Force Required', content: 'The force needed to lift the 500 kg car (plus you!) at constant speed equals its weight: F = mg. With two passengers, total mass â‰ˆ 700 kg, so F = 700 Ã— 9.81 = 6,867 N â€” about the weight of a small car.' },
+ { label: 'Distance Moved', content: 'The first hill towers 45 meters above the ground â€” that\'s the vertical height S = h. The motor\'s work: W = 6,867 Ã— 45 = 309,015 J. Every joule is stored as gravitational potential energy, waiting to be released.' },
+ { label: 'Final Formula', content: 'E_p = mgh = 700 Ã— 9.81 Ã— 45 = 309,015 J â€” enough energy to light a 60W bulb for 85 minutes! At the crest, you pause for a split second... then you plunge. That stored PE converts into kinetic energy as you race down, powering you through loops and corkscrews. The higher the first hill, the more energy for the entire ride!' },
  ],
  interactive: GPEInteractive,
  },
@@ -838,3 +838,4 @@ export default function LabP9Derivations() {
  </div>
  );
 }
+

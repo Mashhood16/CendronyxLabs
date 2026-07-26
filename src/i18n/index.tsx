@@ -1,11 +1,11 @@
-import React, { ReactNode, useState } from 'react';
+﻿import React, { ReactNode, useState } from 'react';
 import i18n from 'i18next';
 import { initReactI18next, I18nextProvider } from 'react-i18next';
 import enTranslation from '../locales/en/translation.json';
 import urTranslation from '../locales/roman-urdu/translation.json';
 import type { Language } from './types';
 
-// Direct translation maps — bypass i18next's broken language resolution
+// Direct translation maps â€” bypass i18next's broken language resolution
 // i18next v26 has issues with hyphenated language codes like 'roman-urdu'
 // (it treats 'roman' as the base language and 'urdu' as a region, causing fallback to 'en')
 const EN_MAP = enTranslation as Record<string, string>;
@@ -82,4 +82,5 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 export function useTranslate() {
   return React.useContext(LanguageContext);
 }
+
 

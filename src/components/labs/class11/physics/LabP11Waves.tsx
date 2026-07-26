@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Activity, CheckCircle2, XCircle, Save, Radio, Waves } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -278,3 +278,4 @@ export default function LabP11Waves({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

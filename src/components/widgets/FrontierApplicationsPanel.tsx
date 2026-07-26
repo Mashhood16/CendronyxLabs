@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState } from 'react';
 import { Atom, Leaf, Cpu, ChevronDown, ChevronRight, ExternalLink, FlaskConical, Crosshair } from 'lucide-react';
 
@@ -150,3 +150,4 @@ export default function FrontierApplicationsPanel({ topics, defaultExpanded = fa
     </div>
   );
 }
+

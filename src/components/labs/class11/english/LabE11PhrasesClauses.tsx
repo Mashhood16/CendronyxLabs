@@ -1,4 +1,4 @@
-import { useState, MouseEvent } from 'react';
+﻿import { useState, MouseEvent } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, RefreshCw, Layers } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -288,3 +288,4 @@ export default function LabE11PhrasesClauses({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

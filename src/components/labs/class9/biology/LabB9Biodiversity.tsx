@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { CheckCircle, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -11,18 +11,18 @@ interface Organism {
 }
 
 const ALL_ORGANISMS: Organism[] = [
- { id: '1', name: 'Bat', emoji: '🦇', correctClass: 'Mammal' },
- { id: '2', name: 'Penguin', emoji: '🐧', correctClass: 'Bird' },
- { id: '3', name: 'Turtle', emoji: '🐢', correctClass: 'Reptile' },
- { id: '4', name: 'Frog', emoji: '🐸', correctClass: 'Amphibian' },
- { id: '5', name: 'Shark', emoji: '🦈', correctClass: 'Fish' },
- { id: '6', name: 'Butterfly', emoji: '🦋', correctClass: 'Insect' },
- { id: '7', name: 'Whale', emoji: '🐋', correctClass: 'Mammal' },
- { id: '8', name: 'Snake', emoji: '🐍', correctClass: 'Reptile' },
- { id: '9', name: 'Owl', emoji: '🦉', correctClass: 'Bird' },
- { id: '10', name: 'Salmon', emoji: '🐟', correctClass: 'Fish' },
- { id: '11', name: 'Ant', emoji: '🐜', correctClass: 'Insect' },
- { id: '12', name: 'Salamander', emoji: '🦎', correctClass: 'Amphibian' },
+ { id: '1', name: 'Bat', emoji: 'ðŸ¦‡', correctClass: 'Mammal' },
+ { id: '2', name: 'Penguin', emoji: 'ðŸ§', correctClass: 'Bird' },
+ { id: '3', name: 'Turtle', emoji: 'ðŸ¢', correctClass: 'Reptile' },
+ { id: '4', name: 'Frog', emoji: 'ðŸ¸', correctClass: 'Amphibian' },
+ { id: '5', name: 'Shark', emoji: 'ðŸ¦ˆ', correctClass: 'Fish' },
+ { id: '6', name: 'Butterfly', emoji: 'ðŸ¦‹', correctClass: 'Insect' },
+ { id: '7', name: 'Whale', emoji: 'ðŸ‹', correctClass: 'Mammal' },
+ { id: '8', name: 'Snake', emoji: 'ðŸ', correctClass: 'Reptile' },
+ { id: '9', name: 'Owl', emoji: 'ðŸ¦‰', correctClass: 'Bird' },
+ { id: '10', name: 'Salmon', emoji: 'ðŸŸ', correctClass: 'Fish' },
+ { id: '11', name: 'Ant', emoji: 'ðŸœ', correctClass: 'Insect' },
+ { id: '12', name: 'Salamander', emoji: 'ðŸ¦Ž', correctClass: 'Amphibian' },
 ];
 
 const BUCKETS = ['Mammal', 'Bird', 'Reptile', 'Amphibian', 'Fish', 'Insect'];
@@ -233,8 +233,8 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
  <p className="font-bold text-emerald-800">{t('lab.b9biodiversity_results')}</p>
  <ul className="text-sm space-y-1 mt-2">
  <li>{t('lab.b9biodiversity_sorting_accuracy')} {correctSorting}/12</li>
- <li>{t('lab.b9biodiversity_question_1')} {q1 === 'Butterfly' ? '✅ Correct' : '❌ Incorrect (Insects are invertebrates)'}</li>
- <li>{t('lab.b9biodiversity_question_2')} {q2 === 'lungs' ? '✅ Correct' : '❌ Incorrect'}</li>
+ <li>{t('lab.b9biodiversity_question_1')} {q1 === 'Butterfly' ? 'âœ… Correct' : 'âŒ Incorrect (Insects are invertebrates)'}</li>
+ <li>{t('lab.b9biodiversity_question_2')} {q2 === 'lungs' ? 'âœ… Correct' : 'âŒ Incorrect'}</li>
  </ul>
  </div>
  )}
@@ -244,3 +244,4 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
  </div>
  );
 }
+

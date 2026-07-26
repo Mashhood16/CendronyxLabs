@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle, XCircle, Activity, Brain } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -232,3 +232,4 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

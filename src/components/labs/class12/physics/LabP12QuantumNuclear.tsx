@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Activity, AlertTriangle, Zap, ThermometerSun, Shield, GraduationCap } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -57,14 +57,14 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  const checkPet = () => {
  const v = parseFloat(petAns);
  if (v >= 1.02 && v <= 1.03) setPetFeedback('Correct! 1.022 MeV');
- else setPetFeedback('Incorrect. Use E = 2mc², convert to MeV (1 eV = 1.6e-19 J).');
+ else setPetFeedback('Incorrect. Use E = 2mcÂ², convert to MeV (1 eV = 1.6e-19 J).');
  };
 
  const checkReactor = () => {
  const v = parseFloat(reactorAns);
  // 1 GW = 1e9 J/s. m = E/c^2 = 1e9 / 9e16 = 1.11e-8 kg
  if (v >= 1.1 && v <= 1.12) setReactorFeedback('Correct! ~1.11e-8 kg/s');
- else setReactorFeedback('Incorrect. Use m = E/c².');
+ else setReactorFeedback('Incorrect. Use m = E/cÂ².');
  };
 
  const frontierTopics: FrontierTopic[] = [
@@ -72,11 +72,11 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  id: 'quantum-comp',
  icon: 'quantum',
  title: 'Quantum Computing & Nuclear Physics',
- summary: 'Quantum computers use principles from nuclear and quantum physics — superposition, entanglement, and tunneling — to perform calculations that are impossible for classical computers. The same E = hc/λ and E = mc² equations that govern nuclear reactions also set fundamental limits on quantum computing hardware.',
- connectionToLab: 'The PET scan detectors in this lab use scintillation crystals that convert gamma-ray photons into electrical signals — a process governed by the photoelectric effect (E = hc/λ). Quantum computing research is exploring similar scintillator materials for qubit readout.',
+ summary: 'Quantum computers use principles from nuclear and quantum physics â€” superposition, entanglement, and tunneling â€” to perform calculations that are impossible for classical computers. The same E = hc/Î» and E = mcÂ² equations that govern nuclear reactions also set fundamental limits on quantum computing hardware.',
+ connectionToLab: 'The PET scan detectors in this lab use scintillation crystals that convert gamma-ray photons into electrical signals â€” a process governed by the photoelectric effect (E = hc/Î»). Quantum computing research is exploring similar scintillator materials for qubit readout.',
  currentResearch: 'Researchers at CERN are exploring how nuclear physics detectors can be adapted for quantum computing. In 2024, a team used a nuclear reactor\'s neutron flux to demonstrate the first nuclear-assisted quantum error correction protocol.',
  careerPath: 'Quantum Engineer, Nuclear MedTech Researcher, Particle Physics Data Scientist',
- keyConcept: 'Quantum tunneling in nuclear fusion — the sun runs on protons quantum-tunneling through the Coulomb barrier, a phenomenon that quantum computers may help us harness for clean energy.'
+ keyConcept: 'Quantum tunneling in nuclear fusion â€” the sun runs on protons quantum-tunneling through the Coulomb barrier, a phenomenon that quantum computers may help us harness for clean energy.'
  },
  {
  id: 'nanotech',
@@ -84,9 +84,9 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  title: 'Nanomaterials for Radiation Detection',
  summary: 'Nanotechnology is revolutionizing radiation detection. Perovskite nanocrystals and quantum dots can detect individual gamma photons at room temperature, potentially replacing bulky traditional scintillators used in PET scans and nuclear reactors.',
  connectionToLab: 'The reactor control panel in this lab simulates real-time temperature and power monitoring. In real reactors, nano-scale thermocouples and radiation-hardened nanosensors provide distributed sensing that improves safety margins.',
- currentResearch: 'MIT and KAIST are developing graphene-based radiation sensors that are 100x more sensitive than traditional Geiger-Müller tubes. These could be deployed in swarms across nuclear facilities for real-time 3D radiation mapping.',
+ currentResearch: 'MIT and KAIST are developing graphene-based radiation sensors that are 100x more sensitive than traditional Geiger-MÃ¼ller tubes. These could be deployed in swarms across nuclear facilities for real-time 3D radiation mapping.',
  careerPath: 'Nanomaterials Scientist, Radiation Detection Engineer, Nuclear Safety Technologist',
- keyConcept: 'Quantum dots — semiconductor nanoparticles that emit light at specific wavelengths when struck by radiation. By tuning their size (quantum confinement), they can be engineered to detect specific photon energies.'
+ keyConcept: 'Quantum dots â€” semiconductor nanoparticles that emit light at specific wavelengths when struck by radiation. By tuning their size (quantum confinement), they can be engineered to detect specific photon energies.'
  }
  ];
 
@@ -133,32 +133,32 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  {config.showDerivations && (
  <DeepDivePanel 
  derivation={{
- title: 'Why ΔE = hc/λ? — Photon Energy from Quantum Mechanics',
- question: 'Why is the energy of a photon inversely proportional to its wavelength? Where does the formula E = hc/λ actually come from?',
+ title: 'Why Î”E = hc/Î»? â€” Photon Energy from Quantum Mechanics',
+ question: 'Why is the energy of a photon inversely proportional to its wavelength? Where does the formula E = hc/Î» actually come from?',
  steps: [
  {
  label: 'Start with Planck\'s Quantum Hypothesis',
- latex: 'E = hf\n\nWhere:\nE = energy of a single quantum (photon)\nh = Planck\'s constant = 6.626 × 10⁻³⁴ J·s\nf = frequency of the electromagnetic radiation',
- explanation: 'In 1900, Max Planck proposed that energy is quantized — it can only be emitted or absorbed in discrete packets called "quanta." The energy of each quantum is proportional to the frequency of the radiation, with h as the fundamental constant of proportionality.'
+ latex: 'E = hf\n\nWhere:\nE = energy of a single quantum (photon)\nh = Planck\'s constant = 6.626 Ã— 10â»Â³â´ JÂ·s\nf = frequency of the electromagnetic radiation',
+ explanation: 'In 1900, Max Planck proposed that energy is quantized â€” it can only be emitted or absorbed in discrete packets called "quanta." The energy of each quantum is proportional to the frequency of the radiation, with h as the fundamental constant of proportionality.'
  },
  {
- label: 'Use the wave equation: c = fλ',
- latex: 'c = f × λ\n\nRearranged: f = c / λ\n\nWhere:\nc = speed of light in vacuum = 3.0 × 10⁸ m/s\nλ = wavelength of the photon',
- explanation: 'All electromagnetic radiation travels at the speed of light c. The fundamental wave equation tells us that frequency and wavelength are inversely related — a shorter wavelength means a higher frequency, and vice versa.'
+ label: 'Use the wave equation: c = fÎ»',
+ latex: 'c = f Ã— Î»\n\nRearranged: f = c / Î»\n\nWhere:\nc = speed of light in vacuum = 3.0 Ã— 10â¸ m/s\nÎ» = wavelength of the photon',
+ explanation: 'All electromagnetic radiation travels at the speed of light c. The fundamental wave equation tells us that frequency and wavelength are inversely related â€” a shorter wavelength means a higher frequency, and vice versa.'
  },
  {
  label: 'Substitute f into E = hf',
- latex: 'E = h × f\nE = h × (c / λ)\n\nTherefore:\nE = hc / λ\n\nOr equivalently:\nE = hc × (1/λ)',
- explanation: 'By substituting f = c/λ into Planck\'s equation, we derive the classic formula. This shows that photon energy is inversely proportional to wavelength — blue light (short λ) carries more energy per photon than red light (long λ).'
+ latex: 'E = h Ã— f\nE = h Ã— (c / Î»)\n\nTherefore:\nE = hc / Î»\n\nOr equivalently:\nE = hc Ã— (1/Î»)',
+ explanation: 'By substituting f = c/Î» into Planck\'s equation, we derive the classic formula. This shows that photon energy is inversely proportional to wavelength â€” blue light (short Î») carries more energy per photon than red light (long Î»).'
  },
  {
  label: 'Express in electron-volts (eV) for atomic scales',
- latex: 'hc = (6.626 × 10⁻³⁴ J·s)(3.0 × 10⁸ m/s)\n = 1.986 × 10⁻²⁵ J·m\n\nIn eV·nm:\nhc = 1240 eV·nm\n\nSo: E(eV) = 1240 / λ(nm)',
- explanation: 'At atomic and molecular scales, energies are more conveniently expressed in electron-volts (eV). The product hc is a fundamental constant that appears throughout quantum mechanics. When λ is in nanometers, E = 1240/λ gives energy directly in eV — a handy formula for spectroscopy.'
+ latex: 'hc = (6.626 Ã— 10â»Â³â´ JÂ·s)(3.0 Ã— 10â¸ m/s)\n = 1.986 Ã— 10â»Â²âµ JÂ·m\n\nIn eVÂ·nm:\nhc = 1240 eVÂ·nm\n\nSo: E(eV) = 1240 / Î»(nm)',
+ explanation: 'At atomic and molecular scales, energies are more conveniently expressed in electron-volts (eV). The product hc is a fundamental constant that appears throughout quantum mechanics. When Î» is in nanometers, E = 1240/Î» gives energy directly in eV â€” a handy formula for spectroscopy.'
  }
  ],
- conclusion: 'The formula ΔE = hc/λ falls directly out of Planck\'s quantum hypothesis and the wave nature of light. It is the bridge between the wave picture (wavelength) and the particle picture (photon energy) of light — the essence of wave-particle duality. This equation governs everything from the colors of fireworks to the spectral lines used to identify elements in distant stars.',
- realWorldApplication: 'In PET scans (explored in this lab), the annihilation of an electron and positron produces two 511 keV gamma rays. Using E = hc/λ, we find λ = 1240 eV·nm / (511 × 10³ eV) = 0.00243 nm — this is a gamma-ray wavelength. Detectors are specifically designed to catch these photons and reconstruct the 3D location of the annihilation event, creating the PET scan image.'
+ conclusion: 'The formula Î”E = hc/Î» falls directly out of Planck\'s quantum hypothesis and the wave nature of light. It is the bridge between the wave picture (wavelength) and the particle picture (photon energy) of light â€” the essence of wave-particle duality. This equation governs everything from the colors of fireworks to the spectral lines used to identify elements in distant stars.',
+ realWorldApplication: 'In PET scans (explored in this lab), the annihilation of an electron and positron produces two 511 keV gamma rays. Using E = hc/Î», we find Î» = 1240 eVÂ·nm / (511 Ã— 10Â³ eV) = 0.00243 nm â€” this is a gamma-ray wavelength. Detectors are specifically designed to catch these photons and reconstruct the 3D location of the annihilation event, creating the PET scan image.'
  }}
  />
  )}
@@ -224,7 +224,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  <div className="flex justify-around mb-4">
  <div className={`p-3 rounded-lg flex flex-col items-center ${meltdown ? 'bg-red-100 text-red-700' : temperature > 1200 ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff]'}`}>
  <ThermometerSun size={24} className="mb-1" />
- <span className="text-xl font-bold">{temperature}°C</span>
+ <span className="text-xl font-bold">{temperature}Â°C</span>
  <span className="text-xs">{t('lab.12quantumnuclear_coretemp')}</span>
  </div>
  <div className={`p-3 rounded-lg flex flex-col items-center bg-slate-100 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] `}>
@@ -333,3 +333,4 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

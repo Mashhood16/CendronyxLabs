@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Save, CheckCircle, XCircle, Music } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -45,7 +45,7 @@ const { recordLabData, setLabScore } = useLab();
  const L = turns * 2 * Math.PI * radius;
  const trueForce = selectedMagnet.B * current * L;
  
- // Add ±2% real-world noise, and maybe internal resistance drop depending on turns
+ // Add Â±2% real-world noise, and maybe internal resistance drop depending on turns
  // The more turns, the more resistance. Let's just add simple measurement noise.
  const noise = 1 + (Math.random() - 0.5) * 0.04;
  const peakForce = trueForce * noise;
@@ -76,7 +76,7 @@ const { recordLabData, setLabScore } = useLab();
  const checkAssessment = () => {
  const userB = parseFloat(assessmentInput);
  if (isNaN(userB)) return;
- // Accept ±5% error
+ // Accept Â±5% error
  const error = Math.abs(userB - 0.12) / 0.12;
  if (error <= 0.05) {
  setAssessmentStatus('correct');
@@ -321,3 +321,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

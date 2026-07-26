@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -151,7 +151,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className="mb-4">
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10seriescircuit_internal_resistance_r_int')}</label>
- <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{rInt} Ω</span>
+ <span className="text-sm font-mono text-slate-500 dark:text-[#71717a]">{rInt} Î©</span>
  </div>
  <input 
  type="range" min="0" max="10" step="1" value={rInt}
@@ -165,7 +165,7 @@ const { recordLabData, setLabScore } = useLab();
  <div key={item.id} className={idx < numResistors ? 'opacity-100' : 'opacity-40 pointer-events-none'}>
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10seriescircuit_bulb')} {item.id} {t('lab.p10seriescircuit_resistance')}</label>
- <span className="text-sm font-mono text-amber-600">{item.r} Ω</span>
+ <span className="text-sm font-mono text-amber-600">{item.r} Î©</span>
  </div>
  <input 
  type="range" min="10" max="100" step="5" value={item.r}
@@ -224,7 +224,7 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  {/* Base */}
  <div className="w-6 h-6 bg-zinc-400 rounded-b-md z-10" />
- <div className="text-[10px] text-slate-400 font-mono mt-1 bg-black/50 px-1.5 rounded">{rVal}Ω</div>
+ <div className="text-[10px] text-slate-400 font-mono mt-1 bg-black/50 px-1.5 rounded">{rVal}Î©</div>
  </div>
  );
  })}
@@ -306,7 +306,7 @@ const { recordLabData, setLabScore } = useLab();
  onChange={(e) => { setAssessmentAnswer(e.target.value); setAssessmentStatus('idle'); }}
  className="border border-slate-300 dark:border-[#1c1b1b] rounded px-3 py-2 w-24 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
  />
- <span className="text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mr-2">Ω</span>
+ <span className="text-sm font-medium text-slate-600 dark:text-[#a1a1aa] mr-2">Î©</span>
  <button 
  onClick={checkAnswer}
  className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40"
@@ -335,3 +335,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

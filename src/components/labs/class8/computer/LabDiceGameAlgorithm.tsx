@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -172,3 +172,4 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
  </div>
  );
 }
+

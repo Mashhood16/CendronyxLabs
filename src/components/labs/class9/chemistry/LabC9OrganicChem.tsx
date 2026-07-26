@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Beaker, Sun, ThermometerSun, AlertCircle, CheckSquare, Zap, Moon } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -56,16 +56,16 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
  setReactor(prev => ({ ...prev, reagents: newReagents }));
  
  const parts = newReagents.map(getFormula);
- setEquation(parts.join(' + ') + ' → ?');
+ setEquation(parts.join(' + ') + ' â†’ ?');
  }
  };
 
  const getFormula = (name: Reagent) => {
  switch(name) {
- case 'Ethene': return 'C₂H₄';
- case 'Hydrogen': return 'H₂';
- case 'Methane': return 'CH₄';
- case 'Chlorine': return 'Cl₂';
+ case 'Ethene': return 'Câ‚‚Hâ‚„';
+ case 'Hydrogen': return 'Hâ‚‚';
+ case 'Methane': return 'CHâ‚„';
+ case 'Chlorine': return 'Clâ‚‚';
  default: return '';
  }
  };
@@ -78,31 +78,31 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
 
  if (r.includes('Ethene') && r.includes('Hydrogen')) {
  if (reactor.catalyst === 'Nickel' && reactor.temperature >= 150) {
- newEq = 'C₂H₄ + H₂ → C₂H₆ (Ethane)';
+ newEq = 'Câ‚‚Hâ‚„ + Hâ‚‚ â†’ Câ‚‚Hâ‚† (Ethane)';
  status = 'success';
  resultLog = 'Hydrogenation successful (Alkene to Alkane).';
  } else {
- newEq = 'C₂H₄ + H₂ → No Reaction (Check Catalyst/Temp)';
+ newEq = 'Câ‚‚Hâ‚„ + Hâ‚‚ â†’ No Reaction (Check Catalyst/Temp)';
  status = 'failed';
- resultLog = 'Failed: Requires Nickel catalyst and heat (≥150°C).';
+ resultLog = 'Failed: Requires Nickel catalyst and heat (â‰¥150Â°C).';
  }
  } 
  else if (r.includes('Methane') && r.includes('Chlorine')) {
  if (reactor.sunlight === 'Direct') {
- newEq = 'CH₄ + 2Cl₂ → C + 4HCl (Explosive!)';
+ newEq = 'CHâ‚„ + 2Clâ‚‚ â†’ C + 4HCl (Explosive!)';
  status = 'explosive';
  resultLog = 'Explosive reaction in direct sunlight!';
  } else if (reactor.sunlight === 'Diffused') {
- newEq = 'CH₄ + Cl₂ → CH₃Cl + HCl';
+ newEq = 'CHâ‚„ + Clâ‚‚ â†’ CHâ‚ƒCl + HCl';
  status = 'success';
  resultLog = 'Substitution reaction successful (Chloromethane formed).';
  } else {
- newEq = 'CH₄ + Cl₂ → No Reaction (Needs UV Light)';
+ newEq = 'CHâ‚„ + Clâ‚‚ â†’ No Reaction (Needs UV Light)';
  status = 'failed';
  resultLog = 'Failed: Substitution requires UV light (sunlight).';
  }
  } else if (r.length === 2) {
- newEq = r.map(getFormula).join(' + ') + ' → No Reaction';
+ newEq = r.map(getFormula).join(' + ') + ' â†’ No Reaction';
  status = 'failed';
  resultLog = 'Invalid reagent combination.';
  }
@@ -266,7 +266,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
  <div className="col-span-2">
  <label className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase flex justify-between">
  <span>{t('lab.c9organicchem_temperature')}</span>
- <span>{reactor.temperature}°C</span>
+ <span>{reactor.temperature}Â°C</span>
  </label>
  <input 
  type="range" min="20" max="300" step="10" 
@@ -382,3 +382,4 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
  </div>
  );
 }
+

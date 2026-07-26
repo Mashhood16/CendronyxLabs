@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { Check, PieChart, TrendingUp } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -164,7 +164,7 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
  <div>
  <div className="flex justify-between mb-1">
  <label className="text-sm font-semibold">
- {seqType === 'arithmetic' ? 'Common Difference (+)' : 'Common Ratio (×)'}
+ {seqType === 'arithmetic' ? 'Common Difference (+)' : 'Common Ratio (Ã—)'}
  </label>
  <span className="text-sm font-bold bg-slate-200 dark:bg-slate-700 px-2 rounded">{ratio}</span>
  </div>
@@ -335,3 +335,4 @@ export default function LabM8SetsAlgebra({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

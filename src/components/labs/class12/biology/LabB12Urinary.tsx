@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Droplet, Target, Zap, Activity, CheckCircle2, RotateCcw, LineChart, Table2, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -212,7 +212,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
  <div className={`w-full bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-100 mb-2 flex-col `}>
  <label className="flex justify-between text-sm font-semibold mb-2 text-slate-700 dark:text-[#ffffff]">
  <span className="flex items-center gap-1"><Target className="w-4 h-4"/> {t('lab.b12urinary_membrane_pore_size')}</span>
- <span className="text-teal-600 text-xs font-mono">{poreSize} µm</span>
+ <span className="text-teal-600 text-xs font-mono">{poreSize} Âµm</span>
  </label>
  <input type="range" min="1" max="10" value={poreSize} onChange={e => setPoreSize(Number(e.target.value))} disabled={isDialyzing || timeElapsed > 0} className="w-full accent-teal-600 cursor-pointer" />
  </div>
@@ -328,7 +328,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
  {dataPoints.map((dp, i) => (
  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
  <td className="px-4 py-2 font-medium">{i + 1}</td>
- <td className="px-4 py-2">{dp.poreSize} µm</td>
+ <td className="px-4 py-2">{dp.poreSize} Âµm</td>
  <td className="px-4 py-2">{dp.clearanceTime.toFixed(1)}</td>
  </tr>
  ))}
@@ -405,3 +405,4 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

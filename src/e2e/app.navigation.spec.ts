@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+﻿import { test, expect } from '@playwright/test';
 
 test.describe('App Navigation', () => {
   test('loads the homepage with correct title', async ({ page }) => {
@@ -35,3 +35,4 @@ test.describe('Lab Loading', () => {
     await page.waitForLoadState('networkidle');
   });
 });
+

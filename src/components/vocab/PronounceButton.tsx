@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+﻿import { useState, useCallback, useRef, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 interface PronounceButtonProps {
@@ -136,11 +136,11 @@ export default function PronounceButton({
     if (bestVoice) {
       utterance.voice = bestVoice;
     } else if (lang.startsWith('ur')) {
-      // No Urdu voice available — suggest installing the Urdu speech pack
+      // No Urdu voice available â€” suggest installing the Urdu speech pack
       console.warn(
         '[PronounceButton] No Urdu voice found on this system. ' +
         'For authentic Pakistani Urdu TTS, install the Urdu speech pack in ' +
-        'Windows Settings → Time & Language → Speech → Add a voice (ur-PK).'
+        'Windows Settings â†’ Time & Language â†’ Speech â†’ Add a voice (ur-PK).'
       );
     }
 
@@ -210,3 +210,4 @@ export default function PronounceButton({
     </button>
   );
 }
+

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, XCircle, Navigation } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -105,7 +105,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
  <input type="range" min="0" max="150" step="5" value={speedW} onChange={(e) => setSpeedW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
  </div>
  <div>
- <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_blowing_towards')} {angleW}°</label>
+ <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff] mb-1">{t('lab.m11vectors_blowing_towards')} {angleW}Â°</label>
  <input type="range" min="0" max="360" step="5" value={angleW} onChange={(e) => setAngleW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
  </div>
  </div>
@@ -158,12 +158,12 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
 
  <div className="mt-6 flex flex-col items-center text-sm gap-2 w-full px-8 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
  <div className="flex justify-between w-full">
- <span className="text-blue-600 font-bold">{t('lab.m11vectors_plane')} {speedA} {t('lab.m11vectors_km_h_1')} {angleA}°</span>
- <span className="text-gray-600 font-bold">{t('lab.m11vectors_wind')} {speedW} {t('lab.m11vectors_km_h_1')} {angleW}°</span>
+ <span className="text-blue-600 font-bold">{t('lab.m11vectors_plane')} {speedA} {t('lab.m11vectors_km_h_1')} {angleA}Â°</span>
+ <span className="text-gray-600 font-bold">{t('lab.m11vectors_wind')} {speedW} {t('lab.m11vectors_km_h_1')} {angleW}Â°</span>
  </div>
  <div className={`bg-teal-50 w-full text-center p-2 rounded text-teal-800 font-bold border border-teal-200 flex-col `}>
  
- {t('lab.m11vectors_resultant')} {resSpeed.toFixed(1)} {t('lab.m11vectors_km_h_1')} {resAngle.toFixed(1)}°
+ {t('lab.m11vectors_resultant')} {resSpeed.toFixed(1)} {t('lab.m11vectors_km_h_1')} {resAngle.toFixed(1)}Â°
  </div>
  </div>
  </div>
@@ -217,3 +217,4 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

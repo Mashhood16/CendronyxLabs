@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Info, Compass, Sparkles, RefreshCw, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -91,9 +91,9 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
  const checkAssessment = () => {
  const val = parseFloat(assessmentAnswer);
  if (!isNaN(val) && (Math.abs(val - 180) < 15)) {
- setAssessmentResult('Correct! The field points from North to South, which is directly to the left (180°) in the region exactly above the magnet.');
+ setAssessmentResult('Correct! The field points from North to South, which is directly to the left (180Â°) in the region exactly above the magnet.');
  } else {
- setAssessmentResult('Incorrect. Try placing a compass directly above the center of the magnet. Which way does the arrow point? (0°=Right, 90°=Down, 180°=Left)');
+ setAssessmentResult('Incorrect. Try placing a compass directly above the center of the magnet. Which way does the arrow point? (0Â°=Right, 90Â°=Down, 180Â°=Left)');
  }
  };
 
@@ -232,7 +232,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
  <tr key={c.id} className="border-b hover:bg-slate-50 dark:bg-[#121212] transition-colors">
  <td className="px-4 py-2 text-slate-600 dark:text-[#a1a1aa]">{i + 1}</td>
  <td className="px-4 py-2 font-mono text-slate-600 dark:text-[#a1a1aa]">({Math.round(c.x)}, {Math.round(c.y)})</td>
- <td className="px-4 py-2 font-mono text-blue-600 font-medium">{Math.round(c.angle)}°</td>
+ <td className="px-4 py-2 font-mono text-blue-600 font-medium">{Math.round(c.angle)}Â°</td>
  </tr>
  ))
  )}
@@ -277,3 +277,4 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

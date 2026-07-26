@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+﻿import { type ReactNode } from 'react';
 import LabHeader from './LabHeader';
 import { theme } from '../../../../utils/labTheme';
 
@@ -18,7 +18,7 @@ interface LabShellJuniorProps {
 }
 
 /**
- * Standardized 2-column layout shell for Classes 6–8 English labs.
+ * Standardized 2-column layout shell for Classes 6â€“8 English labs.
  * Uses LabHeader internally for consistent header appearance across all labs.
  * Features:
  * - LabHeader with back button, title, theme toggle, calculator, language switch
@@ -61,3 +61,4 @@ export default function LabShellJunior({
     </div>
   );
 }
+

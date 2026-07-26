@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Wind, Calculator, Database } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -231,3 +231,4 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

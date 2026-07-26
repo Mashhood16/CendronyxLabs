@@ -1,4 +1,4 @@
-import { useState } from 'react';import { BookOpen, Search, Target, CheckCircle, Activity, 
+﻿import { useState } from 'react';import { BookOpen, Search, Target, CheckCircle, Activity, 
  Info, Check, ChevronRight
 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -397,4 +397,5 @@ export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+
 

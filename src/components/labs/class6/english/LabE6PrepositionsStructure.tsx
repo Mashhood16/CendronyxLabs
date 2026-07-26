@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, RefreshCw, Navigation, Box, MousePointer2 } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -230,3 +230,4 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
  </div>
  );
 }
+

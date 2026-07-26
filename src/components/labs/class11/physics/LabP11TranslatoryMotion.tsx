@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -104,7 +104,7 @@ export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => voi
  </div>
  <div>
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
- <span>{t('lab.p11_trans_slider_angle')}</span> <span>{angle}°</span>
+ <span>{t('lab.p11_trans_slider_angle')}</span> <span>{angle}Â°</span>
  </label>
  <input type="range" min="5" max="85" value={angle} onChange={e => setAngle(Number(e.target.value))} className="w-full accent-red-500" />
  </div>
@@ -198,3 +198,4 @@ export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

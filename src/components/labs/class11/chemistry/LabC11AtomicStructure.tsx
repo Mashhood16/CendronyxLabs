@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, Activity, Target, Calculator, Database } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -230,3 +230,4 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

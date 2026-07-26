@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -260,3 +260,4 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

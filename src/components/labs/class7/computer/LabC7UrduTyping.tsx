@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Keyboard, Type } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -14,9 +14,9 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
 
  // Simplified mapping for Pak Urdu Installer phonetic layout
  const urduMap: Record<string, string> = {
- 'a': 'ا', 'b': 'ب', 'c': 'چ', 'd': 'د', 'e': 'ع', 'f': 'ف', 'g': 'گ', 'h': 'ہ', 'i': 'ی', 'j': 'ج', 
- 'k': 'ک', 'l': 'ل', 'm': 'م', 'n': 'ن', 'o': 'و', 'p': 'پ', 'q': 'ق', 'r': 'ر', 's': 'س', 't': 'ت', 
- 'u': 'ئ', 'v': 'ط', 'w': 'و', 'x': 'ش', 'y': 'ے', 'z': 'ز', ' ': ' ', '\n': '\n'
+ 'a': 'Ø§', 'b': 'Ø¨', 'c': 'Ú†', 'd': 'Ø¯', 'e': 'Ø¹', 'f': 'Ù', 'g': 'Ú¯', 'h': 'Û', 'i': 'ÛŒ', 'j': 'Ø¬', 
+ 'k': 'Ú©', 'l': 'Ù„', 'm': 'Ù…', 'n': 'Ù†', 'o': 'Ùˆ', 'p': 'Ù¾', 'q': 'Ù‚', 'r': 'Ø±', 's': 'Ø³', 't': 'Øª', 
+ 'u': 'Ø¦', 'v': 'Ø·', 'w': 'Ùˆ', 'x': 'Ø´', 'y': 'Û’', 'z': 'Ø²', ' ': ' ', '\n': '\n'
  };
 
  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -49,14 +49,14 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
  {urduMode ? 'Urdu Keyboard Active' : 'Enable Urdu Keyboard'}
  </button>
  <span className="text-sm text-slate-500 dark:text-[#71717a] ml-4 font-medium italic">
- {urduMode ? 'Phonetic typing enabled (e.g., a=ا, b=ب, p=پ)' : 'Standard English typing'}
+ {urduMode ? 'Phonetic typing enabled (e.g., a=Ø§, b=Ø¨, p=Ù¾)' : 'Standard English typing'}
  </span>
  </div>
 
  {/* Text Area */}
  <textarea
  className={`flex-1 px-8 pb-8 text-2xl resize-none outline-none ${urduMode ? 'text-right font-urdu' : 'text-left font-sans'}`}
- placeholder={urduMode ? "یہاں لکھیں..." : "Start typing here..."}
+ placeholder={urduMode ? "ÛŒÛØ§Úº Ù„Ú©Ú¾ÛŒÚº..." : "Start typing here..."}
  value={text}
  onChange={(e) => {
  if (!urduMode) setText(e.target.value);
@@ -86,3 +86,4 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
  </div>
  );
 }
+

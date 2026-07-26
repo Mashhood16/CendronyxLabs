@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Lab Scaffolding (Simplified - Deep Dive only)
  */
 
@@ -87,3 +87,4 @@ export function createPredictionChallenge(
     explanation: reasoning,
   };
 }
+

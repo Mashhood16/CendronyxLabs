@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Activity, Table2, Info, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -124,7 +124,7 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  <p className="text-sm text-slate-600 dark:text-[#a1a1aa]">
  
- {t('lab.p10radioactivity_where')} <strong>{t('lab.10radioactivity_i')}</strong>{t('lab.10radioactivity_istheinitialintensityand')}<strong>μ</strong> {t('lab.p10radioactivity_is_the_linear_attenuation_coef')} <em>{t('lab.10radioactivity_halfthickness')}</em>{t('lab.10radioactivity_isthethicknessneededtohalvetheinten')}<strong>{t('lab.p10radioactivity_x_ln_2')}</strong>.
+ {t('lab.p10radioactivity_where')} <strong>{t('lab.10radioactivity_i')}</strong>{t('lab.10radioactivity_istheinitialintensityand')}<strong>Î¼</strong> {t('lab.p10radioactivity_is_the_linear_attenuation_coef')} <em>{t('lab.10radioactivity_halfthickness')}</em>{t('lab.10radioactivity_isthethicknessneededtohalvetheinten')}<strong>{t('lab.p10radioactivity_x_ln_2')}</strong>.
  </p>
  </div>
 
@@ -322,7 +322,7 @@ const { recordLabData, setLabScore } = useLab();
  <h2 className="text-lg font-bold mb-3 text-amber-400">{t('lab.10radioactivity_analysisassessment')}</h2>
  <p className="text-sm text-slate-300 mb-4 leading-relaxed">
  
- {t('lab.p10radioactivity_based_on_the_formula')} <code>{t('lab.p10radioactivity_i_i_e_x')}</code>{t('lab.10radioactivity_ifastudentfindsthatexactly')}<strong>{t('lab.p10radioactivity_10_mm')}</strong> {t('lab.p10radioactivity_of_lead_is_required_to_halve_t')} <strong>μ</strong> {t('lab.p10radioactivity_of_lead_in_mm_use_ln_2_0_693')}
+ {t('lab.p10radioactivity_based_on_the_formula')} <code>{t('lab.p10radioactivity_i_i_e_x')}</code>{t('lab.10radioactivity_ifastudentfindsthatexactly')}<strong>{t('lab.p10radioactivity_10_mm')}</strong> {t('lab.p10radioactivity_of_lead_is_required_to_halve_t')} <strong>Î¼</strong> {t('lab.p10radioactivity_of_lead_in_mm_use_ln_2_0_693')}
  </p>
  <div className="flex gap-2">
  <input 
@@ -346,3 +346,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

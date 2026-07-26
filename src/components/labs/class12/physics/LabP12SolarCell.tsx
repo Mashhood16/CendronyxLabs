@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+﻿import { useState, useEffect, useMemo } from 'react';
 import {
  Sun, Activity, CheckCircle, Zap, Thermometer, 
  Droplets, BarChart3, Lightbulb, BookOpen, ArrowRight
@@ -29,9 +29,9 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
 
  // Solar Cell Design Parameters
  const [material, setMaterial] = useState(0);
- const [thickness, setThickness] = useState(200); // μm
- const [temperature, setTemperature] = useState(25); // °C
- const [irradiance, setIrradiance] = useState(1000); // W/m²
+ const [thickness, setThickness] = useState(200); // Î¼m
+ const [temperature, setTemperature] = useState(25); // Â°C
+ const [irradiance, setIrradiance] = useState(1000); // W/mÂ²
  const [recombinationRate, setRecombinationRate] = useState(50); // %
 
  // Simulation
@@ -63,8 +63,8 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  const lambdaThreshold = 1240 / effectiveBandGap; // nm
  
  // Absorption efficiency based on thickness (Beer-Lambert)
- const absorptionCoeff = materialData.type === 'Direct' ? 10 : 1; // cm⁻¹
- const absorption = 1 - Math.exp(-absorptionCoeff * thickness / 10000); // convert μm to cm
+ const absorptionCoeff = materialData.type === 'Direct' ? 10 : 1; // cmâ»Â¹
+ const absorption = 1 - Math.exp(-absorptionCoeff * thickness / 10000); // convert Î¼m to cm
  
  // Temperature effect on voltage
  const vt = 0.02585 * (temperature + 273.15) / 300; // thermal voltage
@@ -103,8 +103,8 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  const q2Correct = !isNaN(userEff) && Math.abs(userEff - trueEfficiency) < 3;
 
  setFeedback({
- q1: q1Correct ? '✓ Correct!' : `✗ Incorrect. Hint: λ = 1240 / Eg (Eg = ${effectiveBandGap.toFixed(2)} eV)`,
- q2: q2Correct ? '✓ Correct! Excellent photovoltaic analysis.' : `✗ Incorrect. Consider the Shockley-Queisser limit for Eg = ${effectiveBandGap.toFixed(2)} eV.`
+ q1: q1Correct ? 'âœ“ Correct!' : `âœ— Incorrect. Hint: Î» = 1240 / Eg (Eg = ${effectiveBandGap.toFixed(2)} eV)`,
+ q2: q2Correct ? 'âœ“ Correct! Excellent photovoltaic analysis.' : `âœ— Incorrect. Consider the Shockley-Queisser limit for Eg = ${effectiveBandGap.toFixed(2)} eV.`
  });
  };
 
@@ -114,10 +114,10 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  icon: 'nanotech',
  title: 'Nanostructured Solar Cells',
  summary: 'Nanotechnology is revolutionizing photovoltaics through quantum dots, nanowires, and plasmonic nanoparticles that can capture light more efficiently than traditional bulk materials.',
- connectionToLab: 'The absorption and band gap calculations in this lab are directly enhanced by quantum confinement effects — at nanoscale, the band gap of materials like silicon can be tuned by changing particle size, enabling multi-junction-like performance from a single material.',
- currentResearch: 'Oxford PV achieved 29.5% efficiency with perovskite-silicon tandem cells in 2024. Quantum dot solar cells have reached 18.1% efficiency and can be printed like ink — potentially reducing manufacturing costs by 10x.',
+ connectionToLab: 'The absorption and band gap calculations in this lab are directly enhanced by quantum confinement effects â€” at nanoscale, the band gap of materials like silicon can be tuned by changing particle size, enabling multi-junction-like performance from a single material.',
+ currentResearch: 'Oxford PV achieved 29.5% efficiency with perovskite-silicon tandem cells in 2024. Quantum dot solar cells have reached 18.1% efficiency and can be printed like ink â€” potentially reducing manufacturing costs by 10x.',
  careerPath: 'Photovoltaics Engineer, Nanomaterials Scientist, Renewable Energy Researcher',
- keyConcept: 'Quantum confinement — when semiconductor particles are smaller than the exciton Bohr radius, their electronic and optical properties become size-dependent. Smaller quantum dots = larger band gap = bluer light absorption.'
+ keyConcept: 'Quantum confinement â€” when semiconductor particles are smaller than the exciton Bohr radius, their electronic and optical properties become size-dependent. Smaller quantum dots = larger band gap = bluer light absorption.'
  },
  {
  id: 'greenchem',
@@ -127,7 +127,7 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  connectionToLab: 'The material selection in this lab involves trade-offs between efficiency (GaAs: 31.1%) and environmental impact (CdTe contains toxic cadmium). Green chemistry aims to develop high-efficiency cells using Earth-abundant, non-toxic materials.',
  currentResearch: 'Perovskite solar cells are being reformulated with lead-free alternatives (tin, bismuth). MIT researchers developed a fully recyclable solar cell using cellulose substrates that dissolves in water at end of life.',
  careerPath: 'Green Chemistry Engineer, Sustainable Manufacturing Specialist, Environmental Materials Scientist',
- keyConcept: 'Life Cycle Assessment (LCA) — evaluating the environmental impact of a solar cell from raw material extraction through manufacturing, operation, and end-of-life recycling/reuse.'
+ keyConcept: 'Life Cycle Assessment (LCA) â€” evaluating the environmental impact of a solar cell from raw material extraction through manufacturing, operation, and end-of-life recycling/reuse.'
  }
  ];
 
@@ -224,26 +224,26 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  <>
  <DeepDivePanel
  derivation={{
- title: 'Why λ = 1240 / E<sub>g</sub>? — Photon Absorption Threshold',
+ title: 'Why Î» = 1240 / E<sub>g</sub>? â€” Photon Absorption Threshold',
  question: 'Why can only photons with wavelength shorter than a specific threshold be absorbed by a solar cell material? Where does the 1240 come from?',
  steps: [
  {
- label: 'Start with E = hc/λ for a photon',
- latex: 'E_photon = h × f = h × c / λ\n\nh = 6.626 × 10⁻³⁴ J·s\nc = 3.0 × 10⁸ m/s',
+ label: 'Start with E = hc/Î» for a photon',
+ latex: 'E_photon = h Ã— f = h Ã— c / Î»\n\nh = 6.626 Ã— 10â»Â³â´ JÂ·s\nc = 3.0 Ã— 10â¸ m/s',
  explanation: 'Every photon carries energy proportional to its frequency. The constant of proportionality is Planck\'s constant h, one of the most fundamental constants in quantum mechanics.'
  },
  {
  label: 'Set minimum photon energy = band gap',
- latex: 'E_photon ≥ E_gap\n\nAt threshold:\nE_photon = E_gap\n\nSo:\nhc / λ_threshold = E_gap\nλ_threshold = hc / E_gap',
- explanation: 'A photon can only excite an electron across the band gap if its energy is at least as large as the gap. If the photon has less energy, it passes right through the material — the solar cell is transparent to those wavelengths.'
+ latex: 'E_photon â‰¥ E_gap\n\nAt threshold:\nE_photon = E_gap\n\nSo:\nhc / Î»_threshold = E_gap\nÎ»_threshold = hc / E_gap',
+ explanation: 'A photon can only excite an electron across the band gap if its energy is at least as large as the gap. If the photon has less energy, it passes right through the material â€” the solar cell is transparent to those wavelengths.'
  },
  {
  label: 'Convert to convenient units (eV and nm)',
- latex: 'hc = 1.986 × 10⁻²⁵ J·m\n = 1240 eV·nm\n\nTherefore:\nλ_threshold (nm) = 1240 / E_gap (eV)\n\nExample — Silicon (E_g = 1.12 eV):\nλ_max = 1240 / 1.12 = 1107 nm',
- explanation: 'This is why silicon solar cells can absorb infrared light up to ~1100 nm, but are transparent to longer infrared wavelengths. GaAs (E_g = 1.43 eV) can only absorb up to ~867 nm — it misses some infrared but captures more energy per photon.'
+ latex: 'hc = 1.986 Ã— 10â»Â²âµ JÂ·m\n = 1240 eVÂ·nm\n\nTherefore:\nÎ»_threshold (nm) = 1240 / E_gap (eV)\n\nExample â€” Silicon (E_g = 1.12 eV):\nÎ»_max = 1240 / 1.12 = 1107 nm',
+ explanation: 'This is why silicon solar cells can absorb infrared light up to ~1100 nm, but are transparent to longer infrared wavelengths. GaAs (E_g = 1.43 eV) can only absorb up to ~867 nm â€” it misses some infrared but captures more energy per photon.'
  }
  ],
- conclusion: 'The absorption threshold is a direct consequence of quantum mechanics — the band gap energy sets a strict cutoff for which photons can contribute to electricity generation. Photons with E < E_g are wasted, while photons with E > E_g generate heat (the excess energy above the band gap is lost as heat, not electricity). This is the fundamental trade-off in solar cell design.',
+ conclusion: 'The absorption threshold is a direct consequence of quantum mechanics â€” the band gap energy sets a strict cutoff for which photons can contribute to electricity generation. Photons with E < E_g are wasted, while photons with E > E_g generate heat (the excess energy above the band gap is lost as heat, not electricity). This is the fundamental trade-off in solar cell design.',
  realWorldApplication: 'Tandem (multi-junction) solar cells solve this by stacking materials with different band gaps. The top layer (high band gap, e.g., 1.9 eV) absorbs blue photons, the middle layer (1.4 eV) absorbs green, and the bottom layer (1.0 eV) absorbs red/infrared. This is how efficiencies exceeding 47% have been achieved in concentrator photovoltaics.'
  }}
  />
@@ -290,14 +290,14 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  <div>
  <div className="flex justify-between text-xs">
  <label className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.12solarcell_thickness')}</label>
- <span className="font-mono text-indigo-600">{thickness} μm</span>
+ <span className="font-mono text-indigo-600">{thickness} Î¼m</span>
  </div>
  <input type="range" min="10" max="500" value={thickness} onChange={e => setThickness(Number(e.target.value))} className="w-full accent-indigo-600" />
  </div>
  <div>
  <div className="flex justify-between text-xs">
  <label className="text-slate-600 dark:text-[#a1a1aa]">{t('lab.12solarcell_temperature')}</label>
- <span className="font-mono text-red-500">{temperature}°C</span>
+ <span className="font-mono text-red-500">{temperature}Â°C</span>
  </div>
  <input type="range" min="0" max="100" value={temperature} onChange={e => setTemperature(Number(e.target.value))} className="w-full accent-red-500" />
  </div>
@@ -476,3 +476,4 @@ export default function LabP12SolarCell({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

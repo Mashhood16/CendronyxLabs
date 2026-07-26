@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useRef, useCallback } from 'react';
 import { Activity, Heart, CheckCircle2, RefreshCcw, Stethoscope, LineChart, Table2, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -357,3 +357,4 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

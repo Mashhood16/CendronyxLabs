@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -120,7 +120,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className="flex justify-between mb-1">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10_escope_rod_label')}</label>
  <span className={`text-sm font-mono ${qRod > 0 ? 'text-blue-600' : qRod < 0 ? 'text-red-600' : 'text-slate-600 dark:text-[#ffffff]'}`}>
- {qRod > 0 ? '+' : ''}{qRod} μC
+ {qRod > 0 ? '+' : ''}{qRod} Î¼C
  </span>
  </div>
  <input 
@@ -158,7 +158,7 @@ const { recordLabData, setLabScore } = useLab();
  {/* Angle Display overlay */}
  <div className={`w-full absolute top-4 right-4 bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:!bg-[#121212] p-3 rounded-lg border border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] shadow-sm flex flex-col items-center z-20 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
  <span className="text-xs font-bold text-slate-500 dark:text-[#71717a] uppercase">{t('lab.p10_escope_angle_display')}</span>
- <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}°</span>
+ <span className="text-2xl font-mono font-bold text-slate-800 dark:text-[#ffffff]">{measuredAngle.toFixed(1)}Â°</span>
  </div>
 
  <div className="relative w-[300px] h-[400px] flex justify-center">
@@ -253,7 +253,7 @@ const { recordLabData, setLabScore } = useLab();
  <td className="px-4 py-2 font-mono">{dp.qRod}</td>
  <td className="px-4 py-2 font-mono">{dp.d}</td>
  <td className="px-4 py-2 font-mono">{dp.qNet}</td>
- <td className="px-4 py-2 font-mono">{dp.angle.toFixed(1)}°</td>
+ <td className="px-4 py-2 font-mono">{dp.angle.toFixed(1)}Â°</td>
  </tr>
  ))
  )}
@@ -305,3 +305,4 @@ const { recordLabData, setLabScore } = useLab();
  </div>
  );
 }
+

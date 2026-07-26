@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import { renderHook } from '@testing-library/react';
 import type { LabRecord } from '../../services/dbService';
 import { useProgressStats } from '../../hooks/useProgressStats';
@@ -95,3 +95,4 @@ describe('useProgressStats', () => {
     expect(result.current.recentPerformance[0].score).toBeGreaterThanOrEqual(80);
   });
 });
+

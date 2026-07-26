@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Target, Cpu, CheckCircle2, ChevronRight, AlertCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -314,3 +314,4 @@ export default function LabE10ModalsConditionals({ onExit = () => {} }: LabE10Mo
  </div>
  );
 }
+

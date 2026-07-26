@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import type { MouseEvent } from 'react';
 import { RefreshCcw, MapPin, Move, RotateCw, CheckCircle2 } from 'lucide-react';
@@ -154,7 +154,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
  <div className="bg-slate-100 dark:bg-slate-700 p-4 rounded-lg">
  <div className="flex justify-between mb-1">
  <label className="font-medium text-sm">{t('lab.m7transformations_angle_of_rotation')}</label>
- <span className="font-bold text-indigo-600 dark:text-indigo-400">{angle}°</span>
+ <span className="font-bold text-indigo-600 dark:text-indigo-400">{angle}Â°</span>
  </div>
  <input 
  type="range" min="0" max="360" step="15" value={angle} 
@@ -168,7 +168,7 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
  <div className="flex gap-2 mt-3">
  {[90, 180, 270, 360].map(a => (
  <span key={a} className={`px-2 py-1 rounded text-xs font-bold transition-colors ${angle >= a ? 'bg-green-500 text-white' : 'bg-slate-200 dark:bg-slate-600'}`}>
- {a}°
+ {a}Â°
  </span>
  ))}
  </div>
@@ -283,3 +283,4 @@ export default function LabM7Transformations({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

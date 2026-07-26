@@ -1,4 +1,4 @@
-import { ReactNode, Children, isValidElement } from 'react';
+﻿import { ReactNode, Children, isValidElement } from 'react';
 
 const LATEX_SYMBOLS: Record<string, string> = {
   '\\times': '\u00D7',
@@ -229,3 +229,4 @@ export function textWithMathToNodes(children: ReactNode, keyPrefix: string = '')
   });
   return out;
 }
+

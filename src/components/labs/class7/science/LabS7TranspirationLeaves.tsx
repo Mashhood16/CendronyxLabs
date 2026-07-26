@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Info, Droplets } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import DataChart from '../../../widgets/DataChart';
@@ -168,3 +168,4 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
  </div>
  );
 }
+

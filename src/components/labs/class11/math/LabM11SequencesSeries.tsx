@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, RotateCcw, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -154,7 +154,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
  </svg>
  <div className="absolute top-2 right-2 bg-slate-50 dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-sm font-mono">
  
- {t('lab.m11sequencesseries_angle')} {Math.abs(currentAngle).toFixed(1)}°
+ {t('lab.m11sequencesseries_angle')} {Math.abs(currentAngle).toFixed(1)}Â°
  </div>
  <div className="absolute top-10 right-2 bg-slate-50 dark:bg-[#121212]/80 px-3 py-1 rounded shadow text-sm font-mono">
  
@@ -166,7 +166,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff]">
  
- {t('lab.m11sequencesseries_initial_angle_a')} {initialAngle}°
+ {t('lab.m11sequencesseries_initial_angle_a')} {initialAngle}Â°
  </label>
  <input 
  type="range" min="10" max="90" step="5" 
@@ -219,11 +219,11 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
  <div className={`bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b] space-y-2 font-mono text-sm flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
  <div className="flex justify-between">
  <span>{t('lab.m11sequencesseries_first_swing_amplitude_a')}</span>
- <span className="font-bold text-indigo-600">{initialAngle}°</span>
+ <span className="font-bold text-indigo-600">{initialAngle}Â°</span>
  </div>
  <div className="flex justify-between">
  <span>{t('lab.m11sequencesseries_second_swing_amplitude_a_r')}</span>
- <span className="font-bold text-indigo-600">{(initialAngle * decayRatio).toFixed(1)}°</span>
+ <span className="font-bold text-indigo-600">{(initialAngle * decayRatio).toFixed(1)}Â°</span>
  </div>
  <div className="flex justify-between">
  <span>{t('lab.m11sequencesseries_common_ratio_r')}</span>
@@ -269,3 +269,4 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

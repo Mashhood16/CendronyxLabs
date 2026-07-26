@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { RotateCw, FlipHorizontal, Maximize, CheckCircle, XCircle } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -44,7 +44,7 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
  {t('lab.m8transformations_rotate_the_turbine_gear_by')} {targetAngle}{t('lab.m8transformations_clockwise_to_align_with_the_ge')}
  </p>
  <div className="flex flex-col gap-2">
- <label className="text-sm font-medium dark:text-[#ffffff]">{t('lab.m8transformations_angle')} {angle}°</label>
+ <label className="text-sm font-medium dark:text-[#ffffff]">{t('lab.m8transformations_angle')} {angle}Â°</label>
  <input 
  type="range" 
  min="0" 
@@ -252,3 +252,4 @@ export default function LabM8Transformations({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

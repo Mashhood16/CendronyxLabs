@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BookOpen, Activity, Play, ShieldAlert, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -79,7 +79,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
  if (assessResult === correctResult) {
  setFeedback("Correct! You have accurately classified the bacteria's resistance profile.");
  } else {
- setFeedback("Incorrect. Remember: Zone ≥ 20mm is Susceptible (S), 15-19mm is Intermediate (I), and < 15mm is Resistant (R).");
+ setFeedback("Incorrect. Remember: Zone â‰¥ 20mm is Susceptible (S), 15-19mm is Intermediate (I), and < 15mm is Resistant (R).");
  }
  };
 
@@ -137,7 +137,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
  disabled={incubating || progress === 1}
  className={`w-full bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 `}
  >
- <Play size={18} /> {progress === 1 ? 'Incubation Complete' : incubating ? 'Incubating...' : 'Start Incubation (37°C)'}
+ <Play size={18} /> {progress === 1 ? 'Incubation Complete' : incubating ? 'Incubating...' : 'Start Incubation (37Â°C)'}
  </button>
  </div>
  </div>
@@ -264,3 +264,4 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

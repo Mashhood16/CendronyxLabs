@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Beaker, Activity, CheckCircle2 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -13,12 +13,12 @@ interface Metal {
 }
 
 const metals: Record<string, Metal> = {
- Mg: { symbol: 'Mg', name: 'Magnesium', e0: -2.37, color: '#e0e0e0', ion: 'Mg²⁺', n: 2 },
- Zn: { symbol: 'Zn', name: 'Zinc', e0: -0.76, color: '#b0bec5', ion: 'Zn²⁺', n: 2 },
- Fe: { symbol: 'Fe', name: 'Iron', e0: -0.44, color: '#8d6e63', ion: 'Fe²⁺', n: 2 },
- Pb: { symbol: 'Pb', name: 'Lead', e0: -0.13, color: '#78909c', ion: 'Pb²⁺', n: 2 },
- Cu: { symbol: 'Cu', name: 'Copper', e0: 0.34, color: '#bcaaa4', ion: 'Cu²⁺', n: 2 },
- Ag: { symbol: 'Ag', name: 'Silver', e0: 0.80, color: '#e0e0e0', ion: 'Ag⁺', n: 1 },
+ Mg: { symbol: 'Mg', name: 'Magnesium', e0: -2.37, color: '#e0e0e0', ion: 'MgÂ²âº', n: 2 },
+ Zn: { symbol: 'Zn', name: 'Zinc', e0: -0.76, color: '#b0bec5', ion: 'ZnÂ²âº', n: 2 },
+ Fe: { symbol: 'Fe', name: 'Iron', e0: -0.44, color: '#8d6e63', ion: 'FeÂ²âº', n: 2 },
+ Pb: { symbol: 'Pb', name: 'Lead', e0: -0.13, color: '#78909c', ion: 'PbÂ²âº', n: 2 },
+ Cu: { symbol: 'Cu', name: 'Copper', e0: 0.34, color: '#bcaaa4', ion: 'CuÂ²âº', n: 2 },
+ Ag: { symbol: 'Ag', name: 'Silver', e0: 0.80, color: '#e0e0e0', ion: 'Agâº', n: 1 },
 };
 
 export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void }) {
@@ -58,7 +58,7 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
  if (!isNaN(val) && Math.abs(val - exactVolts) < 0.05) {
  setFeedback('Correct! You used the Nernst equation accurately.');
  } else {
- setFeedback('Incorrect. E = E° - (0.0592/n) * log(Q). Check n and Q!');
+ setFeedback('Incorrect. E = EÂ° - (0.0592/n) * log(Q). Check n and Q!');
  }
  };
 
@@ -223,3 +223,4 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

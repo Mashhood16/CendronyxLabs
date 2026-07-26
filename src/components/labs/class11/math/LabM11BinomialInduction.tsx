@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -328,3 +328,4 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

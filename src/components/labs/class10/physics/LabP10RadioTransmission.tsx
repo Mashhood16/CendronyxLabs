@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -253,3 +253,4 @@ export default function LabP10RadioTransmission({ onExit }: LabProps) {
  </div>
  );
 }
+

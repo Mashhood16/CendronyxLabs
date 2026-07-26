@@ -1,11 +1,11 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 interface CalculatorProps {
   onClose: () => void;
 }
 
-type CalcOperator = '+' | '-' | '×' | '÷';
+type CalcOperator = '+' | '-' | 'Ã—' | 'Ã·';
 type MemoryOp = 'MC' | 'MR' | 'M+' | 'M-';
 
 const SCIENTIFIC_BUTTONS = [
@@ -14,13 +14,13 @@ const SCIENTIFIC_BUTTONS = [
   { label: 'tan', action: 'tan' },
   { label: 'log', action: 'log' },
   { label: 'ln', action: 'ln' },
-  { label: '√', action: 'sqrt' },
-  { label: 'x²', action: 'square' },
-  { label: 'x³', action: 'cube' },
-  { label: 'xⁿ', action: 'pow' },
+  { label: 'âˆš', action: 'sqrt' },
+  { label: 'xÂ²', action: 'square' },
+  { label: 'xÂ³', action: 'cube' },
+  { label: 'xâ¿', action: 'pow' },
   { label: '1/x', action: 'reciprocal' },
   { label: '|x|', action: 'abs' },
-  { label: 'π', action: 'pi' },
+  { label: 'Ï€', action: 'pi' },
   { label: 'e', action: 'euler' },
   { label: 'n!', action: 'factorial' },
 ];
@@ -67,8 +67,8 @@ function compute(a: number, op: CalcOperator, b: number): number {
   switch (op) {
     case '+': return a + b;
     case '-': return a - b;
-    case '×': return a * b;
-    case '÷': return b !== 0 ? a / b : NaN;
+    case 'Ã—': return a * b;
+    case 'Ã·': return b !== 0 ? a / b : NaN;
   }
 }
 
@@ -181,7 +181,7 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
           result = Math.E;
           break;
         case 'pow':
-          result = current * current; // xⁿ defaults to x² for now
+          result = current * current; // xâ¿ defaults to xÂ² for now
           break;
         default:
           result = applyUnaryOp(current, action, prev.degreeMode);
@@ -325,7 +325,7 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
       if (e.key >= '0' && e.key <= '9') handleDigit(e.key);
       else if (e.key === '.') handleDecimal();
       else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
-        const op: CalcOperator = e.key === '*' ? '×' : e.key === '/' ? '÷' : e.key as CalcOperator;
+        const op: CalcOperator = e.key === '*' ? 'Ã—' : e.key === '/' ? 'Ã·' : e.key as CalcOperator;
         handleOperator(op);
       }
       else if (e.key === 'Enter' || e.key === '=') handleEquals();
@@ -484,13 +484,13 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
               {/* Main buttons */}
               {[
                 { label: 'C', action: 'clear', color: 'clear' as const },
-                { label: '⌫', action: 'backspace', color: 'clear' as const },
+                { label: 'âŒ«', action: 'backspace', color: 'clear' as const },
                 { label: '()', action: 'parens' },
-                { label: '÷', action: '÷', color: 'operator' as const },
+                { label: 'Ã·', action: 'Ã·', color: 'operator' as const },
                 { label: '7', action: '7' },
                 { label: '8', action: '8' },
                 { label: '9', action: '9' },
-                { label: '×', action: '×', color: 'operator' as const },
+                { label: 'Ã—', action: 'Ã—', color: 'operator' as const },
                 { label: '4', action: '4' },
                 { label: '5', action: '5' },
                 { label: '6', action: '6' },
@@ -499,7 +499,7 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
                 { label: '2', action: '2' },
                 { label: '3', action: '3' },
                 { label: '+', action: '+', color: 'operator' as const },
-                { label: '±', action: 'negate' },
+                { label: 'Â±', action: 'negate' },
                 { label: '0', action: '0' },
                 { label: '.', action: '.' },
                 { label: '=', action: 'equals', color: 'equals' as const },
@@ -513,7 +513,7 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
                     else if (btn.action === 'equals') handleEquals();
                     else if (btn.action === 'parens') { handleDigit('('); handleDigit(')'); }
                     else if (btn.action === '.' ) handleDecimal();
-                    else if (['+', '-', '×', '÷'].includes(btn.action)) handleOperator(btn.action as CalcOperator);
+                    else if (['+', '-', 'Ã—', 'Ã·'].includes(btn.action)) handleOperator(btn.action as CalcOperator);
                     else handleDigit(btn.action);
                   }}
                   className={`py-3 text-lg font-bold rounded-xl transition-all active:scale-95 ${btnClass(btn.color)} ${btn.action === '0' ? '' : ''}`}
@@ -537,3 +537,4 @@ export default function ScientificCalculator({ onClose }: CalculatorProps) {
     </div>
   );
 }
+

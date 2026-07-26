@@ -1,4 +1,4 @@
-import { useTranslate } from '../i18n';
+﻿import { useTranslate } from '../i18n';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import ErrorBoundary from '../components/layout/ErrorBoundary';
@@ -30,3 +30,4 @@ export default function LabRunner() {
     </Suspense>
   );
 }
+

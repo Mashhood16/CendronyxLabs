@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import {Play, Pause, Activity, Table2, Info, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -298,3 +298,4 @@ export default function LabP10HalfLife({ onExit }: LabProps) {
  </div>
  );
 }
+

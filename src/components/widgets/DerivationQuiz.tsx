@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+﻿import { useState, useCallback } from 'react';
 import { CheckCircle, XCircle, Lightbulb, ChevronRight, Trophy, RefreshCw, ArrowRight } from 'lucide-react';
 import MathFormula from './MathFormula';
 import EquationBuilder from './EquationBuilder';
@@ -133,7 +133,7 @@ export default function DerivationQuiz({
           <Trophy className="w-10 h-10 text-white" />
         </div>
         <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">
-          {t('lab.quiz_complete_title') || 'Derivation Complete! 🎉'}
+          {t('lab.quiz_complete_title') || 'Derivation Complete! ðŸŽ‰'}
         </h3>
         <p className="text-slate-600 dark:text-slate-400 mb-4">
           {t('lab.quiz_complete_desc') || `You successfully completed ${correctCount}/${steps.length} steps!`}

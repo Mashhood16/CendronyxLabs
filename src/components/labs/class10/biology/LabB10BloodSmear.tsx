@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Activity, Edit3, Droplet, Microscope, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -285,3 +285,4 @@ export default function LabB10BloodSmear({ onExit }: { onExit: () => void }) {
  </div>
  );
 }
+

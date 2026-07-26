@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useEffect, useState } from 'react';
 import { useTheme } from '../../store';
 import { Trophy, Star, X } from 'lucide-react';
@@ -97,3 +97,4 @@ export default function CelebrationModal({ isOpen, onClose, title, message, type
     </div>
   );
 }
+

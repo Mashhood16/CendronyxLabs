@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import LabHeader from './LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -92,7 +92,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
    <div className="w-[500px] max-w-full bg-slate-50 dark:bg-[#121212] rounded shadow-2xl border border-slate-300 dark:border-[#1c1b1b] flex flex-col overflow-hidden z-20 animate-fade-in">
     <div className="bg-blue-600 text-white px-4 py-2 flex justify-between items-center text-sm font-bold">
     <span>{t('lab.antivirus_setup_secureshield_antivirus')}</span>
-    <span>✕</span>
+    <span>âœ•</span>
     </div>
     <div className="p-8 flex flex-col items-center text-center">
     <svg className="w-16 h-16 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
@@ -118,7 +118,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
      
                                   {t('lab.antivirus_secureshield_antivirus')}
                                  </div>
-    <span>✕</span>
+    <span>âœ•</span>
     </div>
     <div className="p-8 flex gap-8">
     <div className="w-1/3 flex flex-col justify-between border-r border-slate-200 dark:border-[#1c1b1b] pr-8">
@@ -164,7 +164,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
      
                                   {t('lab.antivirus_attention_required')}
                                  </div>
-    <span>✕</span>
+    <span>âœ•</span>
     </div>
     <div className="p-8 flex flex-col items-center text-center">
     {threatsRemoved ? (
@@ -213,3 +213,4 @@ export default function LabAntivirus({ onExit }: LabProps) {
  </div>
  );
 }
+

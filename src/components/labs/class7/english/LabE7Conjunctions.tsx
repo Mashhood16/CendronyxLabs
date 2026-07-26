@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Anchor, CheckCircle2, XCircle, RefreshCw } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -280,3 +280,4 @@ export default function LabE7Conjunctions({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

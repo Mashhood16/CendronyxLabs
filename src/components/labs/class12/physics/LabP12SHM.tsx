@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+﻿import { useState, useRef, useEffect, useMemo } from 'react';
 import { Car, Waves, Activity, CheckCircle, XCircle, Volume2, GraduationCap } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -185,31 +185,31 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
  <DeepDivePanel
  derivation={{
  title: "SHM from Hooke's Law",
- question: "Why does a mass on a spring oscillate with frequency ω = √(k/m)? Let's derive SHM from first principles.",
+ question: "Why does a mass on a spring oscillate with frequency Ï‰ = âˆš(k/m)? Let's derive SHM from first principles.",
  steps: [
  {
  label: "Hooke's Law & Newton's 2nd",
- latex: "F = -kx\nm·a = -kx\nm·d²x/dt² = -kx",
- explanation: "For an ideal spring, the restoring force is proportional to displacement (Hooke's Law). Apply Newton's 2nd Law: m·d²x/dt² = -kx. Rearranging: d²x/dt² + (k/m)·x = 0. This is the fundamental equation of SHM."
+ latex: "F = -kx\nmÂ·a = -kx\nmÂ·dÂ²x/dtÂ² = -kx",
+ explanation: "For an ideal spring, the restoring force is proportional to displacement (Hooke's Law). Apply Newton's 2nd Law: mÂ·dÂ²x/dtÂ² = -kx. Rearranging: dÂ²x/dtÂ² + (k/m)Â·x = 0. This is the fundamental equation of SHM."
  },
  {
  label: "Guess the Solution",
- latex: "x(t) = A·cos(ωt + φ)\ndx/dt = -A·ω·sin(ωt + φ)\nd²x/dt² = -A·ω²·cos(ωt + φ) = -ω²·x",
- explanation: "We try x(t) = A·cos(ωt + φ), where A is amplitude, ω is angular frequency, and φ is phase. Differentiate twice: first derivative gives velocity, second gives acceleration. Notice d²x/dt² = -ω²·x."
+ latex: "x(t) = AÂ·cos(Ï‰t + Ï†)\ndx/dt = -AÂ·Ï‰Â·sin(Ï‰t + Ï†)\ndÂ²x/dtÂ² = -AÂ·Ï‰Â²Â·cos(Ï‰t + Ï†) = -Ï‰Â²Â·x",
+ explanation: "We try x(t) = AÂ·cos(Ï‰t + Ï†), where A is amplitude, Ï‰ is angular frequency, and Ï† is phase. Differentiate twice: first derivative gives velocity, second gives acceleration. Notice dÂ²x/dtÂ² = -Ï‰Â²Â·x."
  },
  {
- label: "Substitute to Find ω",
- latex: "d²x/dt² = -(k/m)·x (from Newton)\nd²x/dt² = -ω²·x (from solution)\n∴ -ω²·x = -(k/m)·x\nω² = k/m\nω = √(k/m)",
- explanation: "Equating the two expressions for acceleration: -ω²·x = -(k/m)·x. Cancel -x (assuming x ≠ 0): ω² = k/m. Therefore the angular frequency is ω = √(k/m). The period T = 2π/ω = 2π√(m/k)."
+ label: "Substitute to Find Ï‰",
+ latex: "dÂ²x/dtÂ² = -(k/m)Â·x (from Newton)\ndÂ²x/dtÂ² = -Ï‰Â²Â·x (from solution)\nâˆ´ -Ï‰Â²Â·x = -(k/m)Â·x\nÏ‰Â² = k/m\nÏ‰ = âˆš(k/m)",
+ explanation: "Equating the two expressions for acceleration: -Ï‰Â²Â·x = -(k/m)Â·x. Cancel -x (assuming x â‰  0): Ï‰Â² = k/m. Therefore the angular frequency is Ï‰ = âˆš(k/m). The period T = 2Ï€/Ï‰ = 2Ï€âˆš(m/k)."
  },
  {
  label: "Energy in SHM",
- latex: "PE = ½kx² = ½k[A·cos(ωt + φ)]²\nKE = ½mv² = ½m[ωA·sin(ωt + φ)]² = ½kA²·sin²(ωt + φ)\nE_total = PE + KE = ½kA²[cos² + sin²] = ½kA²",
- explanation: "Total mechanical energy is constant! PE is maximum at amplitude (x = ±A), KE is maximum at equilibrium (x = 0). Using sin² + cos² = 1, total energy E = ½kA². This energy conservation is why undamped SHM oscillates forever."
+ latex: "PE = Â½kxÂ² = Â½k[AÂ·cos(Ï‰t + Ï†)]Â²\nKE = Â½mvÂ² = Â½m[Ï‰AÂ·sin(Ï‰t + Ï†)]Â² = Â½kAÂ²Â·sinÂ²(Ï‰t + Ï†)\nE_total = PE + KE = Â½kAÂ²[cosÂ² + sinÂ²] = Â½kAÂ²",
+ explanation: "Total mechanical energy is constant! PE is maximum at amplitude (x = Â±A), KE is maximum at equilibrium (x = 0). Using sinÂ² + cosÂ² = 1, total energy E = Â½kAÂ². This energy conservation is why undamped SHM oscillates forever."
  }
  ],
- conclusion: "Simple Harmonic Motion emerges naturally from Hooke's law (F = -kx) combined with Newton's 2nd law. The frequency depends only on spring constant k and mass m: ω = √(k/m). This exact equation governs everything from car suspensions to MEMS oscillators.",
- realWorldApplication: "Car suspension tuning directly uses ω = √(k/m) and critical damping c_c = 2√(mk) — the same formulas in this lab. MEMS accelerometers in smartphones use tiny proof masses on springs oscillating at their resonant frequency, and by measuring the frequency shift from acceleration, they track your phone's orientation!"
+ conclusion: "Simple Harmonic Motion emerges naturally from Hooke's law (F = -kx) combined with Newton's 2nd law. The frequency depends only on spring constant k and mass m: Ï‰ = âˆš(k/m). This exact equation governs everything from car suspensions to MEMS oscillators.",
+ realWorldApplication: "Car suspension tuning directly uses Ï‰ = âˆš(k/m) and critical damping c_c = 2âˆš(mk) â€” the same formulas in this lab. MEMS accelerometers in smartphones use tiny proof masses on springs oscillating at their resonant frequency, and by measuring the frequency shift from acceleration, they track your phone's orientation!"
  }}
  defaultExpanded={difficulty === 'deep-dive'}
  />
@@ -431,3 +431,4 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

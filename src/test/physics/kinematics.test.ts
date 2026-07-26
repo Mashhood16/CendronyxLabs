@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import {
   calculateKinematicsStep,
   extractKinematicsDataPoint,
@@ -74,3 +74,4 @@ describe('extractKinematicsDataPoint', () => {
     expect(point.velocity).toBe(4.88);
   });
 });
+

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { BarChart3, PieChart, Plus, Trash2, Database, FileBarChart } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -277,3 +277,4 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
  </div>
  );
 }
+

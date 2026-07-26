@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { SlidersHorizontal, ArrowLeft, FastForward, Car, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -195,3 +195,4 @@ export default function LabE12AdjectivesAdverbs({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

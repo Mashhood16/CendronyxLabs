@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { CheckCircle, XCircle, Wrench, Zap } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -245,3 +245,4 @@ export default function LabE8ConjunctionsClauses({ onExit }: { onExit?: () => vo
  </div>
  );
 }
+

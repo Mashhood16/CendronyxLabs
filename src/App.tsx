@@ -1,4 +1,4 @@
-// Force HMR reload 4
+﻿// Force HMR reload 4
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/layout/ProtectedRoute';
@@ -28,3 +28,4 @@ export default function App() {
     </ErrorBoundary>
   );
 }
+

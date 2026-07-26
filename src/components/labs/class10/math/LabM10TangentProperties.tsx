@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+﻿import { useState, useRef, useEffect, useCallback } from 'react';
 import { RefreshCw, CheckCircle2, XCircle, Calculator, Crosshair, Info, Settings2 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -325,3 +325,4 @@ export default function LabM10TangentProperties({ onExit }: Props) {
  </div>
  );
 }
+

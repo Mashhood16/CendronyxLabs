@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Play, CheckCircle, XCircle, Code, BookOpen, ListChecks, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../../../../utils/labScaffolding';
@@ -229,3 +229,4 @@ if (score >= 90) {
  </div>
  );
 }
+

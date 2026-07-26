@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Activity, Target, Save, Info, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -210,3 +210,4 @@ export default function LabP11FluidMechanics({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

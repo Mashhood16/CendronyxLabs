@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { CheckCircle, Calculator, RefreshCcw, Factory, HelpCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -220,3 +220,4 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
  </div>
  );
 }
+

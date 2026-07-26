@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Play, RotateCw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -179,3 +179,4 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
  </div>
  );
 }
+

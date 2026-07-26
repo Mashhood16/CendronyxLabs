@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+﻿import { useState, useRef, useEffect, useCallback } from 'react';
 import { RefreshCw, CheckCircle2, XCircle, Calculator, Info, Settings2, Compass, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -357,3 +357,4 @@ export default function LabM10CircleBasics({ onExit }: Props) {
  </div>
  );
 }
+

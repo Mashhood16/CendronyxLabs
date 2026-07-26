@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, ClipboardList } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -154,7 +154,7 @@ const { recordLabData } = useLab();
  if (err < 0.05) {
  setFeedback("Correct! You have accurately determined the real expansivity.");
  } else {
- setFeedback(`Incorrect. Check your calculations. Use γ_real = γ_app + γ_flask.`);
+ setFeedback(`Incorrect. Check your calculations. Use Î³_real = Î³_app + Î³_flask.`);
  }
  };
 
@@ -199,7 +199,7 @@ const { recordLabData } = useLab();
  <li>{t('lab.p10expansionliquids_v')} {V0} {t('lab.p10expansionliquids_cm')}</li>
  <li>{t('lab.p10expansionliquids_capillary_diameter')} {D_capillary} cm</li>
  <li>{t('lab.p10expansionliquids_area_a')} {A.toFixed(4)} {t('lab.p10expansionliquids_cm_1')}</li>
- <li>{t('lab.p10expansionliquids_initial_temp_t')} {T0} °C</li>
+ <li>{t('lab.p10expansionliquids_initial_temp_t')} {T0} Â°C</li>
  </ul>
  </div>
 
@@ -225,12 +225,12 @@ const { recordLabData } = useLab();
  onChange={handleFlaskChange}
  disabled={isRunning && time > 0}
  >
- {Object.entries(FLASKS).map(([k, v]) => <option key={k} value={k}>{v.name} (γ={v.gamma})</option>)}
+ {Object.entries(FLASKS).map(([k, v]) => <option key={k} value={k}>{v.name} (Î³={v.gamma})</option>)}
  </select>
  </div>
  <div>
  <div className="flex justify-between mb-1">
- <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10expansionliquids_water_bath_temp')} {targetTemp}°C</label>
+ <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff]">{t('lab.p10expansionliquids_water_bath_temp')} {targetTemp}Â°C</label>
  </div>
  <input 
  type="range" min="20" max="100" step="1" 
@@ -260,8 +260,8 @@ const { recordLabData } = useLab();
  </div>
  
  <div className="absolute top-4 right-4 text-white text-xs font-mono text-right bg-black/50 p-2 rounded">
- <div>{t('lab.p10expansionliquids_t_flask')} {tFlask.toFixed(1)}°C</div>
- <div>{t('lab.p10expansionliquids_t_liquid')} {tLiquid.toFixed(1)}°C</div>
+ <div>{t('lab.p10expansionliquids_t_flask')} {tFlask.toFixed(1)}Â°C</div>
+ <div>{t('lab.p10expansionliquids_t_liquid')} {tLiquid.toFixed(1)}Â°C</div>
  <div>{t('lab.p10expansionliquids_h_app')} {h_apparent.toFixed(2)} cm</div>
  </div>
 
@@ -421,3 +421,4 @@ const { recordLabData } = useLab();
  </div>
  );
 }
+

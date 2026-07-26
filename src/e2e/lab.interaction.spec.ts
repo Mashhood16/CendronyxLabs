@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+﻿import { test, expect } from '@playwright/test';
 
 test.describe('Lab Interaction Flows', () => {
   test('subject selection page loads modules', async ({ page }) => {
@@ -57,3 +57,4 @@ test.describe('Lab Interaction Flows', () => {
     await page.context().setOffline(false);
   });
 });
+

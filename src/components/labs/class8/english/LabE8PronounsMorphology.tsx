@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { CheckCircle2, XCircle, Puzzle, Target, Beaker, Link2, Sparkles } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -292,3 +292,4 @@ export default function LabE8PronounsMorphology({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

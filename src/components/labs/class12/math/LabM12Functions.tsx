@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { CheckCircle2, XCircle, TrendingUp, LineChart } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -380,3 +380,4 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

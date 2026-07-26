@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Info, Play, RotateCcw, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../../../../utils/labScaffolding';
@@ -247,7 +247,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
  question: "Will static friction or kinetic friction be greater for the wooden block on a wooden surface?",
  options: ["Static friction will be greater", "Kinetic friction will be greater", "They will be equal", "It depends on the mass only"],
  correctOption: 0,
- explanation: "Static friction (μs = 0.4) is always greater than kinetic friction (μk = 0.3) for the same surfaces. You need more force to start moving than to keep moving."
+ explanation: "Static friction (Î¼s = 0.4) is always greater than kinetic friction (Î¼k = 0.3) for the same surfaces. You need more force to start moving than to keep moving."
  }}
  onComplete={() => {}}
  />
@@ -286,7 +286,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
  <h3 className="font-semibold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.p9friction_assessment')}</h3>
  <p className="text-sm text-blue-800 mb-4 dark:text-[#ffffff]">
  
- {t('lab.p9friction_select_the_unknown_material_mo')}<span className="italic">μ<sub>s</sub></span>). 
+ {t('lab.p9friction_select_the_unknown_material_mo')}<span className="italic">Î¼<sub>s</sub></span>). 
  <br/><span className="text-xs">{t('lab.p9friction_assume_g_9_8_m_s')}</span>
  </p>
  
@@ -323,3 +323,4 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

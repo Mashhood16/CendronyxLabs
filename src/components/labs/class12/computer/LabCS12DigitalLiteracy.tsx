@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import { useLab } from '../../../../store';
 import { Search, Table, EyeOff, CheckCircle, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -279,3 +279,4 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

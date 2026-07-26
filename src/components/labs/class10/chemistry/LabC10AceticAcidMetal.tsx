@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Beaker, Info, Activity, Plus, RefreshCw, CheckCircle2, XCircle, Cylinder } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -28,7 +28,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
  setAcidAdded(true);
  setTotalNaAdded(0);
  setGasVolume(0);
- setEquation('CH₃COOH(aq)');
+ setEquation('CHâ‚ƒCOOH(aq)');
  };
 
  const addNa = () => {
@@ -36,7 +36,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
  const newNa = totalNaAdded + naMass;
  setTotalNaAdded(newNa);
  setIsReacting(true);
- setEquation('2CH₃COOH(aq) + 2Na(s) → 2CH₃COONa(aq) + H₂(g) ↑');
+ setEquation('2CHâ‚ƒCOOH(aq) + 2Na(s) â†’ 2CHâ‚ƒCOONa(aq) + Hâ‚‚(g) â†‘');
  
  // Target gas volume = newNa * 521.7 * (1 + (Math.random()*0.04 - 0.02)) // 2% noise
  const noise = 1 + (Math.random() * 0.04 - 0.02);
@@ -300,3 +300,4 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
  </div>
  );
 }
+

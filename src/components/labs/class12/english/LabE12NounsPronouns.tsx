@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Layers, ArrowLeft, ShieldAlert, CheckCircle, Target, Shield, AlertTriangle, Zap, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -318,3 +318,4 @@ export default function LabE12NounsPronouns({ onExit }: { onExit?: () => void })
   </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Activity, Globe } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -38,7 +38,7 @@ export default function LabM9Logarithms({ onExit }: Props) {
  const exp = 1.5 * magnitude + 4.8;
  const power = Math.floor(exp);
  const coeff = Math.pow(10, exp - power);
- const energyStr = `${coeff.toFixed(2)} × 10^${power} J`;
+ const energyStr = `${coeff.toFixed(2)} Ã— 10^${power} J`;
  
  setLogs([...logs, { id: logs.length + 1, mag: magnitude, energyStr }]);
  };
@@ -197,3 +197,4 @@ export default function LabM9Logarithms({ onExit }: Props) {
  </div>
  );
 }
+

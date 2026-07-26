@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Zap, CheckCircle, XCircle, Lightbulb, ArrowRight, BookOpen, BrainCircuit, HelpCircle, Trophy, EyeOff, Sparkles, RefreshCcw, Target } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
@@ -6,7 +6,7 @@ import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
 
 
-function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/∪/g,'u').replace(/∩/g,'intersect').replace(/∈/g,'in').replace(/\s+/g,'').replace(/×/g,'').replace(/\*/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/−/g,'-').replace(/–/g,'-').replace(/Δ/g,'d').replace(/δ/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/π/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi,'').replace(/[{}]/g,'').replace(/\\/g,'').replace(/âˆª/g,'u').replace(/âˆ©/g,'intersect').replace(/âˆˆ/g,'in').replace(/\s+/g,'').replace(/Ã—/g,'').replace(/\*/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onExit?: () => void }) {
@@ -31,8 +31,8 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
  };
 
  const steps = [
- { label: t('lab.p10_shElec_step1_label'), formula: 'Q_heater = V × I × t', detail: t('lab.p10_shElec_step1_detail') },
- { label: t('lab.p10_shElec_step2_label'), formula: 'Q_heater = m_l c_l ΔT + m_c c_c ΔT', detail: t('lab.p10_shElec_step2_detail') },
+ { label: t('lab.p10_shElec_step1_label'), formula: 'Q_heater = V Ã— I Ã— t', detail: t('lab.p10_shElec_step1_detail') },
+ { label: t('lab.p10_shElec_step2_label'), formula: 'Q_heater = m_l c_l Î”T + m_c c_c Î”T', detail: t('lab.p10_shElec_step2_detail') },
  { label: t('lab.p10_shElec_step3_label'), formula: 'c_l = (VIt - m_c c_c (T_f - T_i)) / (m_l (T_f - T_i))', detail: t('lab.p10_shElec_step3_detail') }
  ];
   const [activeTab, setActiveTab] = useState<'learn' | 'test'>('learn');
@@ -147,7 +147,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.p10derivationspecificheatelectrical_liquid_mass_m_l')}</span><span className="text-violet-600 font-mono">{ml} kg</span></div><input type="range" min="0.1" max="1" step="0.05" value={ml} onChange={e => { setMl(parseFloat(e.target.value)); setCheckResult('idle'); }} className="w-full accent-violet-500" /></div>
  <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1">
  <p className="text-xs text-slate-500 font-semibold uppercase">{t('lab.10derivationspecificheatelectrical_derivationtrace')}</p>
- <p className="text-sm text-slate-400">{t('lab.p10derivationspecificheatelectrical_q_heater')} {v}×{i}×{timeSec} = {qHeater} J</p>
+ <p className="text-sm text-slate-400">{t('lab.p10derivationspecificheatelectrical_q_heater')} {v}Ã—{i}Ã—{timeSec} = {qHeater} J</p>
  <p className="text-sm text-slate-400">{t('lab.p10_shElec_trace1', { cl: cl.toFixed(0) })}</p>
  <p className="border-t border-[#2a2a2a] pt-1 text-xs"><span className="text-green-400 font-bold">{t('lab.10derivationspecificheatelectrical_c_l')}</span><span className="text-yellow-400 font-mono font-bold">{cl.toFixed(0)} {t('lab.p10derivationspecificheatelectrical_j_kg_k')}</span></p>
  </div>
@@ -189,11 +189,11 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
  
         </>
       ) : (
-        /* ═══════════════════ TEST TAB ═══════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TEST TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         <div className="flex-1 overflow-y-auto p-4 lg:p-6">
           <div className="h-full flex flex-col lg:flex-row gap-4 lg:gap-6">
 
-            {/* ── LEFT PANEL: Derivation Steps ── */}
+            {/* â”€â”€ LEFT PANEL: Derivation Steps â”€â”€ */}
             <div className="flex-1 min-w-0">
               <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 mb-4">
                 <div className="flex items-center gap-2">
@@ -215,7 +215,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
               {testFullyCompleted ? (
                 <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800 p-8 text-center">
                   <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! 🎉</h3>
+                  <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! ðŸŽ‰</h3>
                   <p className="text-sm text-emerald-600 dark:text-emerald-400 mb-4">You completed all steps correctly.</p>
                   <button onClick={resetTest} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 mx-auto"><RefreshCcw className="w-3.5 h-3.5" /> Retry</button>
                 </div>
@@ -309,7 +309,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
                                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'
                                     }`}
                                   >
-                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
+                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
                                   </button>
                                   <button
                                     onClick={() => setShowTestHint(!showTestHint)}
@@ -346,7 +346,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
                                   <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                                     <div className="flex items-center gap-2">
                                       <CheckCircle className="w-4 h-4 text-emerald-500" />
-                                      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                                      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                                     </div>
                                     <MathFormula formula={testSteps[idx].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                                   </div>
@@ -355,7 +355,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
                             </div>
                           ) : isLocked ? (
                             <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3">
-                              <p className="text-xs text-slate-400 text-center">🔒 Complete previous step</p>
+                              <p className="text-xs text-slate-400 text-center">ðŸ”’ Complete previous step</p>
                             </div>
                           ) : (
                             <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#2a2a2a] p-3 text-center cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1c1b1b] transition-colors">
@@ -375,7 +375,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
               )}
             </div>
 
-            {/* ── RIGHT PANEL: Equation Builder ── */}
+            {/* â”€â”€ RIGHT PANEL: Equation Builder â”€â”€ */}
             {!testFullyCompleted && (
               <div className="hidden lg:block w-full lg:w-[380px] xl:w-[420px] shrink-0">
                 <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-5 sticky top-4">
@@ -416,7 +416,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
                           : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'}`}
                     >
                       {testStatus === 'correct' ? (
-                        <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</>
+                        <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</>
                       ) : (
                         <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>
                       )}
@@ -460,7 +460,7 @@ export default function LabP10DerivationSpecificHeatElectrical({ onExit }: { onE
                     <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                       <div className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-emerald-500" />
-                        <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                        <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                       </div>
                       <MathFormula formula={testSteps[currentStep].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                     </div>

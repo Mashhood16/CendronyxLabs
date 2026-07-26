@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -66,7 +66,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
  <div className="absolute top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40" style={{ right: '50%' }} />
  <span className="absolute top-[60%] text-xs text-red-500 font-bold" style={{ right: '48%' }}>F</span>
  {/* Person/Face */}
- <div className="absolute top-1/2 -translate-y-1/2 text-2xl" style={{ right: `${10 + distance * 0.8}%` }}>👱</div>
+ <div className="absolute top-1/2 -translate-y-1/2 text-2xl" style={{ right: `${10 + distance * 0.8}%` }}>ðŸ‘±</div>
  </div>
  </div>
 
@@ -82,7 +82,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
  filter: `blur(${(1 - opacity) * 10}px)`
  }}
  >
- 👱
+ ðŸ‘±
  </div>
 
  <div className="absolute inset-0 bg-slate-50 dark:bg-[#121212]/10 rounded-full shadow-[inset_0_20px_50px_rgba(255,255,255,0.5)] pointer-events-none" />
@@ -113,3 +113,4 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
  </div>
  );
 }
+

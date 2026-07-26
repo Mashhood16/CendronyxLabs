@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type ReactNode } from 'react';
+﻿import { useState, useRef, useEffect, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -64,3 +64,4 @@ export default function Layout({ children, hideBottomNav = false }: LayoutProps)
     </div>
   );
 }
+

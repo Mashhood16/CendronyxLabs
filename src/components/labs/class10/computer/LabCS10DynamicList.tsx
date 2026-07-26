@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Plus, Minus, Database, FileText } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -259,3 +259,4 @@ export default function LabCS10DynamicList({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+﻿import { useState, useRef, useCallback } from 'react';
 
 interface SwipeGestureOptions {
   onSwipeLeft?: () => void;
@@ -56,3 +56,4 @@ export function useSwipeGesture({ onSwipeLeft, onSwipeRight, threshold = 50 }: S
     },
   };
 }
+

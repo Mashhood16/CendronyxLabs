@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Beaker, Play, ClipboardList, CheckCircle, Flame, Thermometer, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS } from '../../../../utils/labScaffolding';
@@ -99,7 +99,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  setTimeout(() => setEquation(['C12H22O11(s)', '+', 'H2O(l)']), 500);
  setTimeout(() => {
  setSugarAdded(prev => prev + 40);
- setEquation(['C12H22O11(s)', '+', 'H2O(l)', '→', 'C12H22O11(aq)']);
+ setEquation(['C12H22O11(s)', '+', 'H2O(l)', 'â†’', 'C12H22O11(aq)']);
  }, 1000);
  };
 
@@ -108,7 +108,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  const currentSolubility = 200 + 2 * waterTemp;
  setSugarDissolved(currentSolubility);
  setIsSupersaturated(false);
- setEquation(['C12H22O11(aq)', '→', 'C12H22O11(s) ↓']);
+ setEquation(['C12H22O11(aq)', 'â†’', 'C12H22O11(s) â†“']);
  }
  };
 
@@ -140,7 +140,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  setCuso4Mass(m => {
  const newMass = Math.max(m - rate, 159.5);
  if (newMass < m && Math.random() < 0.2) {
- setEquation(['CuSO4·5H2O(s)', '→', 'CuSO4(s)', '+', '5H2O(g)']);
+ setEquation(['CuSO4Â·5H2O(s)', 'â†’', 'CuSO4(s)', '+', '5H2O(g)']);
  }
  return newMass;
  });
@@ -154,12 +154,12 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  const checkAnswer = () => {
  if (activeTab === 'sugar') {
  const val = parseFloat(answer);
- if (Math.abs(val - 300) < 5) setFeedback("Correct! The solubility is 300g/100mL at 50°C.");
+ if (Math.abs(val - 300) < 5) setFeedback("Correct! The solubility is 300g/100mL at 50Â°C.");
  else setFeedback("Incorrect. Use the linear trend or equation: S = 200 + 2T.");
  } else {
  const val = parseFloat(answer);
  if (Math.abs(val - 36.1) < 0.5) setFeedback("Correct! Water is 90g out of 249.5g total, which is ~36.1%.");
- else setFeedback("Incorrect. Calculate mass of 5H2O divided by molar mass of CuSO4·5H2O.");
+ else setFeedback("Incorrect. Calculate mass of 5H2O divided by molar mass of CuSO4Â·5H2O.");
  }
  };
 
@@ -235,12 +235,12 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  <div className="absolute bottom-0 w-full bg-white dark:bg-[#121212] dark:border-[#1c1b1b] lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] opacity-90 border-t border-gray-200 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t" style={{ height: `${Math.min((sugarAdded - sugarDissolved)/2, 20)}%` }}></div>
  )}
  <Thermometer className="absolute right-2 top-10 text-red-500" size={32} />
- <div className="absolute right-10 top-12 text-sm font-bold text-red-600">{waterTemp}°C</div>
+ <div className="absolute right-10 top-12 text-sm font-bold text-red-600">{waterTemp}Â°C</div>
  </div>
 
  <div className="mt-6 w-full max-w-xs space-y-4">
  <div>
- <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff]">{t('lab.c9statesofmatter_water_temperature')} {waterTemp}°C</label>
+ <label className="block text-sm font-medium text-gray-700 dark:text-[#ffffff]">{t('lab.c9statesofmatter_water_temperature')} {waterTemp}Â°C</label>
  <input type="range" min="20" max="100" value={waterTemp} onChange={(e) => setWaterTemp(Number(e.target.value))} className="w-full" />
  </div>
  {isSupersaturated && (
@@ -264,7 +264,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  <div className="mt-8 text-center bg-gray-100 p-4 rounded border border-gray-300 w-full max-w-xs">
  <div className="text-2xl font-mono text-green-700">{cuso4Mass.toFixed(1)} g</div>
  <div className="text-sm text-gray-500">{t('lab.c9statesofmatter_digital_balance')}</div>
- <div className="text-md font-bold text-red-600 mt-2">{Math.round(cuso4Temp)} °C</div>
+ <div className="text-md font-bold text-red-600 mt-2">{Math.round(cuso4Temp)} Â°C</div>
  </div>
 
  <div className="mt-6 w-full max-w-xs flex gap-2">
@@ -315,7 +315,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  data={activeTab === 'sugar' ? sugarData : cuso4Data} 
  xKey="temp" 
  yKey={activeTab === 'sugar' ? 'dissolved' : 'mass'} 
- xLabel="Temperature (°C)" 
+ xLabel="Temperature (Â°C)" 
  yLabel={activeTab === 'sugar' ? 'Dissolved Sugar (g)' : 'Mass (g)'} 
  t={t}
  />
@@ -325,8 +325,8 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  <h3 className="font-bold text-blue-900 mb-2 dark:text-[#ffffff]">{t('lab.c9statesofmatter_analysis')}</h3>
  <p className="text-sm text-slate-700 dark:text-[#ffffff] mb-2">
  {activeTab === 'sugar' 
- ? "Based on the linear trend of your data, calculate the theoretical solubility of sugar at 50 °C (in g)." 
- : "Calculate the theoretical percentage by mass of water in CuSO₄·5H₂O. (Cu=63.5, S=32, O=16, H=1)."}
+ ? "Based on the linear trend of your data, calculate the theoretical solubility of sugar at 50 Â°C (in g)." 
+ : "Calculate the theoretical percentage by mass of water in CuSOâ‚„Â·5Hâ‚‚O. (Cu=63.5, S=32, O=16, H=1)."}
  </p>
  <div className="flex gap-2">
  <input type="number" value={answer} onChange={(e) => setAnswer(e.target.value)} placeholder={t('lab.c9statesofmatter_enter_value')} className="flex-grow p-2 border rounded" />
@@ -339,3 +339,4 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
  </div>
  );
 }
+

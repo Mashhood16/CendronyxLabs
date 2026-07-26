@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+﻿import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { studentService, resetStudentDB } from '../../services/studentService';
 
 describe('studentService', () => {
@@ -108,3 +108,4 @@ describe('studentService', () => {
     ).rejects.toThrow('Incorrect password');
   });
 });
+

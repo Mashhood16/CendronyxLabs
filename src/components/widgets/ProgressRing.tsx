@@ -1,4 +1,4 @@
-interface ProgressRingProps {
+﻿interface ProgressRingProps {
   progress: number;
   size?: number;
   strokeWidth?: number;
@@ -36,3 +36,4 @@ export default function ProgressRing({ progress, size = 40, strokeWidth = 3, cla
     </svg>
   );
 }
+

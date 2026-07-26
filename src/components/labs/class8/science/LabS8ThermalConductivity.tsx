@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Flame } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -106,7 +106,7 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
  <div className="absolute right-4 top-1/2 -translate-y-1/2 z-20">
  <div className={`w-20 h-20 rounded-full flex items-center justify-center transition-colors duration-1000 ${temp > 80 ? 'bg-red-500/20' : 'bg-transparent'}`}>
  <span className="text-4xl select-none" style={{ filter: temp > 80 ? 'sepia(1) hue-rotate(-50deg) saturate(3)' : 'none' }}>
- {temp > 80 ? '🥵' : '🧤'}
+ {temp > 80 ? 'ðŸ¥µ' : 'ðŸ§¤'}
  </span>
  </div>
  </div>
@@ -144,3 +144,4 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
  </div>
  );
 }
+

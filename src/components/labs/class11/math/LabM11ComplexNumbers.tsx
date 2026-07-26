@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -266,3 +266,4 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
  </div>
  );
 }
+

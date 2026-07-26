@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import {Play, Pause, Plus, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -30,7 +30,7 @@ export default function LabP10ThermalConduction({ onExit }: LabProps) {
 
  const A = 0.0001; // m^2
  const Lf = 334; // J/g
- const Tc = 0; // °C
+ const Tc = 0; // Â°C
 
  useEffect(() => {
  let timer: number;
@@ -71,7 +71,7 @@ export default function LabP10ThermalConduction({ onExit }: LabProps) {
  return;
  }
  if (val > 45 && val < 55) {
- setFeedback('Correct! The thermal conductivity is approximately 50 W/m·K.');
+ setFeedback('Correct! The thermal conductivity is approximately 50 W/mÂ·K.');
  } else {
  setFeedback('Incorrect. Check your slope and formula.');
  }
@@ -172,7 +172,7 @@ export default function LabP10ThermalConduction({ onExit }: LabProps) {
  <div>
  <label className="block text-sm font-bold text-slate-700 dark:text-[#ffffff] mb-1">
  
- {t('lab.p10thermalconduction_source_temperature')} {tempSource}°C
+ {t('lab.p10thermalconduction_source_temperature')} {tempSource}Â°C
  </label>
  <input
  type="range" min="100" max="500" step="10"
@@ -234,7 +234,7 @@ export default function LabP10ThermalConduction({ onExit }: LabProps) {
  )}
  {/* Heat Source Block */}
  <rect x="20" y="140" width="40" height="40" fill={isRunning ? "#ea580c" : "#64748b"} rx="4" />
- <text x="25" y="165" fill="white" fontSize="12" fontWeight="bold">{isRunning ? tempSource : 20}°C</text>
+ <text x="25" y="165" fill="white" fontSize="12" fontWeight="bold">{isRunning ? tempSource : 20}Â°C</text>
  
  {/* Rod */}
  <rect x="60" y="150" width={length * 600} height="20" fill="url(#rodGrad)" stroke="#1e293b" strokeWidth="2" />
@@ -337,3 +337,4 @@ export default function LabP10ThermalConduction({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import {Play, CheckCircle, XCircle, PenTool } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -208,3 +208,4 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

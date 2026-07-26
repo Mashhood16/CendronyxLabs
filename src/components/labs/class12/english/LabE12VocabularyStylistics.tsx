@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Scale, MessageCircle, Feather, Eye, Lightbulb, TrendingDown, TrendingUp, BookOpen } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -278,3 +278,4 @@ export default function LabE12VocabularyStylistics({ onExit }: { onExit?: () => 
   </div>
  );
 }
+

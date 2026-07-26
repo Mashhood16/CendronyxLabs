@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useLab } from '../../../../store';
 import { RotateCcw, Check, Plus } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -41,7 +41,7 @@ export default function LabC10StandardizationTitration({ onExit }: { onExit?: ()
  if (flaskFilled && indicatorAdded) eq += " + Phph(colorless)";
  if (buretteFilled && naohAdded === 0) eq = `NaOH(aq) [Burette] | ${eq} [Flask]`;
  if (naohAdded > 0) {
- eq = `NaOH(aq) + HCl(aq) ➔ NaCl(aq) + H₂O(l)`;
+ eq = `NaOH(aq) + HCl(aq) âž” NaCl(aq) + Hâ‚‚O(l)`;
  if (isPastEndpoint) eq += " [Endpoint Reached!]";
  }
  if (!flaskFilled && !buretteFilled) eq = "Waiting for chemicals...";
@@ -182,3 +182,4 @@ export default function LabC10StandardizationTitration({ onExit }: { onExit?: ()
  </div>
  );
 }
+

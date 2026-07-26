@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { RefreshCw, BarChart2, BookOpen, CheckCircle, Target, Save } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -254,3 +254,4 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

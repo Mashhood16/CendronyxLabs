@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { Check, TrendingUp, LocateFixed } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -356,3 +356,4 @@ export default function LabM8EquationsInequalities({ onExit }: { onExit?: () => 
  </div>
  );
 }
+

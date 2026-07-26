@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+﻿import { lazy } from 'react';
 
 
 // Lazy load all lab components
@@ -1417,3 +1417,4 @@ export const getLabComponent = (moduleId: string): React.LazyExoticComponent<Rea
   if (!componentName) return null;
   return labComponents[componentName] || null;
 }
+

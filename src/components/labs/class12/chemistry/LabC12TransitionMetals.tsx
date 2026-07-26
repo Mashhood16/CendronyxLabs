@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Flame, Activity, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -13,12 +13,12 @@ interface MetalComplex {
 }
 
 const complexes: MetalComplex[] = [
- { metal: 'Cu²⁺', ligand: 'H₂O', name: '[Cu(H₂O)₆]²⁺', color: '#93c5fd', lambda: 800, spin: 'High Spin' },
- { metal: 'Cu²⁺', ligand: 'NH₃', name: '[Cu(NH₃)₄(H₂O)₂]²⁺', color: '#1e3a8a', lambda: 600, spin: 'High Spin' },
- { metal: 'Co²⁺', ligand: 'H₂O', name: '[Co(H₂O)₆]²⁺', color: '#fca5a5', lambda: 510, spin: 'High Spin' },
- { metal: 'Co²⁺', ligand: 'Cl⁻', name: '[CoCl₄]²⁻', color: '#3b82f6', lambda: 680, spin: 'High Spin (Tetrahedral)' },
- { metal: 'Fe³⁺', ligand: 'H₂O', name: '[Fe(H₂O)₆]³⁺', color: '#fef08a', lambda: 400, spin: 'High Spin' },
- { metal: 'Fe³⁺', ligand: 'CN⁻', name: '[Fe(CN)₆]³⁻', color: '#991b1b', lambda: 350, spin: 'Low Spin' },
+ { metal: 'CuÂ²âº', ligand: 'Hâ‚‚O', name: '[Cu(Hâ‚‚O)â‚†]Â²âº', color: '#93c5fd', lambda: 800, spin: 'High Spin' },
+ { metal: 'CuÂ²âº', ligand: 'NHâ‚ƒ', name: '[Cu(NHâ‚ƒ)â‚„(Hâ‚‚O)â‚‚]Â²âº', color: '#1e3a8a', lambda: 600, spin: 'High Spin' },
+ { metal: 'CoÂ²âº', ligand: 'Hâ‚‚O', name: '[Co(Hâ‚‚O)â‚†]Â²âº', color: '#fca5a5', lambda: 510, spin: 'High Spin' },
+ { metal: 'CoÂ²âº', ligand: 'Clâ»', name: '[CoClâ‚„]Â²â»', color: '#3b82f6', lambda: 680, spin: 'High Spin (Tetrahedral)' },
+ { metal: 'FeÂ³âº', ligand: 'Hâ‚‚O', name: '[Fe(Hâ‚‚O)â‚†]Â³âº', color: '#fef08a', lambda: 400, spin: 'High Spin' },
+ { metal: 'FeÂ³âº', ligand: 'CNâ»', name: '[Fe(CN)â‚†]Â³â»', color: '#991b1b', lambda: 350, spin: 'Low Spin' },
 ];
 
 export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void }) {
@@ -38,9 +38,9 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
  
  const val = parseFloat(ansEnergy);
  if (!isNaN(val) && Math.abs(val - kJmol) < Math.abs(kJmol * 0.05)) {
- setFeedback(`Correct! The crystal field splitting energy (Δ) is ~${kJmol.toFixed(0)} kJ/mol.`);
+ setFeedback(`Correct! The crystal field splitting energy (Î”) is ~${kJmol.toFixed(0)} kJ/mol.`);
  } else {
- setFeedback(`Incorrect. Hint: E = (hc/λ)*Na / 1000. Expected around ${kJmol.toFixed(0)} kJ/mol.`);
+ setFeedback(`Incorrect. Hint: E = (hc/Î»)*Na / 1000. Expected around ${kJmol.toFixed(0)} kJ/mol.`);
  }
  };
 
@@ -125,28 +125,28 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
  {/* eg level */}
  <div className="flex gap-2 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex">
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>
  </div>
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- {activeComplex.spin === 'High Spin' && <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>}
+ {activeComplex.spin === 'High Spin' && <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>}
  </div>
  </div>
  
  {/* Delta E arrow */}
  <div className="h-8 border-l-2 border-dashed border-teal-500 flex items-center">
- <span className="ml-1 text-xs text-teal-700 font-bold">Δ</span>
+ <span className="ml-1 text-xs text-teal-700 font-bold">Î”</span>
  </div>
 
  {/* t2g level */}
  <div className="flex gap-2 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex lg:flex-1 overflow-y-auto min-h-0 lg:overflow-hidden rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑↓</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘â†“</span>
  </div>
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>
  </div>
  <div className="w-6 h-6 border-b-2 border-[#1c1b1b] dark:border-[#1c1b1b] relative">
- <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">↑</span>
+ <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-[10px]">â†‘</span>
  </div>
  </div>
  </div>
@@ -203,3 +203,4 @@ export default function LabC12TransitionMetals({ onExit }: { onExit?: () => void
  </div>
  );
 }
+

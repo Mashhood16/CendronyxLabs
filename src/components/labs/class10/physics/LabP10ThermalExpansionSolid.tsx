@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+﻿import { useState, useEffect, Fragment } from 'react';
 import {Plus, CheckCircle, Info, Lock } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -127,7 +127,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  
  {t('lab.p10thermalexpansionsolid_formula')} <br />
  <code className="bg-orange-100 px-1 rounded font-mono text-sm">{t('lab.10thermalexpansionsolid_llt')}</code><br />
- <span className="mt-1 block">{t('lab.10thermalexpansionsolid_where')}<strong>α</strong>{t('lab.10thermalexpansionsolid_isthecoefficientoflinearexpansion')}</span>
+ <span className="mt-1 block">{t('lab.10thermalexpansionsolid_where')}<strong>Î±</strong>{t('lab.10thermalexpansionsolid_isthecoefficientoflinearexpansion')}</span>
  </p>
  </div>
  </div>
@@ -162,7 +162,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  <div>
  <label className="flex justify-between text-sm font-semibold text-slate-700 dark:text-[#ffffff] mb-2">
  <span>{t('lab.p10thermalexpansionsolid_target_temperature_t')}</span>
- <span className="text-red-600">{targetTemp} °C</span>
+ <span className="text-red-600">{targetTemp} Â°C</span>
  </label>
  <input 
  type="range" min="20" max="200" step="10" 
@@ -190,7 +190,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2">{t('lab.10thermalexpansionsolid_analysistask')}</h3>
  <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
  
- {t('lab.p10thermalexpansionsolid_heat_the')} <strong>{t('lab.10thermalexpansionsolid_mysterymetal')}</strong> {t('lab.p10thermalexpansionsolid_to_various_temperatures_and_re')} <strong>α</strong>.
+ {t('lab.p10thermalexpansionsolid_heat_the')} <strong>{t('lab.10thermalexpansionsolid_mysterymetal')}</strong> {t('lab.p10thermalexpansionsolid_to_various_temperatures_and_re')} <strong>Î±</strong>.
  </p>
  <div className="flex gap-2">
  <input 
@@ -220,7 +220,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  <div className="flex-1 text-center bg-slate-100 dark:bg-[#121212] p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
  <p className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold tracking-wider">{t('lab.10thermalexpansionsolid_currenttemp')}</p>
  <p className={`text-2xl font-mono ${currentTemp > 50 ? 'text-red-600' : 'text-slate-800 dark:text-slate-100'}`}>
- {currentTemp.toFixed(1)} <span className="text-sm">°C</span>
+ {currentTemp.toFixed(1)} <span className="text-sm">Â°C</span>
  </p>
  </div>
  <div className="flex-1 text-center bg-blue-50 p-3 rounded-lg border border-blue-200 dark:bg-teal-950/20 dark:border-teal-900">
@@ -430,3 +430,4 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
  </div>
  );
 }
+

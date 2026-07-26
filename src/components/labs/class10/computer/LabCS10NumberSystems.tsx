@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BookOpen, Settings, Activity, Calculator, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -366,3 +366,4 @@ export default function LabCS10NumberSystems({ onExit }: LabProps) {
  </div>
  );
 }
+

@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Satellite, CheckCircle, XCircle, Lightbulb, ArrowRight, BookOpen, BrainCircuit, HelpCircle, Trophy, EyeOff, Sparkles, RefreshCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
 import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
-function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/×/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/−/g,'-').replace(/–/g,'-').replace(/Δ/g,'d').replace(/δ/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/π/g,'pi');}
+function n(e:string):string{return e.toLowerCase().replace(/\s+/g,'').replace(/Ã—/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void }) {
@@ -20,7 +20,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  const [showTestHint, setShowTestHint] = useState(false);
  const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
  const [testFullyCompleted, setTestFullyCompleted] = useState(false);
- const testSteps=[{testEquation:'v = d/t',testHint:'Average speed is the ratio of distance traveled to time taken.'},{testEquation:'d = 2πr',testHint:'The distance traveled in one complete circular orbit is the circumference.'},{testEquation:'v = 2πr/T',testHint:'Combine the distance d = 2πr with the orbital period T into the speed formula.'},{testEquation:'v = 2πr/T',testHint:'Orbital speed = circumference of orbit ÷ orbital period.'}];
+ const testSteps=[{testEquation:'v = d/t',testHint:'Average speed is the ratio of distance traveled to time taken.'},{testEquation:'d = 2Ï€r',testHint:'The distance traveled in one complete circular orbit is the circumference.'},{testEquation:'v = 2Ï€r/T',testHint:'Combine the distance d = 2Ï€r with the orbital period T into the speed formula.'},{testEquation:'v = 2Ï€r/T',testHint:'Orbital speed = circumference of orbit Ã· orbital period.'}];
  useEffect(() => { const el = document.querySelector(`[data-step-idx="${currentStep}"]`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, [currentStep]);
  const handleTestCheck = () => { const expected = testSteps[currentStep].testEquation; const isCorrect = ck(testInput, expected); setTestStatus(isCorrect ? 'correct' : 'incorrect'); if (isCorrect) { setCompletedSteps(prev => ({ ...prev, [currentStep]: true })); if (currentStep + 1 >= steps.length) { setTestFullyCompleted(true); } else { setCurrentStep(currentStep + 1); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); } } };
  const resetTest = () => { setCurrentStep(0); setTestInput(''); setTestStatus('idle'); setShowTestHint(false); setCompletedSteps({}); setTestFullyCompleted(false); };
@@ -36,9 +36,9 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
 
  const steps = [
  { label: t('lab.orbital_step1_label'), formula: 'v = d / t', detail: t('lab.orbital_step1_detail') },
- { label: t('lab.orbital_step2_label'), formula: 'd = 2πr', detail: t('lab.orbital_step2_detail') },
+ { label: t('lab.orbital_step2_label'), formula: 'd = 2Ï€r', detail: t('lab.orbital_step2_detail') },
  { label: t('lab.orbital_step3_label'), formula: 't = T', detail: t('lab.orbital_step3_detail') },
- { label: t('lab.orbital_step4_label'), formula: 'v = 2πr / T', detail: t('lab.orbital_step4_detail') },
+ { label: t('lab.orbital_step4_label'), formula: 'v = 2Ï€r / T', detail: t('lab.orbital_step4_detail') },
  ];
 
  return (
@@ -56,7 +56,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-5 gap-0 lg:gap-6 p-4 lg:p-6 lg:overflow-visible">
  <div className={`lg:col-span-3 w-full bg-white dark:bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex-col gap-4 lg:overflow-y-auto ${activeMobileTab==='theory'?'flex':'hidden'} lg:flex`}>
  <div className="flex items-center gap-2 mb-3"><div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-600 flex items-center justify-center shadow-lg"><Satellite className="w-5 h-5 text-white" /></div><div><h2 className="text-lg font-bold">{t('lab.step_by_step')}</h2><p className="text-xs text-slate-500">{t('lab.orbital_subtitle')}</p></div></div>
- <div className="bg-gradient-to-br from-indigo-500 to-fuchsia-600 rounded-xl p-5 text-center shadow-lg mb-3"><p className="text-xs text-indigo-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p><p className="text-2xl font-bold text-white mt-1"><MathFormula formula="v = 2πr / T" /></p><p className="text-xs text-indigo-200 mt-1">{t('lab.orbital_final_desc')}</p></div>
+ <div className="bg-gradient-to-br from-indigo-500 to-fuchsia-600 rounded-xl p-5 text-center shadow-lg mb-3"><p className="text-xs text-indigo-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p><p className="text-2xl font-bold text-white mt-1"><MathFormula formula="v = 2Ï€r / T" /></p><p className="text-xs text-indigo-200 mt-1">{t('lab.orbital_final_desc')}</p></div>
  <div className="space-y-0">{steps.map((step,idx)=><div key={idx} className="relative"><div className="flex gap-3"><div className="flex flex-col items-center"><div className="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold shadow-md shrink-0">{idx+1}</div>{idx<steps.length-1&&<div className="w-0.5 h-full min-h-[24px] bg-gradient-to-b from-indigo-400 to-indigo-200 dark:from-indigo-600 dark:to-indigo-800" />}</div><div className="flex-1 pb-4"><div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-3 border border-indigo-200 dark:border-indigo-800 mb-1"><p className="font-bold text-base text-indigo-800 dark:text-indigo-300">{step.label}</p></div><div className="bg-[#000000] rounded-lg mx-1 my-1.5 px-3 py-2 text-center border border-[#1c1b1b]"><MathFormula formula={step.formula} className="text-base font-bold text-yellow-400" /></div><p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed px-1">{step.detail}</p>{idx<steps.length-1&&<div className="flex justify-center mt-1"><ArrowRight className="w-4 h-4 text-indigo-400" /></div>}</div></div></div>)}</div>
  </div>
  <div className={`lg:col-span-2 w-full flex flex-col gap-5 ${activeMobileTab==='lab'?'flex':'hidden'} lg:flex`}>
@@ -89,7 +89,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  </>:
 <div className="flex-1 overflow-y-auto p-4 lg:p-6">
  <div className="h-full flex flex-col lg:flex-row gap-4 lg:gap-6">
- {/* ── LEFT PANEL: Derivation Steps ── */}
+ {/* â”€â”€ LEFT PANEL: Derivation Steps â”€â”€ */}
  <div className="flex-1 min-w-0">
  <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 mb-4">
  <div className="flex items-center gap-2">
@@ -110,7 +110,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  {testFullyCompleted ? (
  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800 p-8 text-center">
  <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
- <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! 🎉</h3>
+ <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! ðŸŽ‰</h3>
  <p className="text-sm text-emerald-600 dark:text-emerald-400 mb-4">You completed all steps correctly.</p>
  <button onClick={resetTest} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 mx-auto"><RefreshCcw className="w-3.5 h-3.5" /> Retry</button>
  </div>
@@ -190,7 +190,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
                                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'
                                     }`}
                                   >
-                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
+                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
                                   </button>
                                   <button
                                     onClick={() => setShowTestHint(!showTestHint)}
@@ -227,7 +227,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
                                   <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                                     <div className="flex items-center gap-2">
                                       <CheckCircle className="w-4 h-4 text-emerald-500" />
-                                      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                                      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                                     </div>
                                     <MathFormula formula={testSteps[idx].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                                   </div>
@@ -235,7 +235,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
                               </div>
                             </div>) : isLocked ? (
     <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3">
-     <p className="text-xs text-slate-400 text-center">🔒 Complete previous step</p>
+     <p className="text-xs text-slate-400 text-center">ðŸ”’ Complete previous step</p>
     </div>
    ) : (
     <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#2a2a2a] p-3 text-center cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1c1b1b] transition-colors">
@@ -253,7 +253,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  </div>
  )}
  </div>
- {/* ── RIGHT PANEL: Equation Builder ── */}
+ {/* â”€â”€ RIGHT PANEL: Equation Builder â”€â”€ */}
  {!testFullyCompleted && (
  <div className="hidden lg:block w-full lg:w-[380px] xl:w-[420px] shrink-0">
   <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-5 sticky top-4">
@@ -291,7 +291,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
        : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md active:scale-95'}`}
     >
      {testStatus === 'correct' ? (
-      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</>
+      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</>
      ) : (
       <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>
      )}
@@ -332,7 +332,7 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
     <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
      <div className="flex items-center gap-2">
       <CheckCircle className="w-4 h-4 text-emerald-500" />
-      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
      </div>
      <MathFormula formula={testSteps[currentStep].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
     </div>
@@ -344,3 +344,4 @@ export default function LabP9DerivationOrbital({ onExit }: { onExit?: () => void
  </div>
 }</div>);
 }
+

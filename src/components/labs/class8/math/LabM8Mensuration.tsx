@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react';
+﻿import { useState, useRef, useMemo } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { Database, CheckCircle, Activity, Ruler } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -59,7 +59,7 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  } else if (Math.abs(userAns - correctMassKg) < 0.5) {
  setAssessmentFeedback("Correct! You accurately computed the volume and applied the density.");
  } else {
- setAssessmentFeedback(`Incorrect. Try again. (Hint: Vol = 4/3 * π * r³, mass = Vol * density). Expected ~${correctMassKg.toFixed(2)} kg`);
+ setAssessmentFeedback(`Incorrect. Try again. (Hint: Vol = 4/3 * Ï€ * rÂ³, mass = Vol * density). Expected ~${correctMassKg.toFixed(2)} kg`);
  }
  };
 
@@ -344,3 +344,4 @@ export default function LabM8Mensuration({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

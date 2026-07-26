@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { BookOpen, Activity, Play, Pause, RotateCcw, LineChart, Target, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -73,9 +73,9 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
  return;
  }
  if (Math.abs(val - 35) <= 2) {
- setFeedback("Correct! The optimal temperature for this yeast strain's enzymes is approximately 35°C.");
+ setFeedback("Correct! The optimal temperature for this yeast strain's enzymes is approximately 35Â°C.");
  } else {
- setFeedback("Incorrect. Hint: Run experiments from 10°C to 50°C. Look for the peak final volume of CO₂.");
+ setFeedback("Incorrect. Hint: Run experiments from 10Â°C to 50Â°C. Look for the peak final volume of COâ‚‚.");
  }
  };
 
@@ -117,7 +117,7 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
  <div className="space-y-2">
  <label className="text-sm font-medium text-slate-700 dark:text-[#ffffff] flex justify-between">
  <span>{t('lab.b11fungi_incubator_temperature')}</span>
- <span className="text-amber-600 font-mono font-bold">{temperature}°C</span>
+ <span className="text-amber-600 font-mono font-bold">{temperature}Â°C</span>
  </label>
  <input 
  type="range" min="10" max="50" step="1" 
@@ -294,3 +294,4 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

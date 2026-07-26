@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../../../../utils/labScaffolding';
@@ -258,3 +258,4 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

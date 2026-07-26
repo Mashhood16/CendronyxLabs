@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+﻿import { useState, useMemo } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { CheckCircle2, RotateCcw, Sparkles, Layers, AlertCircle } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -240,13 +240,13 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
  {selectedWords.find(w => w.category === 'Noun') ? (
  (() => {
  const noun = selectedWords.find(w => w.category === 'Noun')?.text.toLowerCase() || '';
- if (noun.includes('dragon')) return '🐉';
- if (noun.includes('alien')) return '👽';
- if (noun.includes('car')) return '🚗';
- if (noun.includes('spaceship')) return '🚀';
- return '📦';
+ if (noun.includes('dragon')) return 'ðŸ‰';
+ if (noun.includes('alien')) return 'ðŸ‘½';
+ if (noun.includes('car')) return 'ðŸš—';
+ if (noun.includes('spaceship')) return 'ðŸš€';
+ return 'ðŸ“¦';
  })()
- ) : <span className="opacity-10 dark:opacity-5">📦</span>}
+ ) : <span className="opacity-10 dark:opacity-5">ðŸ“¦</span>}
  </div>
  </div>
  {/* Data Logging & Graph */}
@@ -310,3 +310,4 @@ export default function LabE7ArticlesAdjectives({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

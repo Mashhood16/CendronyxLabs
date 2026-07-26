@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useLab } from '../../../../store';
 import { Flame, Filter, RotateCcw, Check} from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -37,12 +37,12 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
 
  useEffect(() => {
  if (!acidAdded) setEquation("Empty");
- else if (acidAdded && znScoops === 0) setEquation("H₂SO₄(aq)");
- else if (isReacting) setEquation("Zn(s) + H₂SO₄(aq) ➔ ZnSO₄(aq) + H₂(g)↑");
- else if (hasExcessZn && !isFiltered) setEquation("ZnSO₄(aq) + Excess Zn(s) [Reaction Complete]");
- else if (isFiltered && !isEvaporated) setEquation("Pure ZnSO₄(aq) Filtrate");
- else if (isEvaporated && waterLevel > 0) setEquation("ZnSO₄(aq) + Heat ➔ ZnSO₄(s) + H₂O(g)↑");
- else if (isEvaporated && waterLevel === 0) setEquation("Solid ZnSO₄ Crystals Formed!");
+ else if (acidAdded && znScoops === 0) setEquation("Hâ‚‚SOâ‚„(aq)");
+ else if (isReacting) setEquation("Zn(s) + Hâ‚‚SOâ‚„(aq) âž” ZnSOâ‚„(aq) + Hâ‚‚(g)â†‘");
+ else if (hasExcessZn && !isFiltered) setEquation("ZnSOâ‚„(aq) + Excess Zn(s) [Reaction Complete]");
+ else if (isFiltered && !isEvaporated) setEquation("Pure ZnSOâ‚„(aq) Filtrate");
+ else if (isEvaporated && waterLevel > 0) setEquation("ZnSOâ‚„(aq) + Heat âž” ZnSOâ‚„(s) + Hâ‚‚O(g)â†‘");
+ else if (isEvaporated && waterLevel === 0) setEquation("Solid ZnSOâ‚„ Crystals Formed!");
  }, [acidAdded, znScoops, isReacting, hasExcessZn, isFiltered, isEvaporated, waterLevel]);
 
  const reset = () => { setAcidAdded(false); setZnScoops(0); setReactedZn(0); setIsFiltered(false); setIsEvaporated(false); setWaterLevel(100); setAssessmentStatus(null); setAssessmentAns(""); };
@@ -154,3 +154,4 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
  </div>
  );
 }
+

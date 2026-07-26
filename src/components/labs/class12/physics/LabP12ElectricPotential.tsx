@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Zap, Camera, CheckCircle, XCircle, Activity, Settings2, Database, Calculator, GraduationCap } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -77,7 +77,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  setLogs([...logs, { type: 'Eel', info: `${electrocytes} cells`, val1: `${voltPerCell}V/cell`, val2: `${totalEelVoltage.toFixed(1)}V` }]);
  } else {
  const tau = (resistance * capacitance * 1e-6).toFixed(3);
- setLogs([...logs, { type: 'RC', info: `C=${capacitance}μF, R=${resistance}Ω`, val1: `Vs=${supplyVoltage}V`, val2: `τ=${tau}s` }]);
+ setLogs([...logs, { type: 'RC', info: `C=${capacitance}Î¼F, R=${resistance}Î©`, val1: `Vs=${supplyVoltage}V`, val2: `Ï„=${tau}s` }]);
  }
  };
 
@@ -229,27 +229,27 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  steps: [
  {
  label: "Coulomb's Force Law",
- latex: "F = (1/4πε₀) · q₁q₂ / r²",
- explanation: "Coulomb's law gives the electrostatic force between two point charges. It is the fundamental experimental law of electrostatics, analogous to Newton's gravitational force law. The constant ε₀ = 8.85×10⁻¹² C²/N·m² is the permittivity of free space."
+ latex: "F = (1/4Ï€Îµâ‚€) Â· qâ‚qâ‚‚ / rÂ²",
+ explanation: "Coulomb's law gives the electrostatic force between two point charges. It is the fundamental experimental law of electrostatics, analogous to Newton's gravitational force law. The constant Îµâ‚€ = 8.85Ã—10â»Â¹Â² CÂ²/NÂ·mÂ² is the permittivity of free space."
  },
  {
  label: "Electric Field from a Point Charge",
- latex: "E = F / q = (1/4πε₀) · Q / r²",
- explanation: "The electric field E is defined as force per unit test charge. For a point charge Q, the field radiates radially outward (positive) or inward (negative) with magnitude E = Q/(4πε₀r²). This is the foundation for all electrostatics."
+ latex: "E = F / q = (1/4Ï€Îµâ‚€) Â· Q / rÂ²",
+ explanation: "The electric field E is defined as force per unit test charge. For a point charge Q, the field radiates radially outward (positive) or inward (negative) with magnitude E = Q/(4Ï€Îµâ‚€rÂ²). This is the foundation for all electrostatics."
  },
  {
  label: "Electric Flux through a Sphere",
- latex: "Φ = ∮ E · dA = ∮ E·dA·cos(0)\n = E · 4πr²\n = (Q / 4πε₀r²) · 4πr²\n = Q / ε₀",
- explanation: "The electric flux Φ is the surface integral of E·dA. For a spherical surface centered on the charge, E is constant and perpendicular to the surface (cos 0 = 1). The surface area is 4πr². The r² cancels, giving Φ = Q/ε₀ — independent of radius!"
+ latex: "Î¦ = âˆ® E Â· dA = âˆ® EÂ·dAÂ·cos(0)\n = E Â· 4Ï€rÂ²\n = (Q / 4Ï€Îµâ‚€rÂ²) Â· 4Ï€rÂ²\n = Q / Îµâ‚€",
+ explanation: "The electric flux Î¦ is the surface integral of EÂ·dA. For a spherical surface centered on the charge, E is constant and perpendicular to the surface (cos 0 = 1). The surface area is 4Ï€rÂ². The rÂ² cancels, giving Î¦ = Q/Îµâ‚€ â€” independent of radius!"
  },
  {
  label: "Gauss's Law & Capacitance",
- latex: "∮ E · dA = Qₑₙ𝒸 / ε₀ (Gauss's Law)\n\nFor a parallel plate capacitor:\nE = σ / ε₀ = Q / (ε₀A)\nV = E·d = Qd / (ε₀A)\n∴ C = Q/V = ε₀A / d",
- explanation: "Gauss's law generalizes: the net flux through ANY closed surface equals the enclosed charge divided by ε₀. Applying it to parallel plates: the field is uniform E = Q/(ε₀A), so voltage V = Ed = Qd/(ε₀A), giving capacitance C = ε₀A/d. This is why the camera flash capacitor's geometry determines its charge storage!"
+ latex: "âˆ® E Â· dA = Qâ‚‘â‚™ð’¸ / Îµâ‚€ (Gauss's Law)\n\nFor a parallel plate capacitor:\nE = Ïƒ / Îµâ‚€ = Q / (Îµâ‚€A)\nV = EÂ·d = Qd / (Îµâ‚€A)\nâˆ´ C = Q/V = Îµâ‚€A / d",
+ explanation: "Gauss's law generalizes: the net flux through ANY closed surface equals the enclosed charge divided by Îµâ‚€. Applying it to parallel plates: the field is uniform E = Q/(Îµâ‚€A), so voltage V = Ed = Qd/(Îµâ‚€A), giving capacitance C = Îµâ‚€A/d. This is why the camera flash capacitor's geometry determines its charge storage!"
  }
  ],
- conclusion: "Gauss's law is a profound generalization of Coulomb's law: while Coulomb's law describes the force between individual charges, Gauss's law relates the electric field over a surface to the charge enclosed. This is one of Maxwell's four equations and the foundation of all capacitor physics — from the eel's bio-capacitors to the camera flash circuit.",
- realWorldApplication: "Every capacitor in electronics follows C = ε₀A/d. The eel's electrocytes are biological capacitors — each cell maintains an ion gradient across a membrane (the dielectric), creating a potential difference of ~0.15V. Stacking 5000 of these 'capacitors' in series produces 600V+. In the camera flash, the capacitor stores charge slowly through a large resistor (seconds), then discharges rapidly through a low-resistance bulb (milliseconds) — the RC time constant τ = RC governs both processes."
+ conclusion: "Gauss's law is a profound generalization of Coulomb's law: while Coulomb's law describes the force between individual charges, Gauss's law relates the electric field over a surface to the charge enclosed. This is one of Maxwell's four equations and the foundation of all capacitor physics â€” from the eel's bio-capacitors to the camera flash circuit.",
+ realWorldApplication: "Every capacitor in electronics follows C = Îµâ‚€A/d. The eel's electrocytes are biological capacitors â€” each cell maintains an ion gradient across a membrane (the dielectric), creating a potential difference of ~0.15V. Stacking 5000 of these 'capacitors' in series produces 600V+. In the camera flash, the capacitor stores charge slowly through a large resistor (seconds), then discharges rapidly through a low-resistance bulb (milliseconds) â€” the RC time constant Ï„ = RC governs both processes."
  }}
  defaultExpanded={difficulty === 'deep-dive'}
  />
@@ -309,14 +309,14 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.p12electricpotential_capacitance_c')}</span>
- <span className="text-emerald-600 font-bold">{capacitance} μF</span>
+ <span className="text-emerald-600 font-bold">{capacitance} Î¼F</span>
  </label>
  <input type="range" min="10" max="1000" step="10" value={capacitance} onChange={(e) => setCapacitance(Number(e.target.value))} className="w-full accent-emerald-600" />
  </div>
  <div>
  <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
  <span>{t('lab.p12electricpotential_resistance_r')}</span>
- <span className="text-emerald-600 font-bold">{resistance} Ω</span>
+ <span className="text-emerald-600 font-bold">{resistance} Î©</span>
  </label>
  <input type="range" min="10" max="2000" step="50" value={resistance} onChange={(e) => setResistance(Number(e.target.value))} className="w-full accent-emerald-600" />
  </div>
@@ -440,3 +440,4 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

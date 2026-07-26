@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
 
@@ -74,9 +74,9 @@ export default function LabS8ConvexMirror({ onExit }: LabProps) {
 
  {/* Cars in the reflection */}
  <div className="z-10 flex gap-8 items-end relative top-4">
- <div className="text-[100px] transform -scale-x-100">🚗</div>
- <div className="text-[100px] transform -scale-x-100 mt-10">🚙</div>
- <div className="text-[100px] transform -scale-x-100">🚕</div>
+ <div className="text-[100px] transform -scale-x-100">ðŸš—</div>
+ <div className="text-[100px] transform -scale-x-100 mt-10">ðŸš™</div>
+ <div className="text-[100px] transform -scale-x-100">ðŸš•</div>
  </div>
 
  </div>
@@ -100,3 +100,4 @@ export default function LabS8ConvexMirror({ onExit }: LabProps) {
  </div>
  );
 }
+

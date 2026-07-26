@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 import { Square, Circle, Triangle, Play, MousePointer2 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
@@ -161,3 +161,4 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
  </div>
  );
 }
+

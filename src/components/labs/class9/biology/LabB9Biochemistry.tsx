@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, Droplet, Flame, RotateCcw, Info } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -222,8 +222,8 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
  <div className="p-4 rounded-lg bg-rose-50 border border-rose-200 dark:bg-[#121212] dark:border-[#1c1b1b]">
  <p className="font-bold text-rose-800">{t('lab.b9biochemistry_results')}</p>
  <ul className="text-sm space-y-2 mt-2">
- <li>{t('lab.b9biochemistry_tube_a')} {q1 === 'starch' ? '✅ Correct (Blue-black with Iodine)' : '❌ Incorrect'}</li>
- <li>{t('lab.b9biochemistry_tube_c')} {q2 === 'glucose' ? "✅ Correct (Brick-red with Benedict's + Heat)" : '❌ Incorrect'}</li>
+ <li>{t('lab.b9biochemistry_tube_a')} {q1 === 'starch' ? 'âœ… Correct (Blue-black with Iodine)' : 'âŒ Incorrect'}</li>
+ <li>{t('lab.b9biochemistry_tube_c')} {q2 === 'glucose' ? "âœ… Correct (Brick-red with Benedict's + Heat)" : 'âŒ Incorrect'}</li>
  </ul>
  <p className="mt-2 text-xs text-rose-700 font-bold">
  
@@ -237,3 +237,4 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
  </div>
  );
 }
+

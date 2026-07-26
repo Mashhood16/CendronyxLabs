@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {Plus, Trash2, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -181,7 +181,7 @@ const { recordLabData } = useLab();
  >
  {Object.entries(fluids).map(([key, mat]) => (
  <option key={key} value={key}>
- {mat.name} {key !== 'unknown' && `(ρ = ${mat.density} g/cm³)`}
+ {mat.name} {key !== 'unknown' && `(Ï = ${mat.density} g/cmÂ³)`}
  </option>
  ))}
  </select>
@@ -443,3 +443,4 @@ const { recordLabData } = useLab();
  </div>
  );
 }
+

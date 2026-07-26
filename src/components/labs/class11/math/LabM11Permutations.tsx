@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { RefreshCw, Calculator, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -363,3 +363,4 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
  </div>
  );
 }
+

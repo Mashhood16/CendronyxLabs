@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
 import { BellRing } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -252,3 +252,4 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
  </div>
  );
 }
+

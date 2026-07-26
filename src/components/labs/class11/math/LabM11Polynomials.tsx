@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Target, Rocket, RotateCcw, CheckCircle, Calculator } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathText from '../../../widgets/MathText';
@@ -31,7 +31,7 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
  if (Math.abs(ans - expectedHeight) < 0.1) {
  setFeedback(`Correct! P(${targetTime}) = ${expectedHeight}. The remainder theorem confirms the height is ${expectedHeight}m.`);
  } else {
- setFeedback(`Incorrect. Try dividing -5t² + ${v0}t + ${h0} by (t - ${targetTime}) using synthetic division.`);
+ setFeedback(`Incorrect. Try dividing -5tÂ² + ${v0}t + ${h0} by (t - ${targetTime}) using synthetic division.`);
  }
  };
 
@@ -124,8 +124,8 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
  </p>
  <ul className="text-sm mt-2 space-y-1">
  <li><strong>{t('lab.m11polynomials_5t')}</strong>{t('lab.m11polynomials_gravity_effect_approx_gt')}</li>
- <li><strong>v₀</strong>{t('lab.m11polynomials_initial_vertical_velocity_m_s')}</li>
- <li><strong>h₀</strong>{t('lab.m11polynomials_initial_height_m')}</li>
+ <li><strong>vâ‚€</strong>{t('lab.m11polynomials_initial_vertical_velocity_m_s')}</li>
+ <li><strong>hâ‚€</strong>{t('lab.m11polynomials_initial_height_m')}</li>
  </ul>
  <p>
  <MathText>{t('lab.m11polynomials_to_find_the_projectile_s_heigh')} {"$$t = c$$"}{t('lab.m11polynomials_you_can_compute_the_remainder_')} {"$$P(t) \\div (t - c)$$"}.</MathText>
@@ -248,7 +248,7 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
  <div className="bg-amber-50 p-3 rounded text-sm text-amber-900 border border-amber-200 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
  
  {t('lab.m11polynomials_set_up_your_synthetic_division')} <br/>
- <strong>P({targetTime}) = -5({targetTime})² + {v0}({targetTime}) + {h0}</strong>
+ <strong>P({targetTime}) = -5({targetTime})Â² + {v0}({targetTime}) + {h0}</strong>
  </div>
  
  <div className="flex flex-col gap-2 mt-4">
@@ -281,3 +281,4 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

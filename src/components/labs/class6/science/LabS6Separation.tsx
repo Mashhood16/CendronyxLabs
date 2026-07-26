@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Flame, Wind } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -162,3 +162,4 @@ export default function LabS6Separation({ onExit }: LabProps) {
  </div>
  );
 }
+

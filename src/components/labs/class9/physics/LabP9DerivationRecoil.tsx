@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Rocket, CheckCircle, XCircle, Lightbulb, ArrowRight, BookOpen, BrainCircuit, HelpCircle, Trophy, EyeOff, Sparkles, RefreshCcw } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import MathFormula from '../../../widgets/MathFormula';
 import EquationBuilder from '../../../widgets/EquationBuilder';
 import { useTranslate } from '../../../../i18n';
-function n(eq:string):string{return eq.toLowerCase().replace(/\s+/g,'').replace(/×/g,'').replace(/·/g,'').replace(/÷/g,'/').replace(/−/g,'-').replace(/–/g,'-').replace(/Δ/g,'d').replace(/δ/g,'d').replace(/_/g,'').replace(/²/g,'^2').replace(/³/g,'^3').replace(/½/g,'0.5').replace(/π/g,'pi');}
+function n(eq:string):string{return eq.toLowerCase().replace(/\s+/g,'').replace(/Ã—/g,'').replace(/Â·/g,'').replace(/Ã·/g,'/').replace(/âˆ’/g,'-').replace(/â€“/g,'-').replace(/Î”/g,'d').replace(/Î´/g,'d').replace(/_/g,'').replace(/Â²/g,'^2').replace(/Â³/g,'^3').replace(/Â½/g,'0.5').replace(/Ï€/g,'pi');}
 function ck(ua:string,ex:string):boolean{return n(ua)===n(ex);}
 
 export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void }) {
@@ -44,8 +44,8 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  const steps = [
  { label: t('lab.recoil_step1_label'), formula: 'pi = pf', detail: t('lab.recoil_step1_detail') },
  { label: t('lab.recoil_step2_label'), formula: 'pi = 0', detail: t('lab.recoil_step2_detail') },
- { label: t('lab.recoil_step3_label'), formula: 'mb×vb + mg×vg = 0', detail: t('lab.recoil_step3_detail') },
- { label: t('lab.recoil_step4_label'), formula: 'vg = −(mb×vb) / mg', detail: t('lab.recoil_step4_detail') },
+ { label: t('lab.recoil_step3_label'), formula: 'mbÃ—vb + mgÃ—vg = 0', detail: t('lab.recoil_step3_detail') },
+ { label: t('lab.recoil_step4_label'), formula: 'vg = âˆ’(mbÃ—vb) / mg', detail: t('lab.recoil_step4_detail') },
  ];
 
  return (
@@ -70,7 +70,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  </div>
  <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl p-5 text-center shadow-lg mb-3">
  <p className="text-xs text-amber-200 font-semibold uppercase tracking-wider">{t('lab.final_formula')}</p>
- <p className="text-2xl font-bold text-white mt-1"><MathFormula formula="vg = −(mb × vb) / mg" /></p>
+ <p className="text-2xl font-bold text-white mt-1"><MathFormula formula="vg = âˆ’(mb Ã— vb) / mg" /></p>
  <p className="text-xs text-amber-200 mt-1">{t('lab.recoil_final_desc')}</p>
  </div>
  <div className="space-y-0">{steps.map((step,idx)=><div key={idx} className="relative"><div className="flex gap-3"><div className="flex flex-col items-center"><div className="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs font-bold shadow-md shrink-0">{idx+1}</div>{idx<steps.length-1&&<div className="w-0.5 h-full min-h-[24px] bg-gradient-to-b from-amber-400 to-amber-200 dark:from-amber-600 dark:to-amber-800" />}</div><div className="flex-1 pb-4"><div className="bg-amber-50 dark:bg-amber-900/20 rounded-lg p-3 border border-amber-200 dark:border-amber-800 mb-1"><p className="font-bold text-base text-amber-800 dark:text-amber-300">{step.label}</p></div><div className="bg-[#000000] rounded-lg mx-1 my-1.5 px-3 py-2 text-center border border-[#1c1b1b]"><MathFormula formula={step.formula} className="text-base font-bold text-yellow-400" /></div><p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed px-1">{step.detail}</p>{idx<steps.length-1&&<div className="flex justify-center mt-1"><ArrowRight className="w-4 h-4 text-amber-400" /></div>}</div></div></div>)}</div>
@@ -83,7 +83,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.recoil_bullet_mass_label')}</span><span className="text-amber-600 font-mono">{bulletMass} g ({bMassKg} kg)</span></div><input type="range" min="2" max="50" step="1" value={bulletMass} onChange={e=>{setBulletMass(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-amber-500" /></div>
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.recoil_bullet_vel_label')}</span><span className="text-amber-600 font-mono">{bulletVel} m/s</span></div><input type="range" min="100" max="800" step="10" value={bulletVel} onChange={e=>{setBulletVel(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-amber-500" /></div>
  <div><div className="flex justify-between text-xs font-semibold"><span>{t('lab.recoil_gun_mass_label')}</span><span className="text-amber-600 font-mono">{gunMass} kg</span></div><input type="range" min="1" max="10" step="0.5" value={gunMass} onChange={e=>{setGunMass(parseFloat(e.target.value));setCheckResult('idle');}} className="w-full accent-amber-500" /></div>
- <button onClick={handleFire} className="w-full py-2.5 bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold rounded-lg transition-all text-sm shadow-lg">{fired?'BOOM! 💥':'FIRE! 🔥'}</button>
+ <button onClick={handleFire} className="w-full py-2.5 bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold rounded-lg transition-all text-sm shadow-lg">{fired?'BOOM! ðŸ’¥':'FIRE! ðŸ”¥'}</button>
  <div className="bg-[#000000] rounded-lg p-4 border border-[#1c1b1b] space-y-1.5">
  <p className="text-xs text-slate-500 font-semibold uppercase">Derivation Trace</p>
  <p className="text-sm text-slate-400">{t('lab.recoil_trace1')}</p>
@@ -108,7 +108,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  </>:
 <div className="flex-1 overflow-y-auto p-4 lg:p-6">
  <div className="h-full flex flex-col lg:flex-row gap-4 lg:gap-6">
- {/* ── LEFT PANEL: Derivation Steps ── */}
+ {/* â”€â”€ LEFT PANEL: Derivation Steps â”€â”€ */}
  <div className="flex-1 min-w-0">
  <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 mb-4">
  <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  {testFullyCompleted ? (
  <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800 p-8 text-center">
  <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
- <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! 🎉</h3>
+ <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Derivation Mastered! ðŸŽ‰</h3>
  <p className="text-sm text-emerald-600 dark:text-emerald-400 mb-4">You completed all steps correctly.</p>
  <button onClick={resetTest} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 mx-auto"><RefreshCcw className="w-3.5 h-3.5" /> Retry</button>
  </div>
@@ -209,7 +209,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
                                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'
                                     }`}
                                   >
-                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
+                                    {testStatus === 'correct' ? <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</> : <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>}
                                   </button>
                                   <button
                                     onClick={() => setShowTestHint(!showTestHint)}
@@ -246,7 +246,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
                                   <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                                     <div className="flex items-center gap-2">
                                       <CheckCircle className="w-4 h-4 text-emerald-500" />
-                                      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                                      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                                     </div>
                                     <MathFormula formula={testSteps[idx].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                                   </div>
@@ -254,7 +254,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
                               </div>
                             </div>) : isLocked ? (
     <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3">
-     <p className="text-xs text-slate-400 text-center">🔒 Complete previous step</p>
+     <p className="text-xs text-slate-400 text-center">ðŸ”’ Complete previous step</p>
     </div>
    ) : (
     <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#2a2a2a] p-3 text-center cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1c1b1b] transition-colors">
@@ -272,7 +272,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  </div>
  )}
  </div>
- {/* ── RIGHT PANEL: Equation Builder ── */}
+ {/* â”€â”€ RIGHT PANEL: Equation Builder â”€â”€ */}
  {!testFullyCompleted && (
  <div className="hidden lg:block w-full lg:w-[380px] xl:w-[420px] shrink-0">
   <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-5 sticky top-4">
@@ -310,7 +310,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
        : 'bg-amber-600 hover:bg-amber-700 text-white shadow-md active:scale-95'}`}
     >
      {testStatus === 'correct' ? (
-      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</>
+      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</>
      ) : (
       <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>
      )}
@@ -351,7 +351,7 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
     <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
      <div className="flex items-center gap-2">
       <CheckCircle className="w-4 h-4 text-emerald-500" />
-      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
      </div>
      <MathFormula formula={testSteps[currentStep].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
     </div>
@@ -363,3 +363,4 @@ export default function LabP9DerivationRecoil({ onExit }: { onExit?: () => void 
  </div>
 }</div>);
 }
+

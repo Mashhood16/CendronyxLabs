@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+﻿import { describe, it, expect } from 'vitest';
 import {
   DIFFICULTY_CONFIGS,
   getDifficultyConfig,
@@ -62,3 +62,4 @@ describe('createPredictionChallenge', () => {
     expect(challenge.explanation).toContain('Gravity');
   });
 });
+

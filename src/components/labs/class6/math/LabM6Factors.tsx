@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useRef, useCallback } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Play, Pause, RotateCcw, Check, X, Info, Star, Timer, Lightbulb, Award } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -760,3 +760,4 @@ export default function LabM6Factors({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

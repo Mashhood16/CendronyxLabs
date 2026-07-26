@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Activity, Play, Heart } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import DataChart from '../../../widgets/DataChart';
@@ -225,3 +225,4 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
  </div>
  );
 }
+

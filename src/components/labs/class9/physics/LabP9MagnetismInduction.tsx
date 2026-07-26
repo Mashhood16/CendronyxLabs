@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Info, RefreshCw, CheckCircle } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -315,3 +315,4 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
  </div>
  );
 }
+

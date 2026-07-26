@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Beaker, Info, Activity, Plus, RefreshCw, CheckCircle2, XCircle, Box } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -27,7 +27,7 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
  setAcidAdded(true);
  setTotalCarbAdded(0);
  setGasVolume(0);
- setEquation('CH₃COOH(aq)');
+ setEquation('CHâ‚ƒCOOH(aq)');
  };
 
  const addCarbonate = () => {
@@ -35,7 +35,7 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
  const newCarb = totalCarbAdded + carbMass;
  setTotalCarbAdded(newCarb);
  setIsReacting(true);
- setEquation('2CH₃COOH(aq) + Na₂CO₃(s) → 2CH₃COONa(aq) + H₂O(l) + CO₂(g) ↑');
+ setEquation('2CHâ‚ƒCOOH(aq) + Naâ‚‚COâ‚ƒ(s) â†’ 2CHâ‚ƒCOONa(aq) + Hâ‚‚O(l) + COâ‚‚(g) â†‘');
  
  // Target gas volume = newCarb * 226.4 * (1 + (Math.random()*0.06 - 0.03)) // 3% noise
  const noise = 1 + (Math.random() * 0.06 - 0.03);
@@ -300,3 +300,4 @@ export default function LabC10AceticAcidCarbonate({ onExit }: { onExit: () => vo
  </div>
  );
 }
+

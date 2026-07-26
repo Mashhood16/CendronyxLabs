@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { BookOpen, Target, Scissors, CheckCircle2, ChevronRight, XCircle, FileText, CheckSquare, Layers } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -380,3 +380,4 @@ export default function LabE10PhrasesClauses({ onExit = () => {} }: LabE10Phrase
  </div>
  );
 }
+

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Play, RotateCcw, CheckCircle, Search, FileText } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -301,3 +301,4 @@ export default function LabCS10JSAlgorithms({ onExit }: LabProps) {
  </div>
  );
 }
+

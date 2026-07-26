@@ -1,4 +1,4 @@
-import { useTranslate } from '../../i18n';
+﻿import { useTranslate } from '../../i18n';
 import { useState } from 'react';
 import { BookOpen, CheckCircle, FileText, Lightbulb, ChevronDown, ChevronRight, ArrowRight, FlaskConical } from 'lucide-react';
 
@@ -183,7 +183,7 @@ export default function ResearchPaperAnalysis({ paper, defaultExpanded = false }
               <Lightbulb className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
               <div>
                 <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">
-                  {t("Your Turn — Design a Follow-up Experiment")}
+                  {t("Your Turn â€” Design a Follow-up Experiment")}
                 </span>
                 <p className="text-xs text-slate-700 dark:text-[#ffffff] mt-1">
                   {t("Based on this paper's findings, what experiment would you design next? What variables would you test, and what controls would you use?")}
@@ -227,17 +227,17 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'If Voc = 1.15V, Jsc = 27.5 mA/cm², calculate the fill factor % given PCE = 26.1%.',
-        hint: 'FF = PCE / (Voc × Jsc) × 100. Make sure units are consistent.',
+        question: 'If Voc = 1.15V, Jsc = 27.5 mA/cmÂ², calculate the fill factor % given PCE = 26.1%.',
+        hint: 'FF = PCE / (Voc Ã— Jsc) Ã— 100. Make sure units are consistent.',
         answer: '82.5',
         tolerance: 2
       }
     ],
-    connectionToLab: 'This research directly validates the solar cell design principles in the Solar Cell Capstone lab — showing how material choice, passivation, and interface engineering impact real-world efficiency.'
+    connectionToLab: 'This research directly validates the solar cell design principles in the Solar Cell Capstone lab â€” showing how material choice, passivation, and interface engineering impact real-world efficiency.'
   },
   'quantum-dot-led': {
     id: 'quantum-dot-led',
-    title: 'Bright, efficient quantum dot LEDs with 100 cd/m² luminance',
+    title: 'Bright, efficient quantum dot LEDs with 100 cd/mÂ² luminance',
     authors: 'Kim et al.',
     journal: 'Advanced Materials',
     year: 2024,
@@ -259,13 +259,13 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'The internal quantum efficiency (IQE) is reported as 99.7%. What is the light out-coupling efficiency? (Hint: EQE = IQE × out-coupling)',
+        question: 'The internal quantum efficiency (IQE) is reported as 99.7%. What is the light out-coupling efficiency? (Hint: EQE = IQE Ã— out-coupling)',
         hint: 'Out-coupling = EQE / IQE. For peak EQE = 21.5% and IQE = 99.7%...',
         answer: '21.6',
         tolerance: 1
       }
     ],
-    connectionToLab: 'The quantum confinement principles studied in the solar cell capstone directly apply to QLEDs — both rely on band gap engineering of semiconductor nanostructures.'
+    connectionToLab: 'The quantum confinement principles studied in the solar cell capstone directly apply to QLEDs â€” both rely on band gap engineering of semiconductor nanostructures.'
   },
   'pet-imaging': {
     id: 'pet-imaging',
@@ -274,7 +274,7 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
     journal: 'Journal of Nuclear Medicine',
     year: 2024,
     abstract: 'The EXPLORER total-body PET scanner achieves 40x higher effective sensitivity than conventional PET through advanced detector physics, enabling whole-body dynamic imaging at ultra-low radiation doses.',
-    keyFinding: 'By extending the axial field-of-view to 194 cm, the scanner captures 100% of emitted gamma photons in coincidence, compared to ~2-5% in conventional PET scanners — a direct application of the E = hc/λ photon detection principle.',
+    keyFinding: 'By extending the axial field-of-view to 194 cm, the scanner captures 100% of emitted gamma photons in coincidence, compared to ~2-5% in conventional PET scanners â€” a direct application of the E = hc/Î» photon detection principle.',
     methods: ['Scintillation detectors', 'Time-of-flight PET', 'Monte Carlo simulations', 'Clinical trials', 'Image reconstruction'],
     dataToAnalyze: {
       label: 'Effective sensitivity gain vs axial FOV',
@@ -297,7 +297,7 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
         tolerance: 0.02
       }
     ],
-    connectionToLab: 'This PET scanner directly uses the annihilation physics from this lab — positron-electron annihilation produces 511 keV gamma rays (E = hc/λ = 1240/0.00243 nm). The detectors use scintillation crystals that convert these gamma photons to visible light via the photoelectric effect, which is then detected by photomultiplier tubes — a practical application of E = hc/λ.'
+    connectionToLab: 'This PET scanner directly uses the annihilation physics from this lab â€” positron-electron annihilation produces 511 keV gamma rays (E = hc/Î» = 1240/0.00243 nm). The detectors use scintillation crystals that convert these gamma photons to visible light via the photoelectric effect, which is then detected by photomultiplier tubes â€” a practical application of E = hc/Î».'
   },
   'protein-mass-spec': {
     id: 'protein-mass-spec',
@@ -323,8 +323,8 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'If two adjacent charge-state peaks differ by 100 m/z at charge state +40, what is the calculated mass of the protein complex? (Hint: Δ(m/z) = mass × (1/z - 1/(z+1)))',
-        hint: 'For large z, Δ(m/z) ≈ mass/z². So mass ≈ 100 × 40² = ?',
+        question: 'If two adjacent charge-state peaks differ by 100 m/z at charge state +40, what is the calculated mass of the protein complex? (Hint: Î”(m/z) = mass Ã— (1/z - 1/(z+1)))',
+        hint: 'For large z, Î”(m/z) â‰ˆ mass/zÂ². So mass â‰ˆ 100 Ã— 40Â² = ?',
         answer: '160000',
         tolerance: 10000
       }
@@ -338,7 +338,7 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
     journal: 'Physical Review Letters',
     year: 2024,
     abstract: 'We demonstrate a quantum eraser experiment using SPDC-generated entangled photon pairs. By marking the which-path information of one photon, the interference pattern of its twin is destroyed. Erasing this pathway information recovers the interference.',
-    keyFinding: 'The interference contrast drops from 98% to 12% when which-way information is introduced, and returns to 94% after quantum erasure — directly demonstrating complementarity between wave and particle behavior.',
+    keyFinding: 'The interference contrast drops from 98% to 12% when which-way information is introduced, and returns to 94% after quantum erasure â€” directly demonstrating complementarity between wave and particle behavior.',
     methods: ['Spontaneous parametric down-conversion', 'Interferometry', 'Coincidence counting', 'Polarization analysis', 'Quantum state tomography'],
     dataToAnalyze: {
       label: 'Interference visibility vs which-way info',
@@ -355,13 +355,13 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'The fringe spacing is 0.5 mm at a detector distance of 2 m using 633 nm light. What is the effective slit separation? (Hint: y = λL/d)',
-        hint: 'd = λL / y. λ = 633 nm = 6.33×10⁻⁷ m, L = 2 m, y = 0.5 mm = 5×10⁻⁴ m.',
+        question: 'The fringe spacing is 0.5 mm at a detector distance of 2 m using 633 nm light. What is the effective slit separation? (Hint: y = Î»L/d)',
+        hint: 'd = Î»L / y. Î» = 633 nm = 6.33Ã—10â»â· m, L = 2 m, y = 0.5 mm = 5Ã—10â»â´ m.',
         answer: '0.00253',
         tolerance: 0.001
       }
     ],
-    connectionToLab: 'The quantum eraser demonstrates the deepest implications of wave-particle duality, directly connecting to the diffraction and interference principles explored in this lab. The double-slit pattern and the d·sinθ = mλ equation you calculated here are the same physics that governs quantum erasure — the fringe spacing reveals the wave nature of light (and matter!).'
+    connectionToLab: 'The quantum eraser demonstrates the deepest implications of wave-particle duality, directly connecting to the diffraction and interference principles explored in this lab. The double-slit pattern and the dÂ·sinÎ¸ = mÎ» equation you calculated here are the same physics that governs quantum erasure â€” the fringe spacing reveals the wave nature of light (and matter!).'
   },
   'mems-oscillator': {
     id: 'mems-oscillator',
@@ -369,8 +369,8 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
     authors: 'Nguyen et al.',
     journal: 'IEEE Journal of Microelectromechanical Systems',
     year: 2024,
-    abstract: 'We demonstrate MEMS (Micro-Electromechanical Systems) oscillators achieving 10⁻⁹ frequency stability through electrostatic spring softening. The resonant frequency is tuned by adjusting the effective spring constant via DC bias voltage, directly leveraging the ω = √(k/m) harmonic oscillator relationship.',
-    keyFinding: 'Electrostatic spring softening enables ±5 ppm frequency tuning range, with Q-factor exceeding 100,000 in vacuum — making MEMS oscillators viable replacements for quartz crystals in consumer electronics.',
+    abstract: 'We demonstrate MEMS (Micro-Electromechanical Systems) oscillators achieving 10â»â¹ frequency stability through electrostatic spring softening. The resonant frequency is tuned by adjusting the effective spring constant via DC bias voltage, directly leveraging the Ï‰ = âˆš(k/m) harmonic oscillator relationship.',
+    keyFinding: 'Electrostatic spring softening enables Â±5 ppm frequency tuning range, with Q-factor exceeding 100,000 in vacuum â€” making MEMS oscillators viable replacements for quartz crystals in consumer electronics.',
     methods: ['Photolithography', 'Deep reactive-ion etching', 'Capacitive transduction', 'Phase-locked loop', 'Closed-loop drive'],
     dataToAnalyze: {
       label: 'Resonant frequency vs DC bias voltage',
@@ -387,13 +387,13 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'The effective spring constant k_eff = k_mech - k_elec(V²). If the mechanical spring constant k_mech = 100 N/m and at V=0 the frequency is 100 kHz, using ω = √(k/m), what is the effective mass m? (Hint: m = k/(2πf)²)',
-        hint: 'm = 100 / (2π × 100,000)² = 100 / (6.2832 × 10⁵)² = 100 / (3.948×10¹¹) = 2.53×10⁻¹⁰ kg',
+        question: 'The effective spring constant k_eff = k_mech - k_elec(VÂ²). If the mechanical spring constant k_mech = 100 N/m and at V=0 the frequency is 100 kHz, using Ï‰ = âˆš(k/m), what is the effective mass m? (Hint: m = k/(2Ï€f)Â²)',
+        hint: 'm = 100 / (2Ï€ Ã— 100,000)Â² = 100 / (6.2832 Ã— 10âµ)Â² = 100 / (3.948Ã—10Â¹Â¹) = 2.53Ã—10â»Â¹â° kg',
         answer: '2.53e-10',
         tolerance: 0.5e-10
       }
     ],
-    connectionToLab: 'MEMS resonators are physical SHM systems — a proof mass suspended by springs oscillates at ω = √(k/m), exactly the equation derived in this lab. The spring softening effect (k_eff = k - αV²) is a direct application of Hooke\'s law combined with electrostatic force, which you can explore by adjusting the damping and spring constant in the car suspension simulation.'
+    connectionToLab: 'MEMS resonators are physical SHM systems â€” a proof mass suspended by springs oscillates at Ï‰ = âˆš(k/m), exactly the equation derived in this lab. The spring softening effect (k_eff = k - Î±VÂ²) is a direct application of Hooke\'s law combined with electrostatic force, which you can explore by adjusting the damping and spring constant in the car suspension simulation.'
   },
   'bioelectricity': {
     id: 'bioelectricity',
@@ -401,8 +401,8 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
     authors: 'Schroeder et al.',
     journal: 'Nature',
     year: 2024,
-    abstract: 'We engineer a biocompatible power source inspired by the electric eel (Electrophorus electricus), using hydrogel-based artificial electrocytes. By stacking thousands of cells in series, we achieve up to 600 V output — directly demonstrating the Coulomb potential from charge separation.',
-    keyFinding: 'Each hydrogel cell generates 0.12 V via ion concentration gradients (Na⁺/K⁺ separation). Stacking 5000 cells in series produces 600 V, limited by internal resistance of 500 Ω.',
+    abstract: 'We engineer a biocompatible power source inspired by the electric eel (Electrophorus electricus), using hydrogel-based artificial electrocytes. By stacking thousands of cells in series, we achieve up to 600 V output â€” directly demonstrating the Coulomb potential from charge separation.',
+    keyFinding: 'Each hydrogel cell generates 0.12 V via ion concentration gradients (Naâº/Kâº separation). Stacking 5000 cells in series produces 600 V, limited by internal resistance of 500 Î©.',
     methods: ['Hydrogel synthesis', 'Ion-gradient formation', 'Series stacking', 'Impedance spectroscopy', 'Galvanostatic cycling'],
     dataToAnalyze: {
       label: 'Open-circuit voltage vs number of cells (series)',
@@ -419,13 +419,13 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'If internal resistance is 500 Ω, what is the maximum power output when connected to a matched load? (Hint: P_max = V²/4R for maximum power transfer)',
-        hint: 'P_max = (600 V)² / (4 × 500 Ω) = 360000 / 2000 = ?',
+        question: 'If internal resistance is 500 Î©, what is the maximum power output when connected to a matched load? (Hint: P_max = VÂ²/4R for maximum power transfer)',
+        hint: 'P_max = (600 V)Â² / (4 Ã— 500 Î©) = 360000 / 2000 = ?',
         answer: '180',
         tolerance: 10
       }
     ],
-    connectionToLab: 'This research is a direct real-world analogue of the eel simulation in this lab. The electrocyte model (V_total = N × V_cell) is exactly what you calculate in the simulator — each bio-cell acts as a tiny Coulomb generator. The resistance and capacitance concepts from the RC flash circuit also apply to understanding the power limitations of these bio-inspired batteries.'
+    connectionToLab: 'This research is a direct real-world analogue of the eel simulation in this lab. The electrocyte model (V_total = N Ã— V_cell) is exactly what you calculate in the simulator â€” each bio-cell acts as a tiny Coulomb generator. The resistance and capacitance concepts from the RC flash circuit also apply to understanding the power limitations of these bio-inspired batteries.'
   },
   'exoplanet-gravitational': {
     id: 'exoplanet-gravitational',
@@ -434,7 +434,7 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
     journal: 'Astronomical Journal',
     year: 2024,
     abstract: 'Using gravitational microlensing, we detect a Neptune-mass exoplanet orbiting an M-dwarf star at a projected separation of 5.5 AU. The light curve follows the expected pattern from Newtonian gravity applied to a star-planet-lens system.',
-    keyFinding: 'The detected planet has mass M = 18.4 M_Earth at orbital radius 5.5 AU, with orbital period T = 12.7 years — consistent with Kepler\'s Third Law (T² ∝ a³) applied to the host star M-dwarf (0.45 M_Sun).',
+    keyFinding: 'The detected planet has mass M = 18.4 M_Earth at orbital radius 5.5 AU, with orbital period T = 12.7 years â€” consistent with Kepler\'s Third Law (TÂ² âˆ aÂ³) applied to the host star M-dwarf (0.45 M_Sun).',
     methods: ['Gravitational microlensing', 'Adaptive optics', 'Radial velocity spectroscopy', 'Light curve modeling', 'Keplerian orbital fitting'],
     dataToAnalyze: {
       label: 'Microlensing light curve (magnification vs days)',
@@ -451,12 +451,13 @@ export const RESEARCH_PAPERS: Record<string, ResearchPaper> = {
       },
       {
         id: 2,
-        question: 'Using Kepler\'s Third Law: T² = (4π²/GM) a³. If the star has mass M = 0.45 M_Sun (M_Sun = 1.99×10³⁰ kg), what is the expected orbital radius a for the detected T = 12.7 year period? (Hint: Use Kepler\'s law normalized to Earth: (T/T_Earth)² = (a/a_Earth)³(M_Sun/M))',
-        hint: 'Start from (12.7/1)² = (a/1)³(1/0.45). So a³ = (12.7)² × 0.45 = 72.6. Take cube root: a = ⁷√72.6 = ?',
+        question: 'Using Kepler\'s Third Law: TÂ² = (4Ï€Â²/GM) aÂ³. If the star has mass M = 0.45 M_Sun (M_Sun = 1.99Ã—10Â³â° kg), what is the expected orbital radius a for the detected T = 12.7 year period? (Hint: Use Kepler\'s law normalized to Earth: (T/T_Earth)Â² = (a/a_Earth)Â³(M_Sun/M))',
+        hint: 'Start from (12.7/1)Â² = (a/1)Â³(1/0.45). So aÂ³ = (12.7)Â² Ã— 0.45 = 72.6. Take cube root: a = â·âˆš72.6 = ?',
         answer: '4.17',
         tolerance: 0.2
       }
     ],
-    connectionToLab: 'This exoplanet detection is a direct application of the gravitational physics you\'re exploring here. The Kepler\'s Third Law calculation in this lab (T² ∝ a³) is the exact same formula astronomers use to find planets around distant stars. The orbital mechanics simulator in this lab, which visualizes how satellites orbit Earth using F = GMm/r², uses the same Newtonian inverse-square law that governs these planetary systems.'
+    connectionToLab: 'This exoplanet detection is a direct application of the gravitational physics you\'re exploring here. The Kepler\'s Third Law calculation in this lab (TÂ² âˆ aÂ³) is the exact same formula astronomers use to find planets around distant stars. The orbital mechanics simulator in this lab, which visualizes how satellites orbit Earth using F = GMm/rÂ², uses the same Newtonian inverse-square law that governs these planetary systems.'
   }
 };
+

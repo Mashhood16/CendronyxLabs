@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import {AlertTriangle, ShieldCheck } from 'lucide-react';
 import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
@@ -15,7 +15,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
  const steps = [
  { title: "Safety Gear", desc: "Wear protective equipment." },
  { title: "Lye Solution", desc: "Dissolve 15g Lye in 30g Water." },
- { title: "Heat Oils", desc: "Heat 56g coconut oil and 28g olive oil to 50°C." },
+ { title: "Heat Oils", desc: "Heat 56g coconut oil and 28g olive oil to 50Â°C." },
  { title: "Saponification", desc: "Blend lye and oils into a paste." },
  { title: "Curing", desc: "Pour into molds and cure for 2 days." }
  ];
@@ -40,7 +40,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
  {steps.map((s, i) => (
  <div key={i} className="flex flex-col items-center relative z-10 flex-1">
  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold mb-2 ${i < step ? 'bg-emerald-500 text-white' : i === step ? 'bg-blue-500 text-white ring-4 ring-blue-100' : 'bg-slate-200 dark:bg-[#121212] text-slate-500 dark:text-[#a1a1aa]'}`}>
- {i < step ? '✓' : i + 1}
+ {i < step ? 'âœ“' : i + 1}
  </div>
  <div className="text-xs font-bold text-slate-600 dark:text-[#a1a1aa] text-center max-w-[80px]">{s.title}</div>
  </div>
@@ -66,14 +66,14 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
  onClick={() => setHasGloves(!hasGloves)}
  className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGloves ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-500 dark:text-[#a1a1aa]'}`}
  >
- <div className="text-4xl">🧤</div>
+ <div className="text-4xl">ðŸ§¤</div>
  <span className="font-bold text-sm">{t('lab.s8soapmaking_gloves')}</span>
  </button>
  <button 
  onClick={() => setHasGoggles(!hasGoggles)}
  className={`w-32 h-32 rounded-2xl border-4 flex flex-col items-center justify-center gap-2 transition-all ${hasGoggles ? 'border-emerald-500 bg-emerald-50 text-emerald-700' : 'border-slate-200 dark:border-[#1c1b1b] hover:border-slate-300 dark:border-[#1c1b1b] text-slate-500 dark:text-[#a1a1aa]'}`}
  >
- <div className="text-4xl">🥽</div>
+ <div className="text-4xl">ðŸ¥½</div>
  <span className="font-bold text-sm">{t('lab.s8soapmaking_goggles')}</span>
  </button>
  </div>
@@ -85,12 +85,12 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
  <div className="flex flex-col items-center gap-8 w-full max-w-md">
  <div className="flex gap-4 items-end">
  <div className="flex flex-col items-center">
- <div className="text-3xl mb-2">💧</div>
+ <div className="text-3xl mb-2">ðŸ’§</div>
  <div className="text-sm font-bold text-blue-600">{t('lab.s8soapmaking_30g_water')}</div>
  </div>
  <div className="text-2xl font-bold text-slate-400 mb-6">+</div>
  <div className="flex flex-col items-center">
- <div className="text-3xl mb-2">🧂</div>
+ <div className="text-3xl mb-2">ðŸ§‚</div>
  <div className="text-sm font-bold text-red-600">{t('lab.s8soapmaking_15g_pure_lye')}</div>
  </div>
  </div>
@@ -173,3 +173,4 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
  </div>
  );
 }
+

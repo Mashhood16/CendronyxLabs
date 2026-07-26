@@ -1,4 +1,4 @@
-export interface KinematicsState {
+﻿export interface KinematicsState {
   y: number; // current height (m)
   v: number; // current velocity (m/s) downwards
   time: number; // elapsed time (s)
@@ -76,3 +76,4 @@ export const extractKinematicsDataPoint = (state: KinematicsState): KinematicsDa
     velocity: parseFloat(state.v.toFixed(2)),
   };
 };
+

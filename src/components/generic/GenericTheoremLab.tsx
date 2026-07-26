@@ -1,34 +1,34 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { CheckCircle, XCircle, Lightbulb, ArrowRight, BookOpen, BrainCircuit, HelpCircle, Trophy, EyeOff, Sparkles, RefreshCcw, Target } from 'lucide-react';
 import LabHeader from '../labs/class8/computer/LabHeader';
 import MathFormula from '../widgets/MathFormula';
 import EquationBuilder from '../widgets/EquationBuilder';
 import { useTranslate } from '../../i18n';
 
-// ── Equation Normalization ──
+// â”€â”€ Equation Normalization â”€â”€
 function normalizeEquation(eq: string): string {
   return eq
     .toLowerCase()
     .replace(/\\(text|frac|sqrt|left|right|cdot|Rightarrow|cap|cup|in|cot|tan|sin|cos|log|ln|alpha|beta|theta|delta)\b/gi, '')
     .replace(/[{}]/g, '')
     .replace(/\\/g, '')
-    .replace(/∪/g, 'u')
-    .replace(/∩/g, 'intersect')
-    .replace(/∈/g, 'in')
+    .replace(/âˆª/g, 'u')
+    .replace(/âˆ©/g, 'intersect')
+    .replace(/âˆˆ/g, 'in')
     .replace(/\s+/g, '')
-    .replace(/×/g, '')
+    .replace(/Ã—/g, '')
     .replace(/\*/g, '')
-    .replace(/·/g, '')
-    .replace(/÷/g, '/')
-    .replace(/−/g, '-')
-    .replace(/–/g, '-')
-    .replace(/Δ/g, 'd')
-    .replace(/δ/g, 'd')
+    .replace(/Â·/g, '')
+    .replace(/Ã·/g, '/')
+    .replace(/âˆ’/g, '-')
+    .replace(/â€“/g, '-')
+    .replace(/Î”/g, 'd')
+    .replace(/Î´/g, 'd')
     .replace(/_/g, '')
-    .replace(/²/g, '^2')
-    .replace(/³/g, '^3')
-    .replace(/½/g, '0.5')
-    .replace(/π/g, 'pi');
+    .replace(/Â²/g, '^2')
+    .replace(/Â³/g, '^3')
+    .replace(/Â½/g, '0.5')
+    .replace(/Ï€/g, 'pi');
 }
 function checkEquation(userAnswer: string, expected: string): boolean {
   return normalizeEquation(userAnswer) === normalizeEquation(expected);
@@ -96,7 +96,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
   const [userAns, setUserAns] = useState('');
   const [checkResult, setCheckResult] = useState<'idle'|'correct'|'incorrect'>('idle');
 
-  // ── Test Tab State ──
+  // â”€â”€ Test Tab State â”€â”€
   const [activeTab, setActiveTab] = useState<'learn' | 'test'>('learn');
   const [currentTestStep, setCurrentTestStep] = useState(0);
   const [testEquationInput, setTestEquationInput] = useState('');
@@ -105,7 +105,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
   const [completedSteps, setCompletedSteps] = useState<Record<number, boolean>>({});
   const [testFullyCompleted, setTestFullyCompleted] = useState(false);
 
-  // Build test data from steps – use formula as default testEquation
+  // Build test data from steps â€“ use formula as default testEquation
   const testSteps = config.steps.map(step => ({
     testEquation: step.testEquation || step.formula,
     testHint: step.testHint || `Recall: ${step.label}`,
@@ -166,7 +166,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
       </div>
 
       {activeTab === 'learn' ? (
-        /* ═══════════════════ LEARN TAB ═══════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• LEARN TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         <>
           {/* Mobile Tabs */}
           <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 shrink-0">
@@ -252,11 +252,11 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
           </div>
         </>
       ) : (
-        /* ═══════════════════ TEST TAB ═══════════════════ */
+        /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• TEST TAB â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
         <div className="flex-1 overflow-y-auto p-4 lg:p-6 w-full">
           <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full">
 
-            {/* ── LEFT PANEL: Derivation Steps ── */}
+            {/* â”€â”€ LEFT PANEL: Derivation Steps â”€â”€ */}
             <div className="flex-1 min-w-0">
               <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-4 mb-4">
                 <div className="flex items-center gap-2">
@@ -278,7 +278,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
               {testFullyCompleted ? (
                 <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-950/30 dark:to-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800 p-8 text-center">
                   <Trophy className="w-12 h-12 text-yellow-500 mx-auto mb-3" />
-                  <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Theorem Mastered! 🎉</h3>
+                  <h3 className="text-lg font-bold text-emerald-800 dark:text-emerald-300 mb-1">Theorem Mastered! ðŸŽ‰</h3>
                   <p className="text-sm text-emerald-600 dark:text-emerald-400 mb-4">You completed all steps correctly.</p>
                   <button onClick={resetTest} className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition-all flex items-center gap-1.5 mx-auto"><RefreshCcw className="w-3.5 h-3.5" /> Retry</button>
                 </div>
@@ -372,7 +372,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
                                         : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'}`}
                                   >
                                     {testStepStatus === 'correct' ? (
-                                      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</>
+                                      <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</>
                                     ) : (
                                       <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>
                                     )}
@@ -414,7 +414,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
                                   <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                                     <div className="flex items-center gap-2">
                                       <CheckCircle className="w-4 h-4 text-emerald-500" />
-                                      <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                                      <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                                     </div>
                                     <MathFormula formula={testSteps[idx].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                                   </div>
@@ -423,7 +423,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
                             </div>
                           ) : isLocked ? (
                             <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#1c1b1b] p-3">
-                              <p className="text-xs text-slate-400 text-center">🔒 Complete previous step</p>
+                              <p className="text-xs text-slate-400 text-center">ðŸ”’ Complete previous step</p>
                             </div>
                           ) : (
                             <div className="bg-slate-50 dark:bg-[#000000] rounded-lg border border-slate-200 dark:border-[#2a2a2a] p-3 text-center cursor-pointer hover:bg-slate-100 dark:hover:bg-[#1c1b1b] transition-colors">
@@ -443,7 +443,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
               )}
             </div>
 
-            {/* ── RIGHT PANEL: Equation Builder (Desktop Only) ── */}
+            {/* â”€â”€ RIGHT PANEL: Equation Builder (Desktop Only) â”€â”€ */}
             {!testFullyCompleted && (
               <div className="hidden lg:block w-full lg:w-[380px] xl:w-[420px] shrink-0">
                 <div className="bg-white dark:bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b] p-5 sticky top-4">
@@ -484,7 +484,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
                           : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md active:scale-95'}`}
                     >
                       {testStepStatus === 'correct' ? (
-                        <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct ✓</>
+                        <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Correct âœ“</>
                       ) : (
                         <><CheckCircle className="w-3.5 h-3.5 inline mr-1.5" /> Check Answer</>
                       )}
@@ -528,7 +528,7 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
                     <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border border-emerald-200 dark:border-emerald-800">
                       <div className="flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-emerald-500" />
-                        <span className="text-xs font-bold text-emerald-700">✓ Correct! Moving to next step...</span>
+                        <span className="text-xs font-bold text-emerald-700">âœ“ Correct! Moving to next step...</span>
                       </div>
                       <MathFormula formula={testSteps[currentTestStep].testEquation} className="text-sm font-bold text-emerald-600 block mt-1" />
                     </div>
@@ -544,3 +544,4 @@ export function GenericTheoremLab({ onExit, config }: { onExit?: () => void; con
 }
 
 export default GenericTheoremLab;
+

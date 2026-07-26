@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../computer/LabHeader';
 import { CheckCircle2, XCircle, BookOpen, Volume2, Search, Type } from 'lucide-react';
 import { useTheme } from '../../../../store';
@@ -240,3 +240,4 @@ export default function LabE8NounsPhonetics({ onExit }: { onExit?: () => void })
  </div>
  );
 }
+

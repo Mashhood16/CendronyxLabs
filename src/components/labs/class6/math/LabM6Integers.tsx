@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { Check, X, Info } from 'lucide-react';
 import { useTranslate } from '../../../../i18n';
@@ -58,7 +58,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
  <div className="space-y-4">
  <h3 className="font-semibold text-lg">{t('lab.m6integers_interactive_thermometer')}</h3>
  <div className="flex flex-col gap-2">
- <label className="text-sm font-medium">{t('lab.m6integers_temperature_1')} {tempValue}°C</label>
+ <label className="text-sm font-medium">{t('lab.m6integers_temperature_1')} {tempValue}Â°C</label>
  <input 
  type="range" min="-150" max="150" value={tempValue} 
  onChange={(e) => setTempValue(parseInt(e.target.value))}
@@ -200,7 +200,7 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
 
  {/* Bulb */}
  <div className="w-24 h-24 bg-red-500 rounded-full border-4 border-white/50 -mt-10 shadow-2xl z-20 flex items-center justify-center">
- <span className="text-white font-bold text-lg drop-shadow-md">{tempValue}°</span>
+ <span className="text-white font-bold text-lg drop-shadow-md">{tempValue}Â°</span>
  </div>
 
  </div>
@@ -278,3 +278,4 @@ export default function LabM6Integers({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+

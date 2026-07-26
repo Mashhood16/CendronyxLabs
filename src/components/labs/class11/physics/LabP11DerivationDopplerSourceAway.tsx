@@ -1,4 +1,4 @@
-import { GenericDerivationLab } from '../../../generic/GenericDerivationLab';
+﻿import { GenericDerivationLab } from '../../../generic/GenericDerivationLab';
 import { CLASS11_DERIVATIONS } from '../../../../data/derivations/class11Derivations';
 
 interface Props {
@@ -9,3 +9,4 @@ export default function LabP11DerivationDopplerSourceAway({ onExit }: Props) {
  const config = CLASS11_DERIVATIONS.doppler_source_away;
  return <GenericDerivationLab onExit={onExit} config={config} />;
 }
+

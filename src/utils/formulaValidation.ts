@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Normalize a formula string for comparison.
  * Strips whitespace, normalizes symbols, handles common variations.
  */
@@ -8,79 +8,79 @@ export function normalizeFormula(formula: string): string {
   // Remove all whitespace
   f = f.replace(/\s+/g, '');
 
-  // Normalize multiplication symbols to '×'
-  f = f.replace(/\*/g, '×');
-  f = f.replace(/·/g, '×');
+  // Normalize multiplication symbols to 'Ã—'
+  f = f.replace(/\*/g, 'Ã—');
+  f = f.replace(/Â·/g, 'Ã—');
 
   // Normalize division
-  f = f.replace(/÷/g, '/');
+  f = f.replace(/Ã·/g, '/');
 
   // Normalize superscripts
-  f = f.replace(/²/g, '^2');
-  f = f.replace(/³/g, '^3');
+  f = f.replace(/Â²/g, '^2');
+  f = f.replace(/Â³/g, '^3');
 
   // Normalize subscripts (Unicode subscripts to _n format)
-  f = f.replace(/₁/g, '_1');
-  f = f.replace(/₂/g, '_2');
-  f = f.replace(/₃/g, '_3');
-  f = f.replace(/₄/g, '_4');
-  f = f.replace(/₅/g, '_5');
-  f = f.replace(/₆/g, '_6');
-  f = f.replace(/₇/g, '_7');
-  f = f.replace(/₈/g, '_8');
-  f = f.replace(/₉/g, '_9');
-  f = f.replace(/₀/g, '_0');
+  f = f.replace(/â‚/g, '_1');
+  f = f.replace(/â‚‚/g, '_2');
+  f = f.replace(/â‚ƒ/g, '_3');
+  f = f.replace(/â‚„/g, '_4');
+  f = f.replace(/â‚…/g, '_5');
+  f = f.replace(/â‚†/g, '_6');
+  f = f.replace(/â‚‡/g, '_7');
+  f = f.replace(/â‚ˆ/g, '_8');
+  f = f.replace(/â‚‰/g, '_9');
+  f = f.replace(/â‚€/g, '_0');
 
   // Normalize special characters
-  f = f.replace(/−/g, '-'); // minus sign
-  f = f.replace(/–/g, '-');
-  f = f.replace(/½/g, '(1/2)');
-  f = f.replace(/⅓/g, '(1/3)');
-  f = f.replace(/⅔/g, '(2/3)');
-  f = f.replace(/¼/g, '(1/4)');
-  f = f.replace(/¾/g, '(3/4)');
+  f = f.replace(/âˆ’/g, '-'); // minus sign
+  f = f.replace(/â€“/g, '-');
+  f = f.replace(/Â½/g, '(1/2)');
+  f = f.replace(/â…“/g, '(1/3)');
+  f = f.replace(/â…”/g, '(2/3)');
+  f = f.replace(/Â¼/g, '(1/4)');
+  f = f.replace(/Â¾/g, '(3/4)');
 
   // Pi variations
-  f = f.replace(/π/g, 'pi');
+  f = f.replace(/Ï€/g, 'pi');
 
   // Theta variations
-  f = f.replace(/θ/g, 'theta');
-  f = f.replace(/ω/g, 'omega');
-  f = f.replace(/α/g, 'alpha');
-  f = f.replace(/β/g, 'beta');
-  f = f.replace(/γ/g, 'gamma');
-  f = f.replace(/δ/g, 'delta');
-  f = f.replace(/λ/g, 'lambda');
-  f = f.replace(/ρ/g, 'rho');
-  f = f.replace(/σ/g, 'sigma');
-  f = f.replace(/φ/g, 'phi');
-  f = f.replace(/μ/g, 'mu');
-  f = f.replace(/η/g, 'eta');
-  f = f.replace(/Δ/g, 'delta');
-  f = f.replace(/Σ/g, 'sigma');
-  f = f.replace(/Ω/g, 'omega');
+  f = f.replace(/Î¸/g, 'theta');
+  f = f.replace(/Ï‰/g, 'omega');
+  f = f.replace(/Î±/g, 'alpha');
+  f = f.replace(/Î²/g, 'beta');
+  f = f.replace(/Î³/g, 'gamma');
+  f = f.replace(/Î´/g, 'delta');
+  f = f.replace(/Î»/g, 'lambda');
+  f = f.replace(/Ï/g, 'rho');
+  f = f.replace(/Ïƒ/g, 'sigma');
+  f = f.replace(/Ï†/g, 'phi');
+  f = f.replace(/Î¼/g, 'mu');
+  f = f.replace(/Î·/g, 'eta');
+  f = f.replace(/Î”/g, 'delta');
+  f = f.replace(/Î£/g, 'sigma');
+  f = f.replace(/Î©/g, 'omega');
 
   // Greek letter word names
-  f = f.replace(/\btheta\b/g, 'θ');
-  f = f.replace(/\bomega\b/g, 'ω');
-  f = f.replace(/\balpha\b/g, 'α');
-  f = f.replace(/\bbeta\b/g, 'β');
-  f = f.replace(/\bgamma\b/g, 'γ');
-  f = f.replace(/\bdelta\b/g, 'δ');
-  f = f.replace(/\blambda\b/g, 'λ');
-  f = f.replace(/\brho\b/g, 'ρ');
-  f = f.replace(/\bsigma\b/g, 'σ');
-  f = f.replace(/\bphi\b/g, 'φ');
-  f = f.replace(/\bmu\b/g, 'μ');
-  f = f.replace(/\beta\b/g, 'η');
-  f = f.replace(/\bpi\b/g, 'π');
+  f = f.replace(/\btheta\b/g, 'Î¸');
+  f = f.replace(/\bomega\b/g, 'Ï‰');
+  f = f.replace(/\balpha\b/g, 'Î±');
+  f = f.replace(/\bbeta\b/g, 'Î²');
+  f = f.replace(/\bgamma\b/g, 'Î³');
+  f = f.replace(/\bdelta\b/g, 'Î´');
+  f = f.replace(/\blambda\b/g, 'Î»');
+  f = f.replace(/\brho\b/g, 'Ï');
+  f = f.replace(/\bsigma\b/g, 'Ïƒ');
+  f = f.replace(/\bphi\b/g, 'Ï†');
+  f = f.replace(/\bmu\b/g, 'Î¼');
+  f = f.replace(/\beta\b/g, 'Î·');
+  f = f.replace(/\bpi\b/g, 'Ï€');
 
-  // sqrt(x) → sqrt{x}
+  // sqrt(x) â†’ sqrt{x}
   f = f.replace(/sqrt\(([^)]+)\)/g, 'sqrt{$1}');
 
   // Normalize multiple equal signs or arrows
-  f = f.replace(/⇒/g, '=>');
-  f = f.replace(/→/g, '->');
+  f = f.replace(/â‡’/g, '=>');
+  f = f.replace(/â†’/g, '->');
 
   // Remove leading/trailing operator noise
   f = f.replace(/^[=:]+/, '');
@@ -100,14 +100,14 @@ export function checkFormulaMatch(userAnswer: string, expectedFormula: string): 
   if (!user || !expected) return 0;
   if (user === expected) return 1;
 
-  // Try with '×' replaced by nothing (implied multiplication)
-  const userNoMult = user.replace(/×/g, '');
-  const expectedNoMult = expected.replace(/×/g, '');
+  // Try with 'Ã—' replaced by nothing (implied multiplication)
+  const userNoMult = user.replace(/Ã—/g, '');
+  const expectedNoMult = expected.replace(/Ã—/g, '');
   if (userNoMult === expectedNoMult) return 0.95;
 
-  // Try with '×' replaced by space
-  const userSpaceMult = user.replace(/×/g, ' ');
-  const expectedSpaceMult = expected.replace(/×/g, ' ');
+  // Try with 'Ã—' replaced by space
+  const userSpaceMult = user.replace(/Ã—/g, ' ');
+  const expectedSpaceMult = expected.replace(/Ã—/g, ' ');
   if (userSpaceMult === expectedSpaceMult) return 0.9;
 
   // Try removing parentheses
@@ -148,3 +148,4 @@ export function getHintForAnswer(userAnswer: string, expectedFormula: string): s
   }
   return "Start by identifying the main relationship. What equals what?";
 }
+

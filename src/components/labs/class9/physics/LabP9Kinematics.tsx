@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { CheckCircle, XCircle, Play, RotateCcw, Lightbulb, BarChart3 } from 'lucide-react';
 import LabHeader from '../../class8/computer/LabHeader';
 import { DIFFICULTY_CONFIGS, type DifficultyLevel } from '../../../../utils/labScaffolding';
@@ -223,7 +223,7 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
  question: "Before running the experiment: if the ball travels 20.12m in 0.67 seconds, what speed do you expect?",
  options: ["About 15 m/s", "About 30 m/s", "About 45 m/s", "About 60 m/s"],
  correctOption: 1,
- explanation: "v = d/t = 20.12m / 0.67s ≈ 30 m/s. That's fast — like a real cricket bowler!"
+ explanation: "v = d/t = 20.12m / 0.67s â‰ˆ 30 m/s. That's fast â€” like a real cricket bowler!"
  }}
  onComplete={() => {}}
  />
@@ -320,3 +320,4 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
  </div>
  );
 }
+
