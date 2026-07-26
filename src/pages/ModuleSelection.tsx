@@ -1,4 +1,4 @@
-﻿import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { LAB_MODULES, formatSubject } from '../data/labModules';
 import Layout from '../components/layout/Layout';
@@ -159,13 +159,7 @@ export default function ModuleSelection() {
                       </p>
 
                       {/* Bottom row */}
-                      <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
-                        <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-xs font-bold">{t('module.time_estimate', { min: 15 })}</span>
-                        </div>
+                      <div className={`flex items-center justify-end pt-3 border-t ${theme.border.subtle}`}>
                         {isBuilt ? (
                           <span className={`text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r ${accent} group-hover:scale-105 transition-transform`}>
                             {t('module.launch')}

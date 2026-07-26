@@ -156,13 +156,7 @@ export default function Class9Math() {
                           <p className={`text-sm ${theme.text.muted} leading-relaxed mb-4 line-clamp-2 flex-1`}>
                             {translateLabDesc(lab.id, lab.desc, language)}
                           </p>
-                          <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
-                            <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
-                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="text-xs font-bold">{t("~15 min")}</span>
-                            </div>
+                          <div className={`flex items-center justify-end pt-3 border-t ${theme.border.subtle}`}>
                             {isBuilt ? (
                               <span className="text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-500 to-indigo-600 group-hover:scale-105 transition-transform inline-flex items-center gap-1">
                                 {t("Launch")} <ArrowRight className="w-3 h-3" />
