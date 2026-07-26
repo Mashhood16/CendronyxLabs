@@ -1,4 +1,4 @@
-﻿import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import i18n from 'i18next';
 import { initReactI18next, I18nextProvider } from 'react-i18next';
 import enTranslation from '../locales/en/translation.json';
@@ -19,7 +19,7 @@ i18n.use(initReactI18next).init({
   },
   lng: 'en',
   fallbackLng: 'en',
-  interpolation: { escapeValue: false, prefix: '{', suffix: '}' }
+  interpolation: { escapeValue: false }
 });
 
 // Context for language state
@@ -60,10 +60,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     // Return key as last resort
     if (!text) text = key;
     
-    // Handle interpolation {variable}
+    // Handle interpolation {{variable}}
     if (options && text) {
       Object.entries(options).forEach(([k, v]) => {
-        text = (text as string).replace(new RegExp(`\\{${k}\\}`, 'g'), String(v));
+        text = (text as string).replace(new RegExp(`\\{\\{${k}\\}\\}`, 'g'), String(v));
       });
     }
     
