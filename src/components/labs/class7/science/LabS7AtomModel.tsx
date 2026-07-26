@@ -78,7 +78,7 @@ export default function LabS7AtomModel({ onExit }: LabProps) {
  </div>
 
  {/* Atom Visualizer */}
- <div className="relative w-[500px] h-[500px] flex justify-center items-center">
+ <div className="relative w-[500px] max-w-full h-[500px] flex justify-center items-center">
  {/* Shells */}
  <div className={`absolute border border-slate-500 dark:border-slate-500/30 rounded-full flex justify-center items-center ${electrons > 0 ? 'w-48 h-48' : 'hidden'}`}>
  {/* Shell 1 Electrons (Max 2) */}

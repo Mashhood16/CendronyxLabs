@@ -37,7 +37,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
  const movieData = movies.find(m => m.id === current.movie);
 
  return (
- <div className="fixed inset-0 bg-black z-50 flex items-center justify-center font-sans text-white min-h-screen lg:h-screen overflow-x-hidden w-full" onClick={() => setIsRising(false)}>
+ <div className="fixed inset-0 bg-black z-50 flex items-center justify-center font-sans text-white min-h-screen lg:h-screen overflow-x-hidden w-full" onClick={() => setIsPlaying(false)}>
  <div className="max-w-6xl w-full h-[80vh] flex flex-col items-center justify-center relative px-12">
  {movieData && (
  <img src={movieData.img} alt={t("Background")} className="absolute inset-0 w-full h-full object-cover opacity-20 blur-sm" />
@@ -63,7 +63,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
  </button>
  <span className="text-white/50">{t('lab.c7cybercrime_slide')} {activeSlide + 1} of {slides.length}</span>
  <button 
- onClick={(e) => { e.stopPropagation(); if(activeSlide < slides.length - 1) setActiveSlide(activeSlide + 1); else setIsRising(false); }}
+ onClick={(e) => { e.stopPropagation(); if(activeSlide < slides.length - 1) setActiveSlide(activeSlide + 1); else setIsPlaying(false); }}
  className="text-white/50 hover:text-white"
  >
  {activeSlide < slides.length - 1 ? 'Next &rarr;' : 'End Show'}

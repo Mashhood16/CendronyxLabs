@@ -8,8 +8,6 @@ import { useAuth, useLab, LabProvider } from '../store';
 import { getAnonymousId } from '../utils/sessionId';
 import Layout from '../components/layout/Layout';
 import { theme } from '../utils/labTheme';
-import CustomLabRunner from '../components/generic/CustomLabRunner';
-import { customLabService } from '../services/customLabService';
 
 interface LabRunnerInnerProps {
   moduleId: string | undefined;
@@ -47,33 +45,13 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
   const labCtx = useLab();
   const startTime = useRef(Date.now());
   const exiting = useRef(false);
-  const [customLab, setCustomLab] = useState<any | null>(null);
-
-  useEffect(() => {
-    if (moduleId && moduleId.startsWith('custom_')) {
-      customLabService.getLab(moduleId).then(setCustomLab);
-    }
-  }, [moduleId]);
-
   const mod = useMemo(() => {
     if (!moduleId) return null;
-    if (moduleId.startsWith('custom_')) {
-      if (!customLab) return null;
-      return {
-        id: customLab.id,
-        title: customLab.title,
-        subject: customLab.subject,
-        classLevel: customLab.classLevel,
-      };
-    }
     return LAB_MODULES.find(m => m.id === moduleId) || null;
-  }, [moduleId, customLab]);
+  }, [moduleId]);
 
   const LabComponent = useMemo(() => {
     if (!moduleId) return null;
-    if (moduleId.startsWith('custom_')) {
-      return CustomLabRunner;
-    }
     return getLabComponent(moduleId);
   }, [moduleId]);
 
@@ -149,7 +127,7 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
     return mod?.subject === 'english';
   }, [mod]);
 
-  if (!LabComponent || !moduleId || (moduleId.startsWith('custom_') && !customLab)) {
+  if (!LabComponent || !moduleId) {
     return (
       <Layout>
         <div className={`flex flex-col items-center justify-center min-h-[60vh] ${theme.page.bg} rounded-2xl border ${theme.border.default}`}>

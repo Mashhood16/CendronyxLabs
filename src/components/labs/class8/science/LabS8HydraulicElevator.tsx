@@ -41,7 +41,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
  {t('lab.s8hydraulicelevator_drag_the_small_syringe_plunger')}
  </p>
 
- <div className="relative w-[500px] h-80 flex items-end">
+ <div className="relative w-[500px] max-w-full h-80 flex items-end">
  
  {/* Small Syringe (Left, 10ml) */}
  <div className="absolute left-10 bottom-0 flex flex-col items-center">

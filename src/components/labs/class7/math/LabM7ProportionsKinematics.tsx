@@ -146,7 +146,7 @@ export default function LabM7ProportionsKinematics({ onExit }: { onExit?: () => 
  {/* Main Content */}
  <main className="flex-1 min-w-0 flex lg:overflow-hidden">
  {/* Left Column: Controls & Workspace */}
- <div className="w-[400px] lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
+ <div className="w-[400px] max-w-full lg:w-[450px] flex flex-col border-r border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
  {/* Tabs */}
  <div className="flex bg-slate-200 dark:bg-slate-700 rounded-lg p-1 mb-6 shrink-0">
  <button 

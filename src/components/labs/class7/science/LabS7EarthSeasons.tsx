@@ -77,7 +77,7 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
  <div className="relative flex justify-center items-center w-full h-[600px] perspective-1000">
  
  {/* Orbit Path (Ellipse) */}
- <div className="absolute w-[600px] h-[200px] rounded-[100%] shadow-[0_0_50px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_50px_rgba(255,255,255,0.05)_inset] z-0 border border-slate-300 dark:border-[#1c1b1b]/50"></div>
+ <div className="absolute w-[600px] max-w-full h-[200px] rounded-[100%] shadow-[0_0_50px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_50px_rgba(255,255,255,0.05)_inset] z-0 border border-slate-300 dark:border-[#1c1b1b]/50"></div>
 
  {/* The Sun */}
  <div className="absolute w-32 h-32 bg-yellow-500 rounded-full shadow-[0_0_100px_#facc15] z-20 flex justify-center items-center">

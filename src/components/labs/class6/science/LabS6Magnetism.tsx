@@ -39,7 +39,7 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
  <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-[#ffffff]">{t('lab.s6magnetism_plotting_magnetic_fields')}</h2>
  <p className="text-slate-600 dark:text-[#a1a1aa] mb-12 max-w-xl text-center">{t('lab.s6magnetism_iron_filings_or_plotting_compa')}</p>
  
- <div className="relative w-[600px] h-[400px] flex items-center justify-center">
+ <div className="relative w-[600px] max-w-full h-[400px] flex items-center justify-center">
  
  {/* Field Lines Visualization using SVG */}
  <svg className="absolute w-full h-full opacity-30" viewBox="0 0 600 400">

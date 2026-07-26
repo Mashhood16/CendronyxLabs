@@ -59,13 +59,13 @@ export default function LabS8ConvexMirror({ onExit }: LabProps) {
  <h2 className="absolute top-4 text-slate-400 font-bold tracking-widest uppercase">{t('lab.s8convexmirror_mirror_view')}</h2>
 
  {/* The Mirror Frame */}
- <div className={`bg-slate-300 dark:bg-[#121212] border-4 border-slate-950 flex items-center justify-center relative overflow-hidden transition-all duration-500 ${mirrorType === 'plane' ? 'w-[400px] h-[150px] rounded-lg' : 'w-[250px] h-[180px] rounded-[40px] shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]'}`}>
+ <div className={`bg-slate-300 dark:bg-[#121212] border-4 border-slate-950 flex items-center justify-center relative overflow-hidden transition-all duration-500 ${mirrorType === 'plane' ? 'w-[400px] max-w-full h-[150px] rounded-lg' : 'w-[250px] h-[180px] rounded-[40px] shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]'}`}>
  
  {/* The Reflection Content */}
  <div className={`absolute flex items-center justify-center transition-all duration-500 ${mirrorType === 'plane' ? 'scale-100' : 'scale-[0.6] w-[200%]'}`}>
  
  {/* Background Road */}
- <div className="absolute w-[800px] h-64 bg-slate-600 dark:bg-[#121212] flex flex-col">
+ <div className="absolute w-[800px] max-w-full h-64 bg-slate-600 dark:bg-[#121212] flex flex-col">
  <div className="h-1/2 bg-sky-300" />
  <div className="h-1/2 bg-slate-600 dark:bg-[#121212] relative flex items-center">
  <div className="w-full border-b-4 border-dashed border-white" />

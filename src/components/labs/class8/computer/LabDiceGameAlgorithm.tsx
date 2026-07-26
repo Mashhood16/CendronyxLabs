@@ -67,7 +67,7 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
   <div className="flex-1 flex lg:overflow-hidden">
   
   {/* Left Panel: Algorithm Visualization */}
-  <div className="w-[500px] bg-[#1e1e1e] border-r border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col z-10">
+  <div className="w-[500px] max-w-full bg-[#1e1e1e] border-r border-[#1c1b1b] dark:border-[#1c1b1b] flex flex-col z-10">
    
    <div className="h-10 bg-[#2d2d2d] flex items-center px-4 border-b border-black">
     <span className="text-slate-400 font-mono text-sm">{t('lab.dicegamealgorithm_dice_game_pseudo')}</span>

@@ -29,19 +29,6 @@ export interface LabRecord {
   experimentData?: Record<string, string | number>;
 }
 
-export interface CustomLab {
-  id: string;
-  userId: string;
-  classLevel: string;
-  subject: string;
-  title: string;
-  desc: string;
-  creatorName: string;
-  isPrivate: boolean;
-  status: 'draft' | 'pending' | 'approved' | 'rejected';
-  createdAt: number;
-  layout: any[];
-}
 
 interface VirtualLabDB extends DBSchema {
   progress: {
@@ -58,14 +45,6 @@ interface VirtualLabDB extends DBSchema {
     value: LabRecord & { id: number; userId: string };
     indexes: {
       'by-history-user': string;
-    };
-  };
-  custom_labs: {
-    key: string;
-    value: CustomLab;
-    indexes: {
-      'by-user': string;
-      'by-status': string;
     };
   };
 }
@@ -111,16 +90,6 @@ export const initDB = () => {
           historyStore.createIndex('by-history-user', 'userId');
         }
 
-        // --- Version 6: Create custom_labs store ---
-        if (oldVersion < 6) {
-          if (!db.objectStoreNames.contains('custom_labs')) {
-            const customStore = db.createObjectStore('custom_labs', {
-              keyPath: 'id',
-            });
-            customStore.createIndex('by-user', 'userId');
-            customStore.createIndex('by-status', 'status');
-          }
-        }
       },
     }).catch((err) => {
       console.error('Failed to open IndexedDB, retrying...', err);

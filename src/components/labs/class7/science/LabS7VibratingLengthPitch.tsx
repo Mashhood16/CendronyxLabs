@@ -48,7 +48,7 @@ export default function LabS7VibratingLengthPitch({ onExit }: LabProps) {
  </div>
 
  {/* The Instrument */}
- <div className="relative w-[600px] h-64 mt-8 flex justify-center items-center">
+ <div className="relative w-[600px] max-w-full h-64 mt-8 flex justify-center items-center">
  {/* The Box */}
  <div className="absolute inset-0 bg-amber-700 border-4 border-amber-800 rounded-lg shadow-2xl flex justify-center items-center">
  {/* Sound Hole */}

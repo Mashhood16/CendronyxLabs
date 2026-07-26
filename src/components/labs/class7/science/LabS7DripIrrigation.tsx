@@ -68,7 +68,7 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
  </div>
 
  {/* The Main Pipe */}
- <div className="absolute left-40 bottom-24 w-[600px] h-4 bg-[#121212] dark:!bg-[#121212] z-10 border-b-2 border-slate-900 dark:border-[#1c1b1b] rounded-r shadow-md">
+ <div className="absolute left-40 bottom-24 w-[600px] max-w-full h-4 bg-[#121212] dark:!bg-[#121212] z-10 border-b-2 border-slate-900 dark:border-[#1c1b1b] rounded-r shadow-md">
  {/* Pipe Valve */}
  <div className="absolute -left-2 -top-2 w-4 h-8 bg-red-500 rounded flex justify-center items-center dark:bg-red-500 dark:hover:bg-red-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-red-500/40">
  <div className={`w-8 h-2 bg-red-600 rounded transition-transform ${running ? 'rotate-0' : 'rotate-90'}`}></div>

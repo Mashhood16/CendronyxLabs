@@ -39,7 +39,7 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
  </div>
 
  {/* Experiment Setup */}
- <div className="relative w-[500px] h-[500px] flex justify-center items-end pb-8">
+ <div className="relative w-[500px] max-w-full h-[500px] flex justify-center items-end pb-8">
  
  {/* Flask */}
  <div className="relative w-40 h-48 border-4 border-slate-400 dark:border-[#1c1b1b]/50 bg-slate-50 dark:bg-[#121212]/5 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] flex justify-center items-end overflow-hidden z-20 backdrop-blur-sm">

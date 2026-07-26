@@ -192,7 +192,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
   </div>
 
   {/* Right Panel: The Stage */}
-  <div className="w-[500px] bg-slate-50 dark:bg-[#121212] flex flex-col z-10">
+  <div className="w-[500px] max-w-full bg-slate-50 dark:bg-[#121212] flex flex-col z-10">
    
    <div className="h-12 bg-slate-200 dark:bg-[#121212] flex items-center px-4 justify-between border-b border-slate-300 dark:border-[#1c1b1b]">
     <span className="text-slate-600 dark:text-[#a1a1aa] font-bold">{t('lab.scratchmaze_stage')}</span>
@@ -202,7 +202,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
    <div className="flex-1 p-4 flex items-center justify-center">
     
     {/* The Grid Map 5x5 */}
-    <div className="w-[400px] h-[400px] bg-green-100 border-4 border-green-300 rounded-xl relative overflow-hidden shadow-inner grid grid-cols-5 grid-rows-5">
+    <div className="w-[400px] max-w-full h-[400px] bg-green-100 border-4 border-green-300 rounded-xl relative overflow-hidden shadow-inner grid grid-cols-5 grid-rows-5">
      
      {/* Render Grid Tiles */}
      {[...Array(25)].map((_, i) => {

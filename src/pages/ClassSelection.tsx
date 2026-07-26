@@ -26,7 +26,7 @@ export default function ClassSelection() {
 
   return (
     <Layout>
-      <div className="flex flex-col relative max-w-5xl mx-auto pb-24 md:pb-12">
+      <div className="flex flex-col relative max-w-5xl mx-auto pb-24 md:pb-12 dark:bg-[#000000] dark:text-white">
         {/* Hero Section with Animated Gradient */}
         <div className="relative overflow-hidden rounded-2xl mb-6 shadow-lg">
           {/* Animated gradient background */}
@@ -59,20 +59,8 @@ export default function ClassSelection() {
             
             <div className="flex flex-col gap-2.5 w-full sm:w-auto md:shrink-0">
               <button 
-                onClick={() => navigate('/create-lab')}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
-              >
-                🧪 {t("Create Custom Lab")}
-              </button>
-              <button 
-                onClick={() => navigate('/simulation-studio')}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-indigo-500/20 text-white border border-indigo-400/40 font-bold rounded-xl hover:bg-indigo-500/35 transition-all shadow-md hover:scale-105"
-              >
-                🎨 {t("Simulation Studio")}
-              </button>
-              <button 
                 onClick={() => document.getElementById('class-grid')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-indigo-600 font-bold rounded-xl hover:bg-white/90 transition-all shadow-md hover:shadow-lg hover:scale-105"
               >
                 {t('class.start_exploring')}
                 <ArrowRight className="w-4 h-4" />

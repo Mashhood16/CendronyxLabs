@@ -184,7 +184,7 @@ export default function LabM6Sets({ onExit }: { onExit?: () => void }) {
 
  <div className="flex-1 min-w-0 relative flex items-center justify-center">
  {/* Visual Venn Diagram */}
- <div className="relative w-[600px] h-[400px] pointer-events-none">
+ <div className="relative w-[600px] max-w-full h-[400px] pointer-events-none">
  
  {/* Set A Circle */}
  <div 

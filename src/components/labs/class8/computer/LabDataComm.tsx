@@ -51,11 +51,11 @@ export default function LabDataComm({ onExit }: LabProps) {
    <div className="flex-1 relative flex items-center justify-center">
     
     {/* The Diagram Background */}
-    <div className="absolute w-[800px] h-[400px] border-4 border-slate-300 dark:border-[#1c1b1b] border-dashed rounded-3xl z-0 opacity-50"></div>
+    <div className="absolute w-[800px] max-w-full h-[400px] border-4 border-slate-300 dark:border-[#1c1b1b] border-dashed rounded-3xl z-0 opacity-50"></div>
     
     {/* Connections */}
     {isComplete && (
-    <svg className="absolute w-[800px] h-[400px] z-10 pointer-events-none">
+    <svg className="absolute w-[800px] max-w-full h-[400px] z-10 pointer-events-none">
      {/* Wire from Sender to Receiver */}
      <line x1="100" y1="200" x2="700" y2="200" stroke="#3b82f6" strokeWidth="4" />
      
@@ -66,7 +66,7 @@ export default function LabDataComm({ onExit }: LabProps) {
     )}
 
     {/* Slots */}
-    <div className="absolute w-[800px] h-[400px] z-20 flex flex-col justify-between">
+    <div className="absolute w-[800px] max-w-full h-[400px] z-20 flex flex-col justify-between">
     
     {/* Top Row: Rules */}
     <div className="flex justify-center -mt-8">

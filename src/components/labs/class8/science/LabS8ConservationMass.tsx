@@ -1,3 +1,4 @@
+import { RefreshCw } from 'lucide-react';
 import { useState } from 'react';import LabHeader from '../computer/LabHeader';
 import { useTranslate } from '../../../../i18n';
 

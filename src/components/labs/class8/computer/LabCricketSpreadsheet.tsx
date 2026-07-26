@@ -100,7 +100,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
 
     {/* Bar Chart Overlay */}
     {showChart && (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] shadow-2xl p-6 flex flex-col rounded z-10 animate-fade-in">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] max-w-full h-[300px] bg-slate-50 dark:bg-[#121212] border border-slate-300 dark:border-[#1c1b1b] shadow-2xl p-6 flex flex-col rounded z-10 animate-fade-in">
      <h3 className="text-center font-bold text-slate-700 dark:text-[#ffffff] mb-4">{t('lab.cricketspreadsheet_average_scores')}</h3>
      <div className="flex-1 border-l-2 border-b-2 border-slate-400 dark:border-[#1c1b1b] flex items-end justify-around pb-0 pt-4 px-2">
       <div className="w-12 bg-blue-500 rounded-t flex items-end justify-center text-xs text-white pb-1 dark:bg-teal-950/20 dark:border-teal-900" style={{height: '70%'}}>70</div>

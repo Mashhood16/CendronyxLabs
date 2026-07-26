@@ -186,7 +186,7 @@ const { recordLabData, setLabScore } = useLab();
  <div className={`flex-1 flex flex-col items-center justify-center relative pt-10 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
  
  {/* The Circuit Loop */}
- <div className="w-[300px] sm:w-[400px] lg:h-[250px] border-4 border-amber-600 rounded-xl relative flex justify-center shadow-[0_0_15px_#d97706_inset] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
+ <div className="w-[300px] sm:w-[400px] max-w-full lg:h-[250px] border-4 border-amber-600 rounded-xl relative flex justify-center shadow-[0_0_15px_#d97706_inset] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t">
  
  {/* Electrons moving */}
  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-lg">

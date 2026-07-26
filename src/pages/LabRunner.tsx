@@ -18,7 +18,7 @@ export default function LabRunner() {
   return (
     <Suspense fallback={
       <Layout>
-        <div className="flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="flex flex-col items-center justify-center min-h-[60vh] dark:bg-[#000000] dark:text-white">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
           <p className="text-slate-500 font-medium">{t("Loading lab...")}</p>
         </div>

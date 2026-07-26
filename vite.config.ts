@@ -121,4 +121,16 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    chunkSizeWarningLimit: 6000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('lucide-react')) {
+            return 'lucide-vendor';
+          }
+        }
+      }
+    }
+  }
 })

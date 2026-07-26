@@ -34,7 +34,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
   <div className="flex-1 bg-slate-950 p-12 flex flex-col items-center justify-center relative shadow-inner bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
    
    {/* Server Rack Background */}
-   <div className="w-[600px] h-[600px] bg-[#121212] dark:bg-[#121212] rounded border-8 border-[#1c1b1b] dark:border-[#1c1b1b] shadow-2xl p-4 flex flex-col gap-6 relative">
+   <div className="w-[600px] max-w-full h-[600px] bg-[#121212] dark:bg-[#121212] rounded border-8 border-[#1c1b1b] dark:border-[#1c1b1b] shadow-2xl p-4 flex flex-col gap-6 relative">
     
     {/* Router */}
     <div 

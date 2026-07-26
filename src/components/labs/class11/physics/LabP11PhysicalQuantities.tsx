@@ -16,7 +16,7 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
  const [lastMean, setLastMean] = useState(0);
 
  const handleShoot = (e: React.MouseEvent<SVGSVGElement>) => {
- const rect = e.current.getBoundingClientRect();
+ const rect = e.currentTarget.getBoundingClientRect();
  const x = e.clientX - rect.left - 150;
  const y = e.clientY - rect.top - 150;
  setShots([...shots, { x, y }]);

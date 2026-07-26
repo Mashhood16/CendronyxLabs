@@ -75,7 +75,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
  {/* Canvas */}
  <div className="flex-1 flex items-center justify-center p-8 bg-slate-200 dark:bg-[#121212] rounded-xl shadow-inner border-2 border-slate-300 dark:border-[#1c1b1b]">
  {/* The Card */}
- <div className={`w-[400px] aspect-[3/4] shadow-2xl rounded-2xl border-8 border-white p-12 flex flex-col items-center justify-center relative overflow-hidden transition-colors ${bgClass}`}>
+ <div className={`w-[400px] max-w-full aspect-[3/4] shadow-2xl rounded-2xl border-8 border-white p-12 flex flex-col items-center justify-center relative overflow-hidden transition-colors ${bgClass}`}>
  
  {/* Decorative corners */}
  <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-[#1c1b1b] dark:border-[#1c1b1b]/20 rounded-tl-xl" />

@@ -1,3 +1,4 @@
+import { RefreshCw } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { Snowflake} from 'lucide-react';
 import LabHeader from '../computer/LabHeader';

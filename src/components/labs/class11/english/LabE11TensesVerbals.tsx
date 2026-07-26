@@ -276,7 +276,7 @@ export default function LabE11TensesVerbals({ onExit }: { onExit?: () => void })
    
    <div className={`flex-1 w-full relative rounded-xl border border-slate-200 dark:border-[#1c1b1b] items-center p-8 shadow-inner overflow-x-auto min-h-[300px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    {/* Timeline Axis */}
-   <div className="absolute left-8 right-8 h-1 bg-slate-300 dark:bg-slate-600 top-1/2 -translate-y-1/2 rounded-full min-w-[500px]"></div>
+   <div className="absolute left-8 right-8 h-1 bg-slate-300 dark:bg-slate-600 top-1/2 -translate-y-1/2 rounded-full min-w-[500px] max-w-full"></div>
    
    {/* Markers */}
    <div className="absolute left-[10%] top-1/2 w-0.5 h-6 bg-slate-400 dark:bg-slate-50 dark:bg-[#000000]0 -translate-y-1/2 -ml-[1px]"></div>

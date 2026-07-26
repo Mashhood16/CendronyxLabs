@@ -11,12 +11,10 @@ import Class9Math from './Class9Math';
 import Class10Math from './Class10Math';
 import Class11Math from './Class11Math';
 import Class12Math from './Class12Math';
-import { Rocket, Lock, Atom, Calculator, Dna, Laptop, Activity, BookOpen, Beaker, Edit3, Trash2, ShieldAlert, Plus } from 'lucide-react';
+import { Rocket, Lock, Atom, Calculator, Dna, Laptop, Activity, BookOpen, Beaker, ShieldAlert } from 'lucide-react';
 import { useTranslate } from '../i18n';
 import { translateLabDesc } from '../i18n/labContent';
 import { theme } from '../utils/labTheme';
-import { useAuth } from '../store';
-import { customLabService } from '../services/customLabService';
 
 const SUBJECT_ACCENT: Record<string, string> = {
   physics: 'from-blue-500 to-indigo-600',
@@ -41,51 +39,6 @@ const SUBJECT_BANNER: Record<string, { icon: typeof Atom; gradient: string; desc
 export default function ModuleSelection() {
   const { classId, subjectId } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const [customLabs, setCustomLabs] = useState<any[]>([]);
-
-  const loadCustomLabs = async () => {
-    if (!classId || !subjectId) return;
-    try {
-      // 1. Fetch user's own custom labs (including private ones and drafts/pending)
-      const userLabs = user ? await customLabService.getUserLabs(user.id) : [];
-      // 2. Fetch approved public custom labs
-      const publicLabs = await customLabService.getApprovedLabs();
-
-      // Combine and filter matching current class/subject
-      const allCustom = [...userLabs, ...publicLabs];
-      
-      // Deduplicate by ID
-      const uniqueMap = new Map<string, any>();
-      allCustom.forEach(lab => {
-        if (lab.classLevel === classId && lab.subject === subjectId) {
-          uniqueMap.set(lab.id, lab);
-        }
-      });
-
-      const filteredCustom = Array.from(uniqueMap.values()).map(lab => ({
-        id: lab.id,
-        classLevel: lab.classLevel,
-        subject: lab.subject,
-        title: lab.title,
-        desc: lab.desc,
-        built: true,
-        bg: 'from-pink-500 to-rose-600',
-        creatorName: lab.creatorName,
-        isPrivate: lab.isPrivate,
-        status: lab.status,
-        userId: lab.userId
-      }));
-
-      setCustomLabs(filteredCustom);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    loadCustomLabs();
-  }, [classId, subjectId, user?.id]);
 
   // Class 9-12 Physics get a special tabbed view with Labs and Derivations
   if (classId === '9' && subjectId === 'physics') {
@@ -116,17 +69,9 @@ export default function ModuleSelection() {
   }
 
   const staticModules = LAB_MODULES.filter(m => m.classLevel === classId && m.subject === subjectId);
-  const filteredModules = [...customLabs, ...staticModules];
+  const filteredModules = staticModules;
   const accent = SUBJECT_ACCENT[subjectId || ''] || 'from-slate-500 to-slate-600';
   const { t, language } = useTranslate();
-
-  const handleDeleteCustomLab = async (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (window.confirm('Are you sure you want to delete this custom lab?')) {
-      await customLabService.deleteLab(id);
-      loadCustomLabs();
-    }
-  };
 
   return (
     <Layout>
@@ -161,20 +106,6 @@ export default function ModuleSelection() {
                       <p className="text-white/80 text-sm">{(subjectId && SUBJECT_BANNER[subjectId]?.description) || 'Interactive experiments and virtual labs'}</p>
                     </div>
                   </div>
-                  <div className="flex gap-2 shrink-0">
-                    <button
-                      onClick={() => navigate('/create-lab')}
-                      className="px-4 py-2 bg-white text-indigo-700 hover:bg-white/90 dark:bg-[#121212] dark:text-white dark:hover:bg-[#1c1b1b] rounded-xl font-bold text-xs shadow-md transition-colors flex items-center gap-2"
-                    >
-                      <Plus size={14} /> {t("Create Custom Lab")}
-                    </button>
-                    <button
-                      onClick={() => navigate('/simulation-studio')}
-                      className="px-4 py-2 bg-white text-indigo-700 hover:bg-white/90 dark:bg-[#121212] dark:text-white dark:hover:bg-[#1c1b1b] rounded-xl font-bold text-xs shadow-md transition-colors flex items-center gap-2"
-                    >
-                      <Plus size={14} /> {t("Simulation Studio")}
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -182,8 +113,6 @@ export default function ModuleSelection() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredModules.map((lab: any) => {
                 const isBuilt = lab.built;
-                const isCustom = lab.id.startsWith('custom_');
-                const isOwn = isCustom && lab.userId === user?.id;
 
                 return (
                   <div
@@ -208,32 +137,8 @@ export default function ModuleSelection() {
                         {t(formatSubject(lab.subject))} {t("&middot; Class")} {lab.classLevel}
                       </div>
                       
-                      {/* Custom lab edit/delete overlay for owner */}
-                      {isOwn && (
-                        <div className="absolute top-3 right-3 flex items-center gap-1">
-                          <button
-                            onClick={(e) => { e.stopPropagation(); navigate(`/edit-lab/${lab.id}`); }}
-                            className="p-1.5 bg-black/30 hover:bg-black/50 backdrop-blur-md text-white rounded-lg transition-colors border border-white/10"
-                            title="Edit Custom Lab"
-                          >
-                            <Edit3 size={12} />
-                          </button>
-                          <button
-                            onClick={(e) => handleDeleteCustomLab(lab.id, e)}
-                            className="p-1.5 bg-red-900/60 hover:bg-red-900/80 backdrop-blur-md text-white rounded-lg transition-colors border border-red-800/30"
-                            title="Delete Custom Lab"
-                          >
-                            <Trash2 size={12} />
-                          </button>
-                        </div>
-                      )}
-                      
                       {/* Built/Status indicator */}
-                      {isCustom ? (
-                        <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-600/90 text-white text-xs font-bold backdrop-blur-sm">
-                          {lab.isPrivate ? '🔒 Private' : lab.status === 'pending' ? '⏳ Review' : '🌍 Public'}
-                        </div>
-                      ) : isBuilt ? (
+                      {isBuilt ? (
                         <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/90 text-white text-xs font-bold backdrop-blur-sm">
                           <Rocket className="w-3.5 h-3.5" /> {t('module.ready')}
                         </div>
@@ -250,24 +155,16 @@ export default function ModuleSelection() {
                         {lab.title}
                       </h3>
                       <p className={`text-sm ${theme.text.muted} leading-relaxed mb-4 line-clamp-2 flex-1`}>
-                        {isCustom ? lab.desc : translateLabDesc(lab.id, lab.desc, language)}
+                        {translateLabDesc(lab.id, lab.desc, language)}
                       </p>
 
                       {/* Bottom row */}
                       <div className={`flex items-center justify-between pt-3 border-t ${theme.border.subtle}`}>
                         <div className={`flex items-center gap-1.5 ${theme.text.faint}`}>
-                          {isCustom ? (
-                            <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded">
-                              By: {lab.creatorName}
-                            </span>
-                          ) : (
-                            <>
-                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                              </svg>
-                              <span className="text-xs font-bold">{t('module.time_estimate', { min: 15 })}</span>
-                            </>
-                          )}
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-xs font-bold">{t('module.time_estimate', { min: 15 })}</span>
                         </div>
                         {isBuilt ? (
                           <span className={`text-xs font-bold text-white px-3 py-1.5 rounded-lg bg-gradient-to-r ${accent} group-hover:scale-105 transition-transform`}>

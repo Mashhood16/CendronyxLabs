@@ -86,7 +86,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
  </div>
 
  {/* Visualizer */}
- <div className="w-[500px] h-[500px] bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center justify-center">
+ <div className="w-[500px] max-w-full h-[500px] bg-slate-50 dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col items-center justify-center">
  <h3 className="text-lg font-bold text-slate-500 dark:text-[#71717a] mb-8">{getContainerContent()}</h3>
  
  <div className="relative w-64 h-64 flex items-center justify-center">

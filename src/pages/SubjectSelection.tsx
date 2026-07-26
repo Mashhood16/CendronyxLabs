@@ -36,7 +36,7 @@ export default function SubjectSelection() {
 
   return (
     <Layout>
-      <div className="flex flex-col">
+      <div className="flex flex-col dark:bg-[#000000] dark:text-white">
         <Breadcrumbs />
         <div>
           <h2 className={`text-2xl md:text-3xl font-bold tracking-tight ${theme.text.primary}`}>{t('subject.select')}</h2>
