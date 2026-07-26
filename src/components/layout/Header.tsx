@@ -113,44 +113,24 @@ export default function Header({ onToggleSidebar, onMobileSearchOpen, mobileSear
 
   const handleHardReload = async () => {
     try {
-      // 1. Clear Local & Session Storage immediately
-      localStorage.clear();
-      sessionStorage.clear();
-
-      // 2. Unregister all PWA Service Workers
+      // 1. Unregister all PWA Service Workers so the browser fetches a fresh one
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
         for (const registration of registrations) {
-          try {
-            await registration.unregister();
-          } catch (e) {
-            console.error('SW unregister error:', e);
-          }
+          await registration.unregister();
         }
       }
 
-      // 3. Clear all PWA CacheStorage caches
+      // 2. Delete all PWA CacheStorage entries (precache + runtime)
       if ('caches' in window) {
         const keys = await caches.keys();
         await Promise.all(keys.map(key => caches.delete(key)));
       }
-
-      // 4. Trigger non-blocking IndexedDB deletion
-      if ('indexedDB' in window) {
-        try {
-          indexedDB.deleteDatabase('VirtualLabDB');
-          indexedDB.deleteDatabase('VirtualLabStudents');
-        } catch (e) {
-          console.error('IDB delete error:', e);
-        }
-      }
     } catch (e) {
-      console.error('Failed to clear PWA cache and storage', e);
+      console.error('Failed to clear PWA cache:', e);
     } finally {
-      // 5. Force a hard reload of the current page with a cache-busting timestamp
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set('_cb', Date.now().toString());
-      window.location.replace(currentUrl.toString());
+      // 3. Reload — the browser will now fetch all assets fresh from the server
+      window.location.reload();
     }
   };
 
