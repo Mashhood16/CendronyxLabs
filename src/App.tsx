@@ -11,6 +11,7 @@ const ModuleSelection = lazy(() => import('./pages/ModuleSelection'));
 const LabRunner = lazy(() => import('./pages/LabRunner'));
 const HistoryDashboard = lazy(() => import('./pages/HistoryDashboard'));
 const SettingsPanel = lazy(() => import('./pages/SettingsPanel'));
+const AISimulationMaker = lazy(() => import('./pages/AISimulationMaker'));
 
 function PageLoader() {
   return (
@@ -27,6 +28,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<ClassSelection />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/ai-maker" element={<AISimulationMaker />} />
+          <Route path="/lab/custom/:id" element={<AISimulationMaker />} />
           <Route path="/history" element={<ProtectedRoute><HistoryDashboard /></ProtectedRoute>} />
           <Route path="/settings" element={<ProtectedRoute><SettingsPanel /></ProtectedRoute>} />
           <Route path="/class/:classId" element={<SubjectSelection />} />

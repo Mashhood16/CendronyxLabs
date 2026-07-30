@@ -106,6 +106,14 @@ export default function ModuleSelection() {
                       <p className="text-white/80 text-sm">{(subjectId && SUBJECT_BANNER[subjectId]?.description) || 'Interactive experiments and virtual labs'}</p>
                     </div>
                   </div>
+
+                  <button
+                    onClick={() => navigate('/ai-maker')}
+                    className="px-4 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 text-white font-semibold text-xs md:text-sm backdrop-blur-md border border-white/30 transition-all flex items-center gap-2 shrink-0 shadow-lg"
+                  >
+                    <Rocket className="w-4 h-4" />
+                    <span>+ Create AI Simulation</span>
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { openDB } from 'idb';
 import type { DBSchema, IDBPDatabase } from 'idb';
+import type { AISimulationSpec } from '../types/aiSimulation';
 
 export interface DataPoint {
   key: string;
@@ -29,7 +30,6 @@ export interface LabRecord {
   experimentData?: Record<string, string | number>;
 }
 
-
 interface VirtualLabDB extends DBSchema {
   progress: {
     key: number;
@@ -47,10 +47,14 @@ interface VirtualLabDB extends DBSchema {
       'by-history-user': string;
     };
   };
+  customSimulations: {
+    key: string;
+    value: AISimulationSpec;
+  };
 }
 
 const DB_NAME = 'VirtualLabDB';
-const DB_VERSION = 6;
+const DB_VERSION = 7;
 
 let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 
@@ -90,6 +94,12 @@ export const initDB = () => {
           historyStore.createIndex('by-history-user', 'userId');
         }
 
+        // --- Version 7: Create customSimulations store ---
+        if (!db.objectStoreNames.contains('customSimulations')) {
+          db.createObjectStore('customSimulations', {
+            keyPath: 'id',
+          });
+        }
       },
     }).catch((err) => {
       console.error('Failed to open IndexedDB, retrying...', err);
@@ -114,7 +124,6 @@ export const progressDB = {
   async getRecordByExperiment(experimentId: string, userId?: string) {
     const db = await initDB();
     if (userId) {
-      // Get all records for this experiment + user
       const allRecords = await db.getAll('progress');
       const filtered = allRecords.filter(r => r.experimentId === experimentId && r.userId === userId);
       return filtered.length ? filtered[filtered.length - 1] : null;
@@ -162,7 +171,6 @@ export const historyDB = {
   async getRecords(userId: string): Promise<LabRecord[]> {
     const db = await initDB();
     const records = await db.getAllFromIndex('history', 'by-history-user', userId);
-    // Sort by timestamp descending (newest first)
     return records.sort((a, b) => b.timestamp - a.timestamp);
   },
 
@@ -174,5 +182,75 @@ export const historyDB = {
       await tx.store.delete(record.id);
     }
     await tx.done;
+  }
+};
+
+// --- Custom AI Simulations DB ---
+
+export const customSimDB = {
+  async saveSimulation(spec: AISimulationSpec): Promise<string> {
+    const db = await initDB();
+    await db.put('customSimulations', spec);
+    // Also backup to LocalStorage for ultra-fast local fallback
+    try {
+      const existingStr = localStorage.getItem('virtuallab_custom_simulations') || '[]';
+      const existing: AISimulationSpec[] = JSON.parse(existingStr);
+      const idx = existing.findIndex(s => s.id === spec.id);
+      if (idx >= 0) existing[idx] = spec;
+      else existing.unshift(spec);
+      localStorage.setItem('virtuallab_custom_simulations', JSON.stringify(existing));
+    } catch (e) {
+      console.warn('LocalStorage backup failed:', e);
+    }
+    return spec.id;
+  },
+
+  async getAllSimulations(): Promise<AISimulationSpec[]> {
+    try {
+      const db = await initDB();
+      const sims = await db.getAll('customSimulations');
+      if (sims && sims.length > 0) {
+        return sims.sort((a, b) => b.createdAt - a.createdAt);
+      }
+    } catch (e) {
+      console.warn('IndexedDB fetch failed, reading LocalStorage backup', e);
+    }
+    // Fallback read from LocalStorage
+    try {
+      const existingStr = localStorage.getItem('virtuallab_custom_simulations') || '[]';
+      return JSON.parse(existingStr);
+    } catch (e) {
+      return [];
+    }
+  },
+
+  async getSimulationById(id: string): Promise<AISimulationSpec | null> {
+    try {
+      const db = await initDB();
+      const sim = await db.get('customSimulations', id);
+      if (sim) return sim;
+    } catch (e) {
+      console.warn('IndexedDB single fetch failed', e);
+    }
+    // Fallback read from LocalStorage
+    const all = await this.getAllSimulations();
+    return all.find(s => s.id === id) || null;
+  },
+
+  async deleteSimulation(id: string): Promise<void> {
+    try {
+      const db = await initDB();
+      await db.delete('customSimulations', id);
+    } catch (e) {
+      console.warn('IndexedDB delete failed', e);
+    }
+    try {
+      const existingStr = localStorage.getItem('virtuallab_custom_simulations') || '[]';
+      const existing: AISimulationSpec[] = JSON.parse(existingStr);
+      const filtered = existing.filter(s => s.id !== id);
+      localStorage.setItem('virtuallab_custom_simulations', JSON.stringify(filtered));
+    } catch (e) {
+      console.warn('LocalStorage delete failed:', e);
+    }
   }
 };

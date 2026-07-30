@@ -1,4 +1,4 @@
-﻿import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useMemo, useState, useEffect } from 'react';
 import { LAB_MODULES } from '../../data/labModules';
 import { useTheme } from '../../store';
@@ -33,6 +33,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const moduleCount = useMemo(() => LAB_MODULES.filter(m => m.built).length, []);
 
   const getActive = () => {
+    if (location.pathname.startsWith('/ai-maker')) return 'AIMaker';
     if (location.pathname.startsWith('/history')) return 'History';
     if (location.pathname.startsWith('/settings')) return 'Settings';
     return 'Modules';
@@ -40,7 +41,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const active = getActive();
 
   const handleNav = (name: string) => {
-    if (name === 'History') navigate('/history');
+    if (name === 'AIMaker') navigate('/ai-maker');
+    else if (name === 'History') navigate('/history');
     else if (name === 'Settings') navigate('/settings');
     else navigate('/');
     onClose();
@@ -48,6 +50,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const navItems = [
     { id: 'Modules', name: t('nav.modules'), icon: 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z' },
+    { id: 'AIMaker', name: 'AI Lab Maker', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
     { id: 'History', name: t('nav.history'), icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
     { id: 'Settings', name: t('nav.settings'), icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z' }
   ];

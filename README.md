@@ -1,4 +1,4 @@
-# Cendronyx Labs
+# Cendronyx Labs (VirtualLab)
 
 <p align="center">
   <a href="https://virtuallab-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-Try_It-brightgreen?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"></a>
@@ -7,35 +7,49 @@
   <img src="https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
   <img src="https://img.shields.io/badge/Tailwind-3.4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/AI_Engine-OpenRouter_&_Gemini-purple?style=for-the-badge&logo=openai&logoColor=white" alt="AI Engine">
   <img src="https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white" alt="Deployed on Vercel">
-  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge" alt="License">
   <img src="https://img.shields.io/badge/PWA-Offline_First-F48C06?style=for-the-badge" alt="PWA">
 </p>
 
-> **Cendronyx Labs is an offline-first Progressive Web App that delivers 571 interactive simulations for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
+> **Cendronyx Labs is an offline-first Progressive Web App delivering 571+ interactive simulations and an AI-Powered Simulation Maker for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Built with bilingual support (English, Urdu & Roman Urdu) and instant client-side persistence, it brings interactive lab experimentation to every classroom.**
+
+---
 
 ## 📑 Table of Contents
 
+- [Platform at a Glance](#-platform-at-a-glance)
 - [Vision](#-vision)
 - [Live Demo](#-live-demo)
 - [Screenshots](#-screenshots)
+- [✨ What's New: AI Simulation Maker Studio](#-whats-new-ai-simulation-maker-studio)
+- [🌐 Multilingual Support (Urdu & Roman Urdu)](#-multilingual-support-urdu--roman-urdu)
 - [Key Features](#-key-features)
-- [What Cendronyx Labs Does](#-what-this-web-app-does)
-- [Offline Architecture](#-offline-first--pwa-architecture)
-- [Curriculum](#-curriculum-breakdown)
-- [Roadmap](#-roadmap)
+- [App Architecture & Core Engines](#-app-architecture--core-engines)
+- [Offline-First & PWA Architecture](#-offline-first--pwa-architecture)
+- [Curriculum Breakdown](#-curriculum-breakdown)
 - [Technology Stack](#-technology-stack)
+- [Roadmap](#-roadmap)
+
+---
 
 ## 📊 Platform at a Glance
 
-- 🎓 Grades Supported: 6–12
-- 📚 Subjects: 7
-- 🧪 Interactive Labs: 571
-- 🌐 Offline-First PWA
-- 💻 Supported Platforms: Windows, macOS, Linux, Android, iOS & Chromebooks
+- 🎓 **Grades Supported**: 6–12
+- 📚 **Subjects**: 7 (Physics, Chemistry, Biology, Mathematics, Computer Science, Science, English)
+- 🧪 **Interactive Labs**: 571+ Pre-built Modules + Unlimited AI Generated Labs
+- 🤖 **AI Studio**: Natural Language Prompt-to-Simulation Generator (OpenRouter & Gemini 2.0 API)
+- 🇵🇰 **Languages**: English, Urdu (`ur`), and Roman Urdu (`ur-roman`)
+- 💾 **Local Storage**: IndexedDB (Version 7) Custom Simulation Persistence
+- 🌐 **Offline-First PWA**: Installable on Windows, macOS, Linux, Android, iOS & Chromebooks
+
+---
 
 ## 👁️ Vision
-To make high-quality interactive STEM and language education accessible to every student in Pakistan, regardless of internet connectivity or laboratory resources.
+
+To make high-fidelity interactive STEM and language education accessible to every student, regardless of internet connectivity, budget, or laboratory resources.
+
+---
 
 ## 🚀 Live Demo
 
@@ -43,57 +57,91 @@ Try Cendronyx Labs now — no installation required:
 
 [![Live Demo](https://img.shields.io/badge/LIVE_DEMO-Click_Here-brightgreen?style=for-the-badge&logo=vercel)](https://virtuallab-seven.vercel.app/)
 
-> **Note:** For the full offline experience, install the PWA on your device after visiting the demo.
+> **Note:** For full offline capability, install the app as a PWA directly from your browser menu.
+
+---
+
+## 🤖 What's New: AI Simulation Maker Studio (`/ai-maker`)
+
+Cendronyx Labs features a **Prompt-to-Simulation AI Generator Studio** that allows teachers and students to create customized interactive science and math labs on the fly using natural language:
+
+- **Prompt-to-Lab Generation**: Enter any physics, chemistry, or math concept (e.g. *"Show Newton's 3rd law with action-reaction force vectors"*, *"Harmonic spring pendulum oscillator"*).
+- **Live OpenRouter & Gemini AI Models**: Powered by top AI models including:
+  - `google/gemma-4-31b-it:free`
+  - `google/gemma-4-26b-a4b-it:free`
+  - `nvidia/nemotron-3-super-120b-a12b:free`
+  - `cohere/north-mini-code:free`
+  - `google/lyria-3-pro-preview`
+  - Direct Google Gemini 2.0 Flash Free API Key support
+- **AST JSON Engine**: AI generates a full AST specification containing theory summaries, variable sliders, computed formulas, canvas 2D physics primitives, chart telemetry, LaTeX derivations, and quizzes.
+- **Continuous 2D Physics Visualizer**: Features a real-time HTML5 2D canvas runner with automatic harmonic motion fallback so generated simulations are always dynamically moving.
+- **IndexedDB Local Storage & Shareable Links**: Save generated labs locally (`VirtualLabDB` v7) or generate shareable direct links (`/lab/custom/:id`).
+
+---
+
+## 🌐 Multilingual Support (Urdu & Roman Urdu)
+
+To maximize accessibility for students across Pakistan and South Asia, Cendronyx Labs includes a complete localization engine:
+
+- **English**: Original curriculum standard.
+- **Urdu (اردو)**: Full Nastalioq Urdu translations for derivations, lab theory, interactive controls, and quizzes across Class 9–12 Physics, Chemistry, Math, and Computer Science.
+- **Roman Urdu**: Easy-to-read Roman Urdu translation for students comfortable with Latin script transliteration.
+
+---
 
 ## 📸 Screenshots
 
-| Home Page | Subject Selection |
+| Home Page | AI Simulation Maker |
 |:---:|:---:|
-| ![Home Page](public/screenshots/home-page.png) | ![Subject Selection](public/screenshots/subject-selection.png) |
+| ![Home Page](public/screenshots/home-page.png) | ![AI Simulation Maker](public/screenshots/interactive-lab.png) |
 
-| Interactive Lab | Mobile View |
+| Interactive Lab Visualizer | Mobile View |
 |:---:|:---:|
 | ![Interactive Lab](public/screenshots/interactive-lab.png) | ![Mobile View](public/screenshots/mobile-view.png) |
 
+---
+
 ## ✨ Key Features
-- ✅ **571 interactive virtual labs** spanning multiple subjects.
-- ✅ **Offline-first Progressive Web App** architecture.
-- ✅ **Installable** on Windows, Android, iOS, and Chromebooks.
-- ✅ **Dark & Light themes** perfectly customized for readability.
-- ✅ **Responsive design** optimized for both desktop and mobile devices.
-- ✅ **Interactive quizzes** and assessments to test student comprehension.
-- ✅ **Real-time simulations** driven by dynamic inputs.
-- ✅ **Curriculum organized** systematically by grade and subject.
 
-## 📖 What This Web App Does
-This application serves as a massive suite of **interactive educational simulations**. It replaces static textbook diagrams with dynamic, interactive digital laboratories where students can tweak parameters (like voltage, temperature, mass, and velocity) and instantly observe real-time visual results. 
+- ✅ **571+ pre-built interactive virtual labs** spanning Grades 6–12.
+- ✅ **AI Simulation Maker Studio** for instant prompt-based lab creation.
+- ✅ **Bilingual Nastalioq Urdu & Roman Urdu localization**.
+- ✅ **Offline-First Progressive Web App** architecture.
+- ✅ **Interactive 2D Physics Visualizer** (Pendulums, Springs, Waves, Projectiles, Circuits, Action-Reaction vectors).
+- ✅ **Step-by-step LaTeX formula derivation runner** with step progress.
+- ✅ **Real-time telemetry chart visualizer** logging $x$-$y$ variables live over time $t$.
+- ✅ **Dark & Light themes** with automatic system theme adaptation.
+- ✅ **Responsive desktop, tablet, and mobile layouts**.
+- ✅ **Interactive quizzes** with hints and detailed explanations.
 
-Each module in the application typically features a meticulously balanced three-column layout (on desktop) consisting of:
-1. **Theory & Setup**: Explains the underlying concepts, formulas, and expectations, while providing interactive controls (sliders, buttons, toggles) to manipulate the simulation.
-2. **Interactive Simulator / Visualizer**: A custom-built SVG or Canvas-based visual rendering of the experiment or concept that reacts immediately to user input.
-3. **Data & Analysis**: Dynamic tables, assessments, and real-time logs that record the results of the experiment.
+---
 
-The application is fully responsive, condensing into a streamlined, tab-based mobile experience that ensures students can learn interactively on any device.
+## 🏛️ App Architecture & Core Engines
+
+The web application is structured around a three-column modular architecture:
+
+1. **Theory & Controls Column**: Explains core principles, formulas, and offers interactive sliders ($m_1, m_2, F, v_0, g, L, k, A, \theta_0$).
+2. **Interactive Simulator / Canvas Column**: Custom HTML5 2D Canvas engine that computes state equations frame-by-frame ($t$) and renders physics primitives.
+3. **Data Telemetry & Quizzes Column**: Real-time line charts, data tables, LaTeX step-by-step derivations, and interactive assessments.
+
+### Core Generic Engines:
+- **`DynamicAISimulationLab.tsx`**: Renders custom AI-synthesized simulation AST JSON specs.
+- **`GenericDerivationLab.tsx`**: Interactive LaTeX step-by-step formula derivation engine with Urdu translations.
+- **`GenericTheoremLab.tsx`**: Interactive mathematical proof and geometric theorem visualizer.
+
+---
 
 ## 📡 Offline-First & PWA Architecture
-A core pillar of this platform is its **Offline-First** design. Built as a Progressive Web Application (PWA) with aggressive service worker caching, Cendronyx Labs is explicitly engineered for environments with unreliable or zero internet connectivity.
-- **Offline Reliability**: Designed to function fully offline after the initial installation. All 571 lab 
-modules, SVG simulations, interactive logic, and assets are fully precached locally on the user's device. 
-- **Installable**: Students can "install" the web app directly to their home screens or desktops, functioning indistinguishably from a native application.
-- **Performance**: Near-instant local performance, as simulations run directly on the device rather than relying on server-side rendering.
 
-## 🎯 What Is It Good For?
-- **Low-Bandwidth / Remote Education**: Provides world-class, high-fidelity STEM education to students in regions with limited or intermittent internet access.
-- **Visualizing Abstract Concepts**: Makes invisible forces (like electromagnetic fields, molecular bonding, algorithmic sorting, or atomic structures) visible and intuitive.
-- **Safe Experimentation**: Students can explore dangerous reactions (like the Electrolysis of Molten Lead Chloride) or extreme physics scenarios without any physical risk.
-- **Cross-Disciplinary Education**: Provides a unified platform for learning not just the hard sciences, but also applied mathematics, computer programming, and English grammar/vocabulary.
-- **Scalable Education Delivery**: Schools and institutions can deploy this lightweight, highly performant React application to thousands of students simultaneously without incurring massive server or bandwidth costs.
+- **PWA Service Worker**: Pre-caches all 571+ lab modules, SVG icons, scripts, and fonts for 100% offline usage.
+- **IndexedDB (`VirtualLabDB` v7)**: Client-side database storing saved custom AI simulations, user quiz scores, and lab preferences locally.
+- **Zero Server Costs**: Performs all physics math, AST parsing, and rendering directly in the browser runtime.
 
-## Curriculum Alignment: 
-Designed around the Pakistani curriculum for Grades 6–12, with interactive learning experiences that complement classroom instruction.
+---
 
 ## 📚 Curriculum Breakdown
-The platform contains a staggering **571 distinct interactive modules** spanning across Grades 6 through 12. Below is the detailed breakdown of the curriculum by Grade and Subject:
+
+The platform contains **571+ distinct interactive modules** aligned with national curriculum standards:
 
 ### Grade 6 (57 Labs)
 - **Science**: 21 labs
@@ -145,37 +193,32 @@ The platform contains a staggering **571 distinct interactive modules** spanning
 - **Mathematics**: 8 labs
 - **English**: 8 labs
 
-## 🗺️ Roadmap
+---
 
-We are continuously expanding Cendronyx Labs. Here's what's on the horizon:
+## 🛠️ Technology Stack
+
+- **Core**: React 19, TypeScript 6, Vite 8
+- **Styling**: Tailwind CSS 3.4 (Custom Dark Mode & Responsive Layouts)
+- **State & Database**: React Hooks, IndexedDB (`idb` v7)
+- **AI Integration**: OpenRouter API (`https://openrouter.ai/api/v1/chat/completions`) & Google Gemini 2.0 Flash REST API
+- **PWA & Offline**: Vite PWA Plugin (`vite-plugin-pwa`), Workbox Service Worker
+- **Icons & Math**: Lucide React, KaTeX / LaTeX rendering helpers
+
+---
+
+## 🗺️ Roadmap
 
 | Phase | Status | Milestone |
 |:---:|:---:|:---|
-| ✅ | **Complete** | 571 interactive labs across Grades 6–12 |
-| ✅ | **Complete** | Offline-first PWA with service worker caching |
-| ✅ | **Complete** | Responsive design (desktop & mobile) |
-| ✅ | **Complete** | Dark & Light theme support |
-| 🔜 | **In Progress** | Student progress tracking & analytics dashboard |
-| 🔜 | **Planned** | Teacher admin panel with class management |
-| 🔜 | **Planned** | Urdu language support for Science & Math labs |
-| 🔜 | **Planned** | Additional labs for Grades 1–5 |
-| 🔜 | **Planned** | Collaborative lab sessions (real-time multiplayer) |
-| 💡 | **Future** | AI-powered adaptive learning paths |
-| 💡 | **Future** | Native mobile apps (Android & iOS) |
-| 💡 | **Future** | Integration with school management systems (SMS/LMS) |
+| ✅ | **Complete** | 571+ interactive labs across Grades 6–12 |
+| ✅ | **Complete** | AI Simulation Maker Studio with OpenRouter & Gemini AI |
+| ✅ | **Complete** | Nastalioq Urdu & Roman Urdu multilingual translations |
+| ✅ | **Complete** | Offline-first PWA with IndexedDB v7 client storage |
+| ✅ | **Complete** | Responsive design (desktop, tablet & mobile) |
+| 🔜 | **In Progress** | Student progress analytics dashboard |
+| 🔜 | **Planned** | Teacher admin panel with custom lab assignment |
+| 💡 | **Future** | Real-time multiplayer collaborative lab sessions |
 
-> Have a feature request? [Open an issue](https://github.com/Mashhood16/virtuallab/issues) and let us know!
-
-## 🛠️ Technology Stack
-- **Framework**: React (Vite)
-- **Progressive Web App**: Vite PWA Plugin for Service Worker precaching & offline-first delivery
-- **Styling**: Tailwind CSS (with highly customized dark mode integration)
-- **Icons**: Lucide React
-- **Animations/Visuals**: React state-driven SVG manipulations
-- **Architecture**: Component-based architecture with robust mobile-responsive CSS flexbox implementations.
+---
 
 © 2026 Cendronyx Labs. All Rights Reserved.
-
-This repository contains proprietary software and documentation. No part of this project may be copied, redistributed, modified, or used without prior written permission.
-
-
