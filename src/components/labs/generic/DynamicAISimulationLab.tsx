@@ -1651,6 +1651,7 @@ export default function DynamicAISimulationLab({ spec, onBack }: Props) {
 
       ctx.restore();
     }
+  }
   };
 
   useEffect(() => {
@@ -2023,5 +2024,4 @@ export default function DynamicAISimulationLab({ spec, onBack }: Props) {
       </div>
     </div>
   );
-}
 }
